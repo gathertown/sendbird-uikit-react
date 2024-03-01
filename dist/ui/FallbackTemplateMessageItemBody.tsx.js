@@ -1,10 +1,10 @@
 import React__default, { useContext } from 'react';
-import { L as LocalizationContext } from '../chunks/bundle-BW5JWhMG.js';
-import { w as getClassName } from '../chunks/bundle-7Av17Vus.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-DvIsR7kQ.js';
-import '../chunks/bundle-BeAHyfuE.js';
-import '../chunks/bundle-DyVsaRLS.js';
-import '../chunks/bundle-5LMP4qQC.js';
+import { L as LocalizationContext } from '../chunks/bundle-VRwQbdO6.js';
+import { w as getClassName } from '../chunks/bundle-4cxEU_h1.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-ZpyLpKbV.js';
+import '../chunks/bundle-fFCkIdkP.js';
+import '../chunks/bundle-BIDYJkIe.js';
+import '../chunks/bundle-BpxXmFQC.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
 

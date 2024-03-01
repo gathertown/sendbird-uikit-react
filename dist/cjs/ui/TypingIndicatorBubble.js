@@ -1,11 +1,11 @@
 'use strict';
 
 var React = require('react');
-var ui_Avatar = require('../chunks/bundle-5IKAPUOJ.js');
-require('../chunks/bundle-B67weJWw.js');
+var ui_Avatar = require('../chunks/bundle-Bh7J_SsW.js');
+require('../chunks/bundle-2PlwnSzC.js');
 require('./ImageRenderer.js');
-require('../chunks/bundle-CrJkvCS4.js');
-require('../chunks/bundle-CR__rOP0.js');
+require('../chunks/bundle-DMrzJD8i.js');
+require('../chunks/bundle-DgzUMNGp.js');
 require('./Icon.js');
 
 var TypingDots = function () {

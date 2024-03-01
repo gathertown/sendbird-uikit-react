@@ -1,11 +1,11 @@
 import React__default, { useMemo } from 'react';
-import { A as Avatar } from '../chunks/bundle-DCv5_AWJ.js';
+import { A as Avatar } from '../chunks/bundle-D7hWtRqW.js';
 import Icon, { IconTypes, IconColors } from './Icon.js';
-import { g as generateDefaultAvatar, a as getChannelAvatarSource } from '../chunks/bundle-BfWElK7u.js';
-import '../chunks/bundle-5LMP4qQC.js';
+import { g as generateDefaultAvatar, a as getChannelAvatarSource } from '../chunks/bundle-DccoJxVN.js';
+import '../chunks/bundle-BpxXmFQC.js';
 import './ImageRenderer.js';
-import '../chunks/bundle-QtD1UM1r.js';
-import '../chunks/bundle-Dzc4np9L.js';
+import '../chunks/bundle-DIC0UBC5.js';
+import '../chunks/bundle-DjvfRFVm.js';
 
 function ChannelAvatar(_a) {
     var channel = _a.channel, userId = _a.userId, theme = _a.theme, _b = _a.width, width = _b === void 0 ? 56 : _b, _c = _a.height, height = _c === void 0 ? 56 : _c;

@@ -1,10 +1,10 @@
 import React__default, { useState, useEffect } from 'react';
 import { OpenChannelHandler } from '@sendbird/chat/openChannel';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
-import { U as UserProfileProvider } from '../chunks/bundle-B0Dbuu28.js';
-import { u as uuidv4 } from '../chunks/bundle-BJD56sGG.js';
+import { U as UserProfileProvider } from '../chunks/bundle-CnPq00g2.js';
+import { u as uuidv4 } from '../chunks/bundle-DLrfv-Hf.js';
 import '../withSendbird.js';
-import '../chunks/bundle-5LMP4qQC.js';
+import '../chunks/bundle-BpxXmFQC.js';
 
 var OpenChannelSettingsContext = React__default.createContext(undefined);
 var OpenChannelSettingsProvider = function (props) {

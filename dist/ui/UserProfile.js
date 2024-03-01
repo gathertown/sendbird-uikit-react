@@ -1,18 +1,18 @@
 import React__default, { useContext } from 'react';
-import { L as LocalizationContext } from '../chunks/bundle-BW5JWhMG.js';
-import { a as UserProfileContext } from '../chunks/bundle-B0Dbuu28.js';
+import { L as LocalizationContext } from '../chunks/bundle-VRwQbdO6.js';
+import { a as UserProfileContext } from '../chunks/bundle-CnPq00g2.js';
 import { getCreateGroupChannel } from '../sendbirdSelectors.js';
-import { A as Avatar } from '../chunks/bundle-DCv5_AWJ.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-DvIsR7kQ.js';
+import { A as Avatar } from '../chunks/bundle-D7hWtRqW.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-ZpyLpKbV.js';
 import Button, { ButtonTypes } from './Button.js';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
-import '../chunks/bundle-BeAHyfuE.js';
-import '../chunks/bundle-DyVsaRLS.js';
-import '../chunks/bundle-c0D1F768.js';
-import '../chunks/bundle-QtD1UM1r.js';
-import '../chunks/bundle-5LMP4qQC.js';
+import '../chunks/bundle-fFCkIdkP.js';
+import '../chunks/bundle-BIDYJkIe.js';
+import '../chunks/bundle-oBEHM7Oi.js';
+import '../chunks/bundle-DIC0UBC5.js';
+import '../chunks/bundle-BpxXmFQC.js';
 import './ImageRenderer.js';
-import '../chunks/bundle-Dzc4np9L.js';
+import '../chunks/bundle-DjvfRFVm.js';
 import './Icon.js';
 import '../withSendbird.js';
 

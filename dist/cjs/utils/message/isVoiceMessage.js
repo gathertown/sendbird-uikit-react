@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('../../chunks/bundle-sSPmDeMC.js');
-require('../../chunks/bundle-B67weJWw.js');
+var index = require('../../chunks/bundle-Pv5sl1sx.js');
+require('../../chunks/bundle-2PlwnSzC.js');
 require('@sendbird/chat/groupChannel');
 require('./getOutgoingMessageState.js');
 

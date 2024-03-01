@@ -2,15 +2,15 @@
 
 var React = require('react');
 var ui_Icon = require('./Icon.js');
-var ui_Label = require('../chunks/bundle-X-ZtnRCT.js');
+var ui_Label = require('../chunks/bundle-BUH06mHS.js');
 var ui_ImageRenderer = require('./ImageRenderer.js');
-var LocalizationContext = require('../chunks/bundle-BplSuW2v.js');
-var index = require('../chunks/bundle-sSPmDeMC.js');
-var utils = require('../chunks/bundle-BDRzoesd.js');
-require('../chunks/bundle-B67weJWw.js');
-require('../chunks/bundle-CrJkvCS4.js');
-require('../chunks/bundle-z7hq7hFO.js');
-require('../chunks/bundle-DEDYKTrW.js');
+var LocalizationContext = require('../chunks/bundle-D2Bg8CLY.js');
+var index = require('../chunks/bundle-Pv5sl1sx.js');
+var utils = require('../chunks/bundle-B9CKUSwz.js');
+require('../chunks/bundle-2PlwnSzC.js');
+require('../chunks/bundle-DMrzJD8i.js');
+require('../chunks/bundle-BlYafk3l.js');
+require('../chunks/bundle-DzJC_TK7.js');
 require('@sendbird/chat/groupChannel');
 require('../utils/message/getOutgoingMessageState.js');
 

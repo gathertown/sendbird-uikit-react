@@ -1,12 +1,12 @@
 import React__default, { useState, useEffect, useContext } from 'react';
 import { GroupChannelHandler } from '@sendbird/chat/groupChannel';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../../chunks/bundle-DvIsR7kQ.js';
-import { L as LocalizationContext } from '../../chunks/bundle-BW5JWhMG.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../../chunks/bundle-ZpyLpKbV.js';
+import { L as LocalizationContext } from '../../chunks/bundle-VRwQbdO6.js';
 import { useSendbirdStateContext } from '../../useSendbirdStateContext.js';
-import { u as uuidv4 } from '../../chunks/bundle-BJD56sGG.js';
-import '../../chunks/bundle-5LMP4qQC.js';
-import '../../chunks/bundle-BeAHyfuE.js';
-import '../../chunks/bundle-DyVsaRLS.js';
+import { u as uuidv4 } from '../../chunks/bundle-DLrfv-Hf.js';
+import '../../chunks/bundle-BpxXmFQC.js';
+import '../../chunks/bundle-fFCkIdkP.js';
+import '../../chunks/bundle-BIDYJkIe.js';
 import '../../withSendbird.js';
 
 var TypingIndicatorText = function (_a) {

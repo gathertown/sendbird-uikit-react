@@ -1,8 +1,8 @@
-import '../chunks/bundle-5LMP4qQC.js';
+import '../chunks/bundle-BpxXmFQC.js';
 import 'react';
 import './ImageRenderer.js';
-export { b as AvatarInner, A as default } from '../chunks/bundle-DCv5_AWJ.js';
-import '../chunks/bundle-QtD1UM1r.js';
-import '../chunks/bundle-Dzc4np9L.js';
+export { b as AvatarInner, A as default } from '../chunks/bundle-D7hWtRqW.js';
+import '../chunks/bundle-DIC0UBC5.js';
+import '../chunks/bundle-DjvfRFVm.js';
 import './Icon.js';
 //# sourceMappingURL=Avatar.js.map

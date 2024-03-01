@@ -1,23 +1,23 @@
-import { _ as __assign } from '../chunks/bundle-5LMP4qQC.js';
+import { _ as __assign } from '../chunks/bundle-BpxXmFQC.js';
 import React__default, { useContext, useRef } from 'react';
 import ContextMenu, { MenuItems, MenuItem } from './ContextMenu.js';
 import Icon, { IconTypes, IconColors } from './Icon.js';
 import IconButton from './IconButton.js';
-import { l as isUserMessage, q as isSentMessage, u as isFailedMessage, v as isPendingMessage, w as getClassName, x as copyToClipboard } from '../chunks/bundle-7Av17Vus.js';
-import { L as LocalizationContext } from '../chunks/bundle-BW5JWhMG.js';
-import { R as Role } from '../chunks/bundle-BWzgMOjJ.js';
-import { d as deleteNullish } from '../chunks/bundle-QtD1UM1r.js';
-import '../chunks/bundle-BpHmAKa2.js';
+import { l as isUserMessage, q as isSentMessage, u as isFailedMessage, v as isPendingMessage, w as getClassName, x as copyToClipboard } from '../chunks/bundle-4cxEU_h1.js';
+import { L as LocalizationContext } from '../chunks/bundle-VRwQbdO6.js';
+import { R as Role } from '../chunks/bundle-CTZh68w8.js';
+import { d as deleteNullish } from '../chunks/bundle-DIC0UBC5.js';
+import '../chunks/bundle-CmoRaDho.js';
 import 'react-dom';
 import '@sendbird/chat';
 import '@sendbird/chat/openChannel';
 import './SortByRow.js';
-import '../chunks/bundle-BJD56sGG.js';
-import '../chunks/bundle-DvIsR7kQ.js';
-import '../chunks/bundle-BeAHyfuE.js';
+import '../chunks/bundle-DLrfv-Hf.js';
+import '../chunks/bundle-ZpyLpKbV.js';
+import '../chunks/bundle-fFCkIdkP.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
-import '../chunks/bundle-DyVsaRLS.js';
+import '../chunks/bundle-BIDYJkIe.js';
 
 function MessageMenu(props) {
     var _a;

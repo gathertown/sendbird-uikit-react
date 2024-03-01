@@ -1,9 +1,9 @@
 'use strict';
 
-var _tslib = require('../chunks/bundle-B67weJWw.js');
+var _tslib = require('../chunks/bundle-2PlwnSzC.js');
 var React = require('react');
-var ui_Label = require('../chunks/bundle-X-ZtnRCT.js');
-require('../chunks/bundle-z7hq7hFO.js');
+var ui_Label = require('../chunks/bundle-BUH06mHS.js');
+require('../chunks/bundle-BlYafk3l.js');
 
 function Tooltip(_a) {
     var _b = _a.className, className = _b === void 0 ? '' : _b, _c = _a.children, children = _c === void 0 ? '' : _c;

@@ -3,10 +3,10 @@
 var React = require('react');
 var openChannel = require('@sendbird/chat/openChannel');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
-var UserProfileContext = require('../chunks/bundle-LbGezufX.js');
-var uuid = require('../chunks/bundle-c87q7xEA.js');
+var UserProfileContext = require('../chunks/bundle-k7WGsMsr.js');
+var uuid = require('../chunks/bundle-aXbXs3dl.js');
 require('../withSendbird.js');
-require('../chunks/bundle-B67weJWw.js');
+require('../chunks/bundle-2PlwnSzC.js');
 
 var OpenChannelSettingsContext = React.createContext(undefined);
 var OpenChannelSettingsProvider = function (props) {

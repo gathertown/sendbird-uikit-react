@@ -1,7 +1,7 @@
 import React__default from 'react';
 import Icon, { IconTypes, IconColors } from './Icon.js';
-import '../chunks/bundle-5LMP4qQC.js';
-import '../chunks/bundle-QtD1UM1r.js';
+import '../chunks/bundle-BpxXmFQC.js';
+import '../chunks/bundle-DIC0UBC5.js';
 
 function MutedAvatarOverlay(props) {
     var _a = props.height, height = _a === void 0 ? 24 : _a, _b = props.width, width = _b === void 0 ? 24 : _b;

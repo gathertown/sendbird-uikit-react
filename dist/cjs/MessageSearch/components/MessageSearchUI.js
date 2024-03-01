@@ -3,30 +3,30 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var LocalizationContext = require('../../chunks/bundle-BplSuW2v.js');
+var LocalizationContext = require('../../chunks/bundle-D2Bg8CLY.js');
 var MessageSearch_context = require('../context.js');
 var ui_MessageSearchItem = require('../../ui/MessageSearchItem.js');
 var ui_PlaceHolder = require('../../ui/PlaceHolder.js');
 var ui_MessageSearchFileItem = require('../../ui/MessageSearchFileItem.js');
-require('../../chunks/bundle-z7hq7hFO.js');
-require('../../chunks/bundle-DEDYKTrW.js');
+require('../../chunks/bundle-BlYafk3l.js');
+require('../../chunks/bundle-DzJC_TK7.js');
 require('../../useSendbirdStateContext.js');
 require('../../withSendbird.js');
-require('../../chunks/bundle-B67weJWw.js');
-require('../../chunks/bundle-D_DzQR1j.js');
-require('../../chunks/bundle-Cfv9PJWJ.js');
-require('../../chunks/bundle-BHQe7HpU.js');
-require('../../chunks/bundle-5IKAPUOJ.js');
+require('../../chunks/bundle-2PlwnSzC.js');
+require('../../chunks/bundle-5izjntYE.js');
+require('../../chunks/bundle-1yGs9Nzf.js');
+require('../../chunks/bundle-CoFmIxJK.js');
+require('../../chunks/bundle-Bh7J_SsW.js');
 require('../../ui/ImageRenderer.js');
-require('../../chunks/bundle-CrJkvCS4.js');
-require('../../chunks/bundle-CR__rOP0.js');
+require('../../chunks/bundle-DMrzJD8i.js');
+require('../../chunks/bundle-DgzUMNGp.js');
 require('../../ui/Icon.js');
-require('../../chunks/bundle-X-ZtnRCT.js');
+require('../../chunks/bundle-BUH06mHS.js');
 require('../../ui/Loader.js');
-require('../../chunks/bundle-sSPmDeMC.js');
+require('../../chunks/bundle-Pv5sl1sx.js');
 require('@sendbird/chat/groupChannel');
 require('../../utils/message/getOutgoingMessageState.js');
-require('../../chunks/bundle-BDRzoesd.js');
+require('../../chunks/bundle-B9CKUSwz.js');
 
 var COMPONENT_CLASS_NAME = 'sendbird-message-search';
 var MessageSearchUI = function (_a) {

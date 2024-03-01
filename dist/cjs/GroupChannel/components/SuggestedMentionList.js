@@ -2,23 +2,23 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _tslib = require('../../chunks/bundle-B67weJWw.js');
+var _tslib = require('../../chunks/bundle-2PlwnSzC.js');
 var React = require('react');
-var SuggestedMentionListView = require('../../chunks/bundle-BurotX14.js');
-require('../../chunks/bundle-X-ZtnRCT.js');
-require('../../chunks/bundle-z7hq7hFO.js');
+var SuggestedMentionListView = require('../../chunks/bundle-CbRjKF9P.js');
+require('../../chunks/bundle-BUH06mHS.js');
+require('../../chunks/bundle-BlYafk3l.js');
 require('../../ui/Icon.js');
-require('../../chunks/bundle-CrJkvCS4.js');
-require('../../chunks/bundle-5IKAPUOJ.js');
+require('../../chunks/bundle-DMrzJD8i.js');
+require('../../chunks/bundle-Bh7J_SsW.js');
 require('../../ui/ImageRenderer.js');
-require('../../chunks/bundle-CR__rOP0.js');
-require('../../chunks/bundle-BplSuW2v.js');
-require('../../chunks/bundle-DEDYKTrW.js');
-require('../../chunks/bundle-c87q7xEA.js');
+require('../../chunks/bundle-DgzUMNGp.js');
+require('../../chunks/bundle-D2Bg8CLY.js');
+require('../../chunks/bundle-DzJC_TK7.js');
+require('../../chunks/bundle-aXbXs3dl.js');
 require('../../useSendbirdStateContext.js');
 require('../../withSendbird.js');
-require('../../chunks/bundle-Bd2HznXA.js');
-require('../../chunks/bundle-BUIoEqVv.js');
+require('../../chunks/bundle-BVHqwRlD.js');
+require('../../chunks/bundle-Jzj8VRgZ.js');
 
 var SuggestedMentionList = function (props) {
     return (React.createElement(SuggestedMentionListView.SuggestedMentionListView, _tslib.__assign({}, props)));

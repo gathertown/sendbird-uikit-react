@@ -1,7 +1,7 @@
-import { c as __spreadArray } from '../chunks/bundle-5LMP4qQC.js';
+import { c as __spreadArray } from '../chunks/bundle-BpxXmFQC.js';
 import React__default from 'react';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-DvIsR7kQ.js';
-import '../chunks/bundle-BeAHyfuE.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-ZpyLpKbV.js';
+import '../chunks/bundle-fFCkIdkP.js';
 
 function OpenChannelAdminMessage(_a) {
     var className = _a.className, message = _a.message;

@@ -4,13 +4,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 var groupChannel = require('@sendbird/chat/groupChannel');
-var ui_Label = require('../../chunks/bundle-X-ZtnRCT.js');
-var LocalizationContext = require('../../chunks/bundle-BplSuW2v.js');
+var ui_Label = require('../../chunks/bundle-BUH06mHS.js');
+var LocalizationContext = require('../../chunks/bundle-D2Bg8CLY.js');
 var useSendbirdStateContext = require('../../useSendbirdStateContext.js');
-var uuid = require('../../chunks/bundle-c87q7xEA.js');
-require('../../chunks/bundle-B67weJWw.js');
-require('../../chunks/bundle-z7hq7hFO.js');
-require('../../chunks/bundle-DEDYKTrW.js');
+var uuid = require('../../chunks/bundle-aXbXs3dl.js');
+require('../../chunks/bundle-2PlwnSzC.js');
+require('../../chunks/bundle-BlYafk3l.js');
+require('../../chunks/bundle-DzJC_TK7.js');
 require('../../withSendbird.js');
 
 var TypingIndicatorText = function (_a) {

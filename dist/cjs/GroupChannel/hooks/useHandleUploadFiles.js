@@ -1,33 +1,33 @@
 'use strict';
 
-var _tslib = require('../../chunks/bundle-B67weJWw.js');
+var _tslib = require('../../chunks/bundle-2PlwnSzC.js');
 var React = require('react');
 var useSendbirdStateContext = require('../../useSendbirdStateContext.js');
-var index = require('../../chunks/bundle-sSPmDeMC.js');
-var ui_Modal = require('../../chunks/bundle-D0ePEYoI.js');
-require('../../chunks/bundle-X-ZtnRCT.js');
+var index = require('../../chunks/bundle-Pv5sl1sx.js');
+var ui_Modal = require('../../chunks/bundle-BPS3DFTX.js');
+require('../../chunks/bundle-BUH06mHS.js');
 var ui_Button = require('../../ui/Button.js');
-var LocalizationContext = require('../../chunks/bundle-BplSuW2v.js');
-var compressImages = require('../../chunks/bundle-BQnz8R9q.js');
+var LocalizationContext = require('../../chunks/bundle-D2Bg8CLY.js');
+var compressImages = require('../../chunks/bundle-BtA6MlUR.js');
 require('../../withSendbird.js');
 require('@sendbird/chat/groupChannel');
 require('../../utils/message/getOutgoingMessageState.js');
-require('../../chunks/bundle-CrJkvCS4.js');
+require('../../chunks/bundle-DMrzJD8i.js');
 require('react-dom');
-require('../../chunks/bundle-DPOXwvBX.js');
+require('../../chunks/bundle-Gh-C2yIM.js');
 require('../../ui/IconButton.js');
 require('../../ui/Icon.js');
 require('@sendbird/uikit-tools');
 require('css-vars-ponyfill');
 require('@sendbird/chat');
-require('../../chunks/bundle-c87q7xEA.js');
+require('../../chunks/bundle-aXbXs3dl.js');
 require('@sendbird/chat/openChannel');
-require('../../chunks/bundle-CeqSSVZ9.js');
-require('../../chunks/bundle-DiHFDa7q.js');
-require('../../chunks/bundle-BCNmULWo.js');
-require('../../chunks/bundle-z7hq7hFO.js');
-require('../../chunks/bundle-DEDYKTrW.js');
-require('../../chunks/bundle-CR__rOP0.js');
+require('../../chunks/bundle-BPDG2Sth.js');
+require('../../chunks/bundle-tCz2WwyT.js');
+require('../../chunks/bundle-DLvdMF5T.js');
+require('../../chunks/bundle-BlYafk3l.js');
+require('../../chunks/bundle-DzJC_TK7.js');
+require('../../chunks/bundle-DgzUMNGp.js');
 
 var useHandleUploadFiles = function (_a, _b) {
     var sendFileMessage = _a.sendFileMessage, sendMultipleFilesMessage = _a.sendMultipleFilesMessage, quoteMessage = _a.quoteMessage;

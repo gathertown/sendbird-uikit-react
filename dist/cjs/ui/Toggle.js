@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var _tslib = require('../chunks/bundle-B67weJWw.js');
+var _tslib = require('../chunks/bundle-2PlwnSzC.js');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
 require('../withSendbird.js');
 
