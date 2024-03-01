@@ -1,5 +1,5 @@
 import React__default, { createContext, useState, useContext } from 'react';
-import { n as noop } from '../chunks/bundle-DIC0UBC5.js';
+import { n as noop } from '../chunks/bundle-CbUL9vb-.js';
 
 var AccordionGroupContext = createContext({
     openedListKeys: [],

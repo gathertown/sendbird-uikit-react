@@ -2,12 +2,12 @@
 
 require('react');
 require('@sendbird/chat/message');
-require('../../chunks/bundle-meW-rxvL.js');
-require('../../chunks/bundle-CHob45XV.js');
-var Channel_hooks_useInitialMessagesFetch = require('../../chunks/bundle-DvhBOCzU.js');
-require('../../chunks/bundle-tCz2WwyT.js');
-require('../../chunks/bundle-2PlwnSzC.js');
-require('../../chunks/bundle-BVHqwRlD.js');
+require('../../chunks/bundle-BZXuUIRS.js');
+require('../../chunks/bundle-DhR_cfX5.js');
+var Channel_hooks_useInitialMessagesFetch = require('../../chunks/bundle-DDl-TEX1.js');
+require('../../chunks/bundle-DHTHQj02.js');
+require('../../chunks/bundle-DvNeoTBz.js');
+require('../../chunks/bundle-ZB7RBE8F.js');
 
 
 

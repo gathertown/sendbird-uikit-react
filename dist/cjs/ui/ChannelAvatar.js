@@ -1,13 +1,13 @@
 'use strict';
 
 var React = require('react');
-var ui_Avatar = require('../chunks/bundle-Bh7J_SsW.js');
+var ui_Avatar = require('../chunks/bundle-BNKSF9CJ.js');
 var ui_Icon = require('./Icon.js');
-var utils = require('../chunks/bundle-BQNX69rh.js');
-require('../chunks/bundle-2PlwnSzC.js');
+var utils = require('../chunks/bundle-Rz-nVLJe.js');
+require('../chunks/bundle-DvNeoTBz.js');
 require('./ImageRenderer.js');
-require('../chunks/bundle-DMrzJD8i.js');
-require('../chunks/bundle-DgzUMNGp.js');
+require('../chunks/bundle-DQfemABy.js');
+require('../chunks/bundle-8jy5Sc-N.js');
 
 function ChannelAvatar(_a) {
     var channel = _a.channel, userId = _a.userId, theme = _a.theme, _b = _a.width, width = _b === void 0 ? 56 : _b, _c = _a.height, height = _c === void 0 ? 56 : _c;

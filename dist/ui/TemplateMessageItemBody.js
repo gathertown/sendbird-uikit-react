@@ -1,20 +1,20 @@
-import { d as __extends, _ as __assign } from '../chunks/bundle-BpxXmFQC.js';
+import { d as __extends, _ as __assign } from '../chunks/bundle-h5nSe8RU.js';
 import React__default, { Component, useState, useEffect } from 'react';
-import { Z as startsWithAtAndEndsWithBraces, _ as removeAtAndBraces, w as getClassName } from '../chunks/bundle-4cxEU_h1.js';
-import { M as MessageProvider, a as MessageTemplate, C as CompositeComponentType } from '../chunks/bundle-CH7pY17S.js';
+import { Z as startsWithAtAndEndsWithBraces, _ as removeAtAndBraces, w as getClassName } from '../chunks/bundle-CmPJV5ar.js';
+import { M as MessageProvider, a as MessageTemplate, C as CompositeComponentType } from '../chunks/bundle-yvxYC2sc.js';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
 import { FallbackTemplateMessageItemBody } from './FallbackTemplateMessageItemBody.tsx.js';
 import { LoadingTemplateMessageItemBody } from './LoadingTemplateMessageItemBody.tsx.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
 import '../withSendbird.js';
-import '../chunks/bundle-VRwQbdO6.js';
-import '../chunks/bundle-fFCkIdkP.js';
-import '../chunks/bundle-BIDYJkIe.js';
-import '../chunks/bundle-ZpyLpKbV.js';
+import '../chunks/bundle-BBVJixDe.js';
+import '../chunks/bundle-Bh_HZf7x.js';
+import '../chunks/bundle-DTkxB28y.js';
+import '../chunks/bundle-DBtyGp-i.js';
 import './Loader.js';
 import './Icon.js';
-import '../chunks/bundle-DIC0UBC5.js';
+import '../chunks/bundle-CbUL9vb-.js';
 
 var MessageTemplateWrapper = function (_a) {
     var message = _a.message, templateVersion = _a.templateVersion, templateItems = _a.templateItems;

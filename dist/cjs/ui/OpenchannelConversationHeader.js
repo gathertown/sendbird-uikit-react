@@ -1,17 +1,17 @@
 'use strict';
 
 var React = require('react');
-var ui_Avatar = require('../chunks/bundle-Bh7J_SsW.js');
+var ui_Avatar = require('../chunks/bundle-BNKSF9CJ.js');
 var ui_Icon = require('./Icon.js');
 var ui_IconButton = require('./IconButton.js');
-var ui_Label = require('../chunks/bundle-BUH06mHS.js');
-var LocalizationContext = require('../chunks/bundle-D2Bg8CLY.js');
-require('../chunks/bundle-2PlwnSzC.js');
+var ui_Label = require('../chunks/bundle-CkvaXo1D.js');
+var LocalizationContext = require('../chunks/bundle-BeJ7-X59.js');
+require('../chunks/bundle-DvNeoTBz.js');
 require('./ImageRenderer.js');
-require('../chunks/bundle-DMrzJD8i.js');
-require('../chunks/bundle-DgzUMNGp.js');
-require('../chunks/bundle-BlYafk3l.js');
-require('../chunks/bundle-DzJC_TK7.js');
+require('../chunks/bundle-DQfemABy.js');
+require('../chunks/bundle-8jy5Sc-N.js');
+require('../chunks/bundle-BruYC2Km.js');
+require('../chunks/bundle-DUeKijBO.js');
 
 function OpenchannelConversationHeader(_a) {
     var coverImage = _a.coverImage, title = _a.title, subTitle = _a.subTitle, amIOperator = _a.amIOperator, onActionClick = _a.onActionClick;

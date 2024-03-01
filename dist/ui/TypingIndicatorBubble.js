@@ -1,9 +1,9 @@
 import React__default, { useLayoutEffect } from 'react';
-import { A as Avatar, a as AvatarDefault } from '../chunks/bundle-D7hWtRqW.js';
-import '../chunks/bundle-BpxXmFQC.js';
+import { A as Avatar, a as AvatarDefault } from '../chunks/bundle-BJEESw7S.js';
+import '../chunks/bundle-h5nSe8RU.js';
 import './ImageRenderer.js';
-import '../chunks/bundle-DIC0UBC5.js';
-import '../chunks/bundle-DjvfRFVm.js';
+import '../chunks/bundle-CbUL9vb-.js';
+import '../chunks/bundle-RDd4rAzg.js';
 import './Icon.js';
 
 var TypingDots = function () {

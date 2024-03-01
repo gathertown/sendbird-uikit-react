@@ -1,4 +1,4 @@
-import { _ as __assign } from './chunks/bundle-BpxXmFQC.js';
+import { _ as __assign } from './chunks/bundle-h5nSe8RU.js';
 import React__default from 'react';
 
 var SendbirdSdkContext = React__default.createContext(null);

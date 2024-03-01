@@ -5,8 +5,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var React = require('react');
 var ui_Icon = require('./Icon.js');
 var ui_AccordionGroup = require('./AccordionGroup.js');
-require('../chunks/bundle-2PlwnSzC.js');
-require('../chunks/bundle-DMrzJD8i.js');
+require('../chunks/bundle-DvNeoTBz.js');
+require('../chunks/bundle-DQfemABy.js');
 
 var Accordion = function (_a) {
     var className = _a.className, id = _a.id, renderTitle = _a.renderTitle, renderContent = _a.renderContent, renderFooter = _a.renderFooter;

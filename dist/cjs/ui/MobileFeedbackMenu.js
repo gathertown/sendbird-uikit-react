@@ -2,16 +2,16 @@
 
 var React = require('react');
 var ui_BottomSheet = require('./BottomSheet.js');
-var ui_Label = require('../chunks/bundle-BUH06mHS.js');
-var LocalizationContext = require('../chunks/bundle-D2Bg8CLY.js');
+var ui_Label = require('../chunks/bundle-CkvaXo1D.js');
+var LocalizationContext = require('../chunks/bundle-BeJ7-X59.js');
 require('react-dom');
-require('../chunks/bundle-BPS3DFTX.js');
-require('../chunks/bundle-2PlwnSzC.js');
-require('../chunks/bundle-Pv5sl1sx.js');
+require('../chunks/bundle-CjFSIiUv.js');
+require('../chunks/bundle-DvNeoTBz.js');
+require('../chunks/bundle-D-432Irw.js');
 require('@sendbird/chat/groupChannel');
 require('../utils/message/getOutgoingMessageState.js');
-require('../chunks/bundle-DMrzJD8i.js');
-require('../chunks/bundle-Gh-C2yIM.js');
+require('../chunks/bundle-DQfemABy.js');
+require('../chunks/bundle-BppUjcCZ.js');
 require('./IconButton.js');
 require('./Button.js');
 require('./Icon.js');
@@ -19,14 +19,14 @@ require('@sendbird/uikit-tools');
 require('../withSendbird.js');
 require('css-vars-ponyfill');
 require('@sendbird/chat');
-require('../chunks/bundle-aXbXs3dl.js');
+require('../chunks/bundle-DGYTk4xX.js');
 require('@sendbird/chat/openChannel');
-require('../chunks/bundle-BPDG2Sth.js');
-require('../chunks/bundle-tCz2WwyT.js');
+require('../chunks/bundle-BelgkMC5.js');
+require('../chunks/bundle-DHTHQj02.js');
 require('../useSendbirdStateContext.js');
-require('../chunks/bundle-DLvdMF5T.js');
-require('../chunks/bundle-BlYafk3l.js');
-require('../chunks/bundle-DzJC_TK7.js');
+require('../chunks/bundle-D0W7zrvh.js');
+require('../chunks/bundle-BruYC2Km.js');
+require('../chunks/bundle-DUeKijBO.js');
 
 function MobileFeedbackMenu(props) {
     var hideMenu = props.hideMenu, onEditFeedback = props.onEditFeedback, onRemoveFeedback = props.onRemoveFeedback;

@@ -2,23 +2,23 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _tslib = require('../chunks/bundle-2PlwnSzC.js');
+var _tslib = require('../chunks/bundle-DvNeoTBz.js');
 var React = require('react');
-var index = require('../chunks/bundle-Pv5sl1sx.js');
-var ui_MessageTemplate = require('../chunks/bundle-DSE-imlx.js');
+var index = require('../chunks/bundle-D-432Irw.js');
+var ui_MessageTemplate = require('../chunks/bundle-mdN5dLY0.js');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
 var ui_FallbackTemplateMessageItemBody_tsx = require('./FallbackTemplateMessageItemBody.tsx.js');
 var ui_LoadingTemplateMessageItemBody_tsx = require('./LoadingTemplateMessageItemBody.tsx.js');
 require('@sendbird/chat/groupChannel');
 require('../utils/message/getOutgoingMessageState.js');
 require('../withSendbird.js');
-require('../chunks/bundle-D2Bg8CLY.js');
-require('../chunks/bundle-BlYafk3l.js');
-require('../chunks/bundle-DzJC_TK7.js');
-require('../chunks/bundle-BUH06mHS.js');
+require('../chunks/bundle-BeJ7-X59.js');
+require('../chunks/bundle-BruYC2Km.js');
+require('../chunks/bundle-DUeKijBO.js');
+require('../chunks/bundle-CkvaXo1D.js');
 require('./Loader.js');
 require('./Icon.js');
-require('../chunks/bundle-DMrzJD8i.js');
+require('../chunks/bundle-DQfemABy.js');
 
 var MessageTemplateWrapper = function (_a) {
     var message = _a.message, templateVersion = _a.templateVersion, templateItems = _a.templateItems;

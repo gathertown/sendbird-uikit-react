@@ -1,11 +1,11 @@
 'use strict';
 
-var _tslib = require('../chunks/bundle-2PlwnSzC.js');
+var _tslib = require('../chunks/bundle-DvNeoTBz.js');
 var React = require('react');
-var ui_Label = require('../chunks/bundle-BUH06mHS.js');
-var LocalizationContext = require('../chunks/bundle-D2Bg8CLY.js');
-require('../chunks/bundle-BlYafk3l.js');
-require('../chunks/bundle-DzJC_TK7.js');
+var ui_Label = require('../chunks/bundle-CkvaXo1D.js');
+var LocalizationContext = require('../chunks/bundle-BeJ7-X59.js');
+require('../chunks/bundle-BruYC2Km.js');
+require('../chunks/bundle-DUeKijBO.js');
 
 function Badge(_a) {
     var count = _a.count, _b = _a.maxLevel, maxLevel = _b === void 0 ? 2 : _b, _c = _a.className, className = _c === void 0 ? '' : _c;

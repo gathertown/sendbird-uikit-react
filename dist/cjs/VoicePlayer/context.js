@@ -1,10 +1,10 @@
 'use strict';
 
 require('react');
-var VoicePlayer_context = require('../chunks/bundle-BPDG2Sth.js');
-require('../chunks/bundle-tCz2WwyT.js');
+var VoicePlayer_context = require('../chunks/bundle-BelgkMC5.js');
+require('../chunks/bundle-DHTHQj02.js');
 require('../useSendbirdStateContext.js');
-require('../chunks/bundle-2PlwnSzC.js');
+require('../chunks/bundle-DvNeoTBz.js');
 require('../withSendbird.js');
 
 

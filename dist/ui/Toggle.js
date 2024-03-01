@@ -1,5 +1,5 @@
 import React__default, { useState, useCallback } from 'react';
-import { _ as __assign } from '../chunks/bundle-BpxXmFQC.js';
+import { _ as __assign } from '../chunks/bundle-h5nSe8RU.js';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
 import '../withSendbird.js';
 

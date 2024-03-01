@@ -2,11 +2,11 @@
 
 var GroupChannel_components_FrozenNotification = require('../../GroupChannel/components/FrozenNotification.js');
 require('react');
-require('../../chunks/bundle-D2Bg8CLY.js');
-require('../../chunks/bundle-BlYafk3l.js');
-require('../../chunks/bundle-DzJC_TK7.js');
-require('../../chunks/bundle-BUH06mHS.js');
-require('../../chunks/bundle-2PlwnSzC.js');
+require('../../chunks/bundle-BeJ7-X59.js');
+require('../../chunks/bundle-BruYC2Km.js');
+require('../../chunks/bundle-DUeKijBO.js');
+require('../../chunks/bundle-CkvaXo1D.js');
+require('../../chunks/bundle-DvNeoTBz.js');
 
 
 

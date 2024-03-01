@@ -1,14 +1,14 @@
 import React__default from 'react';
-import { A as Avatar } from '../chunks/bundle-D7hWtRqW.js';
+import { A as Avatar } from '../chunks/bundle-BJEESw7S.js';
 import Icon, { IconTypes, IconColors } from './Icon.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-ZpyLpKbV.js';
-import { u as useLocalization } from '../chunks/bundle-VRwQbdO6.js';
-import '../chunks/bundle-BpxXmFQC.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-DBtyGp-i.js';
+import { u as useLocalization } from '../chunks/bundle-BBVJixDe.js';
+import '../chunks/bundle-h5nSe8RU.js';
 import './ImageRenderer.js';
-import '../chunks/bundle-DIC0UBC5.js';
-import '../chunks/bundle-DjvfRFVm.js';
-import '../chunks/bundle-fFCkIdkP.js';
-import '../chunks/bundle-BIDYJkIe.js';
+import '../chunks/bundle-CbUL9vb-.js';
+import '../chunks/bundle-RDd4rAzg.js';
+import '../chunks/bundle-Bh_HZf7x.js';
+import '../chunks/bundle-DTkxB28y.js';
 
 function ThreadReplies(_a, ref) {
     var _b;

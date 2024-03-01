@@ -1,6 +1,6 @@
 'use strict';
 
-var _tslib = require('../chunks/bundle-2PlwnSzC.js');
+var _tslib = require('../chunks/bundle-DvNeoTBz.js');
 var React = require('react');
 
 var SPACE_FROM_TRIGGER = 8;

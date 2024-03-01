@@ -1,9 +1,9 @@
 'use strict';
 
-var _tslib = require('../chunks/bundle-2PlwnSzC.js');
+var _tslib = require('../chunks/bundle-DvNeoTBz.js');
 var React = require('react');
-var ui_Label = require('../chunks/bundle-BUH06mHS.js');
-require('../chunks/bundle-BlYafk3l.js');
+var ui_Label = require('../chunks/bundle-CkvaXo1D.js');
+require('../chunks/bundle-BruYC2Km.js');
 
 function OpenChannelAdminMessage(_a) {
     var className = _a.className, message = _a.message;
