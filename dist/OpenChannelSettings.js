@@ -1,0 +1,61 @@
+import React__default from 'react';
+import OpenChannelUI from './OpenChannelSettings/components/OpenChannelSettingsUI.js';
+import { OpenChannelSettingsProvider } from './OpenChannelSettings/context.js';
+import './useSendbirdStateContext.js';
+import './withSendbird.js';
+import './chunks/bundle-5LMP4qQC.js';
+import './chunks/bundle-BW5JWhMG.js';
+import './chunks/bundle-BeAHyfuE.js';
+import './chunks/bundle-DyVsaRLS.js';
+import './chunks/bundle-DvIsR7kQ.js';
+import './ui/Icon.js';
+import './chunks/bundle-QtD1UM1r.js';
+import './ui/PlaceHolder.js';
+import './ui/Loader.js';
+import './OpenChannelSettings/components/OperatorUI.js';
+import './OpenChannelSettings/components/OpenChannelProfile.js';
+import './ui/TextButton.js';
+import './chunks/bundle-CfII9A10.js';
+import './ui/OpenChannelAvatar.js';
+import './chunks/bundle-DCv5_AWJ.js';
+import './ui/ImageRenderer.js';
+import './chunks/bundle-Dzc4np9L.js';
+import './chunks/bundle-BfWElK7u.js';
+import './OpenChannelSettings/components/EditDetailsModal.js';
+import './chunks/bundle-c0D1F768.js';
+import './chunks/bundle-xaiK2tjx.js';
+import './chunks/bundle-7Av17Vus.js';
+import '@sendbird/chat/groupChannel';
+import './utils/message/getOutgoingMessageState.js';
+import 'react-dom';
+import './chunks/bundle-U_2B1aWq.js';
+import './ui/IconButton.js';
+import './ui/Button.js';
+import '@sendbird/uikit-tools';
+import 'css-vars-ponyfill';
+import '@sendbird/chat';
+import './chunks/bundle-BJD56sGG.js';
+import '@sendbird/chat/openChannel';
+import './chunks/bundle-DtWPTHU4.js';
+import './chunks/bundle-CzOn0UCC.js';
+import './chunks/bundle-BpHmAKa2.js';
+import './ui/Input.js';
+import './chunks/bundle-CNwOkt9O.js';
+import './ui/ContextMenu.js';
+import './ui/SortByRow.js';
+import './chunks/bundle-B0Dbuu28.js';
+import './ui/AccordionGroup.js';
+import './ui/MutedAvatarOverlay.js';
+import './ui/UserProfile.js';
+import './sendbirdSelectors.js';
+import './ui/UserListItem.js';
+import './ui/Checkbox.js';
+import './ui/Accordion.js';
+
+var OpenChannelSetting = function (props) {
+    return (React__default.createElement(OpenChannelSettingsProvider, { channelUrl: props === null || props === void 0 ? void 0 : props.channelUrl, onCloseClick: props === null || props === void 0 ? void 0 : props.onCloseClick, onBeforeUpdateChannel: props === null || props === void 0 ? void 0 : props.onBeforeUpdateChannel, onChannelModified: props === null || props === void 0 ? void 0 : props.onChannelModified, onDeleteChannel: props === null || props === void 0 ? void 0 : props.onDeleteChannel, disableUserProfile: props === null || props === void 0 ? void 0 : props.disableUserProfile, renderUserProfile: props === null || props === void 0 ? void 0 : props.renderUserProfile },
+        React__default.createElement(OpenChannelUI, { renderOperatorUI: props === null || props === void 0 ? void 0 : props.renderOperatorUI, renderParticipantList: props === null || props === void 0 ? void 0 : props.renderParticipantList })));
+};
+
+export { OpenChannelSetting as default };
+//# sourceMappingURL=OpenChannelSettings.js.map

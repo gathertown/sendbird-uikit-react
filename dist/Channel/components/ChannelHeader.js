@@ -1,0 +1,51 @@
+import { _ as __assign } from '../../chunks/bundle-5LMP4qQC.js';
+import React__default from 'react';
+import { G as GroupChannelHeaderView } from '../../chunks/bundle-DHq13Rad.js';
+import { useChannelContext } from '../context.js';
+import '../../ui/Icon.js';
+import '../../chunks/bundle-QtD1UM1r.js';
+import '../../ui/ChannelAvatar.js';
+import '../../chunks/bundle-DCv5_AWJ.js';
+import '../../ui/ImageRenderer.js';
+import '../../chunks/bundle-Dzc4np9L.js';
+import '../../chunks/bundle-BfWElK7u.js';
+import '../../chunks/bundle-CHkMSFMV.js';
+import '../../chunks/bundle-DvIsR7kQ.js';
+import '../../chunks/bundle-BeAHyfuE.js';
+import '../../chunks/bundle-U_2B1aWq.js';
+import '../../useSendbirdStateContext.js';
+import '../../withSendbird.js';
+import '../../chunks/bundle-BW5JWhMG.js';
+import '../../chunks/bundle-DyVsaRLS.js';
+import '../../ui/Header.js';
+import '../../ui/TextButton.js';
+import '../../chunks/bundle-CfII9A10.js';
+import '../../ui/IconButton.js';
+import '../../chunks/bundle-B0Dbuu28.js';
+import '../../chunks/bundle-6itdh-PI.js';
+import '../../chunks/bundle-mvJ9QD_D.js';
+import '@sendbird/chat/message';
+import '../../chunks/bundle-Hkpc7KpA.js';
+import '../../chunks/bundle-C-kkBK84.js';
+import '../../chunks/bundle-7Av17Vus.js';
+import '@sendbird/chat/groupChannel';
+import '../../utils/message/getOutgoingMessageState.js';
+import '../../chunks/bundle-VHqJlR18.js';
+import '../../chunks/bundle-D--y2PXM.js';
+import '../../chunks/bundle-DkhSKEDZ.js';
+import '../../chunks/bundle-CzOn0UCC.js';
+import '../../chunks/bundle-BJD56sGG.js';
+import '../../chunks/bundle-Dl28BsqX.js';
+import '../../chunks/bundle-c0D1F768.js';
+import '../../chunks/bundle-Cs0iNLFK.js';
+import '../../chunks/bundle-CTUiHvvY.js';
+import '../../chunks/bundle-CGLTg9iX.js';
+
+var ChannelHeader = function (_a) {
+    var className = _a.className;
+    var context = useChannelContext();
+    return (React__default.createElement(GroupChannelHeaderView, __assign({}, context, { className: className, currentChannel: context.currentGroupChannel })));
+};
+
+export { ChannelHeader, ChannelHeader as default };
+//# sourceMappingURL=ChannelHeader.js.map

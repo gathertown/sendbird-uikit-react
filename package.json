@@ -56,6 +56,7 @@
     "build:docs": "node ./scripts/build_docs.mjs",
     "build:storybook": "storybook build",
     "build:apps:testing": "yarn workspace @uikit-app/testing build",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "repository": {
     "type": "git",

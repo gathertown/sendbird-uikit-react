@@ -1,0 +1,74 @@
+'use strict';
+
+var React = require('react');
+var ChannelSettings_components_ChannelSettingsUI = require('./ChannelSettings/components/ChannelSettingsUI.js');
+var ChannelSettings_context = require('./ChannelSettings/context.js');
+require('./chunks/bundle-B67weJWw.js');
+require('./useSendbirdStateContext.js');
+require('./withSendbird.js');
+require('./ChannelSettings/components/ChannelSettingsHeader.js');
+require('./chunks/bundle-BplSuW2v.js');
+require('./chunks/bundle-z7hq7hFO.js');
+require('./chunks/bundle-DEDYKTrW.js');
+require('./ui/Icon.js');
+require('./chunks/bundle-CrJkvCS4.js');
+require('./ui/Header.js');
+require('./chunks/bundle-X-ZtnRCT.js');
+require('./chunks/bundle-DPOXwvBX.js');
+require('./ui/TextButton.js');
+require('./chunks/bundle-DDJZEPWj.js');
+require('./ui/IconButton.js');
+require('./ui/PlaceHolder.js');
+require('./ui/Loader.js');
+require('./ChannelSettings/components/ChannelProfile.js');
+require('./ui/ChannelAvatar.js');
+require('./chunks/bundle-5IKAPUOJ.js');
+require('./ui/ImageRenderer.js');
+require('./chunks/bundle-CR__rOP0.js');
+require('./chunks/bundle-DDTTknuH.js');
+require('./ChannelSettings/components/EditDetailsModal.js');
+require('./chunks/bundle-D0ePEYoI.js');
+require('./chunks/bundle-sSPmDeMC.js');
+require('@sendbird/chat/groupChannel');
+require('./utils/message/getOutgoingMessageState.js');
+require('react-dom');
+require('./ui/Button.js');
+require('@sendbird/uikit-tools');
+require('css-vars-ponyfill');
+require('@sendbird/chat');
+require('./chunks/bundle-c87q7xEA.js');
+require('@sendbird/chat/openChannel');
+require('./chunks/bundle-CeqSSVZ9.js');
+require('./chunks/bundle-DiHFDa7q.js');
+require('./chunks/bundle-BCNmULWo.js');
+require('./ui/Input.js');
+require('./ChannelSettings/components/ModerationPanel.js');
+require('./ui/Accordion.js');
+require('./ui/AccordionGroup.js');
+require('./ui/Badge.js');
+require('./ui/Toggle.js');
+require('./ui/ContextMenu.js');
+require('./ui/SortByRow.js');
+require('./ChannelSettings/components/UserListItem.js');
+require('./chunks/bundle-LbGezufX.js');
+require('./ui/MutedAvatarOverlay.js');
+require('./ui/UserProfile.js');
+require('./sendbirdSelectors.js');
+require('./chunks/bundle-BSU5Fq75.js');
+require('./ui/UserListItem.js');
+require('./ui/Checkbox.js');
+require('./chunks/bundle-CM_7-rFo.js');
+require('./chunks/bundle-B8bLSHlY.js');
+require('@sendbird/chat/message');
+require('./chunks/bundle-qJQUtN55.js');
+require('./chunks/bundle-CLkh7bM1.js');
+require('./ChannelSettings/components/LeaveChannel.js');
+require('./ChannelSettings/components/UserPanel.js');
+
+var ChannelSettings = function (props) {
+    return (React.createElement(ChannelSettings_context.ChannelSettingsProvider, { overrideInviteUser: props === null || props === void 0 ? void 0 : props.overrideInviteUser, channelUrl: props.channelUrl, onCloseClick: props === null || props === void 0 ? void 0 : props.onCloseClick, onLeaveChannel: props === null || props === void 0 ? void 0 : props.onLeaveChannel, onChannelModified: props === null || props === void 0 ? void 0 : props.onChannelModified, onBeforeUpdateChannel: props === null || props === void 0 ? void 0 : props.onBeforeUpdateChannel, queries: props === null || props === void 0 ? void 0 : props.queries, className: props === null || props === void 0 ? void 0 : props.className, disableUserProfile: props === null || props === void 0 ? void 0 : props.disableUserProfile, renderUserProfile: props === null || props === void 0 ? void 0 : props.renderUserProfile },
+        React.createElement(ChannelSettings_components_ChannelSettingsUI, { renderPlaceholderError: props === null || props === void 0 ? void 0 : props.renderPlaceholderError, renderChannelProfile: props === null || props === void 0 ? void 0 : props.renderChannelProfile, renderModerationPanel: props === null || props === void 0 ? void 0 : props.renderModerationPanel, renderLeaveChannel: props === null || props === void 0 ? void 0 : props.renderLeaveChannel })));
+};
+
+module.exports = ChannelSettings;
+//# sourceMappingURL=ChannelSettings.js.map

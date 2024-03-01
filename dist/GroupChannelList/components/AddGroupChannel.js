@@ -1,0 +1,55 @@
+import React__default, { useState } from 'react';
+import { A as AddGroupChannelView } from '../../chunks/bundle-8CtxoShD.js';
+import { useGroupChannelListContext } from '../context.js';
+import '../../ui/IconButton.js';
+import '../../chunks/bundle-5LMP4qQC.js';
+import '../../ui/Icon.js';
+import '../../chunks/bundle-QtD1UM1r.js';
+import '../../CreateChannel.js';
+import '../../CreateChannel/components/CreateChannelUI.js';
+import '../../chunks/bundle-JrAzLb2S.js';
+import '../../sendbirdSelectors.js';
+import '../../chunks/bundle-c0D1F768.js';
+import '../../useSendbirdStateContext.js';
+import '../../withSendbird.js';
+import '../../CreateChannel/components/InviteUsers.js';
+import '../../chunks/bundle-BW5JWhMG.js';
+import '../../chunks/bundle-BeAHyfuE.js';
+import '../../chunks/bundle-DyVsaRLS.js';
+import '../../chunks/bundle-U_2B1aWq.js';
+import '../../chunks/bundle-xaiK2tjx.js';
+import '../../chunks/bundle-7Av17Vus.js';
+import '@sendbird/chat/groupChannel';
+import '../../utils/message/getOutgoingMessageState.js';
+import 'react-dom';
+import '../../ui/Button.js';
+import '../../chunks/bundle-DvIsR7kQ.js';
+import '@sendbird/uikit-tools';
+import 'css-vars-ponyfill';
+import '@sendbird/chat';
+import '../../chunks/bundle-BJD56sGG.js';
+import '@sendbird/chat/openChannel';
+import '../../chunks/bundle-DtWPTHU4.js';
+import '../../chunks/bundle-CzOn0UCC.js';
+import '../../chunks/bundle-BpHmAKa2.js';
+import '../../ui/UserListItem.js';
+import '../../chunks/bundle-B0Dbuu28.js';
+import '../../chunks/bundle-DCv5_AWJ.js';
+import '../../ui/ImageRenderer.js';
+import '../../chunks/bundle-Dzc4np9L.js';
+import '../../ui/MutedAvatarOverlay.js';
+import '../../ui/Checkbox.js';
+import '../../ui/UserProfile.js';
+import '../../ui/ContextMenu.js';
+import '../../ui/SortByRow.js';
+import '../../CreateChannel/components/SelectChannelType.js';
+import '../../chunks/bundle-CH9dmUwe.js';
+
+var AddGroupChannel = function () {
+    var _a = useState(false), createChannelVisible = _a[0], setCreateChannelVisible = _a[1];
+    var _b = useGroupChannelListContext(), onChannelCreated = _b.onChannelCreated, onBeforeCreateChannel = _b.onBeforeCreateChannel, onCreateChannelClick = _b.onCreateChannelClick;
+    return (React__default.createElement(AddGroupChannelView, { createChannelVisible: createChannelVisible, onChangeCreateChannelVisible: setCreateChannelVisible, onCreateChannelClick: onCreateChannelClick, onBeforeCreateChannel: onBeforeCreateChannel, onChannelCreated: onChannelCreated }));
+};
+
+export { AddGroupChannel, AddGroupChannel as default };
+//# sourceMappingURL=AddGroupChannel.js.map
