@@ -1,15 +1,15 @@
 import React__default, { useContext } from 'react';
-import { A as Avatar } from '../chunks/bundle-BJEESw7S.js';
+import { A as Avatar } from '../chunks/bundle-CvlHmT5j.js';
 import Icon, { IconTypes, IconColors } from './Icon.js';
 import IconButton from './IconButton.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-DBtyGp-i.js';
-import { L as LocalizationContext } from '../chunks/bundle-BBVJixDe.js';
-import '../chunks/bundle-h5nSe8RU.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BNNafMXS.js';
+import { L as LocalizationContext } from '../chunks/bundle-CRmP70eG.js';
+import '../chunks/bundle-D8IuvsaW.js';
 import './ImageRenderer.js';
-import '../chunks/bundle-CbUL9vb-.js';
-import '../chunks/bundle-RDd4rAzg.js';
-import '../chunks/bundle-Bh_HZf7x.js';
-import '../chunks/bundle-DTkxB28y.js';
+import '../chunks/bundle-0yILBaSQ.js';
+import '../chunks/bundle-ttSanjmp.js';
+import '../chunks/bundle-C9nxq4KD.js';
+import '../chunks/bundle-k7V2rNcW.js';
 
 function OpenchannelConversationHeader(_a) {
     var coverImage = _a.coverImage, title = _a.title, subTitle = _a.subTitle, amIOperator = _a.amIOperator, onActionClick = _a.onActionClick;

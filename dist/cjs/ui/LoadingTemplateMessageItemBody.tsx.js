@@ -3,13 +3,13 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var index = require('../chunks/bundle-D-432Irw.js');
+var index = require('../chunks/bundle-CiDSKL46.js');
 var ui_Loader = require('./Loader.js');
 var ui_Icon = require('./Icon.js');
-require('../chunks/bundle-DvNeoTBz.js');
+require('../chunks/bundle-DHh3VdoS.js');
 require('@sendbird/chat/groupChannel');
 require('../utils/message/getOutgoingMessageState.js');
-require('../chunks/bundle-DQfemABy.js');
+require('../chunks/bundle-BvJOj_Nb.js');
 
 var TEMPLATE_LOADING_SPINNER_SIZE = '40px';
 function LoadingTemplateMessageItemBody(_a) {

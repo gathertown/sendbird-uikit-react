@@ -2,37 +2,37 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _tslib = require('./chunks/bundle-DvNeoTBz.js');
+var _tslib = require('./chunks/bundle-DHh3VdoS.js');
 var React = require('react');
 var uikitTools = require('@sendbird/uikit-tools');
 var withSendbird = require('./withSendbird.js');
 var cssVars = require('css-vars-ponyfill');
-var index = require('./chunks/bundle-D-432Irw.js');
-var actionTypes = require('./chunks/bundle-CsGQD6DC.js');
-var useMarkAsDeliveredScheduler = require('./chunks/bundle-Di436EVu.js');
+var index = require('./chunks/bundle-CiDSKL46.js');
+var actionTypes = require('./chunks/bundle-x4-U6h1l.js');
+var useMarkAsDeliveredScheduler = require('./chunks/bundle-C23eSC6c.js');
 var SendbirdChat = require('@sendbird/chat');
 var openChannel = require('@sendbird/chat/openChannel');
 var groupChannel = require('@sendbird/chat/groupChannel');
-var utils = require('./chunks/bundle-DQfemABy.js');
-var index$1 = require('./chunks/bundle-bHVBUPD1.js');
-var VoicePlayer_context = require('./chunks/bundle-BelgkMC5.js');
-var ui_Modal = require('./chunks/bundle-CjFSIiUv.js');
-var LocalizationContext = require('./chunks/bundle-BeJ7-X59.js');
-var MediaQueryContext = require('./chunks/bundle-BppUjcCZ.js');
-var stringSet = require('./chunks/bundle-BruYC2Km.js');
-var consts = require('./chunks/bundle-DHTHQj02.js');
-var resolvedReplyType = require('./chunks/bundle-DgEnLJkx.js');
+var utils = require('./chunks/bundle-BvJOj_Nb.js');
+var index$1 = require('./chunks/bundle-CQ6ec9FA.js');
+var VoicePlayer_context = require('./chunks/bundle-DDY1xx_n.js');
+var ui_Modal = require('./chunks/bundle-CG5E97k8.js');
+var LocalizationContext = require('./chunks/bundle-BD2bIoH6.js');
+var MediaQueryContext = require('./chunks/bundle-DGx3xKBn.js');
+var stringSet = require('./chunks/bundle-DoHigaWY.js');
+var consts = require('./chunks/bundle-BPGreBtw.js');
+var resolvedReplyType = require('./chunks/bundle-C1rrs9fy.js');
 var ui_ContextMenu = require('./ui/ContextMenu.js');
 var useSendbirdStateContext = require('./useSendbirdStateContext.js');
 require('./utils/message/getOutgoingMessageState.js');
-require('./chunks/bundle-DGYTk4xX.js');
+require('./chunks/bundle-DtHyD1hB.js');
 require('react-dom');
 require('./ui/IconButton.js');
 require('./ui/Button.js');
-require('./chunks/bundle-CkvaXo1D.js');
+require('./chunks/bundle-24sG-BP_.js');
 require('./ui/Icon.js');
-require('./chunks/bundle-D0W7zrvh.js');
-require('./chunks/bundle-DUeKijBO.js');
+require('./chunks/bundle-e1P14sMX.js');
+require('./chunks/bundle-C8yEdUBb.js');
 require('./ui/SortByRow.js');
 
 var isEmpty = function (obj) {
@@ -290,7 +290,7 @@ function disconnectSdk(_a) {
     });
 }
 
-var APP_VERSION_STRING = '3.14.4';
+var APP_VERSION_STRING = '1.0.0';
 var INIT_SDK = SDK_ACTIONS.INIT_SDK, SET_SDK_LOADING = SDK_ACTIONS.SET_SDK_LOADING, RESET_SDK = SDK_ACTIONS.RESET_SDK, SDK_ERROR = SDK_ACTIONS.SDK_ERROR;
 var INIT_USER = actionTypes.USER_ACTIONS.INIT_USER, UPDATE_USER_INFO = actionTypes.USER_ACTIONS.UPDATE_USER_INFO, RESET_USER = actionTypes.USER_ACTIONS.RESET_USER;
 function getMissingParamError(_a) {

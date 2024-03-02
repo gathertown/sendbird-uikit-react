@@ -1,14 +1,14 @@
-import { _ as __assign } from '../chunks/bundle-h5nSe8RU.js';
+import { _ as __assign } from '../chunks/bundle-D8IuvsaW.js';
 import React__default, { useEffect, useState, useContext } from 'react';
 import { GroupChannelFilter } from '@sendbird/chat/groupChannel';
 import { useGroupChannelList, useGroupChannelHandler } from '@sendbird/uikit-tools';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
-import { U as UserProfileProvider } from '../chunks/bundle-D4SykqtT.js';
-import { u as useOnlineStatus, a as useMarkAsDeliveredScheduler } from '../chunks/bundle-BJjDYjbw.js';
-import { n as noop } from '../chunks/bundle-CbUL9vb-.js';
+import { U as UserProfileProvider } from '../chunks/bundle-BxO5H6aF.js';
+import { u as useOnlineStatus, a as useMarkAsDeliveredScheduler } from '../chunks/bundle-BOf_eEF-.js';
+import { n as noop } from '../chunks/bundle-0yILBaSQ.js';
 import '../withSendbird.js';
 import '@sendbird/chat';
-import '../chunks/bundle-1rHkiOvv.js';
+import '../chunks/bundle-DgRY6xy0.js';
 
 var GroupChannelListContext = React__default.createContext(null);
 var GroupChannelListProvider = function (props) {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { SendbirdSdkContext } from './withSendbird.js';
-import './chunks/bundle-h5nSe8RU.js';
+import './chunks/bundle-D8IuvsaW.js';
 
 /**
  * Example:

@@ -1,10 +1,10 @@
 'use strict';
 
-var _tslib = require('../chunks/bundle-DvNeoTBz.js');
+var _tslib = require('../chunks/bundle-DHh3VdoS.js');
 var React = require('react');
-var color = require('../chunks/bundle-C79vYLB2.js');
-var ui_Label = require('../chunks/bundle-CkvaXo1D.js');
-require('../chunks/bundle-BruYC2Km.js');
+var color = require('../chunks/bundle-DTKihS4S.js');
+var ui_Label = require('../chunks/bundle-24sG-BP_.js');
+require('../chunks/bundle-DoHigaWY.js');
 
 var DateSeparator = function (_a) {
     var _b = _a.children, children = _b === void 0 ? null : _b, _c = _a.className, className = _c === void 0 ? '' : _c, _d = _a.separatorColor, separatorColor = _d === void 0 ? color.Colors.ONBACKGROUND_4 : _d;

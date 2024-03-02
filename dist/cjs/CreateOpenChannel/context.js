@@ -3,7 +3,7 @@
 var React = require('react');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
 require('../withSendbird.js');
-require('../chunks/bundle-DvNeoTBz.js');
+require('../chunks/bundle-DHh3VdoS.js');
 
 var CreateOpenChannelContext = React.createContext({
     sdk: null,

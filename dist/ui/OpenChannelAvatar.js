@@ -1,14 +1,14 @@
 import React__default, { useContext, useMemo } from 'react';
-import { A as Avatar } from '../chunks/bundle-BJEESw7S.js';
-import { L as LocalizationContext } from '../chunks/bundle-BBVJixDe.js';
-import { b as getOpenChannelAvatar } from '../chunks/bundle-BdvKKcJL.js';
-import '../chunks/bundle-h5nSe8RU.js';
+import { A as Avatar } from '../chunks/bundle-CvlHmT5j.js';
+import { L as LocalizationContext } from '../chunks/bundle-CRmP70eG.js';
+import { b as getOpenChannelAvatar } from '../chunks/bundle-DD5Dgrc3.js';
+import '../chunks/bundle-D8IuvsaW.js';
 import './ImageRenderer.js';
-import '../chunks/bundle-CbUL9vb-.js';
-import '../chunks/bundle-RDd4rAzg.js';
+import '../chunks/bundle-0yILBaSQ.js';
+import '../chunks/bundle-ttSanjmp.js';
 import './Icon.js';
-import '../chunks/bundle-Bh_HZf7x.js';
-import '../chunks/bundle-DTkxB28y.js';
+import '../chunks/bundle-C9nxq4KD.js';
+import '../chunks/bundle-k7V2rNcW.js';
 
 function ChannelAvatar(_a) {
     var channel = _a.channel, theme = _a.theme, _b = _a.height, height = _b === void 0 ? 56 : _b, _c = _a.width, width = _c === void 0 ? 56 : _c;

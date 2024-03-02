@@ -1,11 +1,11 @@
 'use strict';
 
 var React = require('react');
-var LocalizationContext = require('../../chunks/bundle-BeJ7-X59.js');
-var ui_Label = require('../../chunks/bundle-CkvaXo1D.js');
-require('../../chunks/bundle-BruYC2Km.js');
-require('../../chunks/bundle-DUeKijBO.js');
-require('../../chunks/bundle-DvNeoTBz.js');
+var LocalizationContext = require('../../chunks/bundle-BD2bIoH6.js');
+var ui_Label = require('../../chunks/bundle-24sG-BP_.js');
+require('../../chunks/bundle-DoHigaWY.js');
+require('../../chunks/bundle-C8yEdUBb.js');
+require('../../chunks/bundle-DHh3VdoS.js');
 
 var FrozenNotification = function () {
     var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;

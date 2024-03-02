@@ -1,12 +1,12 @@
 import React__default, { useContext } from 'react';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-DBtyGp-i.js';
-import { w as getClassName } from '../chunks/bundle-CmPJV5ar.js';
-import { L as LocalizationContext } from '../chunks/bundle-BBVJixDe.js';
-import '../chunks/bundle-h5nSe8RU.js';
-import '../chunks/bundle-Bh_HZf7x.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BNNafMXS.js';
+import { w as getClassName } from '../chunks/bundle-BnYBX14T.js';
+import { L as LocalizationContext } from '../chunks/bundle-CRmP70eG.js';
+import '../chunks/bundle-D8IuvsaW.js';
+import '../chunks/bundle-C9nxq4KD.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
-import '../chunks/bundle-DTkxB28y.js';
+import '../chunks/bundle-k7V2rNcW.js';
 
 function UnknownMessageItemBody(_a) {
     var _b;

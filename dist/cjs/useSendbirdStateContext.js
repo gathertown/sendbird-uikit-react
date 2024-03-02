@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 var withSendbird = require('./withSendbird.js');
-require('./chunks/bundle-DvNeoTBz.js');
+require('./chunks/bundle-DHh3VdoS.js');
 
 /**
  * Example:

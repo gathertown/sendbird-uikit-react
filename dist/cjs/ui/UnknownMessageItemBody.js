@@ -1,14 +1,14 @@
 'use strict';
 
 var React = require('react');
-var ui_Label = require('../chunks/bundle-CkvaXo1D.js');
-var index = require('../chunks/bundle-D-432Irw.js');
-var LocalizationContext = require('../chunks/bundle-BeJ7-X59.js');
-require('../chunks/bundle-DvNeoTBz.js');
-require('../chunks/bundle-BruYC2Km.js');
+var ui_Label = require('../chunks/bundle-24sG-BP_.js');
+var index = require('../chunks/bundle-CiDSKL46.js');
+var LocalizationContext = require('../chunks/bundle-BD2bIoH6.js');
+require('../chunks/bundle-DHh3VdoS.js');
+require('../chunks/bundle-DoHigaWY.js');
 require('@sendbird/chat/groupChannel');
 require('../utils/message/getOutgoingMessageState.js');
-require('../chunks/bundle-DUeKijBO.js');
+require('../chunks/bundle-C8yEdUBb.js');
 
 function UnknownMessageItemBody(_a) {
     var _b;

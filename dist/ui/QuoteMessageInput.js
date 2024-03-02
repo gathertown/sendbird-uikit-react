@@ -1,16 +1,16 @@
 import React__default, { useContext } from 'react';
-import { b as isFileMessage, c as isMultipleFilesMessage, i as isVoiceMessage, I as isImageMessage, r as isVideoMessage, J as isImageFileInfo, p as isThumbnailMessage, L as isAudioMessage, w as getClassName, s as isGifMessage, l as isUserMessage, m as getUIKitMessageType, U as UIKitMessageTypes } from '../chunks/bundle-CmPJV5ar.js';
+import { b as isFileMessage, c as isMultipleFilesMessage, i as isVoiceMessage, I as isImageMessage, r as isVideoMessage, J as isImageFileInfo, p as isThumbnailMessage, L as isAudioMessage, w as getClassName, s as isGifMessage, l as isUserMessage, m as getUIKitMessageType, U as UIKitMessageTypes } from '../chunks/bundle-BnYBX14T.js';
 import Icon, { IconTypes, IconColors } from './Icon.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-DBtyGp-i.js';
-import { L as LocalizationContext } from '../chunks/bundle-BBVJixDe.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BNNafMXS.js';
+import { L as LocalizationContext } from '../chunks/bundle-CRmP70eG.js';
 import ImageRenderer from './ImageRenderer.js';
-import { c as getMessageFirstFileThumbnailUrl, g as getMessageFirstFileUrl, a as getMessageFirstFileType, b as getMessageFirstFileName } from '../chunks/bundle-BKQYQg-b.js';
-import '../chunks/bundle-h5nSe8RU.js';
+import { c as getMessageFirstFileThumbnailUrl, g as getMessageFirstFileUrl, a as getMessageFirstFileType, b as getMessageFirstFileName } from '../chunks/bundle-CgW0dqme.js';
+import '../chunks/bundle-D8IuvsaW.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
-import '../chunks/bundle-CbUL9vb-.js';
-import '../chunks/bundle-Bh_HZf7x.js';
-import '../chunks/bundle-DTkxB28y.js';
+import '../chunks/bundle-0yILBaSQ.js';
+import '../chunks/bundle-C9nxq4KD.js';
+import '../chunks/bundle-k7V2rNcW.js';
 
 var componentClassname = 'sendbird-quote_message_input__avatar';
 function QuoteMessageThumbnail(_a) {

@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _tslib = require('../chunks/bundle-DvNeoTBz.js');
+var _tslib = require('../chunks/bundle-DHh3VdoS.js');
 var React = require('react');
-var ui_Label = require('../chunks/bundle-CkvaXo1D.js');
-var utils = require('../chunks/bundle-DQfemABy.js');
-require('../chunks/bundle-BruYC2Km.js');
+var ui_Label = require('../chunks/bundle-24sG-BP_.js');
+var utils = require('../chunks/bundle-BvJOj_Nb.js');
+require('../chunks/bundle-DoHigaWY.js');
 
 var http = /https?:\/\//;
 function LinkLabel(_a) {

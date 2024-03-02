@@ -1,14 +1,14 @@
 import React__default, { useContext, useState } from 'react';
 import Icon, { IconTypes, IconColors } from './Icon.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-DBtyGp-i.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BNNafMXS.js';
 import ImageRenderer from './ImageRenderer.js';
-import { L as LocalizationContext } from '../chunks/bundle-BBVJixDe.js';
-import { z as getUIKitFileTypes, w as getClassName, l as isUserMessage, i as isVoiceMessage, p as isThumbnailMessage, c as isMultipleFilesMessage, k as isVideo, A as isGif, m as getUIKitMessageType, U as UIKitMessageTypes, o as getUIKitFileType, t as truncateString } from '../chunks/bundle-CmPJV5ar.js';
-import { g as getMessageFirstFileUrl, a as getMessageFirstFileType, b as getMessageFirstFileName } from '../chunks/bundle-BKQYQg-b.js';
-import '../chunks/bundle-h5nSe8RU.js';
-import '../chunks/bundle-CbUL9vb-.js';
-import '../chunks/bundle-Bh_HZf7x.js';
-import '../chunks/bundle-DTkxB28y.js';
+import { L as LocalizationContext } from '../chunks/bundle-CRmP70eG.js';
+import { z as getUIKitFileTypes, w as getClassName, l as isUserMessage, i as isVoiceMessage, p as isThumbnailMessage, c as isMultipleFilesMessage, k as isVideo, A as isGif, m as getUIKitMessageType, U as UIKitMessageTypes, o as getUIKitFileType, t as truncateString } from '../chunks/bundle-BnYBX14T.js';
+import { g as getMessageFirstFileUrl, a as getMessageFirstFileType, b as getMessageFirstFileName } from '../chunks/bundle-CgW0dqme.js';
+import '../chunks/bundle-D8IuvsaW.js';
+import '../chunks/bundle-0yILBaSQ.js';
+import '../chunks/bundle-C9nxq4KD.js';
+import '../chunks/bundle-k7V2rNcW.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
 
