@@ -36,6 +36,8 @@ import { SdkActionTypes } from './dux/sdk/actionTypes';
 import { ReconnectType } from './hooks/useConnect/types';
 import { SBUGlobalPubSub } from './pubSub/topics';
 import { EmojiManager } from './emojiManager';
+import { MessageTemplatesInfo, ProcessedMessageTemplate, WaitingTemplateKeyData } from './dux/appInfo/initialState';
+import { AppInfoActionTypes } from './dux/appInfo/actionTypes';
 
 // note to SDK team:
 // using enum inside .d.ts won’t work for jest, but const enum will work.
@@ -106,6 +108,7 @@ export interface SendBirdStateConfig {
     typingIndicatorTypes: SBUConfig['groupChannel']['channel']['typingIndicatorTypes'];
     enableFeedback: SBUConfig['groupChannel']['channel']['enableFeedback'];
     enableSuggestedReplies: SBUConfig['groupChannel']['channel']['enableSuggestedReplies'];
+    showSuggestedRepliesFor: SBUConfig['groupChannel']['channel']['showSuggestedRepliesFor'];
   },
   openChannel: {
     enableOgtag: SBUConfig['openChannel']['channel']['enableOgtag'];
@@ -126,9 +129,16 @@ export interface UserStore {
   loading: boolean;
   user: User;
 }
+
+export interface AppInfoStore {
+  messageTemplatesInfo?: MessageTemplatesInfo;
+  waitingTemplateKeysMap: Record<string, WaitingTemplateKeyData>;
+}
+
 export interface SendBirdStateStore {
   sdkStore: SdkStore;
   userStore: UserStore;
+  appInfoStore: AppInfoStore;
 }
 
 export type SendBirdState = {
@@ -137,11 +147,13 @@ export type SendBirdState = {
   dispatchers: {
     sdkDispatcher: React.Dispatch<SdkActionTypes>,
     userDispatcher: React.Dispatch<UserActionTypes>,
+    appInfoDispatcher: React.Dispatch<AppInfoActionTypes>,
     reconnect: ReconnectType,
   },
   // Customer provided callbacks
   eventHandlers?: SBUEventHandlers;
   emojiManager?: EmojiManager;
+  utils: SendbirdProviderUtils;
 };
 
 type GetSdk = SendbirdChat | undefined;
@@ -243,3 +255,8 @@ export type UIKitOptions = PartialDeep<{
 
 export type SendbirdChatInitParams = Omit<SendbirdChatParams<Module[]>, 'appId'>;
 export type CustomExtensionParams = Record<string, string>;
+
+export type SendbirdProviderUtils = {
+  updateMessageTemplatesInfo: (templateKey: string, createdAt: number) => Promise<void>;
+  getCachedTemplate: (key: string) => ProcessedMessageTemplate | null;
+};
