@@ -63,7 +63,7 @@ export function useMessageListScroll(behavior: 'smooth' | 'auto', deps: Dependen
 
           if (resolve) resolve();
         });
-      }),
+      })
     );
 
     unsubscribes.push(
@@ -84,7 +84,7 @@ export function useMessageListScroll(behavior: 'smooth' | 'auto', deps: Dependen
 
           if (resolve) resolve();
         }, lazy);
-      }),
+      })
     );
 
     return () => {
