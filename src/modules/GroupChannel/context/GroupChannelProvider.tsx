@@ -145,13 +145,14 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
   const [fetchChannelError, setFetchChannelError] = useState<SendbirdError>(null);
 
   // Ref
-  const { scrollRef, scrollPubSub, scrollDistanceFromBottomRef, isScrollBottomReached, setIsScrollBottomReached } = useMessageListScroll(scrollBehavior);
+  const { scrollRef, scrollPubSub, scrollDistanceFromBottomRef, isScrollBottomReached, setIsScrollBottomReached, isScrollable } =
+    useMessageListScroll();
   const messageInputRef = useRef(null);
 
   const toggleReaction = useToggleReactionCallback(currentChannel, config.logger);
   const replyType = getCaseResolvedReplyType(moduleReplyType ?? config.groupChannel.replyType).upperCase;
   const threadReplySelectType = getCaseResolvedThreadReplySelectType(
-    moduleThreadReplySelectType ?? config.groupChannel.threadReplySelectType,
+    moduleThreadReplySelectType ?? config.groupChannel.threadReplySelectType
   ).upperCase;
   const chatReplyType = useIIFE(() => {
     if (replyType === 'NONE') return ChatReplyType.NONE;
@@ -163,7 +164,7 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
   });
   const nicknamesMap = useMemo(
     () => new Map((currentChannel?.members ?? []).map(({ userId, nickname }) => [userId, nickname])),
-    [currentChannel?.members],
+    [currentChannel?.members]
   );
 
   const preventDuplicateRequest = usePreventDuplicateRequest();
@@ -193,6 +194,17 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
     onChannelUpdated: (channel) => setCurrentChannel(channel),
     logger: config.logger,
   });
+
+  /**
+   * When we initially load a channels messages, useGroupChannelMessages markAsRead will fire.
+   * If the view is unscrollable though, isScrollBottomReached is false. This means the unread messages will not be marked as read.
+   */
+  useEffect(() => {
+    if (isScrollable === null || messageDataSource.loading) return;
+    if (!isScrollable && messageDataSource.messages.length > 0 && !disableMarkAsRead) {
+      markAsReadScheduler.push(currentChannel);
+    }
+  }, [isScrollable, messageDataSource.loading]);
 
   useOnScrollPositionChangeDetectorWithRef(scrollRef, {
     async onReachedTop() {
@@ -362,7 +374,7 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
       }
 
       clickHandler.activate();
-    },
+    }
   );
 
   const messageActions = useMessageActions({ ...props, ...messageDataSource, scrollToBottom, quoteMessage, replyType });
