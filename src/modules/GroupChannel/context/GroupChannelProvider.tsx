@@ -145,7 +145,8 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
   const [fetchChannelError, setFetchChannelError] = useState<SendbirdError>(null);
 
   // Ref
-  const { scrollRef, scrollPubSub, scrollDistanceFromBottomRef, isScrollBottomReached, setIsScrollBottomReached } = useMessageListScroll();
+  const { scrollRef, scrollPubSub, scrollDistanceFromBottomRef, isScrollBottomReached, setIsScrollBottomReached, isScrollable } =
+    useMessageListScroll();
   const messageInputRef = useRef(null);
 
   const toggleReaction = useToggleReactionCallback(currentChannel, config.logger);
@@ -193,6 +194,17 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
     onChannelUpdated: (channel) => setCurrentChannel(channel),
     logger: config.logger,
   });
+
+  /**
+   * When we initially load a channels messages, useGroupChannelMessages markAsRead will fire.
+   * If the view is unscrollable though, isScrollBottomReached is false. This means the unread messages will not be marked as read.
+   */
+  useEffect(() => {
+    if (isScrollable === null || messageDataSource.loading) return;
+    if (!isScrollable && messageDataSource.messages.length > 0 && !disableMarkAsRead) {
+      markAsReadScheduler.push(currentChannel);
+    }
+  }, [isScrollable, messageDataSource.loading]);
 
   useOnScrollPositionChangeDetectorWithRef(scrollRef, {
     async onReachedTop() {
