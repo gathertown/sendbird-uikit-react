@@ -150,13 +150,14 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
   const [fetchChannelError, setFetchChannelError] = useState<SendbirdError | null>(null);
 
   // Ref
-  const { scrollRef, scrollPubSub, scrollDistanceFromBottomRef, isScrollBottomReached, setIsScrollBottomReached, scrollPositionRef } = useMessageListScroll(scrollBehavior, [currentChannel?.url]);
+  const { scrollRef, scrollPubSub, scrollDistanceFromBottomRef, isScrollBottomReached, setIsScrollBottomReached, isScrollable, scrollPositionRef } =
+    useMessageListScroll();
   const messageInputRef = useRef(null);
 
   const toggleReaction = useToggleReactionCallback(currentChannel, logger);
   const replyType = getCaseResolvedReplyType(moduleReplyType ?? config.groupChannel.replyType).upperCase;
   const threadReplySelectType = getCaseResolvedThreadReplySelectType(
-    moduleThreadReplySelectType ?? config.groupChannel.threadReplySelectType,
+    moduleThreadReplySelectType ?? config.groupChannel.threadReplySelectType
   ).upperCase;
   const chatReplyType = useIIFE(() => {
     if (replyType === 'NONE') return ChatReplyType.NONE;
@@ -169,7 +170,7 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
   });
   const nicknamesMap = useMemo(
     () => new Map((currentChannel?.members ?? []).map(({ userId, nickname }) => [userId, nickname])),
-    [currentChannel?.members],
+    [currentChannel?.members]
   );
 
   const messageDataSource = useGroupChannelMessages(sdkStore.sdk, currentChannel!, {
@@ -309,7 +310,7 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
       }
 
       clickHandler.activate();
-    },
+    }
   );
 
   const messageActions = useMessageActions({ ...props, ...messageDataSource, scrollToBottom, quoteMessage, replyType });
