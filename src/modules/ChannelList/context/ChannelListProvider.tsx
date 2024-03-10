@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useMemo, useReducer, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useReducer, useState } from 'react';
 
-import type { User } from '@sendbird/chat';
+import type { SendbirdError, User } from '@sendbird/chat';
 import {
   GroupChannel,
   GroupChannelCreateParams,
@@ -99,12 +99,14 @@ export interface ChannelListProviderProps {
 export interface ChannelListProviderInterface extends ChannelListProviderProps {
   initialized: boolean;
   loading: boolean;
+  error: SendbirdError | null;
   allChannels: GroupChannel[];
   currentChannel: GroupChannel | null;
   channelListQuery: GroupChannelListQueryParamsInternal | null;
   currentUserId: string;
   channelListDispatcher: React.Dispatch<ChannelListActionTypes>;
   channelSource: GroupChannelListQuerySb | null;
+  hardReload: () => void;
   fetchChannelList: () => void;
 }
 
@@ -137,11 +139,7 @@ const ChannelListProvider: React.FC<ChannelListProviderProps> = (props: ChannelL
   const { config, stores } = globalStore;
   const { sdkStore } = stores;
   const { pubSub, logger, onUserProfileMessage } = config;
-  const {
-    markAsDeliveredScheduler,
-    disableMarkAsDelivered = false,
-    isOnline,
-  } = config;
+  const { markAsDeliveredScheduler, disableMarkAsDelivered = false, isOnline } = config;
   const sdk = sdkStore?.sdk;
   const { premiumFeatureList = [] } = sdk?.appInfo ?? {};
 
@@ -169,10 +167,8 @@ const ChannelListProvider: React.FC<ChannelListProviderProps> = (props: ChannelL
     };
   }, [sdkIntialized]);
 
-  useEffect(() => {
-    const sdkChannelHandlerId = uuidv4();
-    if (sdkIntialized) {
-      logger.info('ChannelList: Setup channelHandlers');
+  const onSetupChannelList = useCallback(
+    (sdkChannelHandlerId: string) => {
       setupChannelList({
         sdk,
         sdkChannelHandlerId,
@@ -186,6 +182,26 @@ const ChannelListProvider: React.FC<ChannelListProviderProps> = (props: ChannelL
         markAsDeliveredScheduler,
         disableMarkAsDelivered,
       });
+    },
+    [
+      channelListDispatcher,
+      sdk,
+      logger,
+      userFilledChannelListQuery,
+      sortChannelList,
+      setChannelSource,
+      disableAutoSelect,
+      disableMarkAsDelivered,
+      markAsDeliveredScheduler,
+      onChannelSelect,
+    ]
+  );
+
+  useEffect(() => {
+    const sdkChannelHandlerId = uuidv4();
+    if (sdkIntialized) {
+      onSetupChannelList(sdkChannelHandlerId);
+      logger.info('ChannelList: Setup channelHandlers');
     } else {
       logger.info('ChannelList: Removing channelHandlers');
       // remove previous channelHandlers
@@ -209,7 +225,9 @@ const ChannelListProvider: React.FC<ChannelListProviderProps> = (props: ChannelL
   }, [
     sdkIntialized,
     sortChannelList,
-    Object.entries(userFilledChannelListQuery ?? {}).map(([key, value]) => key + value).join(),
+    Object.entries(userFilledChannelListQuery ?? {})
+      .map(([key, value]) => key + value)
+      .join(),
   ]);
 
   useEffect(() => {
@@ -324,7 +342,7 @@ const ChannelListProvider: React.FC<ChannelListProviderProps> = (props: ChannelL
     {
       logger,
       channelListDispatcher,
-    },
+    }
   );
 
   useHandleReconnectForChannelList({
@@ -345,14 +363,13 @@ const ChannelListProvider: React.FC<ChannelListProviderProps> = (props: ChannelL
   const fetchChannelList = useFetchChannelList(
     {
       channelSource,
-      disableMarkAsDelivered:
-        disableMarkAsDelivered || !premiumFeatureList.some((feature) => feature === DELIVERY_RECEIPT),
+      disableMarkAsDelivered: disableMarkAsDelivered || !premiumFeatureList.some((feature) => feature === DELIVERY_RECEIPT),
     },
     {
       channelListDispatcher,
       logger,
       markAsDeliveredScheduler,
-    },
+    }
   );
 
   return (
@@ -375,6 +392,10 @@ const ChannelListProvider: React.FC<ChannelListProviderProps> = (props: ChannelL
         typingChannels,
         isTypingIndicatorEnabled: isTypingIndicatorEnabled ?? config.groupChannelList.enableTypingIndicator,
         isMessageReceiptStatusEnabled: isMessageReceiptStatusEnabled ?? config.groupChannelList.enableMessageReceiptStatus,
+        hardReload: () => {
+          const sdkChannelHandlerId = uuidv4();
+          onSetupChannelList(sdkChannelHandlerId);
+        },
         fetchChannelList,
       }}
     >
