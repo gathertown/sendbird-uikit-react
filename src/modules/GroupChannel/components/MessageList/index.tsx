@@ -51,11 +51,14 @@ export interface GroupChannelMessageListProps {
    * A function that customizes the rendering of a suggested replies component.
    */
   renderSuggestedReplies?: GroupChannelUIBasicProps['renderSuggestedReplies'];
+
+  renderRemoveMessageModal?: GroupChannelUIBasicProps['renderRemoveMessageModal'];
 }
 
 export const MessageList = ({
   className = '',
   renderMessage = (props) => <Message {...props} />,
+  renderRemoveMessageModal,
   renderMessageContent,
   renderSuggestedReplies,
   renderCustomSeparator,
@@ -177,15 +180,16 @@ export const MessageList = ({
                     renderMessageContent,
                     renderSuggestedReplies,
                     renderCustomSeparator,
+                    renderRemoveMessageModal,
                   })}
                 </MessageProvider>
               );
             })}
-            {!hasNext()
-              && store?.config?.groupChannel?.enableTypingIndicator
-              && store?.config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Bubble) && (
+            {!hasNext() &&
+              store?.config?.groupChannel?.enableTypingIndicator &&
+              store?.config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Bubble) && (
                 <TypingIndicatorBubbleWrapper channelUrl={channelUrl} handleScroll={onMessageContentSizeChanged} />
-            )}
+              )}
           </div>
         </div>
 

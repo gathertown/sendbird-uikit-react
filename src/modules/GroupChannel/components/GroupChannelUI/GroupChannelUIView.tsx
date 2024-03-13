@@ -8,7 +8,7 @@ import { TypingIndicatorType } from '../../../../types';
 import ConnectionStatus from '../../../../ui/ConnectionStatus';
 import PlaceHolder, { PlaceHolderTypes } from '../../../../ui/PlaceHolder';
 
-import type { RenderCustomSeparatorProps, RenderMessageParamsType } from '../../../../types';
+import type { EveryMessage, RenderCustomSeparatorProps, RenderMessageParamsType } from '../../../../types';
 import type { GroupChannelHeaderProps } from '../GroupChannelHeader';
 import type { GroupChannelMessageListProps } from '../MessageList';
 import type { MessageContentProps } from '../../../../ui/MessageContent';
@@ -81,6 +81,8 @@ export interface GroupChannelUIBasicProps {
    * A function that customizes the rendering of the typing indicator component.
    */
   renderTypingIndicator?: () => React.ReactElement;
+
+  renderRemoveMessageModal?: (props: { message: EveryMessage; onCancel: () => void; onSubmit: () => void }) => React.ReactElement;
 }
 
 export interface GroupChannelUIViewProps extends GroupChannelUIBasicProps {
@@ -148,8 +150,8 @@ export const GroupChannelUIView = (props: GroupChannelUIViewProps) => {
       <div className="sendbird-conversation__footer">
         {renderMessageInput?.()}
         <div className="sendbird-conversation__footer__typing-indicator">
-          {renderTypingIndicator?.()
-            || (config?.groupChannel?.enableTypingIndicator && config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Text) && (
+          {renderTypingIndicator?.() ||
+            (config?.groupChannel?.enableTypingIndicator && config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Text) && (
               <TypingIndicator channelUrl={channelUrl} />
             ))}
           {!isOnline && <ConnectionStatus />}
