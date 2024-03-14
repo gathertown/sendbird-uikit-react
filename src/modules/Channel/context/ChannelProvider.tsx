@@ -102,6 +102,7 @@ interface MessageStoreInterface {
   unreadSince: string;
   unreadSinceDate: Date | null;
   isInvalid: boolean;
+  fetchChannelError: SendbirdError | null;
   currentGroupChannel: Nullable<GroupChannel>;
   hasMorePrev: boolean;
   oldestMessageTimeStamp: number;
@@ -236,6 +237,7 @@ const ChannelProvider: React.FC<ChannelContextProps> = (props: ChannelContextPro
     unreadSince,
     unreadSinceDate,
     isInvalid,
+    fetchChannelError,
     currentGroupChannel,
     hasMorePrev,
     oldestMessageTimeStamp,
@@ -469,6 +471,7 @@ const ChannelProvider: React.FC<ChannelContextProps> = (props: ChannelContextPro
       unreadSince,
       unreadSinceDate,
       isInvalid,
+      fetchChannelError,
       currentGroupChannel,
       hasMorePrev,
       hasMoreNext,
