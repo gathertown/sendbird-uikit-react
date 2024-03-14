@@ -35,11 +35,21 @@ export const Message = (props: MessageProps): React.ReactElement => {
     deleteMessage,
   } = useGroupChannelContext();
 
-  const { message } = props;
+  const { message, renderRemoveMessageModal = (props) => <RemoveMessageModal {...props} /> } = props;
   const initialized = !loading && Boolean(currentChannel);
 
   const shouldRenderSuggestedReplies = useIIFE(() => {
     const { enableSuggestedReplies, showSuggestedRepliesFor } = config.groupChannel;
+
+    if (!enableSuggestedReplies) return false;
+    if (
+      (!showSuggestedRepliesFor || showSuggestedRepliesFor === 'last_message_only')
+      && message.messageId === currentChannel?.lastMessage?.messageId
+    )
+      return false;
+    if (getSuggestedReplies(message).length === 0) return false;
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage && isSendableMessage(lastMessage) && lastMessage.sendingStatus !== 'succeeded') return false;
 
     const lastMessageInView = messages[messages.length - 1];
     const hasUnsentMessage = isSendableMessage(lastMessageInView) && lastMessageInView.sendingStatus !== 'succeeded';
@@ -75,9 +85,8 @@ export const Message = (props: MessageProps): React.ReactElement => {
       setAnimatedMessageId={setAnimatedMessageId}
       onMessageAnimated={onMessageAnimated}
       renderFileViewer={(props) => <FileViewer {...props} />}
-      renderRemoveMessageModal={(props) => <RemoveMessageModal {...props} />}
       usedInLegacy={false}
-      onBeforeDownloadFileMessage={onBeforeDownloadFileMessage}
+      renderRemoveMessageModal={renderRemoveMessageModal}
     />
   );
 };

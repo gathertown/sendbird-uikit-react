@@ -54,6 +54,8 @@ export interface MessageProps {
    * @description Customizes all child components of the message.
    * */
   renderMessage?: (props: RenderMessageParamsType) => React.ReactElement;
+
+  renderRemoveMessageModal?: (props: { message: EveryMessage; onCancel: () => void; onSubmit: () => void }) => React.ReactElement;
 }
 
 export interface MessageViewProps extends MessageProps {
@@ -80,7 +82,6 @@ export interface MessageViewProps extends MessageProps {
   deleteMessage: (message: CoreMessageType) => Promise<void>;
 
   renderFileViewer: (props: { message: FileMessage; onCancel: () => void }) => React.ReactElement;
-  renderRemoveMessageModal?: (props: { message: EveryMessage; onCancel: () => void }) => React.ReactElement;
   /**
    * You can't use this prop in the Channel component (legacy).
    * Accepting this prop only for the GroupChannel.
@@ -286,9 +287,9 @@ const MessageView = (props: MessageViewProps) => {
           onMessageHeightChange: handleScroll,
           onBeforeDownloadFileMessage,
         })}
-        { /* Suggested Replies */ }
-        {
-          shouldRenderSuggestedReplies && renderSuggestedReplies({
+        {/* Suggested Replies */}
+        {shouldRenderSuggestedReplies
+          && renderSuggestedReplies({
             replyOptions: getSuggestedReplies(message),
             onSendMessage: sendUserMessage,
             message,
@@ -296,7 +297,7 @@ const MessageView = (props: MessageViewProps) => {
           })
         }
         {/* Modal */}
-        {showRemove && renderRemoveMessageModal({ message, onCancel: () => setShowRemove(false) })}
+        {showRemove && renderRemoveMessageModal({ message, onCancel: () => setShowRemove(false), onSubmit: () => deleteMessage(message) })}
         {showFileViewer && renderFileViewer({ message: message as FileMessage, onCancel: () => setShowFileViewer(false) })}
       </>
     );
@@ -392,10 +393,7 @@ const MessageView = (props: MessageViewProps) => {
 
   return (
     <div
-      className={getClassName([
-        'sendbird-msg-hoc sendbird-msg--scroll-ref',
-        isAnimated ? 'sendbird-msg-hoc__animated' : '',
-      ])}
+      className={getClassName(['sendbird-msg-hoc sendbird-msg--scroll-ref', isAnimated ? 'sendbird-msg-hoc__animated' : ''])}
       style={children || renderMessage ? undefined : { marginBottom: '2px' }}
       data-sb-message-id={message.messageId}
       data-sb-created-at={message.createdAt}
