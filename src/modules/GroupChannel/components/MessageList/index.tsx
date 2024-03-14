@@ -52,6 +52,8 @@ export interface GroupChannelMessageListProps {
    * A function that customizes the rendering of a suggested replies component.
    */
   renderSuggestedReplies?: GroupChannelUIBasicProps['renderSuggestedReplies'];
+
+  renderRemoveMessageModal?: GroupChannelUIBasicProps['renderRemoveMessageModal'];
 }
 
 export const MessageList = (props: GroupChannelMessageListProps) => {
@@ -60,6 +62,7 @@ export const MessageList = (props: GroupChannelMessageListProps) => {
     renderMessage = (props: RenderMessageParamsType) => <Message {...props} />,
     renderMessageContent,
     renderSuggestedReplies,
+    renderRemoveMessageModal,
     renderCustomSeparator,
     renderPlaceholderLoader = () => <PlaceHolder type={PlaceHolderTypes.LOADING} />,
     renderPlaceholderEmpty = () => <PlaceHolder className="sendbird-conversation__no-messages" type={PlaceHolderTypes.NO_MESSAGES} />,
@@ -197,14 +200,15 @@ export const MessageList = (props: GroupChannelMessageListProps) => {
                   renderMessageContent,
                   renderSuggestedReplies,
                   renderCustomSeparator,
+                  renderRemoveMessageModal,
                 })}
               </MessageProvider>
             );
           }}
           typingIndicator={
-            !hasNext()
-            && store?.config?.groupChannel?.enableTypingIndicator
-            && store?.config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Bubble) && (
+            !hasNext() &&
+            store?.config?.groupChannel?.enableTypingIndicator &&
+            store?.config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Bubble) && (
               <TypingIndicatorBubbleWrapper channelUrl={channelUrl} handleScroll={onMessageContentSizeChanged} />
             )
           }
