@@ -34,7 +34,7 @@ export const Message = (props: MessageProps): React.ReactElement => {
     deleteMessage,
   } = useGroupChannelContext();
 
-  const { message } = props;
+  const { message, renderRemoveMessageModal = (props) => <RemoveMessageModal {...props} /> } = props;
   const initialized = !loading && Boolean(currentChannel);
 
   const groupChannelConfig = config?.groupChannel;
@@ -43,9 +43,10 @@ export const Message = (props: MessageProps): React.ReactElement => {
     const { enableSuggestedReplies, showSuggestedRepliesFor } = groupChannelConfig;
     if (!enableSuggestedReplies) return false;
     if (
-      (!showSuggestedRepliesFor || showSuggestedRepliesFor === 'last_message_only')
-      && message.messageId === currentChannel?.lastMessage?.messageId
-    ) return false;
+      (!showSuggestedRepliesFor || showSuggestedRepliesFor === 'last_message_only') &&
+      message.messageId === currentChannel?.lastMessage?.messageId
+    )
+      return false;
     if (getSuggestedReplies(message).length === 0) return false;
     const lastMessage = messages[messages.length - 1];
     if (lastMessage && isSendableMessage(lastMessage) && lastMessage.sendingStatus !== 'succeeded') return false;
@@ -82,6 +83,7 @@ export const Message = (props: MessageProps): React.ReactElement => {
       renderFileViewer={(props) => <FileViewer {...props} />}
       renderRemoveMessageModal={(props) => <RemoveMessageModal {...props} />}
       usedInLegacy={false}
+      renderRemoveMessageModal={renderRemoveMessageModal}
     />
   );
 };
