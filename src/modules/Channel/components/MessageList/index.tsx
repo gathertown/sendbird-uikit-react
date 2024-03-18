@@ -32,6 +32,8 @@ export interface MessageListProps extends GroupChannelMessageListProps {
    * Customizes all child components of the message component.
    * */
   renderMessage?: GroupChannelUIBasicProps['renderMessage'];
+
+  renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
 }
 export const MessageList = ({
   className = '',
@@ -43,6 +45,7 @@ export const MessageList = ({
   renderPlaceholderEmpty = () => <PlaceHolder className="sendbird-conversation__no-messages" type={PlaceHolderTypes.NO_MESSAGES} />,
   renderFrozenNotification = () => <FrozenNotification className="sendbird-conversation__messages__notification" />,
   renderRemoveMessageModal,
+  renderEditInput
 }: MessageListProps) => {
   const {
     allMessages,
@@ -208,6 +211,7 @@ export const MessageList = ({
                     renderSuggestedReplies={renderSuggestedReplies}
                     renderCustomSeparator={renderCustomSeparator}
                     renderRemoveMessageModal={renderRemoveMessageModal}
+                    renderEditInput={renderEditInput}
                     // backward compatibility
                     renderMessage={renderMessage}
                   />
@@ -234,6 +238,7 @@ export const MessageList = ({
                     renderMessageContent={renderMessageContent}
                     renderSuggestedReplies={renderSuggestedReplies}
                     renderCustomSeparator={renderCustomSeparator}
+                    renderEditInput={renderEditInput}
                     // backward compatibility
                     renderMessage={renderMessage}
                   />
