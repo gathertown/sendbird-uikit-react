@@ -19,6 +19,8 @@ import {
 import { LocalizationContext } from '../../lib/LocalizationContext';
 import { Role } from '../../lib/types';
 import { ReplyType } from '../../types';
+import useSendbirdStateContext from '../../hooks/useSendbirdStateContext';
+import { isOperator as isGroupChannelOperator } from '../../modules/Channel/context/utils';
 
 export interface MessageMenuProps {
   className?: string | Array<string>;
@@ -58,11 +60,14 @@ export function MessageMenu({
   const { stringSet } = useContext(LocalizationContext);
   const triggerRef = useRef(null);
   const containerRef = useRef(null);
+  const store = useSendbirdStateContext();
+
+  const isCurrentUserOperator = channel.isGroupChannel() ? isGroupChannelOperator(channel) : channel.isOperator(store.config.userId);
 
   const showMenuItemCopy: boolean = isUserMessage(message as UserMessage);
   const showMenuItemEdit: boolean = (!channel?.isEphemeral && isUserMessage(message as UserMessage) && isSentMessage(message) && isByMe);
   const showMenuItemResend: boolean = (isFailedMessage(message) && message?.isResendable && isByMe);
-  const showMenuItemDelete: boolean = !channel?.isEphemeral && !isPendingMessage(message) && isByMe;
+  const showMenuItemDelete: boolean = !channel?.isEphemeral && !isPendingMessage(message) && (isByMe || isCurrentUserOperator);
   const showMenuItemOpenInChannel: boolean = onMoveToParentMessage !== null;
   /**
    * TODO: Manage timing issue
