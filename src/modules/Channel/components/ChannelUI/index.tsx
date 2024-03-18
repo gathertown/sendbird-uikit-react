@@ -16,6 +16,8 @@ export interface ChannelUIProps extends GroupChannelUIBasicProps {
    * Customizes all child components of the message component.
    * */
   renderMessage?: GroupChannelUIBasicProps['renderMessage'];
+
+  renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
 }
 
 const ChannelUI = (props: ChannelUIProps) => {
