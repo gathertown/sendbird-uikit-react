@@ -7,7 +7,7 @@ import {
 } from '@sendbird/chat/groupChannel';
 import * as channelActions from './dux/actionTypes';
 import topics, { SBUGlobalPubSub } from '../../lib/pubSub/topics';
-import { SdkStore } from '../../lib/types';
+import { SBUEventHandlers, SdkStore } from '../../lib/types';
 import React from 'react';
 import { ChannelListInitialStateType } from './dux/initialState';
 import { ChannelListActionTypes } from './dux/actionTypes';
@@ -160,6 +160,7 @@ type SetupChannelListParams = {
   disableAutoSelect: boolean;
   markAsDeliveredScheduler: MarkAsDeliveredSchedulerType;
   disableMarkAsDelivered: boolean;
+  eventHandlers?: SBUEventHandlers
 };
 function setupChannelList({
   sdk,
@@ -169,6 +170,7 @@ function setupChannelList({
   onChannelSelect,
   userFilledChannelListQuery,
   logger,
+  eventHandlers,
   sortChannelList,
   disableAutoSelect,
   markAsDeliveredScheduler,
@@ -240,6 +242,7 @@ function setupChannelList({
         }
       })
       .catch((err) => {
+        eventHandlers?.request?.onFailed?.(err);
         if (sdk.groupChannel.removeGroupChannelHandler) {
           logger.error('ChannelList - removing group channel handlers', err);
           sdk.groupChannel.removeGroupChannelHandler(sdkChannelHandlerId);

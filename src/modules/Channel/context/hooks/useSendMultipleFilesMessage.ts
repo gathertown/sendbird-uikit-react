@@ -15,6 +15,7 @@ import {
 } from '../../../internalInterfaces';
 import { scrollIntoLast as scrollIntoLastForThread } from '../../../Thread/context/utils';
 import { SCROLL_BOTTOM_DELAY_FOR_SEND } from '../../../../utils/consts';
+import { SBUEventHandlers } from '../../../../lib/types';
 
 export type OnBeforeSendMFMType = (
   files: Array<File>,
@@ -28,6 +29,7 @@ export interface UseSendMFMDynamicParams {
 }
 export interface UseSendMFMStaticParams {
   logger: Logger,
+  eventHandlers?: SBUEventHandlers,
   pubSub: any,
   scrollRef?: React.RefObject<HTMLDivElement>;
 }
@@ -50,6 +52,7 @@ export const useSendMultipleFilesMessage = ({
   publishingModules,
 }: UseSendMFMDynamicParams, {
   logger,
+  eventHandlers,
   pubSub,
   scrollRef,
 }: UseSendMFMStaticParams): Array<SendMFMFunctionType> => {
@@ -119,6 +122,7 @@ export const useSendMultipleFilesMessage = ({
             }, SCROLL_BOTTOM_DELAY_FOR_SEND);
           })
           .onFailed((error, failedMessage: MultipleFilesMessage) => {
+            eventHandlers?.request?.onFailed?.(error);
             logger.error('Channel: Sending MFM failed.', { error, failedMessage });
             pubSub.publish(PUBSUB_TOPICS.SEND_MESSAGE_FAILED, {
               channel: currentChannel,
@@ -137,6 +141,7 @@ export const useSendMultipleFilesMessage = ({
             resolve(succeededMessage);
           });
       } catch (error) {
+        eventHandlers?.request?.onFailed?.(error);
         logger.error('Channel: Sending MFM failed.', { error });
         reject(error);
       }
