@@ -34,6 +34,8 @@ export interface MessageListProps extends GroupChannelMessageListProps {
   renderMessage?: GroupChannelUIBasicProps['renderMessage'];
 
   renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
+
+  renderScrollToBottom?: GroupChannelUIBasicProps['renderScrollToBottom'];
 }
 export const MessageList = ({
   className = '',
@@ -45,7 +47,8 @@ export const MessageList = ({
   renderPlaceholderEmpty = () => <PlaceHolder className="sendbird-conversation__no-messages" type={PlaceHolderTypes.NO_MESSAGES} />,
   renderFrozenNotification = () => <FrozenNotification className="sendbird-conversation__messages__notification" />,
   renderRemoveMessageModal,
-  renderEditInput
+  renderEditInput,
+  renderScrollToBottom,
 }: MessageListProps) => {
   const {
     allMessages,
@@ -173,7 +176,22 @@ export const MessageList = ({
   if (allMessagesFiltered.length < 1) {
     return renderPlaceholderEmpty();
   }
+  const handleUnreadCountClick = () => {
+    if (scrollRef?.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (!disableMarkAsRead && !!currentGroupChannel) {
+      markAsReadScheduler.push(currentGroupChannel);
+      messagesDispatcher({
+        type: messageActionTypes.MARK_AS_READ,
+        payload: { channel: currentGroupChannel },
+      });
+    }
+    setInitialTimeStamp(null);
+    setAnimatedMessageId(null);
+    setHighLightedMessageId(null);
+  };
 
+  const isUnreadNotificationButtonDisplayed = !!((!isScrollBottom || hasMoreNext) && (unreadSince || unreadSinceDate));
+  const isScrollToBottomButtonDisplayed = scrollBottom > SCROLL_BOTTOM_PADDING;
   return (
     <>
       {!isScrolled && <PlaceHolder type={PlaceHolderTypes.LOADING} />}
@@ -259,31 +277,19 @@ export const MessageList = ({
           /**
            * Show unread count IFF scroll is not bottom or is bottom but hasNext is true.
            */
-          (!isScrollBottom || hasMoreNext) && (unreadSince || unreadSinceDate) && (
+          !renderScrollToBottom && (!isScrollBottom || hasMoreNext) && (unreadSince || unreadSinceDate) && (
             <UnreadCount
               className="sendbird-conversation__messages__notification"
               count={currentGroupChannel?.unreadMessageCount}
               time={unreadSince}
               lastReadAt={unreadSinceDate}
-              onClick={() => {
-                if (scrollRef?.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-                if (!disableMarkAsRead && !!currentGroupChannel) {
-                  markAsReadScheduler.push(currentGroupChannel);
-                  messagesDispatcher({
-                    type: messageActionTypes.MARK_AS_READ,
-                    payload: { channel: currentGroupChannel },
-                  });
-                }
-                setInitialTimeStamp(null);
-                setAnimatedMessageId(null);
-                setHighLightedMessageId(null);
-              }}
+              onClick={handleUnreadCountClick}
             />
           )
         }
         {
           // This flag is an unmatched variable
-          scrollBottom > SCROLL_BOTTOM_PADDING && (
+          !renderScrollToBottom && isScrollToBottomButtonDisplayed && (
             <div
               className="sendbird-conversation__scroll-bottom-button"
               onClick={onClickScrollBot}
@@ -295,6 +301,14 @@ export const MessageList = ({
             </div>
           )
         }
+        {renderScrollToBottom?.({
+          onScrollToBottom: onClickScrollBot,
+          onScrollToUnread: handleUnreadCountClick,
+          unreadCount: currentGroupChannel?.unreadMessageCount ?? 0,
+          lastReadAt: unreadSinceDate,
+          shouldDisplayScrollToBottom: isScrollToBottomButtonDisplayed,
+          shouldDisplayUnreadNotifications: isUnreadNotificationButtonDisplayed,
+        })}
       </div>
     </>
   );
