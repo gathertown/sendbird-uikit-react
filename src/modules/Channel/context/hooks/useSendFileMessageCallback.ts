@@ -60,8 +60,8 @@ export default function useSendFileMessageCallback(
           setTimeout(() => utils.scrollIntoLast(0, scrollRef), SCROLL_BOTTOM_DELAY_FOR_SEND);
         })
         .onFailed((err, failedMessage) => {
-          eventHandlers?.request?.onFailed?.(err);
           logger.error('Channel: Sending file message failed!', { failedMessage, err });
+          eventHandlers?.request?.onFailed?.(err);
 
           // TODO: v4 - remove logic that modifies the original object.
           //  It makes the code difficult to track, likely causing unpredictable side effects.

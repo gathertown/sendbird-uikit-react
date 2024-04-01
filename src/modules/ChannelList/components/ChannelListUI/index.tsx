@@ -75,8 +75,8 @@ const ChannelListUI: React.FC<ChannelListUIProps> = (props: ChannelListUIProps) 
               payload: channel.url,
             });
           } catch (err) {
-            eventHandlers?.request?.onFailed?.(err);
             logger.error('ChannelList: Leaving channel failed', err);
+            eventHandlers?.request?.onFailed?.(err);
             if (cb && typeof cb === 'function') cb(channel, err);
           }
         }

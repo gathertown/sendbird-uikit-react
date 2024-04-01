@@ -242,13 +242,13 @@ function setupChannelList({
         }
       })
       .catch((err) => {
-        eventHandlers?.request?.onFailed?.(err);
         if (sdk.groupChannel.removeGroupChannelHandler) {
           logger.error('ChannelList - removing group channel handlers', err);
           sdk.groupChannel.removeGroupChannelHandler(sdkChannelHandlerId);
         }
 
         logger.error('ChannelList - couldnt fetch channels', err);
+        eventHandlers?.request?.onFailed?.(err);
         channelListDispatcher({
           type: channelActions.INIT_CHANNELS_FAILURE,
           payload: err,

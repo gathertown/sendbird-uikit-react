@@ -122,8 +122,8 @@ export const useSendMultipleFilesMessage = ({
             }, SCROLL_BOTTOM_DELAY_FOR_SEND);
           })
           .onFailed((error, failedMessage: MultipleFilesMessage) => {
-            eventHandlers?.request?.onFailed?.(error);
             logger.error('Channel: Sending MFM failed.', { error, failedMessage });
+            eventHandlers?.request?.onFailed?.(error);
             pubSub.publish(PUBSUB_TOPICS.SEND_MESSAGE_FAILED, {
               channel: currentChannel,
               message: failedMessage,
@@ -141,8 +141,8 @@ export const useSendMultipleFilesMessage = ({
             resolve(succeededMessage);
           });
       } catch (error) {
-        eventHandlers?.request?.onFailed?.(error);
         logger.error('Channel: Sending MFM failed.', { error });
+        eventHandlers?.request?.onFailed?.(error);
         reject(error);
       }
     });

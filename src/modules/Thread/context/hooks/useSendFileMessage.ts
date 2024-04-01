@@ -72,8 +72,8 @@ export default function useSendFileMessageCallback({
         .onFailed((error, message) => {
           (message as LocalFileMessage).localUrl = URL.createObjectURL(file);
           (message as LocalFileMessage).file = file;
-          eventHandlers?.request?.onFailed?.(error);
           logger.info('Thread | useSendFileMessageCallback: Sending file message failed.', { message, error });
+          eventHandlers?.request?.onFailed?.(error);
           threadDispatcher({
             type: ThreadContextActionTypes.SEND_MESSAGE_FAILURE,
             payload: { message, error },

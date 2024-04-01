@@ -55,8 +55,8 @@ export const useFetchChannelList = ({
         });
       }
     } catch (error) {
-      eventHandlers?.request?.onFailed?.(error);
       logger.error('ChannelList: failed fetch', { error });
+      eventHandlers?.request?.onFailed?.(error);
       channelListDispatcher({
         type: channelListActions.FETCH_CHANNELS_FAILURE,
         payload: error,

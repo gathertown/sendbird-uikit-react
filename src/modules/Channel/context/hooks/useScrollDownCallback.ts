@@ -69,8 +69,8 @@ function useScrollDownCallback(
           setTimeout(() => cb([messages, null]));
         })
         .catch((error) => {
-          eventHandlers?.request?.onFailed?.(error);
           logger.error('Channel: Fetching later messages failed', error);
+          eventHandlers?.request?.onFailed?.(error);
           messagesDispatcher({
             type: messageActionTypes.FETCH_NEXT_MESSAGES_FAILURE,
             payload: { currentGroupChannel },

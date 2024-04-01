@@ -120,8 +120,8 @@ function useResendMessageCallback(
             });
         }
       } else {
-        eventHandlers?.request?.onFailed?.(new Error('Message is not resendable'));
         logger.error('Message is not resendable', failedMessage);
+        eventHandlers?.request?.onFailed?.(new Error('Message is not resendable'));
       }
     },
     [currentGroupChannel, messagesDispatcher],

@@ -40,8 +40,8 @@ function useGetChannel(
           }
         })
         .catch((e) => {
-          eventHandlers?.request?.onFailed?.(e);
           logger.warning('Channel | useSetChannel fetch channel failed', { channelUrl, e });
+          eventHandlers?.request?.onFailed?.(e);
           messagesDispatcher({
             type: messageActionTypes.SET_CHANNEL_INVALID,
           });
@@ -56,8 +56,8 @@ function useGetChannel(
           });
         })
         .catch((err) => {
-          eventHandlers?.request?.onFailed?.(err);
           logger.error('Channel: Getting emojis failed', err);
+          eventHandlers?.request?.onFailed?.(err);
         });
     }
   }, [channelUrl, sdkInit]);

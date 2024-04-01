@@ -95,8 +95,8 @@ function useHandleReconnect(
                 setTimeout(() => utils.scrollIntoLast(0, scrollRef), SCROLL_BOTTOM_DELAY_FOR_FETCH);
               })
               .catch((error) => {
-                eventHandlers?.request?.onFailed?.(error);
                 logger.error('Channel: Fetching messages failed', error);
+                eventHandlers?.request?.onFailed?.(error);
                 messagesDispatcher({
                   type: messageActionTypes.FETCH_INITIAL_MESSAGES_FAILURE,
                   payload: { currentGroupChannel, fetchChannelError: error },
