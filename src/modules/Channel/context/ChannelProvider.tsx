@@ -207,6 +207,7 @@ const ChannelProvider: React.FC<ChannelContextProps> = (props: ChannelContextPro
     markAsReadScheduler,
     groupChannel,
   } = config;
+  const { eventHandlers } = globalStore;
   const sdk = globalStore?.stores?.sdkStore?.sdk;
   const sdkInit = globalStore?.stores?.sdkStore?.initialized;
   const globalConfigs = globalStore?.config;
@@ -303,6 +304,7 @@ const ChannelProvider: React.FC<ChannelContextProps> = (props: ChannelContextPro
     replyType,
   }, {
     logger,
+    eventHandlers,
     messagesDispatcher,
     sdk,
   });
@@ -313,7 +315,7 @@ const ChannelProvider: React.FC<ChannelContextProps> = (props: ChannelContextPro
   // this hook sets currentGroupChannel asynchronously
   useGetChannel(
     { channelUrl, sdkInit, disableMarkAsRead },
-    { messagesDispatcher, sdk, logger, markAsReadScheduler },
+    { messagesDispatcher, sdk, logger, markAsReadScheduler, eventHandlers },
   );
 
   // to set quote message as null
@@ -431,6 +433,7 @@ const ChannelProvider: React.FC<ChannelContextProps> = (props: ChannelContextPro
     publishingModules: [PublishingModuleType.CHANNEL],
   }, {
     logger,
+    eventHandlers,
     pubSub,
     scrollRef,
   });

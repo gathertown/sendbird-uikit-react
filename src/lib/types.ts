@@ -58,7 +58,12 @@ export interface SBUEventHandlers {
   },
   modal?: {
     onMounted?(params: { id: string; close(): void; }): void | (() => void);
-  };
+  },
+  request?: {
+    onFailed?(error: SendbirdError | Error, context?: {
+      [key: string]: string | number | boolean | undefined;
+    }): void;
+  }
 }
 
 export interface SendBirdStateConfig {
