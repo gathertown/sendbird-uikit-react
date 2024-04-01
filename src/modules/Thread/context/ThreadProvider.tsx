@@ -92,6 +92,7 @@ export const ThreadProvider = (props: ThreadProviderProps) => {
   const { sdk } = sdkStore;
   const { user } = userStore;
   const sdkInit = sdkStore?.initialized;
+  const { eventHandlers } = globalStore;
   // // config
   const { logger, pubSub, onUserProfileMessage } = config;
 
@@ -184,6 +185,7 @@ export const ThreadProvider = (props: ThreadProviderProps) => {
     onBeforeSendFileMessage,
   }, {
     logger,
+    eventHandlers,
     pubSub,
     threadDispatcher,
   });
@@ -201,12 +203,13 @@ export const ThreadProvider = (props: ThreadProviderProps) => {
     publishingModules: [PublishingModuleType.THREAD],
   }, {
     logger,
+    eventHandlers,
     pubSub,
   });
 
   const resendMessage = useResendMessageCallback({
     currentChannel,
-  }, { logger, pubSub, threadDispatcher });
+  }, { logger, eventHandlers, pubSub, threadDispatcher });
   const updateMessage = useUpdateMessageCallback({
     currentChannel,
     isMentionEnabled,
