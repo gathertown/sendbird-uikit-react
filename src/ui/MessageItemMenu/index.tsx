@@ -38,6 +38,11 @@ export interface MessageMenuProps {
   setSupposedHover?: (bool: boolean) => void;
   onReplyInThread?: (props: { message: SendableMessageType }) => void;
   onMoveToParentMessage?: () => void;
+  // map of menu item actions to message customTypes that aren't allowed to
+  // perform those actions
+  customTypeDenylistMap?: {
+    edit?: string[];
+  }
 }
 
 export function MessageMenu({
@@ -55,6 +60,7 @@ export function MessageMenu({
   setQuoteMessage,
   setSupposedHover,
   onReplyInThread,
+  customTypeDenylistMap,
   onMoveToParentMessage = null,
 }: MessageMenuProps): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
@@ -63,9 +69,10 @@ export function MessageMenu({
   const store = useSendbirdStateContext();
 
   const isCurrentUserOperator = channel.isGroupChannel() ? isGroupChannelOperator(channel) : channel.isOperator(store.config.userId);
+  const isInEditDenylist = !!customTypeDenylistMap?.edit.includes(message.customType);
 
   const showMenuItemCopy: boolean = isUserMessage(message as UserMessage);
-  const showMenuItemEdit: boolean = (!channel?.isEphemeral && isUserMessage(message as UserMessage) && isSentMessage(message) && isByMe);
+  const showMenuItemEdit: boolean = (!channel?.isEphemeral && isUserMessage(message as UserMessage) && isSentMessage(message) && isByMe && !isInEditDenylist);
   const showMenuItemResend: boolean = (isFailedMessage(message) && message?.isResendable && isByMe);
   const showMenuItemDelete: boolean = !channel?.isEphemeral && !isPendingMessage(message) && (isByMe || isCurrentUserOperator);
   const showMenuItemOpenInChannel: boolean = onMoveToParentMessage !== null;
