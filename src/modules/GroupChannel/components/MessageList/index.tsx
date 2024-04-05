@@ -196,6 +196,8 @@ export const MessageList = ({
   }
 
   const renderMessageListAuxillaryComponents = () => {
+    const shouldDisplayScrollToBottom = hasNext() || !isScrollBottomReached;
+    const shouldDisplayUnreadNotifications = !!(!isScrollBottomReached && unreadSinceDate);
     return (
       <>
         <>{renderer.frozenNotification()}</>
@@ -205,8 +207,8 @@ export const MessageList = ({
             onScrollToUnread: scrollToBottom,
             unreadCount: newMessages.length,
             lastReadAt: unreadSinceDate,
-            shouldDisplayScrollToBottom: hasNext() || !isScrollBottomReached,
-            shouldDisplayUnreadNotifications: Boolean(!isScrollBottomReached && unreadSinceDate),
+            shouldDisplayScrollToBottom,
+            shouldDisplayUnreadNotifications,
           }) : (
             <>
               <>{renderer.unreadMessagesNotification()}</>
