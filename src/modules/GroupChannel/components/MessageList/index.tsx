@@ -149,55 +149,55 @@ export const MessageList = ({
     },
   };
 
-  if (loading) {
-    return renderPlaceholderLoader();
+  const isMessageListRendered = !loading && messages.length > 0;
+
+  const renderMessageBody = () => {
+    if (loading) {
+      return renderPlaceholderLoader();
+    } else if (messages.length === 0) {
+      return renderPlaceholderEmpty();
+    }
+    return (
+      <>
+        {messages.map((message, idx) => {
+          const { chainTop, chainBottom, hasSeparator } = getMessagePartsInfo({
+            allMessages: messages as CoreMessageType[],
+            replyType,
+            isMessageGroupingEnabled,
+            currentIndex: idx,
+            currentMessage: message as CoreMessageType,
+            currentChannel,
+          });
+          const isOutgoingMessage = isSendableMessage(message) && message.sender.userId === store.config.userId;
+          return (
+            <MessageProvider message={message} key={getComponentKeyFromMessage(message)} isByMe={isOutgoingMessage}>
+              {renderMessage({
+                handleScroll: onMessageContentSizeChanged,
+                message: message as EveryMessage,
+                hasSeparator,
+                chainTop,
+                chainBottom,
+                renderMessageContent,
+                renderSuggestedReplies,
+                renderCustomSeparator,
+                renderRemoveMessageModal,
+                renderEditInput
+              })}
+            </MessageProvider>
+          );
+        })}
+        {!hasNext() &&
+          store?.config?.groupChannel?.enableTypingIndicator &&
+          store?.config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Bubble) && (
+          <TypingIndicatorBubbleWrapper channelUrl={channelUrl} handleScroll={onMessageContentSizeChanged} />
+        )} 
+      </> 
+    )
   }
 
-  if (messages.length === 0) {
-    return renderPlaceholderEmpty();
-  }
-
-  return (
-    <>
-      <div className={`sendbird-conversation__messages ${className}`}>
-        <div className="sendbird-conversation__scroll-container">
-          <div className="sendbird-conversation__padding" />
-          <div className="sendbird-conversation__messages-padding" ref={scrollRef}>
-            {messages.map((message, idx) => {
-              const { chainTop, chainBottom, hasSeparator } = getMessagePartsInfo({
-                allMessages: messages as CoreMessageType[],
-                replyType,
-                isMessageGroupingEnabled,
-                currentIndex: idx,
-                currentMessage: message as CoreMessageType,
-                currentChannel,
-              });
-              const isOutgoingMessage = isSendableMessage(message) && message.sender.userId === store.config.userId;
-              return (
-                <MessageProvider message={message} key={getComponentKeyFromMessage(message)} isByMe={isOutgoingMessage}>
-                  {renderMessage({
-                    handleScroll: onMessageContentSizeChanged,
-                    message: message as EveryMessage,
-                    hasSeparator,
-                    chainTop,
-                    chainBottom,
-                    renderMessageContent,
-                    renderSuggestedReplies,
-                    renderCustomSeparator,
-                    renderRemoveMessageModal,
-                    renderEditInput
-                  })}
-                </MessageProvider>
-              );
-            })}
-            {!hasNext() &&
-              store?.config?.groupChannel?.enableTypingIndicator &&
-              store?.config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Bubble) && (
-                <TypingIndicatorBubbleWrapper channelUrl={channelUrl} handleScroll={onMessageContentSizeChanged} />
-              )}
-          </div>
-        </div>
-
+  const renderMessageListAuxillaryComponents = () => {
+    return (
+      <>
         <>{renderer.frozenNotification()}</>
         {
           renderScrollToBottomOrUnread ? renderScrollToBottomOrUnread({
@@ -206,7 +206,7 @@ export const MessageList = ({
             unreadCount: newMessages.length,
             lastReadAt: unreadSinceDate,
             shouldDisplayScrollToBottom: hasNext() || !isScrollBottomReached,
-            shouldDisplayUnreadNotifications: !!(!isScrollBottomReached && unreadSinceDate),
+            shouldDisplayUnreadNotifications: Boolean(!isScrollBottomReached && unreadSinceDate),
           }) : (
             <>
               <>{renderer.unreadMessagesNotification()}</>
@@ -214,6 +214,22 @@ export const MessageList = ({
             </>
           )
         }
+      </>
+    )
+    
+  }
+
+  return (
+    <>
+      <div className={`sendbird-conversation__messages ${className}`}>
+        <div className="sendbird-conversation__scroll-container">
+          <div className="sendbird-conversation__padding" />
+          <div className="sendbird-conversation__messages-padding" ref={scrollRef}>
+            {renderMessageBody()}
+          </div>
+        </div>
+
+        {isMessageListRendered && renderMessageListAuxillaryComponents()}
       </div>
     </>
   );
