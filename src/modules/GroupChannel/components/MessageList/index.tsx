@@ -54,7 +54,8 @@ export interface GroupChannelMessageListProps {
   renderSuggestedReplies?: GroupChannelUIBasicProps['renderSuggestedReplies'];
 
   renderRemoveMessageModal?: GroupChannelUIBasicProps['renderRemoveMessageModal'];
-}
+
+  renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];}
 
 export const MessageList = (props: GroupChannelMessageListProps) => {
   const { className = '' } = props;
@@ -206,9 +207,9 @@ export const MessageList = (props: GroupChannelMessageListProps) => {
             );
           }}
           typingIndicator={
-            !hasNext() &&
-            store?.config?.groupChannel?.enableTypingIndicator &&
-            store?.config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Bubble) && (
+            !hasNext()
+            && store?.config?.groupChannel?.enableTypingIndicator
+            && store?.config?.groupChannel?.typingIndicatorTypes?.has(TypingIndicatorType.Bubble) && (
               <TypingIndicatorBubbleWrapper channelUrl={channelUrl} handleScroll={onMessageContentSizeChanged} />
             )
           }
