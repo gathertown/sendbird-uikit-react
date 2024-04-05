@@ -55,7 +55,10 @@ export interface GroupChannelMessageListProps {
 
   renderRemoveMessageModal?: GroupChannelUIBasicProps['renderRemoveMessageModal'];
 
-  renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];}
+  renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
+
+  renderScrollToBottomOrUnread?: GroupChannelUIBasicProps['renderScrollToBottomOrUnread'];
+}
 
 export const MessageList = (props: GroupChannelMessageListProps) => {
   const { className = '' } = props;
@@ -63,8 +66,10 @@ export const MessageList = (props: GroupChannelMessageListProps) => {
     renderMessage = (props: RenderMessageParamsType) => <Message {...props} />,
     renderMessageContent,
     renderSuggestedReplies,
+    renderEditInput,
     renderRemoveMessageModal,
     renderCustomSeparator,
+    renderScrollToBottomOrUnread,
     renderPlaceholderLoader = () => <PlaceHolder type={PlaceHolderTypes.LOADING} />,
     renderPlaceholderEmpty = () => <PlaceHolder className="sendbird-conversation__no-messages" type={PlaceHolderTypes.NO_MESSAGES} />,
     renderFrozenNotification = () => <FrozenNotification className="sendbird-conversation__messages__notification" />,
@@ -215,8 +220,21 @@ export const MessageList = (props: GroupChannelMessageListProps) => {
           }
         />
         <>{renderer.frozenNotification()}</>
-        <>{renderer.unreadMessagesNotification()}</>
-        <>{renderer.scrollToBottomButton()}</>
+        {
+          renderScrollToBottomOrUnread ? renderScrollToBottomOrUnread({
+            onScrollToBottom: scrollToBottom,
+            onScrollToUnread: scrollToBottom,
+            unreadCount: newMessages.length,
+            lastReadAt: unreadSinceDate,
+            shouldDisplayScrollToBottom: hasNext() || !isScrollBottomReached,
+            shouldDisplayUnreadNotifications: !!(!isScrollBottomReached && unreadSinceDate),
+          }) : (
+            <>
+              <>{renderer.unreadMessagesNotification()}</>
+              <>{renderer.scrollToBottomButton()}</>
+            </>
+          )
+        }
       </div>
     </>
   );
