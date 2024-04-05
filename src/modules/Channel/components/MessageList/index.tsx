@@ -35,7 +35,7 @@ export interface MessageListProps extends GroupChannelMessageListProps {
 
   renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
 
-  renderScrollToBottom?: GroupChannelUIBasicProps['renderScrollToBottom'];
+  renderScrollToBottomOrUnread?: GroupChannelUIBasicProps['renderScrollToBottomOrUnread'];
 }
 export const MessageList = ({
   className = '',
@@ -48,7 +48,7 @@ export const MessageList = ({
   renderFrozenNotification = () => <FrozenNotification className="sendbird-conversation__messages__notification" />,
   renderRemoveMessageModal,
   renderEditInput,
-  renderScrollToBottom,
+  renderScrollToBottomOrUnread,
 }: MessageListProps) => {
   const {
     allMessages,
@@ -277,7 +277,7 @@ export const MessageList = ({
           /**
            * Show unread count IFF scroll is not bottom or is bottom but hasNext is true.
            */
-          !renderScrollToBottom && (!isScrollBottom || hasMoreNext) && (unreadSince || unreadSinceDate) && (
+          !renderScrollToBottomOrUnread && (!isScrollBottom || hasMoreNext) && (unreadSince || unreadSinceDate) && (
             <UnreadCount
               className="sendbird-conversation__messages__notification"
               count={currentGroupChannel?.unreadMessageCount}
@@ -289,7 +289,7 @@ export const MessageList = ({
         }
         {
           // This flag is an unmatched variable
-          !renderScrollToBottom && isScrollToBottomButtonDisplayed && (
+          !renderScrollToBottomOrUnread && isScrollToBottomButtonDisplayed && (
             <div
               className="sendbird-conversation__scroll-bottom-button"
               onClick={onClickScrollBot}
@@ -301,7 +301,7 @@ export const MessageList = ({
             </div>
           )
         }
-        {renderScrollToBottom?.({
+        {renderScrollToBottomOrUnread?.({
           onScrollToBottom: onClickScrollBot,
           onScrollToUnread: handleUnreadCountClick,
           unreadCount: currentGroupChannel?.unreadMessageCount ?? 0,

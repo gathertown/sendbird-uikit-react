@@ -55,7 +55,7 @@ export interface GroupChannelMessageListProps {
 
   renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
 
-  renderScrollToBottom?: GroupChannelUIBasicProps['renderScrollToBottom'];
+  renderScrollToBottomOrUnread?: GroupChannelUIBasicProps['renderScrollToBottomOrUnread'];
 }
 
 export const MessageList = ({
@@ -66,7 +66,7 @@ export const MessageList = ({
   renderMessageContent,
   renderSuggestedReplies,
   renderCustomSeparator,
-  renderScrollToBottom,
+  renderScrollToBottomOrUnread,
   renderPlaceholderLoader = () => <PlaceHolder type={PlaceHolderTypes.LOADING} />,
   renderPlaceholderEmpty = () => <PlaceHolder className="sendbird-conversation__no-messages" type={PlaceHolderTypes.NO_MESSAGES} />,
   renderFrozenNotification = () => <FrozenNotification className="sendbird-conversation__messages__notification" />,
@@ -200,7 +200,7 @@ export const MessageList = ({
 
         <>{renderer.frozenNotification()}</>
         {
-          renderScrollToBottom ? renderScrollToBottom({
+          renderScrollToBottomOrUnread ? renderScrollToBottomOrUnread({
             onScrollToBottom: scrollToBottom,
             onScrollToUnread: scrollToBottom,
             unreadCount: newMessages.length,
