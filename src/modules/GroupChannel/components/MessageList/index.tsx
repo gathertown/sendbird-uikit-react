@@ -148,13 +148,13 @@ export const MessageList = ({
       );
     },
   };
-
-  const isMessageListRendered = !loading && messages.length > 0;
+  const isMessageListEmpty = messages.length === 0;
+  const isMessageListRendered = !loading && !isMessageListEmpty;
 
   const renderMessageBody = () => {
     if (loading) {
       return renderPlaceholderLoader();
-    } else if (messages.length === 0) {
+    } else if (isMessageListEmpty) {
       return renderPlaceholderEmpty();
     }
     return (
