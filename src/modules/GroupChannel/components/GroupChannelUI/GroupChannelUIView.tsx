@@ -86,7 +86,7 @@ export interface GroupChannelUIBasicProps {
 
   renderEditInput?: ({ onCancelEdit, message }: { onCancelEdit: VoidFunction; message: ClientUserMessage }) => React.ReactElement;
 
-  renderScrollToBottom?: (props: {
+  renderScrollToBottomOrUnread?: (props: {
     onScrollToBottom: () => void;
     onScrollToUnread: () => void;
     unreadCount: number;

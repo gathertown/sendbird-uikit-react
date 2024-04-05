@@ -53,7 +53,10 @@ export interface GroupChannelMessageListProps {
 
   renderRemoveMessageModal?: GroupChannelUIBasicProps['renderRemoveMessageModal'];
 
-  renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];}
+  renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
+
+  renderScrollToBottomOrUnread?: GroupChannelUIBasicProps['renderScrollToBottomOrUnread'];
+}
 
 export const MessageList = ({
   className = '',
@@ -63,6 +66,7 @@ export const MessageList = ({
   renderMessageContent,
   renderSuggestedReplies,
   renderCustomSeparator,
+  renderScrollToBottomOrUnread,
   renderPlaceholderLoader = () => <PlaceHolder type={PlaceHolderTypes.LOADING} />,
   renderPlaceholderEmpty = () => <PlaceHolder className="sendbird-conversation__no-messages" type={PlaceHolderTypes.NO_MESSAGES} />,
   renderFrozenNotification = () => <FrozenNotification className="sendbird-conversation__messages__notification" />,
@@ -195,8 +199,21 @@ export const MessageList = ({
         </div>
 
         <>{renderer.frozenNotification()}</>
-        <>{renderer.unreadMessagesNotification()}</>
-        <>{renderer.scrollToBottomButton()}</>
+        {
+          renderScrollToBottomOrUnread ? renderScrollToBottomOrUnread({
+            onScrollToBottom: scrollToBottom,
+            onScrollToUnread: scrollToBottom,
+            unreadCount: newMessages.length,
+            lastReadAt: unreadSinceDate,
+            shouldDisplayScrollToBottom: hasNext() || !isScrollBottomReached,
+            shouldDisplayUnreadNotifications: !!(!isScrollBottomReached && unreadSinceDate),
+          }) : (
+            <>
+              <>{renderer.unreadMessagesNotification()}</>
+              <>{renderer.scrollToBottomButton()}</>
+            </>
+          )
+        }
       </div>
     </>
   );
