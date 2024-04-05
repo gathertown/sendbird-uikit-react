@@ -52,11 +52,13 @@ export interface GroupChannelMessageListProps {
   renderSuggestedReplies?: GroupChannelUIBasicProps['renderSuggestedReplies'];
 
   renderRemoveMessageModal?: GroupChannelUIBasicProps['renderRemoveMessageModal'];
-}
+
+  renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];}
 
 export const MessageList = ({
   className = '',
   renderMessage = (props) => <Message {...props} />,
+  renderEditInput,
   renderRemoveMessageModal,
   renderMessageContent,
   renderSuggestedReplies,
@@ -179,6 +181,7 @@ export const MessageList = ({
                     renderSuggestedReplies,
                     renderCustomSeparator,
                     renderRemoveMessageModal,
+                    renderEditInput
                   })}
                 </MessageProvider>
               );
