@@ -1,6 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import pubSubFactory from '../../../../lib/pubSub';
 import { useOnScrollPositionChangeDetectorWithRef } from '../../../../hooks/useOnScrollReachedEndDetector';
+import { SCROLL_BUFFER } from '../../../../utils/consts';
+import { isAboutSame } from '../../../../utils/utils';
 
 /**
  * You can pass the resolve function to scrollPubSub, if you want to catch when the scroll is finished.
@@ -85,7 +87,7 @@ export function useMessageListScroll(behavior: 'smooth' | 'auto') {
 
           // Update data by manual update
           scrollDistanceFromBottomRef.current = Math.max(0, scrollHeight - scrollTop - clientHeight);
-          setIsScrollBottomReached(scrollDistanceFromBottomRef.current === 0);
+          setIsScrollBottomReached(isAboutSame(scrollDistanceFromBottomRef.current, 0, SCROLL_BUFFER));
 
           if (resolve) resolve();
         }, lazy);
