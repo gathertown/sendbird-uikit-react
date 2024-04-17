@@ -56,22 +56,23 @@ export interface GroupChannelMessageListProps {
   renderRemoveMessageModal?: GroupChannelUIBasicProps['renderRemoveMessageModal'];
 
   renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
-
   renderScrollToBottomOrUnread?: GroupChannelUIBasicProps['renderScrollToBottomOrUnread'];
 }
 
-const MessageListContainer = ({ scrollRef, renderList, messages }: {
+const MessageListContainer = ({ scrollRef, renderList, messages, isScrollBottomReached }: {
   scrollRef: React.MutableRefObject<HTMLDivElement>,
   renderList: () => React.ReactElement,
-  messages: BaseMessage[]
+  messages: BaseMessage[],
+  isScrollBottomReached: boolean;
 }) => {
   const prevMessagesLengthRef = useRef(messages.length);
+  const lastClientHeight = useRef<number>();
 
   // handles scrolling the list to the bottom before browser paint
   useLayoutEffect(() => {
     if (!scrollRef.current) return;
-
     scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    lastClientHeight.current = scrollRef.current.clientHeight;
   }, []);
 
   // If message count has increased and you were scrolled to the top
@@ -81,6 +82,10 @@ const MessageListContainer = ({ scrollRef, renderList, messages }: {
     if (messages.length > prevMessagesLengthRef.current && scrollRef.current.scrollTop === 0) {
       scrollRef.current.style.overflowY = 'hidden';
       scrollRef.current.scrollTop = 1;
+    } else if (messages.length > prevMessagesLengthRef.current && isScrollBottomReached) {
+      // if the scrollbar was previously at the bottom, maintain the scroll at the bottom after new messages come in.
+      // The scroll pubsub system kicks in after the message comes in, which is especially obvious when the scroll list was previously at the bottom.
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
     prevMessagesLengthRef.current = messages.length;
   }, [messages]);
@@ -97,9 +102,27 @@ const MessageListContainer = ({ scrollRef, renderList, messages }: {
         scrollRef.current.style.overflowY = 'scroll';
       }
     };
+    cb();
     scrollRef.current.addEventListener('scroll', cb);
     return () => scrollRef.current.removeEventListener('scroll', cb);
   }, []);
+
+  // when the size of the scroll list changes because of the input text area, keep the scroll position the same
+  useLayoutEffect(() => {
+    if (!scrollRef.current) return;
+    const onResize = () => {
+      const diff = lastClientHeight.current - scrollRef.current.clientHeight;
+      lastClientHeight.current = scrollRef.current.clientHeight;
+
+      if (diff > 0) {
+        scrollRef.current.scrollTop = scrollRef.current.scrollTop + diff;
+      }
+    };
+
+    const resizeObserver = new ResizeObserver(onResize);
+    resizeObserver.observe(scrollRef.current);
+    return () => resizeObserver.unobserve(scrollRef.current);
+  }, [scrollRef.current]);
 
   return (
     <div className="sendbird-conversation__messages-padding" ref={scrollRef}>
@@ -143,10 +166,27 @@ export const MessageList = (props: GroupChannelMessageListProps) => {
     // setIsScrollBottomReached,
     // resetNewMessages,
   } = useGroupChannelContext();
-
+  const shouldDisplayScrollToBottom = hasNext() || !isScrollBottomReached;
+  const [delayedDisplayScrollToBottom, setDelayedDisplayScrollToBottom] = useState(shouldDisplayScrollToBottom);
   const store = useSendbirdStateContext();
 
   const [unreadSinceDate, setUnreadSinceDate] = useState<Date>();
+
+  // To account for tween states while scrolling, delay the render of the scroll to bottom button
+  useEffect(() => {
+    let timeout;
+    if (shouldDisplayScrollToBottom) {
+      timeout = setTimeout(() => {
+        setDelayedDisplayScrollToBottom(true);
+      }, 250);
+    }
+    return () => {
+      if (shouldDisplayScrollToBottom) {
+        setDelayedDisplayScrollToBottom(false);
+      }
+      clearTimeout(timeout);
+    };
+  }, [shouldDisplayScrollToBottom]);
 
   useEffect(() => {
     if (isScrollBottomReached) {
@@ -222,6 +262,7 @@ export const MessageList = (props: GroupChannelMessageListProps) => {
           <div className="sendbird-conversation__padding" />
             <MessageListContainer
               scrollRef={scrollRef}
+              isScrollBottomReached={isScrollBottomReached}
               messages={messages}
               renderList={() => (
                 <>
@@ -269,7 +310,7 @@ export const MessageList = (props: GroupChannelMessageListProps) => {
             onScrollToUnread: scrollToBottom,
             unreadCount: newMessages.length,
             lastReadAt: unreadSinceDate,
-            shouldDisplayScrollToBottom: hasNext() || !isScrollBottomReached,
+            shouldDisplayScrollToBottom: delayedDisplayScrollToBottom,
             shouldDisplayUnreadNotifications: !!(!isScrollBottomReached && unreadSinceDate),
           }) : (
             <>
