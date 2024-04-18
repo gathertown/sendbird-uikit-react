@@ -68,7 +68,7 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
     setQuoteMessage,
     setSupposedHover,
     onReplyInThread,
-    customTypeDenylistMap.
+    customTypeDenylistMap,
     onMoveToParentMessage = null,
   } = props;
 
