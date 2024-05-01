@@ -30,7 +30,7 @@ export const getMessagePartsInfo = ({
   currentMessage = null,
   currentChannel = null,
   replyType = '',
-  currentUserId = undefined
+  currentUserId 
 }: GetMessagePartsInfoProps & { currentUserId?: string }): OutPuts => {
   const previousMessage = allMessages[currentIndex - 1];
   const nextMessage = allMessages[currentIndex + 1];
