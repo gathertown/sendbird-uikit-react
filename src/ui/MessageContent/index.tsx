@@ -48,6 +48,7 @@ import MessageFeedbackFailedModal from '../MessageFeedbackFailedModal';
 import { MobileBottomSheetProps } from '../MobileMenu/types';
 import useElementObserver from '../../hooks/useElementObserver';
 import { EMOJI_MENU_ROOT_ID, getObservingId, MENU_OBSERVING_CLASS_NAME, MENU_ROOT_ID } from '../ContextMenu';
+import { getIsByMe } from '../../utils/messages';
 
 export interface MessageContentProps {
   className?: string | Array<string>;
@@ -170,9 +171,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
 
   const { stringSet } = useContext(LocalizationContext);
 
-  const isByMe = (userId === (message as SendableMessageType)?.sender?.userId)
-    || ((message as SendableMessageType)?.sendingStatus === 'pending')
-    || ((message as SendableMessageType)?.sendingStatus === 'failed');
+  const isByMe = getIsByMe(userId, message);
   const isByMeClassName = isByMe ? 'outgoing' : 'incoming';
   const chainTopClassName = chainTop ? 'chain-top' : '';
   const isReactionEnabledInChannel = isReactionEnabled && !channel?.isEphemeral;
