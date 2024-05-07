@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 require('react');
-var ui_MessageTemplate = require('../chunks/bundle-EyWIzGTz.js');
+var ui_MessageTemplate = require('../chunks/bundle-C0xd22xx.js');
 
 
 

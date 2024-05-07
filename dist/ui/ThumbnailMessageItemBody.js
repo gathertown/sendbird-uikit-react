@@ -1,14 +1,16 @@
-import { _ as __assign } from '../chunks/bundle-D8IuvsaW.js';
+import { _ as __assign } from '../chunks/bundle-s7uQ7zAa.js';
 import React__default, { useState } from 'react';
 import Icon, { IconTypes, IconColors } from './Icon.js';
 import ImageRenderer from './ImageRenderer.js';
-import { q as isSentMessage, w as getClassName, r as isVideoMessage, s as isGifMessage } from '../chunks/bundle-BnYBX14T.js';
-import { n as noop } from '../chunks/bundle-0yILBaSQ.js';
-import { u as useLongPress } from '../chunks/bundle-BaiQZ39W.js';
-import { c as getMessageFirstFileThumbnailUrl, g as getMessageFirstFileUrl, a as getMessageFirstFileType } from '../chunks/bundle-CgW0dqme.js';
+import { p as isSentMessage, v as getClassName, q as isVideoMessage, r as isGifMessage } from '../chunks/bundle-D-z4U1wX.js';
+import { n as noop } from '../chunks/bundle-BJmqupdN.js';
+import { u as useLongPress } from '../chunks/bundle-DqwaElIt.js';
+import { c as getMessageFirstFileThumbnailUrl, g as getMessageFirstFileUrl, a as getMessageFirstFileType } from '../chunks/bundle-D7eq_YKI.js';
+import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
-import '../chunks/bundle-BBhSg6C_.js';
+import '../chunks/bundle-Bs8Nuk02.js';
+import '../withSendbird.js';
 
 function ThumbnailMessageItemBody(_a) {
     var _b, _c;
@@ -23,6 +25,8 @@ function ThumbnailMessageItemBody(_a) {
             }
         },
     });
+    var globalStore = useSendbirdStateContext();
+    var eventHandlers = globalStore.eventHandlers;
     return (React__default.createElement("div", __assign({ className: getClassName([
             className,
             'sendbird-thumbnail-message-item-body',
@@ -30,7 +34,10 @@ function ThumbnailMessageItemBody(_a) {
             mouseHover ? 'mouse-hover' : '',
             (isReactionEnabled && ((_c = (_b = message.reactions) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0) > 0) ? 'reactions' : '',
         ]) }, onClickHandler),
-        React__default.createElement(ImageRenderer, { className: "sendbird-thumbnail-message-item-body__thumbnail", url: thumbnailUrl || getMessageFirstFileUrl(message), alt: getMessageFirstFileType(message), width: (style === null || style === void 0 ? void 0 : style.width) || '360px', height: (style === null || style === void 0 ? void 0 : style.height) || '270px', onLoad: function () { setImageRendered(true); }, placeHolder: function (_a) {
+        React__default.createElement(ImageRenderer, { className: "sendbird-thumbnail-message-item-body__thumbnail", url: thumbnailUrl || getMessageFirstFileUrl(message), alt: getMessageFirstFileType(message), width: (style === null || style === void 0 ? void 0 : style.width) || '360px', height: (style === null || style === void 0 ? void 0 : style.height) || '270px', onLoad: function () { setImageRendered(true); }, onError: function () {
+                var _a, _b;
+                (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, new Error("Image load failed - ".concat(thumbnailUrl || getMessageFirstFileUrl(message))));
+            }, placeHolder: function (_a) {
                 var style = _a.style;
                 return (React__default.createElement("div", { className: "sendbird-thumbnail-message-item-body__placeholder", style: style }));
             } }),

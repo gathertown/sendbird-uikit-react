@@ -1,39 +1,39 @@
-import { _ as __assign, a as __awaiter, b as __generator } from '../../chunks/bundle-D8IuvsaW.js';
+import { _ as __assign, a as __awaiter, b as __generator } from '../../chunks/bundle-s7uQ7zAa.js';
 import React__default from 'react';
 import ChannelPreview from './ChannelPreview.js';
 import { GroupChannelPreviewAction } from '../../GroupChannelList/components/GroupChannelPreviewAction.js';
-import { u as useChannelListContext, S as SET_CURRENT_CHANNEL, L as LEAVE_CHANNEL_SUCCESS } from '../../chunks/bundle-J-DQ0mNG.js';
+import { u as useChannelListContext, S as SET_CURRENT_CHANNEL, L as LEAVE_CHANNEL_SUCCESS } from '../../chunks/bundle-CcGs5-Zm.js';
 import { useSendbirdStateContext } from '../../useSendbirdStateContext.js';
-import { G as GroupChannelListUIView } from '../../chunks/bundle-B2Lds07U.js';
+import { G as GroupChannelListUIView } from '../../chunks/bundle-DGRx74Br.js';
 import { AddChannel } from './AddChannel.js';
-import '../../chunks/bundle-CRmP70eG.js';
-import '../../chunks/bundle-C9nxq4KD.js';
-import '../../chunks/bundle-k7V2rNcW.js';
-import '../../chunks/bundle-B9Guj1rz.js';
-import '../../chunks/bundle-BlLFOUrw.js';
+import '../../chunks/bundle-BwcI3bWM.js';
+import '../../chunks/bundle-DqWrl4d1.js';
+import '../../chunks/bundle-Dyt8DaMp.js';
+import '../../chunks/bundle-DsHrFpwT.js';
+import '../../chunks/bundle-Dac-NyF8.js';
 import '../../ui/Icon.js';
-import '../../chunks/bundle-0yILBaSQ.js';
-import '../../chunks/bundle-BNNafMXS.js';
+import '../../chunks/bundle-BJmqupdN.js';
+import '../../chunks/bundle-BOy_tVjz.js';
 import '../../ui/Loader.js';
-import '../../chunks/bundle-BnYBX14T.js';
+import '../../chunks/bundle-D-z4U1wX.js';
 import '@sendbird/chat/groupChannel';
 import '../../utils/message/getOutgoingMessageState.js';
-import '../../chunks/bundle-CCxOcaGS.js';
-import '../../chunks/bundle-Ch8Obp48.js';
-import '../../chunks/bundle-Cbh-C1NV.js';
-import '../../chunks/bundle-BaiQZ39W.js';
-import '../../chunks/bundle-BBhSg6C_.js';
+import '../../chunks/bundle-B482kNJl.js';
+import '../../chunks/bundle-DuWC7Y9x.js';
+import '../../chunks/bundle-BxJvdT02.js';
+import '../../chunks/bundle-DqwaElIt.js';
+import '../../chunks/bundle-Bs8Nuk02.js';
 import '../../GroupChannel/components/TypingIndicator.js';
-import '../../chunks/bundle-DgRY6xy0.js';
+import '../../chunks/bundle-Caf8F3YR.js';
 import '../../ui/Badge.js';
 import '../../ui/ChannelAvatar.js';
-import '../../chunks/bundle-CvlHmT5j.js';
+import '../../chunks/bundle-BAao5L-j.js';
 import '../../ui/ImageRenderer.js';
-import '../../chunks/bundle-ttSanjmp.js';
-import '../../chunks/bundle-DD5Dgrc3.js';
+import '../../chunks/bundle-BIF2bCQz.js';
+import '../../chunks/bundle-ByXswkoP.js';
 import '../../ui/MentionUserLabel.js';
-import '../../chunks/bundle-DqsDxEmW.js';
-import '../../chunks/bundle-BfCFd-dO.js';
+import '../../chunks/bundle-CLXgPaQv.js';
+import '../../chunks/bundle-Zq-75Hl4.js';
 import 'react-dom';
 import '../../ui/IconButton.js';
 import '../../ui/Button.js';
@@ -42,32 +42,32 @@ import '../../withSendbird.js';
 import 'css-vars-ponyfill';
 import '@sendbird/chat';
 import '@sendbird/chat/openChannel';
-import '../../chunks/bundle-CwSlabaO.js';
-import '../../chunks/bundle-w0s865vS.js';
-import '../../chunks/bundle-CNHxvPPg.js';
+import '../../chunks/bundle-CuXnBg6p.js';
+import '../../chunks/bundle-BUsOkeT7.js';
+import '../../chunks/bundle-BytW9Azl.js';
 import '../../ui/TextButton.js';
-import '../../chunks/bundle-nY4hBePV.js';
+import '../../chunks/bundle-DZZlGxSQ.js';
 import '../../ui/ContextMenu.js';
 import '../../ui/SortByRow.js';
-import '../../chunks/bundle-Cf2xHdC2.js';
-import '../../chunks/bundle-BxO5H6aF.js';
-import '../../chunks/bundle-Cd6XSYjN.js';
+import '../../chunks/bundle-CIiROwS_.js';
+import '../../chunks/bundle-DSd-G7ux.js';
+import '../../chunks/bundle-D8n4s-pk.js';
 import '../../GroupChannelList/components/GroupChannelListHeader.js';
 import '../../ui/Header.js';
 import '../../EditUserProfile.js';
 import '../../EditUserProfile/context.js';
 import '../../EditUserProfile/components/EditUserProfileUI.js';
-import '../../chunks/bundle-B1OOyz2J.js';
+import '../../chunks/bundle-DbCr1l36.js';
 import '../../ui/Input.js';
 import '../../ui/PlaceHolder.js';
-import '../../chunks/bundle-CbyShdHS.js';
-import '../../chunks/bundle-se836s50.js';
+import '../../chunks/bundle-B8MAflwf.js';
+import '../../chunks/bundle-B-z3huWI.js';
 import '@sendbird/chat/message';
-import '../../chunks/bundle-DgYc_vhn.js';
-import '../../chunks/bundle-a9wGnJBx.js';
+import '../../chunks/bundle-CTBShITC.js';
+import '../../chunks/bundle-B6S4pywR.js';
 import '../../CreateChannel.js';
 import '../../CreateChannel/components/CreateChannelUI.js';
-import '../../chunks/bundle-DaGkz7O6.js';
+import '../../chunks/bundle-CRNEZ_QX.js';
 import '../../sendbirdSelectors.js';
 import '../../CreateChannel/components/InviteUsers.js';
 import '../../ui/UserListItem.js';
@@ -79,7 +79,7 @@ import '../../CreateChannel/components/SelectChannelType.js';
 var ChannelListUI = function (props) {
     var renderHeader = props.renderHeader, renderChannelPreview = props.renderChannelPreview, renderPlaceHolderError = props.renderPlaceHolderError, renderPlaceHolderLoading = props.renderPlaceHolderLoading, renderPlaceHolderEmptyList = props.renderPlaceHolderEmptyList;
     var _a = useChannelListContext(), onThemeChange = _a.onThemeChange, allowProfileEdit = _a.allowProfileEdit, allChannels = _a.allChannels, currentChannel = _a.currentChannel, channelListDispatcher = _a.channelListDispatcher, typingChannels = _a.typingChannels, initialized = _a.initialized, fetchChannelList = _a.fetchChannelList, onProfileEditSuccess = _a.onProfileEditSuccess;
-    var _b = useSendbirdStateContext(), stores = _b.stores, config = _b.config;
+    var _b = useSendbirdStateContext(), stores = _b.stores, config = _b.config, eventHandlers = _b.eventHandlers;
     var logger = config.logger, _c = config.isOnline, isOnline = _c === void 0 ? false : _c;
     var sdk = stores.sdkStore.sdk;
     var renderListItem = function (props) {
@@ -107,17 +107,18 @@ var ChannelListUI = function (props) {
             onLeaveChannel: function (channel, cb) {
                 return __awaiter(this, void 0, void 0, function () {
                     var response, err_1;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
+                    var _a, _b;
+                    return __generator(this, function (_c) {
+                        switch (_c.label) {
                             case 0:
                                 logger.info('ChannelList: Leaving channel', channel);
                                 if (!channel) return [3 /*break*/, 4];
-                                _a.label = 1;
+                                _c.label = 1;
                             case 1:
-                                _a.trys.push([1, 3, , 4]);
+                                _c.trys.push([1, 3, , 4]);
                                 return [4 /*yield*/, channel.leave()];
                             case 2:
-                                response = _a.sent();
+                                response = _c.sent();
                                 logger.info('ChannelList: Leaving channel success', response);
                                 if (cb && typeof cb === 'function')
                                     cb(channel, null);
@@ -127,8 +128,9 @@ var ChannelListUI = function (props) {
                                 });
                                 return [3 /*break*/, 4];
                             case 3:
-                                err_1 = _a.sent();
+                                err_1 = _c.sent();
                                 logger.error('ChannelList: Leaving channel failed', err_1);
+                                (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, err_1);
                                 if (cb && typeof cb === 'function')
                                     cb(channel, err_1);
                                 return [3 /*break*/, 4];

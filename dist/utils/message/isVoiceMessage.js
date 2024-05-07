@@ -1,5 +1,5 @@
-import { i as isVoiceMessage$1 } from '../../chunks/bundle-BnYBX14T.js';
-import '../../chunks/bundle-D8IuvsaW.js';
+import { i as isVoiceMessage$1 } from '../../chunks/bundle-D-z4U1wX.js';
+import '../../chunks/bundle-s7uQ7zAa.js';
 import '@sendbird/chat/groupChannel';
 import './getOutgoingMessageState.js';
 

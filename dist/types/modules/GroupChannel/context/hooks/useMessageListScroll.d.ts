@@ -25,5 +25,6 @@ export declare function useMessageListScroll(behavior: 'smooth' | 'auto'): {
     isScrollBottomReached: boolean;
     setIsScrollBottomReached: import("react").Dispatch<import("react").SetStateAction<boolean>>;
     scrollDistanceFromBottomRef: import("react").MutableRefObject<number>;
+    isScrollable: boolean;
 };
 export {};

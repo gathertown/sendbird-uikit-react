@@ -4,46 +4,46 @@ import ReactionButton from './ReactionButton.js';
 import ImageRenderer from './ImageRenderer.js';
 import Icon, { IconTypes, IconColors } from './Icon.js';
 import ContextMenu, { EmojiListItems } from './ContextMenu.js';
-import { V as getEmojiUrl, W as isReactedBy, X as getEmojiTooltipString, y as getEmojiListAll, Y as getEmojiMapAll, w as getClassName } from '../chunks/bundle-BnYBX14T.js';
+import { R as getEmojiUrl, V as isReactedBy, W as getEmojiTooltipString, x as getEmojiListAll, X as getEmojiMapAll, v as getClassName } from '../chunks/bundle-D-z4U1wX.js';
 import BottomSheet from './BottomSheet.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BNNafMXS.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BOy_tVjz.js';
 import UserListItem from './UserListItem.js';
-import { _ as __assign } from '../chunks/bundle-D8IuvsaW.js';
+import { _ as __assign } from '../chunks/bundle-s7uQ7zAa.js';
 import Tooltip from './Tooltip.js';
 import TooltipWrapper from './TooltipWrapper.js';
-import { u as useMediaQueryContext } from '../chunks/bundle-BBhSg6C_.js';
-import { u as useLongPress } from '../chunks/bundle-BaiQZ39W.js';
-import { L as LocalizationContext } from '../chunks/bundle-CRmP70eG.js';
+import { u as useMediaQueryContext } from '../chunks/bundle-Bs8Nuk02.js';
+import { u as useLongPress } from '../chunks/bundle-DqwaElIt.js';
+import { L as LocalizationContext } from '../chunks/bundle-BwcI3bWM.js';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
 import { useMessageContext } from '../Message/context.js';
-import { g as getIsReactionEnabled } from '../chunks/bundle-Dn-yaG7j.js';
-import '../chunks/bundle-C9nxq4KD.js';
-import '../chunks/bundle-0yILBaSQ.js';
-import '../chunks/bundle-CNHxvPPg.js';
+import { g as getIsReactionEnabled } from '../chunks/bundle-k5z_1yHM.js';
+import '../chunks/bundle-DqWrl4d1.js';
+import '../chunks/bundle-BJmqupdN.js';
+import '../chunks/bundle-BytW9Azl.js';
 import 'react-dom';
 import '@sendbird/chat';
 import '@sendbird/chat/openChannel';
 import './SortByRow.js';
-import '../chunks/bundle-DgRY6xy0.js';
+import '../chunks/bundle-Caf8F3YR.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
-import '../chunks/bundle-BfCFd-dO.js';
+import '../chunks/bundle-Zq-75Hl4.js';
 import './IconButton.js';
 import './Button.js';
 import '@sendbird/uikit-tools';
 import '../withSendbird.js';
 import 'css-vars-ponyfill';
-import '../chunks/bundle-CwSlabaO.js';
-import '../chunks/bundle-w0s865vS.js';
-import '../chunks/bundle-k7V2rNcW.js';
-import '../chunks/bundle-BxO5H6aF.js';
-import '../chunks/bundle-CvlHmT5j.js';
-import '../chunks/bundle-ttSanjmp.js';
+import '../chunks/bundle-CuXnBg6p.js';
+import '../chunks/bundle-BUsOkeT7.js';
+import '../chunks/bundle-Dyt8DaMp.js';
+import '../chunks/bundle-DSd-G7ux.js';
+import '../chunks/bundle-BAao5L-j.js';
+import '../chunks/bundle-BIF2bCQz.js';
 import './MutedAvatarOverlay.js';
 import './Checkbox.js';
 import './UserProfile.js';
 import '../sendbirdSelectors.js';
-import '../chunks/bundle-Cf2xHdC2.js';
+import '../chunks/bundle-CIiROwS_.js';
 
 var ReactedMembersBottomSheet = function (_a) {
     var _b, _c, _d;
@@ -77,7 +77,7 @@ var ReactedMembersBottomSheet = function (_a) {
 
 function ReactionItem(_a) {
     var _b;
-    var reaction = _a.reaction, memberNicknamesMap = _a.memberNicknamesMap, setEmojiKey = _a.setEmojiKey, toggleReaction = _a.toggleReaction, emojisMap = _a.emojisMap, channel = _a.channel, message = _a.message;
+    var reaction = _a.reaction, memberNicknamesMap = _a.memberNicknamesMap, setEmojiKey = _a.setEmojiKey, toggleReaction = _a.toggleReaction, emojisMap = _a.emojisMap, channel = _a.channel, message = _a.message, showReactionsForSuperGroups = _a.showReactionsForSuperGroups;
     var store = useSendbirdStateContext();
     var isMobile = useMediaQueryContext().isMobile;
     var messageStore = useMessageContext();
@@ -85,7 +85,7 @@ function ReactionItem(_a) {
     var userId = store.config.userId;
     var reactedByMe = isReactedBy(userId, reaction);
     var showHoverTooltip = (reaction.userIds.length > 0)
-        && ((channel === null || channel === void 0 ? void 0 : channel.isGroupChannel()) && !channel.isSuper);
+        && ((channel === null || channel === void 0 ? void 0 : channel.isGroupChannel()) && (!channel.isSuper || showReactionsForSuperGroups));
     var handleOnClick = function () {
         setEmojiKey('');
         toggleReaction === null || toggleReaction === void 0 ? void 0 : toggleReaction((message !== null && message !== void 0 ? message : messageStore === null || messageStore === void 0 ? void 0 : messageStore.message), reaction.key, reactedByMe);
@@ -145,7 +145,7 @@ var MobileEmojisBottomSheet = function (_a) {
 
 var EmojiReactions = function (_a) {
     var _b, _c, _d, _e, _f;
-    var _g = _a.className, className = _g === void 0 ? '' : _g, userId = _a.userId, message = _a.message, channel = _a.channel, emojiContainer = _a.emojiContainer, memberNicknamesMap = _a.memberNicknamesMap, _h = _a.spaceFromTrigger, spaceFromTrigger = _h === void 0 ? { x: 0, y: 0 } : _h, _j = _a.isByMe, isByMe = _j === void 0 ? false : _j, toggleReaction = _a.toggleReaction, onPressUserProfile = _a.onPressUserProfile;
+    var _g = _a.className, className = _g === void 0 ? '' : _g, userId = _a.userId, message = _a.message, channel = _a.channel, emojiContainer = _a.emojiContainer, memberNicknamesMap = _a.memberNicknamesMap, _h = _a.spaceFromTrigger, spaceFromTrigger = _h === void 0 ? { x: 0, y: 0 } : _h, _j = _a.isByMe, isByMe = _j === void 0 ? false : _j, toggleReaction = _a.toggleReaction, onPressUserProfile = _a.onPressUserProfile, _k = _a.showReactionsForSuperGroups, showReactionsForSuperGroups = _k === void 0 ? false : _k;
     var showTheReactedMembers = false;
     try {
         var config = useSendbirdStateContext().config;
@@ -159,8 +159,8 @@ var EmojiReactions = function (_a) {
     }
     var isMobile = useMediaQueryContext().isMobile;
     var addReactionRef = useRef(null);
-    var _k = useState(false), showEmojiList = _k[0], setShowEmojiList = _k[1];
-    var _l = useState(''), selectedEmojiKey = _l[0], setSelectedEmojiKey = _l[1];
+    var _l = useState(false), showEmojiList = _l[0], setShowEmojiList = _l[1];
+    var _m = useState(''), selectedEmojiKey = _m[0], setSelectedEmojiKey = _m[1];
     var emojisMap = getEmojiMapAll(emojiContainer);
     var showAddReactionBadge = ((_c = (_b = message.reactions) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0) < emojisMap.size;
     return (React__default.createElement("div", { className: getClassName([
@@ -168,7 +168,7 @@ var EmojiReactions = function (_a) {
             isByMe ? 'outgoing' : 'incoming',
         ]) },
         (((_e = (_d = message.reactions) === null || _d === void 0 ? void 0 : _d.length) !== null && _e !== void 0 ? _e : 0) > 0) && ((_f = message.reactions) === null || _f === void 0 ? void 0 : _f.map(function (reaction) {
-            return (React__default.createElement(ReactionItem, { key: reaction === null || reaction === void 0 ? void 0 : reaction.key, reaction: reaction, memberNicknamesMap: memberNicknamesMap, setEmojiKey: setSelectedEmojiKey, toggleReaction: toggleReaction, emojisMap: emojisMap, channel: channel, message: message }));
+            return (React__default.createElement(ReactionItem, { key: reaction === null || reaction === void 0 ? void 0 : reaction.key, reaction: reaction, memberNicknamesMap: memberNicknamesMap, setEmojiKey: setSelectedEmojiKey, toggleReaction: toggleReaction, emojisMap: emojisMap, channel: channel, message: message, showReactionsForSuperGroups: showReactionsForSuperGroups }));
         })),
         (!isMobile && showAddReactionBadge) && (React__default.createElement(ContextMenu, { menuTrigger: function (toggleDropdown) { return (React__default.createElement(ReactionBadge, { className: "sendbird-emoji-reactions__add-reaction-badge", ref: addReactionRef, isAdd: true, onClick: function (e) {
                     var _a;

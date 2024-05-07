@@ -1,6 +1,6 @@
-import { c as __spreadArray } from '../chunks/bundle-D8IuvsaW.js';
+import { c as __spreadArray } from '../chunks/bundle-s7uQ7zAa.js';
 import React__default from 'react';
-import { u as uuidv4 } from '../chunks/bundle-DgRY6xy0.js';
+import { u as uuidv4 } from '../chunks/bundle-Caf8F3YR.js';
 
 var componentClassName = 'sendbird-sort-by-row';
 function SortByRow(_a) {

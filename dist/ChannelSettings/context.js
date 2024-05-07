@@ -1,8 +1,8 @@
-import { _ as __assign, a as __awaiter, b as __generator } from '../chunks/bundle-D8IuvsaW.js';
+import { _ as __assign, a as __awaiter, b as __generator } from '../chunks/bundle-s7uQ7zAa.js';
 import React__default, { useState, useEffect } from 'react';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
-import { U as UserProfileProvider } from '../chunks/bundle-BxO5H6aF.js';
-import { u as uuidv4 } from '../chunks/bundle-DgRY6xy0.js';
+import { U as UserProfileProvider } from '../chunks/bundle-DSd-G7ux.js';
+import { u as uuidv4 } from '../chunks/bundle-Caf8F3YR.js';
 import '../withSendbird.js';
 
 function useAsyncRequest(request, options) {

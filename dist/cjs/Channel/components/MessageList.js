@@ -7,84 +7,84 @@ var Channel_context = require('../context.js');
 var ui_PlaceHolder = require('../../ui/PlaceHolder.js');
 var ui_Icon = require('../../ui/Icon.js');
 var Channel_components_Message = require('./Message.js');
-var index$2 = require('../../chunks/bundle-CiDSKL46.js');
-var utils$1 = require('../../chunks/bundle-etwgXqw-.js');
+var index$2 = require('../../chunks/bundle-C6gATKTE.js');
+var utils$1 = require('../../chunks/bundle-BECkGjrR.js');
 var GroupChannel_components_UnreadCount = require('../../GroupChannel/components/UnreadCount.js');
 var GroupChannel_components_FrozenNotification = require('../../GroupChannel/components/FrozenNotification.js');
-var consts = require('../../chunks/bundle-BPGreBtw.js');
+var consts = require('../../chunks/bundle-DI6hrkhw.js');
 var useSendbirdStateContext = require('../../useSendbirdStateContext.js');
 var Message_context = require('../../Message/context.js');
-var index = require('../../chunks/bundle-BXBfcBnf.js');
-var useThrottleCallback = require('../../chunks/bundle-9xv4YoP5.js');
+var index = require('../../chunks/bundle-8lqm9Xfv.js');
+var useThrottleCallback = require('../../chunks/bundle-CZJazoZ7.js');
 var ui_TypingIndicatorBubble = require('../../ui/TypingIndicatorBubble.js');
-var index$1 = require('../../chunks/bundle-DQY0kimN.js');
+var index$1 = require('../../chunks/bundle--oP96AvO.js');
 var Channel_utils_getMessagePartsInfo = require('../utils/getMessagePartsInfo.js');
-var utils = require('../../chunks/bundle-BvJOj_Nb.js');
-require('../../chunks/bundle-BKwrdy8Y.js');
-require('../../chunks/bundle-BF3GXMyf.js');
-require('../../chunks/bundle-BwAK1D9u.js');
-require('../../chunks/bundle-DHh3VdoS.js');
-require('../../chunks/bundle-DqGwmW4S.js');
-require('../../chunks/bundle-C8yEdUBb.js');
+var utils = require('../../chunks/bundle-DgAALupQ.js');
+require('../../chunks/bundle-CJtsI7GU.js');
+require('../../chunks/bundle-bdifjM-k.js');
+require('../../chunks/bundle-D0o2OzcU.js');
+require('../../chunks/bundle-BO5OZWjS.js');
+require('../../chunks/bundle-BCfv3yiy.js');
+require('../../chunks/bundle-B8rdv1pq.js');
 require('@sendbird/chat/message');
-require('../../chunks/bundle-C4EYGhv3.js');
-require('../../chunks/bundle-CruSSYSP.js');
-require('../../chunks/bundle-BWb5b9t8.js');
+require('../../chunks/bundle-DYYV3xLB.js');
+require('../../chunks/bundle-BcdtZarK.js');
+require('../../chunks/bundle-DnTkOAfH.js');
 require('@sendbird/chat/groupChannel');
-require('../../chunks/bundle-DtHyD1hB.js');
-require('../../chunks/bundle-uwsvYO4l.js');
-require('../../chunks/bundle-CYjw4691.js');
-require('../../chunks/bundle-h4wKJtrO.js');
-require('../../chunks/bundle-C1rrs9fy.js');
-require('../../chunks/bundle-DzWthRdg.js');
+require('../../chunks/bundle-BjldQ7ts.js');
+require('../../chunks/bundle-BFHEqzl9.js');
+require('../../chunks/bundle-z9miKj3U.js');
+require('../../chunks/bundle-QyttZIkx.js');
+require('../../chunks/bundle-D_b5XkOl.js');
+require('../../chunks/bundle-0AYxVXD-.js');
 require('../../utils/message/getOutgoingMessageState.js');
-require('../../chunks/bundle-BD2bIoH6.js');
-require('../../chunks/bundle-DoHigaWY.js');
-require('../../chunks/bundle-24sG-BP_.js');
+require('../../chunks/bundle-DKL8dMjq.js');
+require('../../chunks/bundle-CNnH6vJ_.js');
+require('../../chunks/bundle-CRRWhSHD.js');
 require('../../ui/Loader.js');
-require('../../chunks/bundle-C-gcz8bw.js');
-require('../../chunks/bundle-Cu63GBZj.js');
+require('../../chunks/bundle-BhnK-otQ.js');
+require('../../chunks/bundle-D0q1P-FU.js');
 require('../../Message/hooks/useDirtyGetMentions.js');
 require('../../ui/DateSeparator.js');
-require('../../chunks/bundle-DTKihS4S.js');
+require('../../chunks/bundle-Ev5kAkGi.js');
 require('../../ui/MessageInput.js');
-require('../../chunks/bundle-BlK0Q1jH.js');
+require('../../chunks/bundle-BwKmyBpq.js');
 require('../../ui/IconButton.js');
 require('../../ui/Button.js');
-require('../../chunks/bundle-ZoZvScBH.js');
+require('../../chunks/bundle-9HKIAf5f.js');
 require('dompurify');
-require('../../chunks/bundle-QohGAzPZ.js');
-require('../../chunks/bundle-DS6HeXaS.js');
-require('../../chunks/bundle-B98KPr4A.js');
-require('../../chunks/bundle-C9xbaXbn.js');
+require('../../chunks/bundle-CIs7k40W.js');
+require('../../chunks/bundle-CN0Ev9mV.js');
+require('../../chunks/bundle-BxYGiW8y.js');
+require('../../chunks/bundle-BZ6Z0MYZ.js');
 require('../../withSendbird.js');
 require('../../ui/MessageContent.js');
-require('../../chunks/bundle-CXIbPam9.js');
-require('../../chunks/bundle-D09pvvgs.js');
-require('../../chunks/bundle-uiV3qgX6.js');
+require('../../chunks/bundle-CjsR5IvJ.js');
+require('../../chunks/bundle-Bmt-jCO8.js');
+require('../../chunks/bundle-C_eHyq_M.js');
 require('../../ui/MessageItemMenu.js');
 require('../../ui/ContextMenu.js');
-require('../../chunks/bundle-e1P14sMX.js');
+require('../../chunks/bundle-BOaew5JK.js');
 require('react-dom');
 require('@sendbird/chat');
 require('@sendbird/chat/openChannel');
 require('../../ui/SortByRow.js');
-require('../../chunks/bundle-22C_FmJz.js');
+require('../../chunks/bundle-8sH2G7Ap.js');
 require('../../ui/MessageItemReactionMenu.js');
 require('../../ui/ImageRenderer.js');
 require('../../ui/ReactionButton.js');
-require('../../chunks/bundle-BkazCoxG.js');
-require('../../chunks/bundle-DGx3xKBn.js');
+require('../../chunks/bundle-3dhw8iOw.js');
+require('../../chunks/bundle-BFgXaSuR.js');
 require('../../ui/EmojiReactions.js');
 require('../../ui/ReactionBadge.js');
 require('../../ui/BottomSheet.js');
-require('../../chunks/bundle-CG5E97k8.js');
+require('../../chunks/bundle-CBfBMqDz.js');
 require('@sendbird/uikit-tools');
 require('css-vars-ponyfill');
-require('../../chunks/bundle-DDY1xx_n.js');
+require('../../chunks/bundle-3bmKYTJ_.js');
 require('../../ui/UserListItem.js');
-require('../../chunks/bundle-JS-CtPko.js');
-require('../../chunks/bundle-Xx0kBn7q.js');
+require('../../chunks/bundle-Cd7XOuNj.js');
+require('../../chunks/bundle-CoSi4lOw.js');
 require('../../ui/MutedAvatarOverlay.js');
 require('../../ui/Checkbox.js');
 require('../../ui/UserProfile.js');
@@ -93,19 +93,19 @@ require('../../ui/Tooltip.js');
 require('../../ui/TooltipWrapper.js');
 require('../../ui/AdminMessage.js');
 require('../../ui/QuoteMessage.js');
-require('../../chunks/bundle-C7KrtZZP.js');
-require('../../chunks/bundle-CqdGdIiY.js');
+require('../../chunks/bundle-BGyfIsKK.js');
+require('../../chunks/bundle-KUfIzdnQ.js');
 require('../../ui/ThreadReplies.js');
 require('../../ui/OGMessageItemBody.js');
-require('../../chunks/bundle-B4c5-CEo.js');
+require('../../chunks/bundle-3cmB6Ad_.js');
 require('../../ui/MentionLabel.js');
 require('../../ui/LinkLabel.js');
 require('../../ui/TextMessageItemBody.js');
 require('../../ui/FileMessageItemBody.js');
 require('../../ui/TextButton.js');
-require('../../chunks/bundle-CUWAopRQ.js');
-require('../../chunks/bundle-DQKTGusP.js');
-require('../../chunks/bundle-DoLTlc_l.js');
+require('../../chunks/bundle-BPjQVFvN.js');
+require('../../chunks/bundle-Bexsprs_.js');
+require('../../chunks/bundle-DegkGksZ.js');
 require('../../ui/VoiceMessageItemBody.js');
 require('../../ui/ProgressBar.js');
 require('../../VoicePlayer/useVoicePlayer.js');
@@ -113,7 +113,7 @@ require('../../ui/PlaybackTime.js');
 require('../../ui/ThumbnailMessageItemBody.js');
 require('../../ui/UnknownMessageItemBody.js');
 require('../../ui/TemplateMessageItemBody.js');
-require('../../chunks/bundle-EyWIzGTz.js');
+require('../../chunks/bundle-C0xd22xx.js');
 require('../../ui/FallbackTemplateMessageItemBody.tsx.js');
 require('../../ui/LoadingTemplateMessageItemBody.tsx.js');
 require('../../ui/FeedbackIconButton.js');
@@ -121,14 +121,14 @@ require('../../ui/MobileFeedbackMenu.js');
 require('../../ui/MessageFeedbackModal.js');
 require('../../ui/Input.js');
 require('../../ui/MessageFeedbackFailedModal.js');
-require('../../GroupChannel/components/SuggestedReplies.js');
-require('../../chunks/bundle-IrSx78Gk.js');
-require('./FileViewer.js');
-require('../../chunks/bundle-BZLPZVcJ.js');
-require('./RemoveMessageModal.js');
-require('../../chunks/bundle-D2-x0BmY.js');
-require('../../chunks/bundle-DWcNmk2G.js');
 require('../utils/compareMessagesForGrouping.js');
+require('../../GroupChannel/components/SuggestedReplies.js');
+require('../../chunks/bundle-CSU8NDw4.js');
+require('./FileViewer.js');
+require('../../chunks/bundle-Cn1JJiPG.js');
+require('./RemoveMessageModal.js');
+require('../../chunks/bundle-XgOiPyHW.js');
+require('../../chunks/bundle-BmCw9st3.js');
 
 var DELAY = 100;
 function useSetScrollToBottom(_a) {
@@ -167,14 +167,14 @@ function useScrollBehavior() {
 /* We operate the CSS files for Channel&GroupChannel modules in the GroupChannel */
 var SCROLL_BOTTOM_PADDING = 50;
 var MessageList = function (props) {
-    var _a, _b, _c, _d, _e;
-    var _f = props.className, className = _f === void 0 ? '' : _f;
-    var _g = utils.deleteNullish(props), renderMessage = _g.renderMessage, renderMessageContent = _g.renderMessageContent, renderSuggestedReplies = _g.renderSuggestedReplies, renderCustomSeparator = _g.renderCustomSeparator, _h = _g.renderPlaceholderLoader, renderPlaceholderLoader = _h === void 0 ? function () { return React.createElement(ui_PlaceHolder.default, { type: ui_PlaceHolder.PlaceHolderTypes.LOADING }); } : _h, _j = _g.renderPlaceholderEmpty, renderPlaceholderEmpty = _j === void 0 ? function () { return React.createElement(ui_PlaceHolder.default, { className: "sendbird-conversation__no-messages", type: ui_PlaceHolder.PlaceHolderTypes.NO_MESSAGES }); } : _j, _k = _g.renderFrozenNotification, renderFrozenNotification = _k === void 0 ? function () { return React.createElement(GroupChannel_components_FrozenNotification.FrozenNotification, { className: "sendbird-conversation__messages__notification" }); } : _k;
-    var _l = Channel_context.useChannelContext(), allMessages = _l.allMessages, localMessages = _l.localMessages, hasMorePrev = _l.hasMorePrev, hasMoreNext = _l.hasMoreNext, setInitialTimeStamp = _l.setInitialTimeStamp, setAnimatedMessageId = _l.setAnimatedMessageId, setHighLightedMessageId = _l.setHighLightedMessageId, isMessageGroupingEnabled = _l.isMessageGroupingEnabled, scrollRef = _l.scrollRef, onScrollCallback = _l.onScrollCallback, onScrollDownCallback = _l.onScrollDownCallback, messagesDispatcher = _l.messagesDispatcher, messageActionTypes = _l.messageActionTypes, currentGroupChannel = _l.currentGroupChannel, disableMarkAsRead = _l.disableMarkAsRead, filterMessageList = _l.filterMessageList, replyType = _l.replyType, loading = _l.loading, isScrolled = _l.isScrolled, unreadSince = _l.unreadSince, unreadSinceDate = _l.unreadSinceDate, typingMembers = _l.typingMembers;
+    var _a, _b, _c, _d, _e, _f;
+    var _g = props.className, className = _g === void 0 ? '' : _g;
+    var _h = utils.deleteNullish(props), renderMessage = _h.renderMessage, renderMessageContent = _h.renderMessageContent, renderSuggestedReplies = _h.renderSuggestedReplies, renderCustomSeparator = _h.renderCustomSeparator, renderRemoveMessageModal = _h.renderRemoveMessageModal, renderScrollToBottomOrUnread = _h.renderScrollToBottomOrUnread, renderEditInput = _h.renderEditInput, _j = _h.renderPlaceholderLoader, renderPlaceholderLoader = _j === void 0 ? function () { return React.createElement(ui_PlaceHolder.default, { type: ui_PlaceHolder.PlaceHolderTypes.LOADING }); } : _j, _k = _h.renderPlaceholderEmpty, renderPlaceholderEmpty = _k === void 0 ? function () { return React.createElement(ui_PlaceHolder.default, { className: "sendbird-conversation__no-messages", type: ui_PlaceHolder.PlaceHolderTypes.NO_MESSAGES }); } : _k, _l = _h.renderFrozenNotification, renderFrozenNotification = _l === void 0 ? function () { return React.createElement(GroupChannel_components_FrozenNotification.FrozenNotification, { className: "sendbird-conversation__messages__notification" }); } : _l;
+    var _m = Channel_context.useChannelContext(), allMessages = _m.allMessages, localMessages = _m.localMessages, hasMorePrev = _m.hasMorePrev, hasMoreNext = _m.hasMoreNext, setInitialTimeStamp = _m.setInitialTimeStamp, setAnimatedMessageId = _m.setAnimatedMessageId, setHighLightedMessageId = _m.setHighLightedMessageId, isMessageGroupingEnabled = _m.isMessageGroupingEnabled, scrollRef = _m.scrollRef, onScrollCallback = _m.onScrollCallback, onScrollDownCallback = _m.onScrollDownCallback, messagesDispatcher = _m.messagesDispatcher, messageActionTypes = _m.messageActionTypes, currentGroupChannel = _m.currentGroupChannel, disableMarkAsRead = _m.disableMarkAsRead, filterMessageList = _m.filterMessageList, replyType = _m.replyType, loading = _m.loading, isScrolled = _m.isScrolled, unreadSince = _m.unreadSince, unreadSinceDate = _m.unreadSinceDate, typingMembers = _m.typingMembers;
     var store = useSendbirdStateContext.useSendbirdStateContext();
     var allMessagesFiltered = typeof filterMessageList === 'function' ? allMessages.filter(filterMessageList) : allMessages;
     var markAsReadScheduler = store.config.markAsReadScheduler;
-    var _m = React.useState(false), isScrollBottom = _m[0], setIsScrollBottom = _m[1];
+    var _o = React.useState(false), isScrollBottom = _o[0], setIsScrollBottom = _o[1];
     useScrollBehavior();
     /**
      * @param {function} callback callback from useHandleOnScrollCallback, it adjusts scroll position
@@ -252,13 +252,29 @@ var MessageList = function (props) {
             setIsScrollBottom(false);
         },
     });
-    var _o = useSetScrollToBottom({ loading: loading }), scrollToBottomHandler = _o.scrollToBottomHandler, scrollBottom = _o.scrollBottom;
+    var _p = useSetScrollToBottom({ loading: loading }), scrollToBottomHandler = _p.scrollToBottomHandler, scrollBottom = _p.scrollBottom;
     if (loading) {
         return renderPlaceholderLoader();
     }
     if (allMessagesFiltered.length < 1) {
         return renderPlaceholderEmpty();
     }
+    var handleUnreadCountClick = function () {
+        if (scrollRef === null || scrollRef === void 0 ? void 0 : scrollRef.current)
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        if (!disableMarkAsRead && !!currentGroupChannel) {
+            markAsReadScheduler.push(currentGroupChannel);
+            messagesDispatcher({
+                type: messageActionTypes.MARK_AS_READ,
+                payload: { channel: currentGroupChannel },
+            });
+        }
+        setInitialTimeStamp(null);
+        setAnimatedMessageId(null);
+        setHighLightedMessageId(null);
+    };
+    var isUnreadNotificationButtonDisplayed = !!((!isScrollBottom || hasMoreNext) && (unreadSince || unreadSinceDate));
+    var isScrollToBottomButtonDisplayed = scrollBottom > SCROLL_BOTTOM_PADDING;
     return (React.createElement(React.Fragment, null,
         !isScrolled && React.createElement(ui_PlaceHolder.default, { type: ui_PlaceHolder.PlaceHolderTypes.LOADING }),
         React.createElement("div", { className: "sendbird-conversation__messages ".concat(className) },
@@ -281,7 +297,7 @@ var MessageList = function (props) {
                         }), chainTop = _c.chainTop, chainBottom = _c.chainBottom, hasSeparator = _c.hasSeparator;
                         var isByMe = ((_a = m === null || m === void 0 ? void 0 : m.sender) === null || _a === void 0 ? void 0 : _a.userId) === ((_b = store === null || store === void 0 ? void 0 : store.config) === null || _b === void 0 ? void 0 : _b.userId);
                         return (React.createElement(Message_context.MessageProvider, { message: m, key: m === null || m === void 0 ? void 0 : m.messageId, isByMe: isByMe },
-                            React.createElement(Channel_components_Message, { handleScroll: moveScroll, message: m, hasSeparator: hasSeparator, chainTop: chainTop, chainBottom: chainBottom, renderMessageContent: renderMessageContent, renderSuggestedReplies: renderSuggestedReplies, renderCustomSeparator: renderCustomSeparator, 
+                            React.createElement(Channel_components_Message, { handleScroll: moveScroll, message: m, hasSeparator: hasSeparator, chainTop: chainTop, chainBottom: chainBottom, renderMessageContent: renderMessageContent, renderSuggestedReplies: renderSuggestedReplies, renderCustomSeparator: renderCustomSeparator, renderRemoveMessageModal: renderRemoveMessageModal, renderEditInput: renderEditInput, 
                                 // backward compatibility
                                 renderMessage: renderMessage })));
                     }),
@@ -297,34 +313,29 @@ var MessageList = function (props) {
                         }), chainTop = _c.chainTop, chainBottom = _c.chainBottom;
                         var isByMe = ((_a = m === null || m === void 0 ? void 0 : m.sender) === null || _a === void 0 ? void 0 : _a.userId) === ((_b = store === null || store === void 0 ? void 0 : store.config) === null || _b === void 0 ? void 0 : _b.userId);
                         return (React.createElement(Message_context.MessageProvider, { message: m, key: m === null || m === void 0 ? void 0 : m.messageId, isByMe: isByMe },
-                            React.createElement(Channel_components_Message, { handleScroll: moveScroll, message: m, chainTop: chainTop, chainBottom: chainBottom, renderMessageContent: renderMessageContent, renderSuggestedReplies: renderSuggestedReplies, renderCustomSeparator: renderCustomSeparator, 
+                            React.createElement(Channel_components_Message, { handleScroll: moveScroll, message: m, chainTop: chainTop, chainBottom: chainBottom, renderMessageContent: renderMessageContent, renderSuggestedReplies: renderSuggestedReplies, renderCustomSeparator: renderCustomSeparator, renderEditInput: renderEditInput, 
                                 // backward compatibility
                                 renderMessage: renderMessage })));
                     }),
-                    !hasMoreNext
-                        && ((_b = (_a = store === null || store === void 0 ? void 0 : store.config) === null || _a === void 0 ? void 0 : _a.groupChannel) === null || _b === void 0 ? void 0 : _b.enableTypingIndicator)
-                        && ((_e = (_d = (_c = store === null || store === void 0 ? void 0 : store.config) === null || _c === void 0 ? void 0 : _c.groupChannel) === null || _d === void 0 ? void 0 : _d.typingIndicatorTypes) === null || _e === void 0 ? void 0 : _e.has(index$2.TypingIndicatorType.Bubble)) && (React.createElement(ui_TypingIndicatorBubble, { typingMembers: typingMembers, handleScroll: moveScroll })))),
+                    !hasMoreNext &&
+                        ((_b = (_a = store === null || store === void 0 ? void 0 : store.config) === null || _a === void 0 ? void 0 : _a.groupChannel) === null || _b === void 0 ? void 0 : _b.enableTypingIndicator) &&
+                        ((_e = (_d = (_c = store === null || store === void 0 ? void 0 : store.config) === null || _c === void 0 ? void 0 : _c.groupChannel) === null || _d === void 0 ? void 0 : _d.typingIndicatorTypes) === null || _e === void 0 ? void 0 : _e.has(index$2.TypingIndicatorType.Bubble)) && (React.createElement(ui_TypingIndicatorBubble, { typingMembers: typingMembers, handleScroll: moveScroll })))),
             (currentGroupChannel === null || currentGroupChannel === void 0 ? void 0 : currentGroupChannel.isFrozen) && renderFrozenNotification(),
             /**
              * Show unread count IFF scroll is not bottom or is bottom but hasNext is true.
              */
-            (!isScrollBottom || hasMoreNext) && (unreadSince || unreadSinceDate) && (React.createElement(GroupChannel_components_UnreadCount.UnreadCount, { className: "sendbird-conversation__messages__notification", count: currentGroupChannel === null || currentGroupChannel === void 0 ? void 0 : currentGroupChannel.unreadMessageCount, time: unreadSince, lastReadAt: unreadSinceDate, onClick: function () {
-                    if (scrollRef === null || scrollRef === void 0 ? void 0 : scrollRef.current)
-                        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-                    if (!disableMarkAsRead && !!currentGroupChannel) {
-                        markAsReadScheduler.push(currentGroupChannel);
-                        messagesDispatcher({
-                            type: messageActionTypes.MARK_AS_READ,
-                            payload: { channel: currentGroupChannel },
-                        });
-                    }
-                    setInitialTimeStamp(null);
-                    setAnimatedMessageId(null);
-                    setHighLightedMessageId(null);
-                } })),
+            !renderScrollToBottomOrUnread && (!isScrollBottom || hasMoreNext) && (unreadSince || unreadSinceDate) && (React.createElement(GroupChannel_components_UnreadCount.UnreadCount, { className: "sendbird-conversation__messages__notification", count: currentGroupChannel === null || currentGroupChannel === void 0 ? void 0 : currentGroupChannel.unreadMessageCount, time: unreadSince, lastReadAt: unreadSinceDate, onClick: handleUnreadCountClick })),
             // This flag is an unmatched variable
-            scrollBottom > SCROLL_BOTTOM_PADDING && (React.createElement("div", { className: "sendbird-conversation__scroll-bottom-button", onClick: onClickScrollBot, onKeyDown: onClickScrollBot, tabIndex: 0, role: "button" },
-                React.createElement(ui_Icon.default, { width: "24px", height: "24px", type: ui_Icon.IconTypes.CHEVRON_DOWN, fillColor: ui_Icon.IconColors.PRIMARY }))))));
+            !renderScrollToBottomOrUnread && isScrollToBottomButtonDisplayed && (React.createElement("div", { className: "sendbird-conversation__scroll-bottom-button", onClick: onClickScrollBot, onKeyDown: onClickScrollBot, tabIndex: 0, role: "button" },
+                React.createElement(ui_Icon.default, { width: "24px", height: "24px", type: ui_Icon.IconTypes.CHEVRON_DOWN, fillColor: ui_Icon.IconColors.PRIMARY }))), renderScrollToBottomOrUnread === null || renderScrollToBottomOrUnread === void 0 ? void 0 :
+            renderScrollToBottomOrUnread({
+                onScrollToBottom: onClickScrollBot,
+                onScrollToUnread: handleUnreadCountClick,
+                unreadCount: (_f = currentGroupChannel === null || currentGroupChannel === void 0 ? void 0 : currentGroupChannel.unreadMessageCount) !== null && _f !== void 0 ? _f : 0,
+                lastReadAt: unreadSinceDate,
+                shouldDisplayScrollToBottom: isScrollToBottomButtonDisplayed,
+                shouldDisplayUnreadNotifications: isUnreadNotificationButtonDisplayed,
+            }))));
 };
 
 exports.MessageList = MessageList;

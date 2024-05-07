@@ -4230,7 +4230,7 @@ div.sendbird-text-message-item-body {
 .sendbird-theme--dark .sendbird-template-loading-message-item-body.mouse-hover.outgoing, .sendbird-theme--dark .sendbird-template-loading-message-item-body:hover.outgoing {
   background-color: var(--sendbird-dark-primary-300);
 }
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,600,700&display=swap');
+
 
 .sb-message-template__border {
   position: relative;

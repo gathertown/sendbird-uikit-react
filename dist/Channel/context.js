@@ -1,26 +1,26 @@
 import React__default, { useEffect, useCallback, useRef, useState, useReducer, useMemo } from 'react';
-import { U as UserProfileProvider } from '../chunks/bundle-BxO5H6aF.js';
+import { U as UserProfileProvider } from '../chunks/bundle-DSd-G7ux.js';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
-import { T as ThreadReplySelectType } from '../chunks/bundle-DQwQl7bP.js';
-import { m as mergeAndSortMessages, p as passUnsuccessfullMessages, s as scrollIntoLast, c as scrollToRenderedMessage, g as getAllEmojisMapFromEmojiContainer, d as getNicknamesMapFromMembers } from '../chunks/bundle-se836s50.js';
-import { g as getIsReactionEnabled } from '../chunks/bundle-Dn-yaG7j.js';
-import { _ as __assign, c as __spreadArray } from '../chunks/bundle-D8IuvsaW.js';
-import { f as format } from '../chunks/bundle-BlLFOUrw.js';
+import { T as ThreadReplySelectType } from '../chunks/bundle-DyO1n8fC.js';
+import { m as mergeAndSortMessages, p as passUnsuccessfullMessages, s as scrollIntoLast, d as scrollToRenderedMessage, g as getAllEmojisMapFromEmojiContainer, e as getNicknamesMapFromMembers } from '../chunks/bundle-B-z3huWI.js';
+import { g as getIsReactionEnabled } from '../chunks/bundle-k5z_1yHM.js';
+import { _ as __assign, c as __spreadArray } from '../chunks/bundle-s7uQ7zAa.js';
+import { f as format } from '../chunks/bundle-Dac-NyF8.js';
 import { SendingStatus, ReplyType, MessageMetaArray } from '@sendbird/chat/message';
-import { K, f as isSendableMessage, a1 as S, a2 as filterMessageListParams } from '../chunks/bundle-BnYBX14T.js';
-import { R as RESET_MESSAGES, F as FETCH_INITIAL_MESSAGES_START, a as FETCH_INITIAL_MESSAGES_SUCCESS, c as FETCH_PREV_MESSAGES_SUCCESS, d as FETCH_NEXT_MESSAGES_SUCCESS, b as FETCH_INITIAL_MESSAGES_FAILURE, e as FETCH_PREV_MESSAGES_FAILURE, f as FETCH_NEXT_MESSAGES_FAILURE, S as SEND_MESSAGE_START, g as SEND_MESSAGE_SUCCESS, h as SEND_MESSAGE_FAILURE, i as SET_CURRENT_CHANNEL, j as SET_CHANNEL_INVALID, O as ON_MESSAGE_RECEIVED, k as ON_MESSAGE_UPDATED, l as ON_MESSAGE_THREAD_INFO_UPDATED, m as RESEND_MESSAGE_START, n as MARK_AS_READ, o as ON_MESSAGE_DELETED, p as ON_MESSAGE_DELETED_BY_REQ_ID, q as SET_EMOJI_CONTAINER, r as ON_REACTION_UPDATED, M as MESSAGE_LIST_PARAMS_CHANGED, s as ON_FILE_INFO_UPLOADED, t as ON_TYPING_STATUS_UPDATED, u as channelActions } from '../chunks/bundle-COwB5DaQ.js';
-import { c as compareIds } from '../chunks/bundle-BFBEOrCk.js';
-import { P as PREV_RESULT_SIZE, N as NEXT_RESULT_SIZE, u as useInitialMessagesFetch } from '../chunks/bundle-bFnpVx53.js';
+import { K, a as isSendableMessage, _ as S, a1 as filterMessageListParams } from '../chunks/bundle-D-z4U1wX.js';
+import { R as RESET_MESSAGES, F as FETCH_INITIAL_MESSAGES_START, a as FETCH_INITIAL_MESSAGES_SUCCESS, c as FETCH_PREV_MESSAGES_SUCCESS, d as FETCH_NEXT_MESSAGES_SUCCESS, b as FETCH_INITIAL_MESSAGES_FAILURE, e as FETCH_PREV_MESSAGES_FAILURE, f as FETCH_NEXT_MESSAGES_FAILURE, S as SEND_MESSAGE_START, g as SEND_MESSAGE_SUCCESS, h as SEND_MESSAGE_FAILURE, i as SET_CURRENT_CHANNEL, j as SET_CHANNEL_INVALID, O as ON_MESSAGE_RECEIVED, k as ON_MESSAGE_UPDATED, l as ON_MESSAGE_THREAD_INFO_UPDATED, m as RESEND_MESSAGE_START, n as MARK_AS_READ, o as ON_MESSAGE_DELETED, p as ON_MESSAGE_DELETED_BY_REQ_ID, q as SET_EMOJI_CONTAINER, r as ON_REACTION_UPDATED, M as MESSAGE_LIST_PARAMS_CHANGED, s as ON_FILE_INFO_UPLOADED, t as ON_TYPING_STATUS_UPDATED, u as channelActions } from '../chunks/bundle-BMf2Gp0X.js';
+import { c as compareIds } from '../chunks/bundle-BHNYgnEs.js';
+import { P as PREV_RESULT_SIZE, N as NEXT_RESULT_SIZE, u as useInitialMessagesFetch } from '../chunks/bundle-DHrHSLDL.js';
 import { GroupChannelHandler } from '@sendbird/chat/groupChannel';
-import { u as uuidv4 } from '../chunks/bundle-DgRY6xy0.js';
-import { u as useReconnectOnIdle } from '../chunks/bundle-Cd6XSYjN.js';
-import { a as SCROLL_BOTTOM_DELAY_FOR_FETCH, b as SCROLL_BOTTOM_DELAY_FOR_SEND, g as VOICE_MESSAGE_FILE_NAME, h as VOICE_MESSAGE_MIME_TYPE, M as META_ARRAY_VOICE_DURATION_KEY, i as META_ARRAY_MESSAGE_TYPE_KEY, j as META_ARRAY_MESSAGE_TYPE_VALUE__VOICE } from '../chunks/bundle-w0s865vS.js';
-import { p as pubSubTopics, P as PublishingModuleType, b as PUBSUB_TOPICS, s as shouldPubSubPublishToChannel } from '../chunks/bundle-Cf2xHdC2.js';
-import { u as useToggleReactionCallback } from '../chunks/bundle-BNAtsapc.js';
-import { g as getCaseResolvedReplyType, a as getCaseResolvedThreadReplySelectType } from '../chunks/bundle-CvlF6SbQ.js';
-import { u as useSendMultipleFilesMessage } from '../chunks/bundle-B-v_xYnH.js';
+import { u as uuidv4 } from '../chunks/bundle-Caf8F3YR.js';
+import { u as useReconnectOnIdle } from '../chunks/bundle-D8n4s-pk.js';
+import { a as SCROLL_BOTTOM_DELAY_FOR_FETCH, b as SCROLL_BOTTOM_DELAY_FOR_SEND, g as VOICE_MESSAGE_FILE_NAME, h as VOICE_MESSAGE_MIME_TYPE, M as META_ARRAY_VOICE_DURATION_KEY, i as META_ARRAY_MESSAGE_TYPE_KEY, j as META_ARRAY_MESSAGE_TYPE_VALUE__VOICE } from '../chunks/bundle-BUsOkeT7.js';
+import { p as pubSubTopics, P as PublishingModuleType, b as PUBSUB_TOPICS, s as shouldPubSubPublishToChannel } from '../chunks/bundle-CIiROwS_.js';
+import { u as useToggleReactionCallback } from '../chunks/bundle-DFFKNF1F.js';
+import { g as getCaseResolvedReplyType, a as getCaseResolvedThreadReplySelectType } from '../chunks/bundle-C7dAdhH1.js';
+import { u as useSendMultipleFilesMessage } from '../chunks/bundle-DjAc13S7.js';
 import '../withSendbird.js';
-import '../chunks/bundle-k7V2rNcW.js';
+import '../chunks/bundle-Dyt8DaMp.js';
 import '../utils/message/getOutgoingMessageState.js';
 
 var initialState = {
@@ -50,6 +50,7 @@ var initialState = {
      */
     unreadSinceDate: null,
     isInvalid: false,
+    fetchChannelError: null,
     readStatus: null,
     messageListParams: null,
     typingMembers: [],
@@ -74,12 +75,12 @@ function channelReducer(state, action) {
         return __assign(__assign({}, state), { 
             // when user switches channel, if the previous channel `hasMorePrev`
             // the onScroll gets called twice, setting hasMorePrev false prevents this
-            hasMorePrev: false, hasMoreNext: false, allMessages: [], localMessages: [] });
+            hasMorePrev: false, hasMoreNext: false, allMessages: [], localMessages: [], fetchChannelError: null });
     })
         .with({ type: FETCH_INITIAL_MESSAGES_START }, function () {
         return __assign(__assign({}, state), { loading: true, allMessages: state.allMessages.filter(function (m) { return isSendableMessage(m)
                 ? m.sendingStatus !== SendingStatus.SUCCEEDED
-                : true; }), localMessages: [] });
+                : true; }), localMessages: [], fetchChannelError: null });
     })
         .with({ type: FETCH_INITIAL_MESSAGES_SUCCESS }, function (action) {
         var _a;
@@ -89,7 +90,7 @@ function channelReducer(state, action) {
         }
         var oldestMessageTimeStamp = getOldestMessageTimeStamp(messages);
         var latestMessageTimeStamp = getLatestMessageTimeStamp(messages);
-        return __assign(__assign({}, state), { loading: false, initialized: true, hasMorePrev: true, hasMoreNext: true, oldestMessageTimeStamp: oldestMessageTimeStamp, latestMessageTimeStamp: latestMessageTimeStamp, allMessages: __spreadArray([], messages, true) });
+        return __assign(__assign({}, state), { loading: false, initialized: true, hasMorePrev: true, hasMoreNext: true, oldestMessageTimeStamp: oldestMessageTimeStamp, latestMessageTimeStamp: latestMessageTimeStamp, fetchChannelError: null, allMessages: __spreadArray([], messages, true) });
     })
         .with({ type: FETCH_PREV_MESSAGES_SUCCESS }, function (action) {
         var _a, _b, _c, _d;
@@ -142,7 +143,7 @@ function channelReducer(state, action) {
             return state;
         // It shows something went wrong screen when fetching initial messages failed.
         var shouldInvalid = [FETCH_INITIAL_MESSAGES_FAILURE].includes(action.type);
-        return __assign(__assign({}, state), { loading: false, isInvalid: shouldInvalid, initialized: false, allMessages: [], hasMorePrev: false, hasMoreNext: false, oldestMessageTimeStamp: null, latestMessageTimeStamp: null });
+        return __assign(__assign({}, state), { loading: false, isInvalid: shouldInvalid, fetchChannelError: action.type === FETCH_INITIAL_MESSAGES_FAILURE && action.payload.fetchChannelError, initialized: false, allMessages: [], hasMorePrev: false, hasMoreNext: false, oldestMessageTimeStamp: null, latestMessageTimeStamp: null });
     })
         .with({ type: SEND_MESSAGE_START }, function (action) {
         // Message should not be spread here
@@ -527,7 +528,7 @@ function useHandleChannelEvents(_a, _b) {
 
 function useGetChannel(_a, _b) {
     var channelUrl = _a.channelUrl, sdkInit = _a.sdkInit, disableMarkAsRead = _a.disableMarkAsRead;
-    var messagesDispatcher = _b.messagesDispatcher, sdk = _b.sdk, logger = _b.logger, markAsReadScheduler = _b.markAsReadScheduler;
+    var messagesDispatcher = _b.messagesDispatcher, sdk = _b.sdk, logger = _b.logger, markAsReadScheduler = _b.markAsReadScheduler, eventHandlers = _b.eventHandlers;
     useEffect(function () {
         if (channelUrl && sdkInit && sdk && sdk.groupChannel) {
             logger.info('Channel | useSetChannel fetching channel', channelUrl);
@@ -545,7 +546,9 @@ function useGetChannel(_a, _b) {
                 }
             })
                 .catch(function (e) {
+                var _a, _b;
                 logger.warning('Channel | useSetChannel fetch channel failed', { channelUrl: channelUrl, e: e });
+                (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, e);
                 messagesDispatcher({
                     type: SET_CHANNEL_INVALID,
                 });
@@ -560,7 +563,9 @@ function useGetChannel(_a, _b) {
                 });
             })
                 .catch(function (err) {
+                var _a, _b;
                 logger.error('Channel: Getting emojis failed', err);
+                (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, err);
             });
         }
     }, [channelUrl, sdkInit]);
@@ -568,7 +573,7 @@ function useGetChannel(_a, _b) {
 
 function useHandleReconnect(_a, _b) {
     var isOnline = _a.isOnline, replyType = _a.replyType, disableMarkAsRead = _a.disableMarkAsRead, reconnectOnIdle = _a.reconnectOnIdle;
-    var logger = _b.logger, sdk = _b.sdk, scrollRef = _b.scrollRef, currentGroupChannel = _b.currentGroupChannel, messagesDispatcher = _b.messagesDispatcher, markAsReadScheduler = _b.markAsReadScheduler, userFilledMessageListQuery = _b.userFilledMessageListQuery;
+    var logger = _b.logger, eventHandlers = _b.eventHandlers, sdk = _b.sdk, scrollRef = _b.scrollRef, currentGroupChannel = _b.currentGroupChannel, messagesDispatcher = _b.messagesDispatcher, markAsReadScheduler = _b.markAsReadScheduler, userFilledMessageListQuery = _b.userFilledMessageListQuery;
     var shouldReconnect = useReconnectOnIdle(isOnline, currentGroupChannel, reconnectOnIdle).shouldReconnect;
     useEffect(function () {
         return function () {
@@ -613,10 +618,12 @@ function useHandleReconnect(_a, _b) {
                         setTimeout(function () { return scrollIntoLast(0, scrollRef); }, SCROLL_BOTTOM_DELAY_FOR_FETCH);
                     })
                         .catch(function (error) {
+                        var _a, _b;
                         logger.error('Channel: Fetching messages failed', error);
+                        (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, error);
                         messagesDispatcher({
                             type: FETCH_INITIAL_MESSAGES_FAILURE,
-                            payload: { currentGroupChannel: currentGroupChannel },
+                            payload: { currentGroupChannel: currentGroupChannel, fetchChannelError: error },
                         });
                     });
                     if (!disableMarkAsRead) {
@@ -677,7 +684,7 @@ function useScrollCallback(_a, _b) {
 
 function useScrollDownCallback(_a, _b) {
     var currentGroupChannel = _a.currentGroupChannel, latestMessageTimeStamp = _a.latestMessageTimeStamp, userFilledMessageListQuery = _a.userFilledMessageListQuery, hasMoreNext = _a.hasMoreNext, replyType = _a.replyType;
-    var logger = _b.logger, messagesDispatcher = _b.messagesDispatcher, sdk = _b.sdk;
+    var logger = _b.logger, messagesDispatcher = _b.messagesDispatcher, sdk = _b.sdk, eventHandlers = _b.eventHandlers;
     return useCallback(function (cb) {
         var _a, _b;
         if (!hasMoreNext) {
@@ -711,7 +718,9 @@ function useScrollDownCallback(_a, _b) {
             setTimeout(function () { return cb([messages, null]); });
         })
             .catch(function (error) {
+            var _a, _b;
             logger.error('Channel: Fetching later messages failed', error);
+            (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, error);
             messagesDispatcher({
                 type: FETCH_NEXT_MESSAGES_FAILURE,
                 payload: { currentGroupChannel: currentGroupChannel },
@@ -815,8 +824,9 @@ function useUpdateMessageCallback(_a, _b) {
 
 function useResendMessageCallback(_a, _b) {
     var currentGroupChannel = _a.currentGroupChannel, messagesDispatcher = _a.messagesDispatcher;
-    var logger = _b.logger, pubSub = _b.pubSub;
+    var logger = _b.logger, eventHandlers = _b.eventHandlers, pubSub = _b.pubSub;
     return useCallback(function (failedMessage) {
+        var _a, _b;
         logger.info('Channel: Resending message has started', failedMessage);
         if (failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isResendable) {
             // userMessage
@@ -916,6 +926,7 @@ function useResendMessageCallback(_a, _b) {
         }
         else {
             logger.error('Message is not resendable', failedMessage);
+            (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, new Error('Message is not resendable'));
         }
     }, [currentGroupChannel, messagesDispatcher]);
 }
@@ -985,7 +996,7 @@ function useSendMessageCallback(_a, _b) {
 
 function useSendFileMessageCallback(_a, _b) {
     var currentGroupChannel = _a.currentGroupChannel, onBeforeSendFileMessage = _a.onBeforeSendFileMessage, imageCompression = _a.imageCompression;
-    var logger = _b.logger, pubSub = _b.pubSub, scrollRef = _b.scrollRef, messagesDispatcher = _b.messagesDispatcher;
+    var logger = _b.logger, eventHandlers = _b.eventHandlers, pubSub = _b.pubSub, scrollRef = _b.scrollRef, messagesDispatcher = _b.messagesDispatcher;
     var sendMessage = useCallback(function (compressedFile, quoteMessage) {
         if (quoteMessage === void 0) { quoteMessage = null; }
         return new Promise(function (resolve, reject) {
@@ -1016,7 +1027,9 @@ function useSendFileMessageCallback(_a, _b) {
                 setTimeout(function () { return scrollIntoLast(0, scrollRef); }, SCROLL_BOTTOM_DELAY_FOR_SEND);
             })
                 .onFailed(function (err, failedMessage) {
+                var _a, _b;
                 logger.error('Channel: Sending file message failed!', { failedMessage: failedMessage, err: err });
+                (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, err);
                 // TODO: v4 - remove logic that modifies the original object.
                 //  It makes the code difficult to track, likely causing unpredictable side effects.
                 // @ts-ignore eslint-disable-next-line no-param-reassign
@@ -1252,6 +1265,7 @@ var ChannelProvider = function (props) {
     var config = globalStore.config;
     var replyType = (_a = props.replyType) !== null && _a !== void 0 ? _a : getCaseResolvedReplyType(config.groupChannel.replyType).upperCase;
     var pubSub = config.pubSub, logger = config.logger, userId = config.userId, isOnline = config.isOnline, imageCompression = config.imageCompression, onUserProfileMessage = config.onUserProfileMessage, markAsReadScheduler = config.markAsReadScheduler, groupChannel = config.groupChannel;
+    var eventHandlers = globalStore.eventHandlers;
     var sdk = (_c = (_b = globalStore === null || globalStore === void 0 ? void 0 : globalStore.stores) === null || _b === void 0 ? void 0 : _b.sdkStore) === null || _c === void 0 ? void 0 : _c.sdk;
     var sdkInit = (_e = (_d = globalStore === null || globalStore === void 0 ? void 0 : globalStore.stores) === null || _d === void 0 ? void 0 : _d.sdkStore) === null || _e === void 0 ? void 0 : _e.initialized;
     var globalConfigs = globalStore === null || globalStore === void 0 ? void 0 : globalStore.config;
@@ -1270,7 +1284,7 @@ var ChannelProvider = function (props) {
     var _s = useReducer(channelReducer, initialState), messagesStore = _s[0], messagesDispatcher = _s[1];
     var scrollRef = useRef(null);
     var isMentionEnabled = groupChannel.enableMention;
-    var allMessages = messagesStore.allMessages, localMessages = messagesStore.localMessages, loading = messagesStore.loading, initialized = messagesStore.initialized, unreadSince = messagesStore.unreadSince, unreadSinceDate = messagesStore.unreadSinceDate, isInvalid = messagesStore.isInvalid, currentGroupChannel = messagesStore.currentGroupChannel, hasMorePrev = messagesStore.hasMorePrev, oldestMessageTimeStamp = messagesStore.oldestMessageTimeStamp, hasMoreNext = messagesStore.hasMoreNext, latestMessageTimeStamp = messagesStore.latestMessageTimeStamp, emojiContainer = messagesStore.emojiContainer, readStatus = messagesStore.readStatus, typingMembers = messagesStore.typingMembers;
+    var allMessages = messagesStore.allMessages, localMessages = messagesStore.localMessages, loading = messagesStore.loading, initialized = messagesStore.initialized, unreadSince = messagesStore.unreadSince, unreadSinceDate = messagesStore.unreadSinceDate, isInvalid = messagesStore.isInvalid, fetchChannelError = messagesStore.fetchChannelError, currentGroupChannel = messagesStore.currentGroupChannel, hasMorePrev = messagesStore.hasMorePrev, oldestMessageTimeStamp = messagesStore.oldestMessageTimeStamp, hasMoreNext = messagesStore.hasMoreNext, latestMessageTimeStamp = messagesStore.latestMessageTimeStamp, emojiContainer = messagesStore.emojiContainer, readStatus = messagesStore.readStatus, typingMembers = messagesStore.typingMembers;
     var usingReaction = getIsReactionEnabled({
         channel: currentGroupChannel,
         config: config,
@@ -1317,13 +1331,14 @@ var ChannelProvider = function (props) {
         replyType: replyType,
     }, {
         logger: logger,
+        eventHandlers: eventHandlers,
         messagesDispatcher: messagesDispatcher,
         sdk: sdk,
     });
     var toggleReaction = useToggleReactionCallback(currentGroupChannel, logger);
     // to create message-datasource
     // this hook sets currentGroupChannel asynchronously
-    useGetChannel({ channelUrl: channelUrl, sdkInit: sdkInit, disableMarkAsRead: disableMarkAsRead }, { messagesDispatcher: messagesDispatcher, sdk: sdk, logger: logger, markAsReadScheduler: markAsReadScheduler });
+    useGetChannel({ channelUrl: channelUrl, sdkInit: sdkInit, disableMarkAsRead: disableMarkAsRead }, { messagesDispatcher: messagesDispatcher, sdk: sdk, logger: logger, markAsReadScheduler: markAsReadScheduler, eventHandlers: eventHandlers });
     // to set quote message as null
     useEffect(function () {
         setQuoteMessage(null);
@@ -1413,6 +1428,7 @@ var ChannelProvider = function (props) {
         publishingModules: [PublishingModuleType.CHANNEL],
     }, {
         logger: logger,
+        eventHandlers: eventHandlers,
         pubSub: pubSub,
         scrollRef: scrollRef,
     })[0];
@@ -1448,6 +1464,7 @@ var ChannelProvider = function (props) {
             unreadSince: unreadSince,
             unreadSinceDate: unreadSinceDate,
             isInvalid: isInvalid,
+            fetchChannelError: fetchChannelError,
             currentGroupChannel: currentGroupChannel,
             hasMorePrev: hasMorePrev,
             hasMoreNext: hasMoreNext,

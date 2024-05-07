@@ -1,6 +1,6 @@
 import './index.scss';
 import React from 'react';
-import type { RenderCustomSeparatorProps, RenderMessageParamsType } from '../../../../types';
+import type { ClientUserMessage, EveryMessage, RenderCustomSeparatorProps, RenderMessageParamsType } from '../../../../types';
 import type { GroupChannelHeaderProps } from '../GroupChannelHeader';
 import type { GroupChannelMessageListProps } from '../MessageList';
 import type { MessageContentProps } from '../../../../ui/MessageContent';
@@ -66,6 +66,23 @@ export interface GroupChannelUIBasicProps {
      * A function that customizes the rendering of the typing indicator component.
      */
     renderTypingIndicator?: () => React.ReactElement;
+    renderRemoveMessageModal?: (props: {
+        message: EveryMessage;
+        onCancel: () => void;
+        onSubmit: () => void;
+    }) => React.ReactElement;
+    renderEditInput?: ({ onCancelEdit, message }: {
+        onCancelEdit: VoidFunction;
+        message: ClientUserMessage;
+    }) => React.ReactElement;
+    renderScrollToBottomOrUnread?: (props: {
+        onScrollToBottom: () => void;
+        onScrollToUnread: () => void;
+        unreadCount: number;
+        lastReadAt: Date;
+        shouldDisplayScrollToBottom: boolean;
+        shouldDisplayUnreadNotifications: boolean;
+    }) => React.ReactElement;
 }
 export interface GroupChannelUIViewProps extends GroupChannelUIBasicProps {
     isLoading?: boolean;

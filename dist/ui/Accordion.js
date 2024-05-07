@@ -2,8 +2,8 @@ import React__default, { useMemo } from 'react';
 import Icon, { IconTypes } from './Icon.js';
 import { useAccordionGroupContext, AccordionGroupProvider } from './AccordionGroup.js';
 export { AccordionGroupContext } from './AccordionGroup.js';
-import '../chunks/bundle-D8IuvsaW.js';
-import '../chunks/bundle-0yILBaSQ.js';
+import '../chunks/bundle-s7uQ7zAa.js';
+import '../chunks/bundle-BJmqupdN.js';
 
 var Accordion = function (_a) {
     var className = _a.className, id = _a.id, renderTitle = _a.renderTitle, renderContent = _a.renderContent, renderFooter = _a.renderFooter;

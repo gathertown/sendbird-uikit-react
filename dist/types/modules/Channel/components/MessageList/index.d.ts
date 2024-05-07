@@ -7,6 +7,8 @@ export interface MessageListProps extends GroupChannelMessageListProps {
      * Customizes all child components of the message component.
      * */
     renderMessage?: GroupChannelUIBasicProps['renderMessage'];
+    renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
+    renderScrollToBottomOrUnread?: GroupChannelUIBasicProps['renderScrollToBottomOrUnread'];
 }
 export declare const MessageList: (props: MessageListProps) => React.JSX.Element;
 export default MessageList;

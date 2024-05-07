@@ -1,16 +1,16 @@
 import React__default, { useState, useRef, useCallback, useEffect } from 'react';
-import { M as MenuItems$1 } from '../chunks/bundle-CNHxvPPg.js';
+import { M as MenuItems$1 } from '../chunks/bundle-BytW9Azl.js';
 import { Role } from '@sendbird/chat';
 import { OpenChannel } from '@sendbird/chat/openChannel';
 import { createPortal } from 'react-dom';
 import SortByRow from './SortByRow.js';
-import { w as getClassName } from '../chunks/bundle-BnYBX14T.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BNNafMXS.js';
-import '../chunks/bundle-D8IuvsaW.js';
-import '../chunks/bundle-DgRY6xy0.js';
+import { v as getClassName } from '../chunks/bundle-D-z4U1wX.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BOy_tVjz.js';
+import '../chunks/bundle-s7uQ7zAa.js';
+import '../chunks/bundle-Caf8F3YR.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
-import '../chunks/bundle-C9nxq4KD.js';
+import '../chunks/bundle-DqWrl4d1.js';
 
 var MuteMenuItem = function (_a) {
     var channel = _a.channel, user = _a.user, _b = _a.className, className = _b === void 0 ? '' : _b, children = _a.children, _c = _a.disable, disable = _c === void 0 ? false : _c, _d = _a.dataSbId, dataSbId = _d === void 0 ? '' : _d, _e = _a.onChange, onChange = _e === void 0 ? function () { } : _e, _f = _a.onError, onError = _f === void 0 ? function () { } : _f;

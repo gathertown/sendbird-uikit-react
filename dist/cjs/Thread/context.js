@@ -1,20 +1,20 @@
 'use strict';
 
 var React = require('react');
-var useSendMultipleFilesMessage = require('../chunks/bundle-DzWthRdg.js');
-var UserProfileContext = require('../chunks/bundle-BKwrdy8Y.js');
+var useSendMultipleFilesMessage = require('../chunks/bundle-0AYxVXD-.js');
+var UserProfileContext = require('../chunks/bundle-CJtsI7GU.js');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
-var _tslib = require('../chunks/bundle-DHh3VdoS.js');
+var _tslib = require('../chunks/bundle-BO5OZWjS.js');
 var Thread_context_types = require('./context/types.js');
 var SendbirdChat = require('@sendbird/chat');
-var pubSub_topics = require('../chunks/bundle-CYjw4691.js');
-var actionTypes = require('../chunks/bundle-C4EYGhv3.js');
+var pubSub_topics = require('../chunks/bundle-z9miKj3U.js');
+var actionTypes = require('../chunks/bundle-DYYV3xLB.js');
 var groupChannel = require('@sendbird/chat/groupChannel');
-var uuid = require('../chunks/bundle-DtHyD1hB.js');
-var compareIds = require('../chunks/bundle-CruSSYSP.js');
+var uuid = require('../chunks/bundle-BjldQ7ts.js');
+var compareIds = require('../chunks/bundle-BcdtZarK.js');
 var message = require('@sendbird/chat/message');
-var consts = require('../chunks/bundle-BPGreBtw.js');
-require('../chunks/bundle-etwgXqw-.js');
+var consts = require('../chunks/bundle-DI6hrkhw.js');
+require('../chunks/bundle-BECkGjrR.js');
 require('../utils/message/getOutgoingMessageState.js');
 require('../withSendbird.js');
 
@@ -641,7 +641,7 @@ function useHandleChannelEvents(_a, _b) {
 
 function useSendFileMessageCallback(_a, _b) {
     var currentChannel = _a.currentChannel, onBeforeSendFileMessage = _a.onBeforeSendFileMessage;
-    var logger = _b.logger, pubSub = _b.pubSub, threadDispatcher = _b.threadDispatcher;
+    var logger = _b.logger, eventHandlers = _b.eventHandlers, pubSub = _b.pubSub, threadDispatcher = _b.threadDispatcher;
     var sendMessage = React.useCallback(function (file, quoteMessage) {
         return new Promise(function (resolve, reject) {
             var _a;
@@ -670,9 +670,11 @@ function useSendFileMessageCallback(_a, _b) {
                 });
                 setTimeout(function () { return useSendMultipleFilesMessage.scrollIntoLast(); }, consts.SCROLL_BOTTOM_DELAY_FOR_SEND);
             }).onFailed(function (error, message) {
+                var _a, _b;
                 message.localUrl = URL.createObjectURL(file);
                 message.file = file;
                 logger.info('Thread | useSendFileMessageCallback: Sending file message failed.', { message: message, error: error });
+                (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, error);
                 threadDispatcher({
                     type: ThreadContextActionTypes.SEND_MESSAGE_FAILURE,
                     payload: { message: message, error: error },
@@ -841,9 +843,9 @@ function useSendUserMessageCallback(_a, _b) {
 
 function useResendMessageCallback(_a, _b) {
     var currentChannel = _a.currentChannel;
-    var logger = _b.logger, pubSub = _b.pubSub, threadDispatcher = _b.threadDispatcher;
+    var logger = _b.logger, eventHandlers = _b.eventHandlers, pubSub = _b.pubSub, threadDispatcher = _b.threadDispatcher;
     return React.useCallback(function (failedMessage) {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f, _g;
         if (failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isResendable) {
             logger.info('Thread | useResendMessageCallback: Resending failedMessage start.', failedMessage);
             if (((_a = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isUserMessage) === null || _a === void 0 ? void 0 : _a.call(failedMessage)) || (failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.messageType) === message.MessageType.USER) {
@@ -866,7 +868,9 @@ function useResendMessageCallback(_a, _b) {
                             publishingModules: [pubSub_topics.PublishingModuleType.THREAD],
                         });
                     }).onFailed(function (error) {
+                        var _a, _b;
                         logger.warning('Thread | useResendMessageCallback: Resending user message failed.', error);
+                        (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, error);
                         failedMessage.sendingStatus = message.SendingStatus.FAILED;
                         threadDispatcher({
                             type: ThreadContextActionTypes.SEND_MESSAGE_FAILURE,
@@ -876,6 +880,7 @@ function useResendMessageCallback(_a, _b) {
                 }
                 catch (err) {
                     logger.warning('Thread | useResendMessageCallback: Resending user message failed.', err);
+                    (_c = (_b = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _b === void 0 ? void 0 : _b.onFailed) === null || _c === void 0 ? void 0 : _c.call(_b, err);
                     failedMessage.sendingStatus = message.SendingStatus.FAILED;
                     threadDispatcher({
                         type: ThreadContextActionTypes.SEND_MESSAGE_FAILURE,
@@ -883,9 +888,9 @@ function useResendMessageCallback(_a, _b) {
                     });
                 }
             }
-            else if ((_b = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isFileMessage) === null || _b === void 0 ? void 0 : _b.call(failedMessage)) {
+            else if ((_d = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isFileMessage) === null || _d === void 0 ? void 0 : _d.call(failedMessage)) {
                 try {
-                    (_c = currentChannel === null || currentChannel === void 0 ? void 0 : currentChannel.resendMessage) === null || _c === void 0 ? void 0 : _c.call(currentChannel, failedMessage).onPending(function (message) {
+                    (_e = currentChannel === null || currentChannel === void 0 ? void 0 : currentChannel.resendMessage) === null || _e === void 0 ? void 0 : _e.call(currentChannel, failedMessage).onPending(function (message) {
                         logger.info('Thread | useResendMessageCallback: Resending file message started.', message);
                         threadDispatcher({
                             type: ThreadContextActionTypes.RESEND_MESSAGE_START,
@@ -920,9 +925,9 @@ function useResendMessageCallback(_a, _b) {
                     });
                 }
             }
-            else if ((_d = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isMultipleFilesMessage) === null || _d === void 0 ? void 0 : _d.call(failedMessage)) {
+            else if ((_f = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isMultipleFilesMessage) === null || _f === void 0 ? void 0 : _f.call(failedMessage)) {
                 try {
-                    (_e = currentChannel === null || currentChannel === void 0 ? void 0 : currentChannel.resendMessage) === null || _e === void 0 ? void 0 : _e.call(currentChannel, failedMessage).onPending(function (message) {
+                    (_g = currentChannel === null || currentChannel === void 0 ? void 0 : currentChannel.resendMessage) === null || _g === void 0 ? void 0 : _g.call(currentChannel, failedMessage).onPending(function (message) {
                         logger.info('Thread | useResendMessageCallback: Resending multiple files message started.', message);
                         threadDispatcher({
                             type: ThreadContextActionTypes.RESEND_MESSAGE_START,
@@ -1189,6 +1194,7 @@ var ThreadProvider = function (props) {
     var sdk = sdkStore.sdk;
     var user = userStore.user;
     var sdkInit = sdkStore === null || sdkStore === void 0 ? void 0 : sdkStore.initialized;
+    var eventHandlers = globalStore.eventHandlers;
     // // config
     var logger = config.logger, pubSub = config.pubSub, onUserProfileMessage = config.onUserProfileMessage;
     var isMentionEnabled = config.groupChannel.enableMention;
@@ -1256,6 +1262,7 @@ var ThreadProvider = function (props) {
         onBeforeSendFileMessage: onBeforeSendFileMessage,
     }, {
         logger: logger,
+        eventHandlers: eventHandlers,
         pubSub: pubSub,
         threadDispatcher: threadDispatcher,
     });
@@ -1273,11 +1280,12 @@ var ThreadProvider = function (props) {
         publishingModules: [pubSub_topics.PublishingModuleType.THREAD],
     }, {
         logger: logger,
+        eventHandlers: eventHandlers,
         pubSub: pubSub,
     })[0];
     var resendMessage = useResendMessageCallback({
         currentChannel: currentChannel,
-    }, { logger: logger, pubSub: pubSub, threadDispatcher: threadDispatcher });
+    }, { logger: logger, eventHandlers: eventHandlers, pubSub: pubSub, threadDispatcher: threadDispatcher });
     var updateMessage = useUpdateMessageCallback({
         currentChannel: currentChannel,
         isMentionEnabled: isMentionEnabled,

@@ -1,7 +1,7 @@
 import React__default, { useCallback } from 'react';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
 import '../withSendbird.js';
-import '../chunks/bundle-D8IuvsaW.js';
+import '../chunks/bundle-s7uQ7zAa.js';
 
 var CreateOpenChannelContext = React__default.createContext({
     sdk: null,

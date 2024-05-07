@@ -29,6 +29,9 @@ export interface MessageMenuProps {
         message: SendableMessageType;
     }) => void;
     onMoveToParentMessage?: () => void;
+    customTypeDenylistMap?: {
+        edit?: string[];
+    };
     renderMenuItem?: (props: MessageMenuRenderMenuItemProps) => ReactElement;
 }
 export declare function MessageMenu(props: MessageMenuProps): ReactElement;

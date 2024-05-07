@@ -1,16 +1,16 @@
 'use strict';
 
 var React = require('react');
-var ui_Avatar = require('../chunks/bundle-JS-CtPko.js');
-var LocalizationContext = require('../chunks/bundle-BD2bIoH6.js');
-var utils = require('../chunks/bundle-COa5Ssfy.js');
-require('../chunks/bundle-DHh3VdoS.js');
+var ui_Avatar = require('../chunks/bundle-Cd7XOuNj.js');
+var LocalizationContext = require('../chunks/bundle-DKL8dMjq.js');
+var utils = require('../chunks/bundle-DuKfsNCh.js');
+require('../chunks/bundle-BO5OZWjS.js');
 require('./ImageRenderer.js');
-require('../chunks/bundle-BvJOj_Nb.js');
-require('../chunks/bundle-Xx0kBn7q.js');
+require('../chunks/bundle-DgAALupQ.js');
+require('../chunks/bundle-CoSi4lOw.js');
 require('./Icon.js');
-require('../chunks/bundle-DoHigaWY.js');
-require('../chunks/bundle-C8yEdUBb.js');
+require('../chunks/bundle-CNnH6vJ_.js');
+require('../chunks/bundle-B8rdv1pq.js');
 
 function ChannelAvatar(_a) {
     var channel = _a.channel, theme = _a.theme, _b = _a.height, height = _b === void 0 ? 56 : _b, _c = _a.width, width = _c === void 0 ? 56 : _c;

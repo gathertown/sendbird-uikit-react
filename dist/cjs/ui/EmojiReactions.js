@@ -6,46 +6,46 @@ var ui_ReactionButton = require('./ReactionButton.js');
 var ui_ImageRenderer = require('./ImageRenderer.js');
 var ui_Icon = require('./Icon.js');
 var ui_ContextMenu = require('./ContextMenu.js');
-var index = require('../chunks/bundle-CiDSKL46.js');
+var index = require('../chunks/bundle-C6gATKTE.js');
 var ui_BottomSheet = require('./BottomSheet.js');
-var ui_Label = require('../chunks/bundle-24sG-BP_.js');
+var ui_Label = require('../chunks/bundle-CRRWhSHD.js');
 var ui_UserListItem = require('./UserListItem.js');
-var _tslib = require('../chunks/bundle-DHh3VdoS.js');
+var _tslib = require('../chunks/bundle-BO5OZWjS.js');
 var ui_Tooltip = require('./Tooltip.js');
 var ui_TooltipWrapper = require('./TooltipWrapper.js');
-var MediaQueryContext = require('../chunks/bundle-DGx3xKBn.js');
-var useLongPress = require('../chunks/bundle-BkazCoxG.js');
-var LocalizationContext = require('../chunks/bundle-BD2bIoH6.js');
+var MediaQueryContext = require('../chunks/bundle-BFgXaSuR.js');
+var useLongPress = require('../chunks/bundle-3dhw8iOw.js');
+var LocalizationContext = require('../chunks/bundle-DKL8dMjq.js');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
 var Message_context = require('../Message/context.js');
-var getIsReactionEnabled = require('../chunks/bundle-BwAK1D9u.js');
-require('../chunks/bundle-DoHigaWY.js');
-require('../chunks/bundle-BvJOj_Nb.js');
-require('../chunks/bundle-e1P14sMX.js');
+var getIsReactionEnabled = require('../chunks/bundle-D0o2OzcU.js');
+require('../chunks/bundle-CNnH6vJ_.js');
+require('../chunks/bundle-DgAALupQ.js');
+require('../chunks/bundle-BOaew5JK.js');
 require('react-dom');
 require('@sendbird/chat');
 require('@sendbird/chat/openChannel');
 require('./SortByRow.js');
-require('../chunks/bundle-DtHyD1hB.js');
+require('../chunks/bundle-BjldQ7ts.js');
 require('@sendbird/chat/groupChannel');
 require('../utils/message/getOutgoingMessageState.js');
-require('../chunks/bundle-CG5E97k8.js');
+require('../chunks/bundle-CBfBMqDz.js');
 require('./IconButton.js');
 require('./Button.js');
 require('@sendbird/uikit-tools');
 require('../withSendbird.js');
 require('css-vars-ponyfill');
-require('../chunks/bundle-DDY1xx_n.js');
-require('../chunks/bundle-BPGreBtw.js');
-require('../chunks/bundle-C8yEdUBb.js');
-require('../chunks/bundle-BKwrdy8Y.js');
-require('../chunks/bundle-JS-CtPko.js');
-require('../chunks/bundle-Xx0kBn7q.js');
+require('../chunks/bundle-3bmKYTJ_.js');
+require('../chunks/bundle-DI6hrkhw.js');
+require('../chunks/bundle-B8rdv1pq.js');
+require('../chunks/bundle-CJtsI7GU.js');
+require('../chunks/bundle-Cd7XOuNj.js');
+require('../chunks/bundle-CoSi4lOw.js');
 require('./MutedAvatarOverlay.js');
 require('./Checkbox.js');
 require('./UserProfile.js');
 require('../sendbirdSelectors.js');
-require('../chunks/bundle-CYjw4691.js');
+require('../chunks/bundle-z9miKj3U.js');
 
 var ReactedMembersBottomSheet = function (_a) {
     var _b, _c, _d;
@@ -79,7 +79,7 @@ var ReactedMembersBottomSheet = function (_a) {
 
 function ReactionItem(_a) {
     var _b;
-    var reaction = _a.reaction, memberNicknamesMap = _a.memberNicknamesMap, setEmojiKey = _a.setEmojiKey, toggleReaction = _a.toggleReaction, emojisMap = _a.emojisMap, channel = _a.channel, message = _a.message;
+    var reaction = _a.reaction, memberNicknamesMap = _a.memberNicknamesMap, setEmojiKey = _a.setEmojiKey, toggleReaction = _a.toggleReaction, emojisMap = _a.emojisMap, channel = _a.channel, message = _a.message, showReactionsForSuperGroups = _a.showReactionsForSuperGroups;
     var store = useSendbirdStateContext.useSendbirdStateContext();
     var isMobile = MediaQueryContext.useMediaQueryContext().isMobile;
     var messageStore = Message_context.useMessageContext();
@@ -87,7 +87,7 @@ function ReactionItem(_a) {
     var userId = store.config.userId;
     var reactedByMe = index.isReactedBy(userId, reaction);
     var showHoverTooltip = (reaction.userIds.length > 0)
-        && ((channel === null || channel === void 0 ? void 0 : channel.isGroupChannel()) && !channel.isSuper);
+        && ((channel === null || channel === void 0 ? void 0 : channel.isGroupChannel()) && (!channel.isSuper || showReactionsForSuperGroups));
     var handleOnClick = function () {
         setEmojiKey('');
         toggleReaction === null || toggleReaction === void 0 ? void 0 : toggleReaction((message !== null && message !== void 0 ? message : messageStore === null || messageStore === void 0 ? void 0 : messageStore.message), reaction.key, reactedByMe);
@@ -147,7 +147,7 @@ var MobileEmojisBottomSheet = function (_a) {
 
 var EmojiReactions = function (_a) {
     var _b, _c, _d, _e, _f;
-    var _g = _a.className, className = _g === void 0 ? '' : _g, userId = _a.userId, message = _a.message, channel = _a.channel, emojiContainer = _a.emojiContainer, memberNicknamesMap = _a.memberNicknamesMap, _h = _a.spaceFromTrigger, spaceFromTrigger = _h === void 0 ? { x: 0, y: 0 } : _h, _j = _a.isByMe, isByMe = _j === void 0 ? false : _j, toggleReaction = _a.toggleReaction, onPressUserProfile = _a.onPressUserProfile;
+    var _g = _a.className, className = _g === void 0 ? '' : _g, userId = _a.userId, message = _a.message, channel = _a.channel, emojiContainer = _a.emojiContainer, memberNicknamesMap = _a.memberNicknamesMap, _h = _a.spaceFromTrigger, spaceFromTrigger = _h === void 0 ? { x: 0, y: 0 } : _h, _j = _a.isByMe, isByMe = _j === void 0 ? false : _j, toggleReaction = _a.toggleReaction, onPressUserProfile = _a.onPressUserProfile, _k = _a.showReactionsForSuperGroups, showReactionsForSuperGroups = _k === void 0 ? false : _k;
     var showTheReactedMembers = false;
     try {
         var config = useSendbirdStateContext.useSendbirdStateContext().config;
@@ -161,8 +161,8 @@ var EmojiReactions = function (_a) {
     }
     var isMobile = MediaQueryContext.useMediaQueryContext().isMobile;
     var addReactionRef = React.useRef(null);
-    var _k = React.useState(false), showEmojiList = _k[0], setShowEmojiList = _k[1];
-    var _l = React.useState(''), selectedEmojiKey = _l[0], setSelectedEmojiKey = _l[1];
+    var _l = React.useState(false), showEmojiList = _l[0], setShowEmojiList = _l[1];
+    var _m = React.useState(''), selectedEmojiKey = _m[0], setSelectedEmojiKey = _m[1];
     var emojisMap = index.getEmojiMapAll(emojiContainer);
     var showAddReactionBadge = ((_c = (_b = message.reactions) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0) < emojisMap.size;
     return (React.createElement("div", { className: index.getClassName([
@@ -170,7 +170,7 @@ var EmojiReactions = function (_a) {
             isByMe ? 'outgoing' : 'incoming',
         ]) },
         (((_e = (_d = message.reactions) === null || _d === void 0 ? void 0 : _d.length) !== null && _e !== void 0 ? _e : 0) > 0) && ((_f = message.reactions) === null || _f === void 0 ? void 0 : _f.map(function (reaction) {
-            return (React.createElement(ReactionItem, { key: reaction === null || reaction === void 0 ? void 0 : reaction.key, reaction: reaction, memberNicknamesMap: memberNicknamesMap, setEmojiKey: setSelectedEmojiKey, toggleReaction: toggleReaction, emojisMap: emojisMap, channel: channel, message: message }));
+            return (React.createElement(ReactionItem, { key: reaction === null || reaction === void 0 ? void 0 : reaction.key, reaction: reaction, memberNicknamesMap: memberNicknamesMap, setEmojiKey: setSelectedEmojiKey, toggleReaction: toggleReaction, emojisMap: emojisMap, channel: channel, message: message, showReactionsForSuperGroups: showReactionsForSuperGroups }));
         })),
         (!isMobile && showAddReactionBadge) && (React.createElement(ui_ContextMenu.default, { menuTrigger: function (toggleDropdown) { return (React.createElement(ui_ReactionBadge, { className: "sendbird-emoji-reactions__add-reaction-badge", ref: addReactionRef, isAdd: true, onClick: function (e) {
                     var _a;

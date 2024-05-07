@@ -1,34 +1,34 @@
-import { _ as __assign, a as __awaiter, b as __generator, c as __spreadArray } from './chunks/bundle-D8IuvsaW.js';
+import { _ as __assign, a as __awaiter, b as __generator, c as __spreadArray } from './chunks/bundle-s7uQ7zAa.js';
 import React__default, { useLayoutEffect, useRef, useEffect, useCallback, useMemo, useState, useReducer } from 'react';
 import { UIKitConfigProvider, useUIKitConfig } from '@sendbird/uikit-tools';
 import { SendbirdSdkContext } from './withSendbird.js';
 import cssVars from 'css-vars-ponyfill';
-import { K, a3 as isTextuallyNull } from './chunks/bundle-BnYBX14T.js';
-import { U as USER_ACTIONS } from './chunks/bundle-B1OOyz2J.js';
-import { s as schedulerFactory, b as useUnmount, u as useOnlineStatus, a as useMarkAsDeliveredScheduler } from './chunks/bundle-BOf_eEF-.js';
+import { K, a2 as isTextuallyNull } from './chunks/bundle-D-z4U1wX.js';
+import { U as USER_ACTIONS } from './chunks/bundle-DbCr1l36.js';
+import { s as schedulerFactory, b as useUnmount, u as useOnlineStatus, a as useMarkAsDeliveredScheduler } from './chunks/bundle-DoED4Cb3.js';
 import SendbirdChat, { SendbirdProduct, SendbirdPlatform, DeviceOsPlatform } from '@sendbird/chat';
 import { OpenChannelModule } from '@sendbird/chat/openChannel';
 import { GroupChannelModule } from '@sendbird/chat/groupChannel';
-import { n as noop } from './chunks/bundle-0yILBaSQ.js';
-import { p as pubSubFactory } from './chunks/bundle-BWic18XY.js';
-import { b as VoicePlayerProvider } from './chunks/bundle-CwSlabaO.js';
-import { V as VoiceRecorderProvider, E as EmojiManager, G as GlobalModalProvider, d as ModalRoot } from './chunks/bundle-BfCFd-dO.js';
-import { a as LocalizationProvider } from './chunks/bundle-CRmP70eG.js';
-import { u as useMediaQueryContext, M as MediaQueryProvider } from './chunks/bundle-BBhSg6C_.js';
-import { g as getStringSet } from './chunks/bundle-C9nxq4KD.js';
-import { C as CACHED_MESSAGE_TEMPLATES_TOKEN_KEY, m as CACHED_MESSAGE_TEMPLATES_KEY, n as DEFAULT_MULTIPLE_FILES_MESSAGE_LIMIT, o as VOICE_RECORDER_DEFAULT_MAX, c as VOICE_RECORDER_DEFAULT_MIN } from './chunks/bundle-w0s865vS.js';
-import { g as getCaseResolvedReplyType } from './chunks/bundle-CvlF6SbQ.js';
+import { n as noop } from './chunks/bundle-BJmqupdN.js';
+import { p as pubSubFactory } from './chunks/bundle-BfKgozDd.js';
+import { b as VoicePlayerProvider } from './chunks/bundle-CuXnBg6p.js';
+import { V as VoiceRecorderProvider, E as EmojiManager, G as GlobalModalProvider, d as ModalRoot } from './chunks/bundle-Zq-75Hl4.js';
+import { a as LocalizationProvider } from './chunks/bundle-BwcI3bWM.js';
+import { u as useMediaQueryContext, M as MediaQueryProvider } from './chunks/bundle-Bs8Nuk02.js';
+import { g as getStringSet } from './chunks/bundle-DqWrl4d1.js';
+import { C as CACHED_MESSAGE_TEMPLATES_TOKEN_KEY, m as CACHED_MESSAGE_TEMPLATES_KEY, n as DEFAULT_MULTIPLE_FILES_MESSAGE_LIMIT, o as VOICE_RECORDER_DEFAULT_MAX, c as VOICE_RECORDER_DEFAULT_MIN } from './chunks/bundle-BUsOkeT7.js';
+import { g as getCaseResolvedReplyType } from './chunks/bundle-C7dAdhH1.js';
 import { EmojiReactionListRoot, MenuRoot } from './ui/ContextMenu.js';
 export { useSendbirdStateContext } from './useSendbirdStateContext.js';
 import './utils/message/getOutgoingMessageState.js';
-import './chunks/bundle-DgRY6xy0.js';
+import './chunks/bundle-Caf8F3YR.js';
 import 'react-dom';
 import './ui/IconButton.js';
 import './ui/Button.js';
-import './chunks/bundle-BNNafMXS.js';
+import './chunks/bundle-BOy_tVjz.js';
 import './ui/Icon.js';
-import './chunks/bundle-CNHxvPPg.js';
-import './chunks/bundle-k7V2rNcW.js';
+import './chunks/bundle-BytW9Azl.js';
+import './chunks/bundle-Dyt8DaMp.js';
 import './ui/SortByRow.js';
 
 var isEmpty = function (obj) {
@@ -286,7 +286,7 @@ function disconnectSdk(_a) {
     });
 }
 
-var APP_VERSION_STRING = '1.0.0';
+var APP_VERSION_STRING = '1.0.16';
 var INIT_SDK = SDK_ACTIONS.INIT_SDK, SET_SDK_LOADING = SDK_ACTIONS.SET_SDK_LOADING, RESET_SDK = SDK_ACTIONS.RESET_SDK, SDK_ERROR = SDK_ACTIONS.SDK_ERROR;
 var INIT_USER = USER_ACTIONS.INIT_USER, UPDATE_USER_INFO = USER_ACTIONS.UPDATE_USER_INFO, RESET_USER = USER_ACTIONS.RESET_USER;
 function getMissingParamError(_a) {

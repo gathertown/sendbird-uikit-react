@@ -1,10 +1,10 @@
 import React__default, { useState, useEffect } from 'react';
 import { OpenChannelHandler } from '@sendbird/chat/openChannel';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
-import { U as UserProfileProvider } from '../chunks/bundle-BxO5H6aF.js';
-import { u as uuidv4 } from '../chunks/bundle-DgRY6xy0.js';
+import { U as UserProfileProvider } from '../chunks/bundle-DSd-G7ux.js';
+import { u as uuidv4 } from '../chunks/bundle-Caf8F3YR.js';
 import '../withSendbird.js';
-import '../chunks/bundle-D8IuvsaW.js';
+import '../chunks/bundle-s7uQ7zAa.js';
 
 var OpenChannelSettingsContext = React__default.createContext(undefined);
 var OpenChannelSettingsProvider = function (props) {
@@ -13,6 +13,7 @@ var OpenChannelSettingsProvider = function (props) {
     // fetch store from <SendbirdProvider />
     var globalStore = useSendbirdStateContext();
     var sdk = (_b = (_a = globalStore === null || globalStore === void 0 ? void 0 : globalStore.stores) === null || _a === void 0 ? void 0 : _a.sdkStore) === null || _b === void 0 ? void 0 : _b.sdk;
+    var eventHandlers = globalStore.eventHandlers;
     var isSDKInitialized = (_d = (_c = globalStore === null || globalStore === void 0 ? void 0 : globalStore.stores) === null || _c === void 0 ? void 0 : _c.sdkStore) === null || _d === void 0 ? void 0 : _d.initialized;
     var logger = (_e = globalStore === null || globalStore === void 0 ? void 0 : globalStore.config) === null || _e === void 0 ? void 0 : _e.logger;
     var currentUserId = (_f = sdk === null || sdk === void 0 ? void 0 : sdk.currentUser) === null || _f === void 0 ? void 0 : _f.userId;
@@ -39,6 +40,7 @@ var OpenChannelSettingsProvider = function (props) {
             });
         })
             .catch(function (error) {
+            eventHandlers.request.onFailed(error);
             logger.error('open channel setting: error fetching', error);
             setChannel(null);
         });

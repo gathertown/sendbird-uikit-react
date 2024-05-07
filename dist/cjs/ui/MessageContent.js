@@ -1,33 +1,33 @@
 'use strict';
 
-var _tslib = require('../chunks/bundle-DHh3VdoS.js');
+var _tslib = require('../chunks/bundle-BO5OZWjS.js');
 var React = require('react');
-var index$1 = require('../chunks/bundle-DqGwmW4S.js');
-var ui_MessageStatus = require('../chunks/bundle-CXIbPam9.js');
+var index$1 = require('../chunks/bundle-BCfv3yiy.js');
+var ui_MessageStatus = require('../chunks/bundle-CjsR5IvJ.js');
 var ui_MessageItemMenu = require('./MessageItemMenu.js');
 var ui_MessageItemReactionMenu = require('./MessageItemReactionMenu.js');
-var ui_Label = require('../chunks/bundle-24sG-BP_.js');
+var ui_Label = require('../chunks/bundle-CRRWhSHD.js');
 var ui_EmojiReactions = require('./EmojiReactions.js');
 var ui_AdminMessage = require('./AdminMessage.js');
 var ui_QuoteMessage = require('./QuoteMessage.js');
-var index = require('../chunks/bundle-CiDSKL46.js');
-var LocalizationContext = require('../chunks/bundle-BD2bIoH6.js');
+var index = require('../chunks/bundle-C6gATKTE.js');
+var LocalizationContext = require('../chunks/bundle-DKL8dMjq.js');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
 var message = require('@sendbird/chat/message');
-var useLongPress = require('../chunks/bundle-BkazCoxG.js');
-var index$2 = require('../chunks/bundle-CqdGdIiY.js');
-var MediaQueryContext = require('../chunks/bundle-DGx3xKBn.js');
+var useLongPress = require('../chunks/bundle-3dhw8iOw.js');
+var index$2 = require('../chunks/bundle-KUfIzdnQ.js');
+var MediaQueryContext = require('../chunks/bundle-BFgXaSuR.js');
 var ui_ThreadReplies = require('./ThreadReplies.js');
-var _const = require('../chunks/bundle-BF3GXMyf.js');
-var utils = require('../chunks/bundle-BvJOj_Nb.js');
+var _const = require('../chunks/bundle-bdifjM-k.js');
+var utils = require('../chunks/bundle-DgAALupQ.js');
 var ui_ContextMenu = require('./ContextMenu.js');
-var ui_Avatar = require('../chunks/bundle-JS-CtPko.js');
+var ui_Avatar = require('../chunks/bundle-Cd7XOuNj.js');
 var ui_UserProfile = require('./UserProfile.js');
-var UserProfileContext = require('../chunks/bundle-BKwrdy8Y.js');
+var UserProfileContext = require('../chunks/bundle-CJtsI7GU.js');
 var ui_OGMessageItemBody = require('./OGMessageItemBody.js');
 var ui_TextMessageItemBody = require('./TextMessageItemBody.js');
 var ui_FileMessageItemBody = require('./FileMessageItemBody.js');
-var useFileInfoListWithUploaded = require('../chunks/bundle-CUWAopRQ.js');
+var useFileInfoListWithUploaded = require('../chunks/bundle-BPjQVFvN.js');
 var ui_VoiceMessageItemBody = require('./VoiceMessageItemBody.js');
 var ui_ThumbnailMessageItemBody = require('./ThumbnailMessageItemBody.js');
 var ui_UnknownMessageItemBody = require('./UnknownMessageItemBody.js');
@@ -37,57 +37,59 @@ var ui_FeedbackIconButton = require('./FeedbackIconButton.js');
 var ui_MobileFeedbackMenu = require('./MobileFeedbackMenu.js');
 var ui_MessageFeedbackModal = require('./MessageFeedbackModal.js');
 var ui_MessageFeedbackFailedModal = require('./MessageFeedbackFailedModal.js');
-require('../chunks/bundle-C8yEdUBb.js');
+var Channel_utils_compareMessagesForGrouping = require('../Channel/utils/compareMessagesForGrouping.js');
+require('../chunks/bundle-B8rdv1pq.js');
 require('./Loader.js');
 require('../utils/message/getOutgoingMessageState.js');
-require('../chunks/bundle-D09pvvgs.js');
-require('../chunks/bundle-uiV3qgX6.js');
+require('../chunks/bundle-Bmt-jCO8.js');
+require('../chunks/bundle-C_eHyq_M.js');
 require('./IconButton.js');
-require('../chunks/bundle-22C_FmJz.js');
-require('../chunks/bundle-e1P14sMX.js');
+require('../chunks/bundle-8sH2G7Ap.js');
+require('../chunks/bundle-BECkGjrR.js');
+require('../chunks/bundle-BOaew5JK.js');
 require('react-dom');
 require('@sendbird/chat');
 require('@sendbird/chat/openChannel');
 require('./SortByRow.js');
-require('../chunks/bundle-DtHyD1hB.js');
-require('../chunks/bundle-DoHigaWY.js');
+require('../chunks/bundle-BjldQ7ts.js');
+require('../chunks/bundle-CNnH6vJ_.js');
 require('@sendbird/chat/groupChannel');
+require('../withSendbird.js');
 require('./ImageRenderer.js');
 require('./ReactionButton.js');
 require('./ReactionBadge.js');
 require('./BottomSheet.js');
-require('../chunks/bundle-CG5E97k8.js');
+require('../chunks/bundle-CBfBMqDz.js');
 require('./Button.js');
 require('@sendbird/uikit-tools');
-require('../withSendbird.js');
 require('css-vars-ponyfill');
-require('../chunks/bundle-DDY1xx_n.js');
-require('../chunks/bundle-BPGreBtw.js');
+require('../chunks/bundle-3bmKYTJ_.js');
+require('../chunks/bundle-DI6hrkhw.js');
 require('./UserListItem.js');
 require('./MutedAvatarOverlay.js');
 require('./Checkbox.js');
-require('../chunks/bundle-Xx0kBn7q.js');
+require('../chunks/bundle-CoSi4lOw.js');
 require('../sendbirdSelectors.js');
-require('../chunks/bundle-CYjw4691.js');
+require('../chunks/bundle-z9miKj3U.js');
 require('./Tooltip.js');
 require('./TooltipWrapper.js');
 require('../Message/context.js');
-require('../chunks/bundle-BwAK1D9u.js');
-require('../chunks/bundle-C7KrtZZP.js');
-require('../chunks/bundle-B4c5-CEo.js');
-require('../chunks/bundle-C9xbaXbn.js');
+require('../chunks/bundle-D0o2OzcU.js');
+require('../chunks/bundle-BGyfIsKK.js');
+require('../chunks/bundle-3cmB6Ad_.js');
+require('../chunks/bundle-BZ6Z0MYZ.js');
 require('./MentionLabel.js');
 require('./LinkLabel.js');
-require('../chunks/bundle-B98KPr4A.js');
-require('../chunks/bundle-DS6HeXaS.js');
+require('../chunks/bundle-BxYGiW8y.js');
+require('../chunks/bundle-CN0Ev9mV.js');
 require('./TextButton.js');
-require('../chunks/bundle-DTKihS4S.js');
-require('../chunks/bundle-DQKTGusP.js');
-require('../chunks/bundle-DoLTlc_l.js');
+require('../chunks/bundle-Ev5kAkGi.js');
+require('../chunks/bundle-Bexsprs_.js');
+require('../chunks/bundle-DegkGksZ.js');
 require('./ProgressBar.js');
 require('../VoicePlayer/useVoicePlayer.js');
 require('./PlaybackTime.js');
-require('../chunks/bundle-EyWIzGTz.js');
+require('../chunks/bundle-C0xd22xx.js');
 require('./FallbackTemplateMessageItemBody.tsx.js');
 require('./LoadingTemplateMessageItemBody.tsx.js');
 require('./Input.js');
@@ -187,14 +189,14 @@ var SbFeedbackStatus;
 
 function MessageContent(props) {
     var _this = this;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
     var 
     // Internal props
-    className = props.className, userId = props.userId, channel = props.channel, message$1 = props.message, _q = props.disabled, disabled = _q === void 0 ? false : _q, _r = props.chainTop, chainTop = _r === void 0 ? false : _r, _s = props.chainBottom, chainBottom = _s === void 0 ? false : _s, _t = props.isReactionEnabled, isReactionEnabled = _t === void 0 ? false : _t, _u = props.disableQuoteMessage, disableQuoteMessage = _u === void 0 ? false : _u, replyType = props.replyType, threadReplySelectType = props.threadReplySelectType, nicknamesMap = props.nicknamesMap, emojiContainer = props.emojiContainer, scrollToMessage = props.scrollToMessage, showEdit = props.showEdit, showRemove = props.showRemove, showFileViewer = props.showFileViewer, resendMessage = props.resendMessage, deleteMessage = props.deleteMessage, toggleReaction = props.toggleReaction, setQuoteMessage = props.setQuoteMessage, onReplyInThread = props.onReplyInThread, onQuoteMessageClick = props.onQuoteMessageClick, onMessageHeightChange = props.onMessageHeightChange, onBeforeDownloadFileMessage = props.onBeforeDownloadFileMessage;
+    className = props.className, userId = props.userId, channel = props.channel, message$1 = props.message, _p = props.disabled, disabled = _p === void 0 ? false : _p, _q = props.chainTop, chainTop = _q === void 0 ? false : _q, _r = props.chainBottom, chainBottom = _r === void 0 ? false : _r, _s = props.isReactionEnabled, isReactionEnabled = _s === void 0 ? false : _s, _t = props.disableQuoteMessage, disableQuoteMessage = _t === void 0 ? false : _t, replyType = props.replyType, threadReplySelectType = props.threadReplySelectType, nicknamesMap = props.nicknamesMap, emojiContainer = props.emojiContainer, scrollToMessage = props.scrollToMessage, showEdit = props.showEdit, showRemove = props.showRemove, showFileViewer = props.showFileViewer, resendMessage = props.resendMessage, deleteMessage = props.deleteMessage, toggleReaction = props.toggleReaction, setQuoteMessage = props.setQuoteMessage, onReplyInThread = props.onReplyInThread, onQuoteMessageClick = props.onQuoteMessageClick, onMessageHeightChange = props.onMessageHeightChange, onBeforeDownloadFileMessage = props.onBeforeDownloadFileMessage;
     // Public props for customization
-    var _v = utils.deleteNullish(props), _w = _v.renderSenderProfile, renderSenderProfile = _w === void 0 ? function (props) { return React.createElement(MessageProfile, _tslib.__assign({}, props)); } : _w, _x = _v.renderMessageBody, renderMessageBody = _x === void 0 ? function (props) { return React.createElement(MessageBody, _tslib.__assign({}, props)); } : _x, _y = _v.renderMessageHeader, renderMessageHeader = _y === void 0 ? function (props) { return React.createElement(MessageHeader, _tslib.__assign({}, props)); } : _y, _z = _v.renderMessageMenu, renderMessageMenu = _z === void 0 ? function (props) { return React.createElement(ui_MessageItemMenu.MessageMenu, _tslib.__assign({}, props)); } : _z, _0 = _v.renderEmojiMenu, renderEmojiMenu = _0 === void 0 ? function (props) { return React.createElement(ui_MessageItemReactionMenu.MessageEmojiMenu, _tslib.__assign({}, props)); } : _0, _1 = _v.renderEmojiReactions, renderEmojiReactions = _1 === void 0 ? function (props) { return React.createElement(ui_EmojiReactions, _tslib.__assign({}, props)); } : _1, _2 = _v.renderMobileMenuOnLongPress, renderMobileMenuOnLongPress = _2 === void 0 ? function (props) { return React.createElement(index$2.MobileMenu, _tslib.__assign({}, props)); } : _2;
+    var _u = utils.deleteNullish(props), _v = _u.renderSenderProfile, renderSenderProfile = _v === void 0 ? function (props) { return React.createElement(MessageProfile, _tslib.__assign({}, props)); } : _v, _w = _u.renderMessageBody, renderMessageBody = _w === void 0 ? function (props) { return React.createElement(MessageBody, _tslib.__assign({}, props)); } : _w, _x = _u.renderMessageHeader, renderMessageHeader = _x === void 0 ? function (props) { return React.createElement(MessageHeader, _tslib.__assign({}, props)); } : _x, _y = _u.renderMessageMenu, renderMessageMenu = _y === void 0 ? function (props) { return React.createElement(ui_MessageItemMenu.MessageMenu, _tslib.__assign({}, props)); } : _y, _z = _u.renderEmojiMenu, renderEmojiMenu = _z === void 0 ? function (props) { return React.createElement(ui_MessageItemReactionMenu.MessageEmojiMenu, _tslib.__assign({}, props)); } : _z, _0 = _u.renderEmojiReactions, renderEmojiReactions = _0 === void 0 ? function (props) { return React.createElement(ui_EmojiReactions, _tslib.__assign({}, props)); } : _0, _1 = _u.renderMobileMenuOnLongPress, renderMobileMenuOnLongPress = _1 === void 0 ? function (props) { return React.createElement(index$2.MobileMenu, _tslib.__assign({}, props)); } : _1;
     var dateLocale = LocalizationContext.useLocalization().dateLocale;
-    var _3 = useSendbirdStateContext.useSendbirdStateContext(), config = _3.config, eventHandlers = _3.eventHandlers;
+    var _2 = useSendbirdStateContext.useSendbirdStateContext(), config = _2.config, eventHandlers = _2.eventHandlers;
     var logger = config.logger;
     var onPressUserProfileHandler = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.reaction) === null || _a === void 0 ? void 0 : _a.onPressUserProfile;
     var contentRef = React.useRef(null);
@@ -202,17 +204,17 @@ function MessageContent(props) {
     var threadRepliesRef = React.useRef(null);
     var feedbackButtonsRef = React.useRef(null);
     var isMobile = MediaQueryContext.useMediaQueryContext().isMobile;
-    var _4 = React.useState(false), showMenu = _4[0], setShowMenu = _4[1];
-    var _5 = React.useState(false), mouseHover = _5[0], setMouseHover = _5[1];
-    var _6 = React.useState(false), supposedHover = _6[0], setSupposedHover = _6[1];
+    var _3 = React.useState(false), showMenu = _3[0], setShowMenu = _3[1];
+    var _4 = React.useState(false), mouseHover = _4[0], setMouseHover = _4[1];
+    var _5 = React.useState(false), supposedHover = _5[0], setSupposedHover = _5[1];
     // Feedback states
-    var _7 = React.useState(false), showFeedbackOptionsMenu = _7[0], setShowFeedbackOptionsMenu = _7[1];
-    var _8 = React.useState(false), showFeedbackModal = _8[0], setShowFeedbackModal = _8[1];
-    var _9 = React.useState(''), feedbackFailedText = _9[0], setFeedbackFailedText = _9[1];
-    var _10 = React.useState(index.getMessageContentMiddleClassNameByContainerType({
+    var _6 = React.useState(false), showFeedbackOptionsMenu = _6[0], setShowFeedbackOptionsMenu = _6[1];
+    var _7 = React.useState(false), showFeedbackModal = _7[0], setShowFeedbackModal = _7[1];
+    var _8 = React.useState(''), feedbackFailedText = _8[0], setFeedbackFailedText = _8[1];
+    var _9 = React.useState(index.getMessageContentMiddleClassNameByContainerType({
         message: message$1,
         isMobile: isMobile,
-    })), uiContainerType = _10[0], setUiContainerType = _10[1];
+    })), uiContainerType = _9[0], setUiContainerType = _9[1];
     var onTemplateMessageRenderedCallback = function (renderedTemplateType) {
         if (renderedTemplateType === 'failed') {
             setUiContainerType(index.UI_CONTAINER_TYPES.DEFAULT);
@@ -225,9 +227,7 @@ function MessageContent(props) {
         }
     };
     var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
-    var isByMe = (userId === ((_b = message$1 === null || message$1 === void 0 ? void 0 : message$1.sender) === null || _b === void 0 ? void 0 : _b.userId))
-        || ((message$1 === null || message$1 === void 0 ? void 0 : message$1.sendingStatus) === 'pending')
-        || ((message$1 === null || message$1 === void 0 ? void 0 : message$1.sendingStatus) === 'failed');
+    var isByMe = Channel_utils_compareMessagesForGrouping.getIsByMe(userId, message$1);
     var isByMeClassName = isByMe ? 'outgoing' : 'incoming';
     var chainTopClassName = chainTop ? 'chain-top' : '';
     var isReactionEnabledInChannel = isReactionEnabled && !(channel === null || channel === void 0 ? void 0 : channel.isEphemeral);
@@ -238,12 +238,12 @@ function MessageContent(props) {
         && !disableQuoteMessage);
     var useReplyingClassName = useReplying ? 'use-quote' : '';
     // Thread replies
-    var displayThreadReplies = ((_c = message$1 === null || message$1 === void 0 ? void 0 : message$1.threadInfo) === null || _c === void 0 ? void 0 : _c.replyCount) > 0 && replyType === 'THREAD';
+    var displayThreadReplies = ((_b = message$1 === null || message$1 === void 0 ? void 0 : message$1.threadInfo) === null || _b === void 0 ? void 0 : _b.replyCount) > 0 && replyType === 'THREAD';
     // Feedback buttons
     var isFeedbackMessage = !isByMe
         && (message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedbackStatus)
         && message$1.myFeedbackStatus !== SbFeedbackStatus.NOT_APPLICABLE;
-    var isFeedbackEnabled = ((_d = config === null || config === void 0 ? void 0 : config.groupChannel) === null || _d === void 0 ? void 0 : _d.enableFeedback) && isFeedbackMessage;
+    var isFeedbackEnabled = ((_c = config === null || config === void 0 ? void 0 : config.groupChannel) === null || _c === void 0 ? void 0 : _c.enableFeedback) && isFeedbackMessage;
     /**
      * For TemplateMessage, do not display:
      *   - in web view:
@@ -349,7 +349,7 @@ function MessageContent(props) {
             ]) }, (isMobile ? _tslib.__assign({}, longPress) : {}), { ref: contentRef }),
             !isByMe && !chainTop && !useReplying && renderMessageHeader(props),
             (useReplying) ? (React.createElement("div", { className: index.getClassName(['sendbird-message-content__middle__quote-message', isByMe ? 'outgoing' : 'incoming', useReplyingClassName]) },
-                React.createElement(ui_QuoteMessage, { className: "sendbird-message-content__middle__quote-message__quote", message: message$1, userId: userId, isByMe: isByMe, isUnavailable: ((_e = channel === null || channel === void 0 ? void 0 : channel.messageOffsetTimestamp) !== null && _e !== void 0 ? _e : 0) > ((_g = (_f = message$1.parentMessage) === null || _f === void 0 ? void 0 : _f.createdAt) !== null && _g !== void 0 ? _g : 0), onClick: function () {
+                React.createElement(ui_QuoteMessage, { className: "sendbird-message-content__middle__quote-message__quote", message: message$1, userId: userId, isByMe: isByMe, isUnavailable: ((_d = channel === null || channel === void 0 ? void 0 : channel.messageOffsetTimestamp) !== null && _d !== void 0 ? _d : 0) > ((_f = (_e = message$1.parentMessage) === null || _e === void 0 ? void 0 : _e.createdAt) !== null && _f !== void 0 ? _f : 0), onClick: function () {
                         var _a;
                         if (replyType === 'THREAD' && threadReplySelectType === _const.ThreadReplySelectType.THREAD) {
                             onQuoteMessageClick === null || onQuoteMessageClick === void 0 ? void 0 : onQuoteMessageClick({ message: message$1 });
@@ -384,7 +384,7 @@ function MessageContent(props) {
                     onTemplateMessageRenderedCallback: onTemplateMessageRenderedCallback,
                     onBeforeDownloadFileMessage: onBeforeDownloadFileMessage,
                 }),
-                (isReactionEnabledInChannel && ((_h = message$1 === null || message$1 === void 0 ? void 0 : message$1.reactions) === null || _h === void 0 ? void 0 : _h.length) > 0) && (React.createElement("div", { className: index.getClassName([
+                (isReactionEnabledInChannel && ((_g = message$1 === null || message$1 === void 0 ? void 0 : message$1.reactions) === null || _g === void 0 ? void 0 : _g.length) > 0) && (React.createElement("div", { className: index.getClassName([
                         'sendbird-message-content-reactions',
                         index.isMultipleFilesMessage(message$1)
                             ? 'image-grid'
@@ -411,12 +411,12 @@ function MessageContent(props) {
                 })))),
             isTimestampBottom && React.createElement("div", { style: {
                     width: '100%',
-                    height: ((_k = (_j = timestampRef.current) === null || _j === void 0 ? void 0 : _j.clientHeight) !== null && _k !== void 0 ? _k : 0) + 'px',
+                    height: ((_j = (_h = timestampRef.current) === null || _h === void 0 ? void 0 : _h.clientHeight) !== null && _j !== void 0 ? _j : 0) + 'px',
                     marginTop: '4px',
                 } }),
             showThreadReplies && (React.createElement(ui_ThreadReplies.default, { className: "sendbird-message-content__middle__thread-replies", threadInfo: message$1 === null || message$1 === void 0 ? void 0 : message$1.threadInfo, onClick: function () { return onReplyInThread === null || onReplyInThread === void 0 ? void 0 : onReplyInThread({ message: message$1 }); }, ref: threadRepliesRef })),
             isFeedbackEnabled && React.createElement("div", { className: "sendbird-message-content__middle__body-container__feedback-buttons-container", ref: feedbackButtonsRef },
-                React.createElement(ui_FeedbackIconButton, { isSelected: ((_l = message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) === null || _l === void 0 ? void 0 : _l.rating) === message.FeedbackRating.GOOD, onClick: function () { return _tslib.__awaiter(_this, void 0, void 0, function () {
+                React.createElement(ui_FeedbackIconButton, { isSelected: ((_k = message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) === null || _k === void 0 ? void 0 : _k.rating) === message.FeedbackRating.GOOD, onClick: function () { return _tslib.__awaiter(_this, void 0, void 0, function () {
                         var error_1;
                         var _a, _b, _c;
                         return _tslib.__generator(this, function (_d) {
@@ -447,7 +447,7 @@ function MessageContent(props) {
                         });
                     }); }, disabled: (message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) && message$1.myFeedback.rating !== message.FeedbackRating.GOOD },
                     React.createElement(ui_Icon.default, { type: ui_Icon.IconTypes.FEEDBACK_LIKE, width: '24px', height: '24px' })),
-                React.createElement(ui_FeedbackIconButton, { isSelected: ((_m = message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) === null || _m === void 0 ? void 0 : _m.rating) === message.FeedbackRating.BAD, onClick: function () { return _tslib.__awaiter(_this, void 0, void 0, function () {
+                React.createElement(ui_FeedbackIconButton, { isSelected: ((_l = message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) === null || _l === void 0 ? void 0 : _l.rating) === message.FeedbackRating.BAD, onClick: function () { return _tslib.__awaiter(_this, void 0, void 0, function () {
                         var error_2;
                         var _a, _b, _c;
                         return _tslib.__generator(this, function (_d) {
@@ -567,7 +567,7 @@ function MessageContent(props) {
                 });
             }); },
         }),
-        ((_o = message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) === null || _o === void 0 ? void 0 : _o.rating) && showFeedbackOptionsMenu && (React.createElement(ui_MobileFeedbackMenu, { hideMenu: function () {
+        ((_m = message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) === null || _m === void 0 ? void 0 : _m.rating) && showFeedbackOptionsMenu && (React.createElement(ui_MobileFeedbackMenu, { hideMenu: function () {
                 setShowFeedbackOptionsMenu(false);
             }, onEditFeedback: function () {
                 setShowFeedbackOptionsMenu(false);
@@ -594,7 +594,7 @@ function MessageContent(props) {
                     }
                 });
             }); } })),
-        ((_p = message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) === null || _p === void 0 ? void 0 : _p.rating) && showFeedbackModal && (React.createElement(ui_MessageFeedbackModal, { selectedFeedback: message$1.myFeedback.rating, message: message$1, onUpdate: function (selectedFeedback, comment) { return _tslib.__awaiter(_this, void 0, void 0, function () {
+        ((_o = message$1 === null || message$1 === void 0 ? void 0 : message$1.myFeedback) === null || _o === void 0 ? void 0 : _o.rating) && showFeedbackModal && (React.createElement(ui_MessageFeedbackModal, { selectedFeedback: message$1.myFeedback.rating, message: message$1, onUpdate: function (selectedFeedback, comment) { return _tslib.__awaiter(_this, void 0, void 0, function () {
                 var newFeedback, error_4;
                 var _a, _b;
                 return _tslib.__generator(this, function (_c) {

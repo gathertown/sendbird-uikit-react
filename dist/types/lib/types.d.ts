@@ -38,6 +38,11 @@ export interface SBUEventHandlers {
             close(): void;
         }): void | (() => void);
     };
+    request?: {
+        onFailed?(error: SendbirdError | Error, context?: {
+            [key: string]: string | number | boolean | undefined;
+        }): void;
+    };
 }
 export interface SendBirdStateConfig {
     renderUserProfile?: (props: RenderUserProfileProps) => React.ReactElement;

@@ -1,5 +1,5 @@
 export declare const ONE_MiB: number;
-export declare const SCROLL_BUFFER = 10;
+export declare const SCROLL_BUFFER = 30;
 export declare const SCROLL_BOTTOM_DELAY_FOR_SEND = 100;
 export declare const SCROLL_BOTTOM_DELAY_FOR_FETCH = 100;
 export declare const VOICE_RECORDER_CLICK_BUFFER_TIME = 250;

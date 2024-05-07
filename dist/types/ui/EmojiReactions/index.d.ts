@@ -15,6 +15,7 @@ export interface EmojiReactionsProps {
     isByMe?: boolean;
     toggleReaction?: (message: SendableMessageType, key: string, byMe: boolean) => void;
     onPressUserProfile?: (member: User) => void;
+    showReactionsForSuperGroups?: boolean;
 }
-declare const EmojiReactions: ({ className, userId, message, channel, emojiContainer, memberNicknamesMap, spaceFromTrigger, isByMe, toggleReaction, onPressUserProfile, }: EmojiReactionsProps) => ReactElement;
+declare const EmojiReactions: ({ className, userId, message, channel, emojiContainer, memberNicknamesMap, spaceFromTrigger, isByMe, toggleReaction, onPressUserProfile, showReactionsForSuperGroups }: EmojiReactionsProps) => ReactElement;
 export default EmojiReactions;

@@ -1,4 +1,4 @@
-import type { EveryMessage, RenderCustomSeparatorProps, RenderMessageParamsType, ReplyType } from '../../../../types';
+import type { ClientUserMessage, EveryMessage, RenderCustomSeparatorProps, RenderMessageParamsType, ReplyType } from '../../../../types';
 import React from 'react';
 import { EmojiContainer, User } from '@sendbird/chat';
 import { GroupChannel } from '@sendbird/chat/groupChannel';
@@ -33,12 +33,20 @@ export interface MessageProps {
     /**
      * A function that customizes the rendering of the edit input portion of the message component.
      * */
-    renderEditInput?: () => React.ReactElement;
+    renderEditInput?: ({ onCancelEdit, message }: {
+        onCancelEdit: VoidFunction;
+        message: ClientUserMessage;
+    }) => React.ReactElement;
     /**
      * @deprecated Please use `children` instead
      * @description Customizes all child components of the message.
      * */
     renderMessage?: (props: RenderMessageParamsType) => React.ReactElement;
+    renderRemoveMessageModal?: (props: {
+        message: EveryMessage;
+        onCancel: () => void;
+        onSubmit: () => void;
+    }) => React.ReactElement;
 }
 export interface MessageViewProps extends MessageProps {
     channel: GroupChannel;
@@ -67,10 +75,6 @@ export interface MessageViewProps extends MessageProps {
     deleteMessage: (message: CoreMessageType) => Promise<void>;
     renderFileViewer: (props: {
         message: FileMessage;
-        onCancel: () => void;
-    }) => React.ReactElement;
-    renderRemoveMessageModal?: (props: {
-        message: EveryMessage;
         onCancel: () => void;
     }) => React.ReactElement;
     /**

@@ -1,21 +1,21 @@
-import { _ as __assign, a as __awaiter, b as __generator } from '../chunks/bundle-D8IuvsaW.js';
-import React__default, { useRef, useState, useLayoutEffect, useCallback, useMemo, useEffect, useContext } from 'react';
+import { _ as __assign, a as __awaiter, b as __generator } from '../chunks/bundle-s7uQ7zAa.js';
+import React__default, { useRef, useState, useLayoutEffect, useEffect, useCallback, useMemo, useContext } from 'react';
 import { MessageMetaArray, ReplyType } from '@sendbird/chat/message';
 import { MessageFilter } from '@sendbird/chat/groupChannel';
 import { useIIFE, useGroupChannelMessages, useAsyncEffect, useAsyncLayoutEffect, usePreservedCallback } from '@sendbird/uikit-tools';
-import { U as UserProfileProvider } from '../chunks/bundle-BxO5H6aF.js';
+import { U as UserProfileProvider } from '../chunks/bundle-DSd-G7ux.js';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
-import { u as useToggleReactionCallback } from '../chunks/bundle-BNAtsapc.js';
-import { g as getCaseResolvedReplyType, a as getCaseResolvedThreadReplySelectType } from '../chunks/bundle-CvlF6SbQ.js';
-import { b as isContextMenuClosed, c as getMessageTopOffset } from '../chunks/bundle-BEXtjKJK.js';
-import { a as useOnScrollPositionChangeDetectorWithRef } from '../chunks/bundle-CbyShdHS.js';
-import { p as pubSubFactory } from '../chunks/bundle-BWic18XY.js';
-import { p as pubSubTopics } from '../chunks/bundle-Cf2xHdC2.js';
-import { g as VOICE_MESSAGE_FILE_NAME, h as VOICE_MESSAGE_MIME_TYPE, M as META_ARRAY_VOICE_DURATION_KEY, i as META_ARRAY_MESSAGE_TYPE_KEY, j as META_ARRAY_MESSAGE_TYPE_VALUE__VOICE, S as SCROLL_BUFFER } from '../chunks/bundle-w0s865vS.js';
-import { g as getIsReactionEnabled } from '../chunks/bundle-Dn-yaG7j.js';
+import { u as useToggleReactionCallback } from '../chunks/bundle-DFFKNF1F.js';
+import { g as getCaseResolvedReplyType, a as getCaseResolvedThreadReplySelectType } from '../chunks/bundle-C7dAdhH1.js';
+import { b as isContextMenuClosed, c as getMessageTopOffset } from '../chunks/bundle-uVhI82ml.js';
+import { a as useOnScrollPositionChangeDetectorWithRef } from '../chunks/bundle-B8MAflwf.js';
+import { p as pubSubFactory } from '../chunks/bundle-BfKgozDd.js';
+import { p as pubSubTopics } from '../chunks/bundle-CIiROwS_.js';
+import { g as VOICE_MESSAGE_FILE_NAME, h as VOICE_MESSAGE_MIME_TYPE, M as META_ARRAY_VOICE_DURATION_KEY, i as META_ARRAY_MESSAGE_TYPE_KEY, j as META_ARRAY_MESSAGE_TYPE_VALUE__VOICE, S as SCROLL_BUFFER } from '../chunks/bundle-BUsOkeT7.js';
+import { g as getIsReactionEnabled } from '../chunks/bundle-k5z_1yHM.js';
 import '../withSendbird.js';
-import '../chunks/bundle-se836s50.js';
-import '../chunks/bundle-DgYc_vhn.js';
+import '../chunks/bundle-B-z3huWI.js';
+import '../chunks/bundle-CTBShITC.js';
 
 function runCallback(callback, lazy) {
     if (lazy === void 0) { lazy = true; }
@@ -37,7 +37,9 @@ function useMessageListScroll(behavior) {
     var scrollRef = useRef(null);
     var scrollDistanceFromBottomRef = useRef(0);
     var scrollPubSub = useState(function () { return pubSubFactory(); })[0];
-    var _a = useState(false), isScrollBottomReached = _a[0], setIsScrollBottomReached = _a[1];
+    // lists are rendered scrolled to the bottom by default
+    var _a = useState(true), isScrollBottomReached = _a[0], setIsScrollBottomReached = _a[1];
+    var _b = useState(null), isScrollable = _b[0], setIsScrollable = _b[1];
     // If there is no area to scroll, it is considered as scroll bottom reached.
     if (isScrollBottomReached === false && scrollRef.current && scrollRef.current.scrollHeight <= scrollRef.current.clientHeight) {
         scrollDistanceFromBottomRef.current = 0;
@@ -48,8 +50,13 @@ function useMessageListScroll(behavior) {
         unsubscribes.push(scrollPubSub.subscribe('scrollToBottom', function (_a) {
             var resolve = _a.resolve, animated = _a.animated;
             runCallback(function () {
-                if (!scrollRef.current)
+                if (!scrollRef.current) {
+                    // if the scrollRef doesn't exist yet, just resolve the promise
+                    // to release any dependent coroutine locks. These locks are meant to synchronize
+                    // scrolls, which is unnecessary if the list isn't rendered yet.
+                    resolve === null || resolve === void 0 ? void 0 : resolve();
                     return;
+                }
                 if (scrollRef.current.scroll) {
                     scrollRef.current.scroll({ top: scrollRef.current.scrollHeight, behavior: getScrollBehavior(behavior, animated) });
                 }
@@ -77,7 +84,10 @@ function useMessageListScroll(behavior) {
                 }
                 // Update data by manual update
                 scrollDistanceFromBottomRef.current = Math.max(0, scrollHeight - scrollTop - clientHeight);
-                setIsScrollBottomReached(scrollDistanceFromBottomRef.current === 0);
+                // This is commented out because we don't want the bottom reached 
+                // computation to trigger on content size change. useOnScrollPositionChangeDetectorWithRef will
+                // trigger the computation on true scrolling.
+                // setIsScrollBottomReached(scrollDistanceFromBottomRef.current === 0);
                 if (resolve)
                     resolve();
             }, lazy);
@@ -107,12 +117,19 @@ function useMessageListScroll(behavior) {
             scrollDistanceFromBottomRef.current = distanceFromBottom;
         },
     });
+    useEffect(function () {
+        if (!scrollRef.current)
+            return;
+        var _a = scrollRef.current, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
+        setIsScrollable(scrollHeight > clientHeight);
+    }, [scrollRef.current]);
     return {
         scrollRef: scrollRef,
         scrollPubSub: scrollPubSub,
         isScrollBottomReached: isScrollBottomReached,
         setIsScrollBottomReached: setIsScrollBottomReached,
         scrollDistanceFromBottomRef: scrollDistanceFromBottomRef,
+        isScrollable: isScrollable,
     };
 }
 
@@ -263,7 +280,7 @@ var GroupChannelProvider = function (props) {
     var _k = useState(null), currentChannel = _k[0], setCurrentChannel = _k[1];
     var _l = useState(null), fetchChannelError = _l[0], setFetchChannelError = _l[1];
     // Ref
-    var _m = useMessageListScroll(scrollBehavior), scrollRef = _m.scrollRef, scrollPubSub = _m.scrollPubSub, scrollDistanceFromBottomRef = _m.scrollDistanceFromBottomRef, isScrollBottomReached = _m.isScrollBottomReached, setIsScrollBottomReached = _m.setIsScrollBottomReached;
+    var _m = useMessageListScroll(scrollBehavior), scrollRef = _m.scrollRef, scrollPubSub = _m.scrollPubSub, scrollDistanceFromBottomRef = _m.scrollDistanceFromBottomRef, isScrollBottomReached = _m.isScrollBottomReached, setIsScrollBottomReached = _m.setIsScrollBottomReached, isScrollable = _m.isScrollable;
     var messageInputRef = useRef(null);
     var toggleReaction = useToggleReactionCallback(currentChannel, logger);
     var replyType = getCaseResolvedReplyType(moduleReplyType !== null && moduleReplyType !== void 0 ? moduleReplyType : config.groupChannel.replyType).upperCase;
@@ -311,6 +328,17 @@ var GroupChannelProvider = function (props) {
         onChannelUpdated: function (channel) { return setCurrentChannel(channel); },
         logger: logger,
     });
+    /**
+     * When we initially load a channels messages, useGroupChannelMessages markAsRead will fire.
+     * If the view is unscrollable though, isScrollBottomReached is false. This means the unread messages will not be marked as read.
+     */
+    useEffect(function () {
+        if (isScrollable === null || messageDataSource.loading)
+            return;
+        if (!isScrollable && messageDataSource.messages.length > 0 && !disableMarkAsRead) {
+            markAsReadScheduler.push(currentChannel);
+        }
+    }, [isScrollable, messageDataSource.loading]);
     useOnScrollPositionChangeDetectorWithRef(scrollRef, {
         onReachedTop: function () {
             return __awaiter(this, void 0, void 0, function () {

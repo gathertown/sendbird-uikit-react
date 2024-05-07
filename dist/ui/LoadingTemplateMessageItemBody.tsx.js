@@ -1,11 +1,11 @@
 import React__default from 'react';
-import { w as getClassName } from '../chunks/bundle-BnYBX14T.js';
+import { v as getClassName } from '../chunks/bundle-D-z4U1wX.js';
 import Loader from './Loader.js';
 import Icon, { IconTypes, IconColors } from './Icon.js';
-import '../chunks/bundle-D8IuvsaW.js';
+import '../chunks/bundle-s7uQ7zAa.js';
 import '@sendbird/chat/groupChannel';
 import '../utils/message/getOutgoingMessageState.js';
-import '../chunks/bundle-0yILBaSQ.js';
+import '../chunks/bundle-BJmqupdN.js';
 
 var TEMPLATE_LOADING_SPINNER_SIZE = '40px';
 function LoadingTemplateMessageItemBody(_a) {

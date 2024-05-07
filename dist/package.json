@@ -36,7 +36,7 @@
     "url": "https://community.sendbird.com"
   },
   "homepage": "https://sendbird.com",
-  "version": "1.0.0",
+  "version": "1.0.16",
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0"

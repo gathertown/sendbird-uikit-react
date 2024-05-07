@@ -1,31 +1,31 @@
-import { _ as __assign, a as __awaiter, b as __generator } from '../chunks/bundle-D8IuvsaW.js';
+import { _ as __assign, a as __awaiter, b as __generator } from '../chunks/bundle-s7uQ7zAa.js';
 import React__default, { useRef, useContext, useState, useMemo } from 'react';
-import { f as format } from '../chunks/bundle-BlLFOUrw.js';
-import { M as MessageStatus } from '../chunks/bundle-B9Guj1rz.js';
+import { f as format } from '../chunks/bundle-Dac-NyF8.js';
+import { M as MessageStatus } from '../chunks/bundle-DsHrFpwT.js';
 import { MessageMenu } from './MessageItemMenu.js';
 import { MessageEmojiMenu } from './MessageItemReactionMenu.js';
-import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BNNafMXS.js';
+import { L as Label, a as LabelTypography, b as LabelColors } from '../chunks/bundle-BOy_tVjz.js';
 import EmojiReactions from './EmojiReactions.js';
 import AdminMessage from './AdminMessage.js';
 import QuoteMessage from './QuoteMessage.js';
-import { f as isSendableMessage, n as getUIKitMessageTypes, K, C as isTemplateMessage, M as isOGMessage, N as isTextMessage, m as getUIKitMessageType, c as isMultipleFilesMessage, i as isVoiceMessage, p as isThumbnailMessage, h as getSenderName, P as getMessageContentMiddleClassNameByContainerType, Q as isAdminMessage, w as getClassName, R as UI_CONTAINER_TYPES } from '../chunks/bundle-BnYBX14T.js';
-import { u as useLocalization, L as LocalizationContext } from '../chunks/bundle-CRmP70eG.js';
+import { a as isSendableMessage, m as getUIKitMessageTypes, K, B as isTemplateMessage, L as isOGMessage, M as isTextMessage, l as getUIKitMessageType, c as isMultipleFilesMessage, i as isVoiceMessage, o as isThumbnailMessage, f as getSenderName, O as getMessageContentMiddleClassNameByContainerType, P as isAdminMessage, v as getClassName, Q as UI_CONTAINER_TYPES } from '../chunks/bundle-D-z4U1wX.js';
+import { u as useLocalization, L as LocalizationContext } from '../chunks/bundle-BwcI3bWM.js';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
 import { FeedbackRating, Feedback } from '@sendbird/chat/message';
-import { u as useLongPress } from '../chunks/bundle-BaiQZ39W.js';
-import { M as MobileMenu } from '../chunks/bundle-CYWkde8y.js';
-import { u as useMediaQueryContext } from '../chunks/bundle-BBhSg6C_.js';
+import { u as useLongPress } from '../chunks/bundle-DqwaElIt.js';
+import { M as MobileMenu } from '../chunks/bundle-CNgxRTaJ.js';
+import { u as useMediaQueryContext } from '../chunks/bundle-Bs8Nuk02.js';
 import ThreadReplies from './ThreadReplies.js';
-import { T as ThreadReplySelectType } from '../chunks/bundle-DQwQl7bP.js';
-import { d as deleteNullish, n as noop } from '../chunks/bundle-0yILBaSQ.js';
+import { T as ThreadReplySelectType } from '../chunks/bundle-DyO1n8fC.js';
+import { d as deleteNullish, n as noop } from '../chunks/bundle-BJmqupdN.js';
 import ContextMenu, { MenuItems } from './ContextMenu.js';
-import { A as Avatar } from '../chunks/bundle-CvlHmT5j.js';
+import { A as Avatar } from '../chunks/bundle-BAao5L-j.js';
 import UserProfile from './UserProfile.js';
-import { a as UserProfileContext } from '../chunks/bundle-BxO5H6aF.js';
+import { a as UserProfileContext } from '../chunks/bundle-DSd-G7ux.js';
 import OGMessageItemBody from './OGMessageItemBody.js';
 import TextMessageItemBody from './TextMessageItemBody.js';
 import FileMessageItemBody from './FileMessageItemBody.js';
-import { u as useThreadMessageKindKeySelector, a as useFileInfoListWithUploaded, M as MultipleFilesMessageItemBody } from '../chunks/bundle-DOhbdcnA.js';
+import { u as useThreadMessageKindKeySelector, a as useFileInfoListWithUploaded, M as MultipleFilesMessageItemBody } from '../chunks/bundle-B_Ka0sX0.js';
 import { VoiceMessageItemBody } from './VoiceMessageItemBody.js';
 import ThumbnailMessageItemBody from './ThumbnailMessageItemBody.js';
 import UnknownMessageItemBody from './UnknownMessageItemBody.js';
@@ -35,57 +35,59 @@ import FeedbackIconButton from './FeedbackIconButton.js';
 import MobileFeedbackMenu from './MobileFeedbackMenu.js';
 import MessageFeedbackModal from './MessageFeedbackModal.js';
 import MessageFeedbackFailedModal from './MessageFeedbackFailedModal.js';
-import '../chunks/bundle-k7V2rNcW.js';
+import { getIsByMe } from '../Channel/utils/compareMessagesForGrouping.js';
+import '../chunks/bundle-Dyt8DaMp.js';
 import './Loader.js';
 import '../utils/message/getOutgoingMessageState.js';
-import '../chunks/bundle-CCxOcaGS.js';
-import '../chunks/bundle-Ch8Obp48.js';
+import '../chunks/bundle-B482kNJl.js';
+import '../chunks/bundle-DuWC7Y9x.js';
 import './IconButton.js';
-import '../chunks/bundle-Djp37I3i.js';
-import '../chunks/bundle-CNHxvPPg.js';
+import '../chunks/bundle-CU1y-8Hl.js';
+import '../chunks/bundle-B-z3huWI.js';
+import '../chunks/bundle-BytW9Azl.js';
 import 'react-dom';
 import '@sendbird/chat';
 import '@sendbird/chat/openChannel';
 import './SortByRow.js';
-import '../chunks/bundle-DgRY6xy0.js';
-import '../chunks/bundle-C9nxq4KD.js';
+import '../chunks/bundle-Caf8F3YR.js';
+import '../chunks/bundle-DqWrl4d1.js';
 import '@sendbird/chat/groupChannel';
+import '../withSendbird.js';
 import './ImageRenderer.js';
 import './ReactionButton.js';
 import './ReactionBadge.js';
 import './BottomSheet.js';
-import '../chunks/bundle-BfCFd-dO.js';
+import '../chunks/bundle-Zq-75Hl4.js';
 import './Button.js';
 import '@sendbird/uikit-tools';
-import '../withSendbird.js';
 import 'css-vars-ponyfill';
-import '../chunks/bundle-CwSlabaO.js';
-import '../chunks/bundle-w0s865vS.js';
+import '../chunks/bundle-CuXnBg6p.js';
+import '../chunks/bundle-BUsOkeT7.js';
 import './UserListItem.js';
 import './MutedAvatarOverlay.js';
 import './Checkbox.js';
-import '../chunks/bundle-ttSanjmp.js';
+import '../chunks/bundle-BIF2bCQz.js';
 import '../sendbirdSelectors.js';
-import '../chunks/bundle-Cf2xHdC2.js';
+import '../chunks/bundle-CIiROwS_.js';
 import './Tooltip.js';
 import './TooltipWrapper.js';
 import '../Message/context.js';
-import '../chunks/bundle-Dn-yaG7j.js';
-import '../chunks/bundle-CgW0dqme.js';
-import '../chunks/bundle-iau93d70.js';
-import '../chunks/bundle-CPqFGv23.js';
+import '../chunks/bundle-k5z_1yHM.js';
+import '../chunks/bundle-D7eq_YKI.js';
+import '../chunks/bundle-CoLFT4a9.js';
+import '../chunks/bundle-CmBoH2-J.js';
 import './MentionLabel.js';
 import './LinkLabel.js';
-import '../chunks/bundle-B8-kxXoE.js';
-import '../chunks/bundle-CGHxY6Os.js';
+import '../chunks/bundle-CERaU6Re.js';
+import '../chunks/bundle-D0Du43TQ.js';
 import './TextButton.js';
-import '../chunks/bundle-nY4hBePV.js';
-import '../chunks/bundle-DBtx2Gk9.js';
-import '../chunks/bundle-CQ1BOFUN.js';
+import '../chunks/bundle-DZZlGxSQ.js';
+import '../chunks/bundle-D9H0zuk1.js';
+import '../chunks/bundle-By1BYZYf.js';
 import './ProgressBar.js';
 import '../VoicePlayer/useVoicePlayer.js';
 import './PlaybackTime.js';
-import '../chunks/bundle-DAWn6RVy.js';
+import '../chunks/bundle-CtdSSwdH.js';
 import './FallbackTemplateMessageItemBody.tsx.js';
 import './LoadingTemplateMessageItemBody.tsx.js';
 import './Input.js';
@@ -185,14 +187,14 @@ var SbFeedbackStatus;
 
 function MessageContent(props) {
     var _this = this;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
     var 
     // Internal props
-    className = props.className, userId = props.userId, channel = props.channel, message = props.message, _q = props.disabled, disabled = _q === void 0 ? false : _q, _r = props.chainTop, chainTop = _r === void 0 ? false : _r, _s = props.chainBottom, chainBottom = _s === void 0 ? false : _s, _t = props.isReactionEnabled, isReactionEnabled = _t === void 0 ? false : _t, _u = props.disableQuoteMessage, disableQuoteMessage = _u === void 0 ? false : _u, replyType = props.replyType, threadReplySelectType = props.threadReplySelectType, nicknamesMap = props.nicknamesMap, emojiContainer = props.emojiContainer, scrollToMessage = props.scrollToMessage, showEdit = props.showEdit, showRemove = props.showRemove, showFileViewer = props.showFileViewer, resendMessage = props.resendMessage, deleteMessage = props.deleteMessage, toggleReaction = props.toggleReaction, setQuoteMessage = props.setQuoteMessage, onReplyInThread = props.onReplyInThread, onQuoteMessageClick = props.onQuoteMessageClick, onMessageHeightChange = props.onMessageHeightChange, onBeforeDownloadFileMessage = props.onBeforeDownloadFileMessage;
+    className = props.className, userId = props.userId, channel = props.channel, message = props.message, _p = props.disabled, disabled = _p === void 0 ? false : _p, _q = props.chainTop, chainTop = _q === void 0 ? false : _q, _r = props.chainBottom, chainBottom = _r === void 0 ? false : _r, _s = props.isReactionEnabled, isReactionEnabled = _s === void 0 ? false : _s, _t = props.disableQuoteMessage, disableQuoteMessage = _t === void 0 ? false : _t, replyType = props.replyType, threadReplySelectType = props.threadReplySelectType, nicknamesMap = props.nicknamesMap, emojiContainer = props.emojiContainer, scrollToMessage = props.scrollToMessage, showEdit = props.showEdit, showRemove = props.showRemove, showFileViewer = props.showFileViewer, resendMessage = props.resendMessage, deleteMessage = props.deleteMessage, toggleReaction = props.toggleReaction, setQuoteMessage = props.setQuoteMessage, onReplyInThread = props.onReplyInThread, onQuoteMessageClick = props.onQuoteMessageClick, onMessageHeightChange = props.onMessageHeightChange, onBeforeDownloadFileMessage = props.onBeforeDownloadFileMessage;
     // Public props for customization
-    var _v = deleteNullish(props), _w = _v.renderSenderProfile, renderSenderProfile = _w === void 0 ? function (props) { return React__default.createElement(MessageProfile, __assign({}, props)); } : _w, _x = _v.renderMessageBody, renderMessageBody = _x === void 0 ? function (props) { return React__default.createElement(MessageBody, __assign({}, props)); } : _x, _y = _v.renderMessageHeader, renderMessageHeader = _y === void 0 ? function (props) { return React__default.createElement(MessageHeader, __assign({}, props)); } : _y, _z = _v.renderMessageMenu, renderMessageMenu = _z === void 0 ? function (props) { return React__default.createElement(MessageMenu, __assign({}, props)); } : _z, _0 = _v.renderEmojiMenu, renderEmojiMenu = _0 === void 0 ? function (props) { return React__default.createElement(MessageEmojiMenu, __assign({}, props)); } : _0, _1 = _v.renderEmojiReactions, renderEmojiReactions = _1 === void 0 ? function (props) { return React__default.createElement(EmojiReactions, __assign({}, props)); } : _1, _2 = _v.renderMobileMenuOnLongPress, renderMobileMenuOnLongPress = _2 === void 0 ? function (props) { return React__default.createElement(MobileMenu, __assign({}, props)); } : _2;
+    var _u = deleteNullish(props), _v = _u.renderSenderProfile, renderSenderProfile = _v === void 0 ? function (props) { return React__default.createElement(MessageProfile, __assign({}, props)); } : _v, _w = _u.renderMessageBody, renderMessageBody = _w === void 0 ? function (props) { return React__default.createElement(MessageBody, __assign({}, props)); } : _w, _x = _u.renderMessageHeader, renderMessageHeader = _x === void 0 ? function (props) { return React__default.createElement(MessageHeader, __assign({}, props)); } : _x, _y = _u.renderMessageMenu, renderMessageMenu = _y === void 0 ? function (props) { return React__default.createElement(MessageMenu, __assign({}, props)); } : _y, _z = _u.renderEmojiMenu, renderEmojiMenu = _z === void 0 ? function (props) { return React__default.createElement(MessageEmojiMenu, __assign({}, props)); } : _z, _0 = _u.renderEmojiReactions, renderEmojiReactions = _0 === void 0 ? function (props) { return React__default.createElement(EmojiReactions, __assign({}, props)); } : _0, _1 = _u.renderMobileMenuOnLongPress, renderMobileMenuOnLongPress = _1 === void 0 ? function (props) { return React__default.createElement(MobileMenu, __assign({}, props)); } : _1;
     var dateLocale = useLocalization().dateLocale;
-    var _3 = useSendbirdStateContext(), config = _3.config, eventHandlers = _3.eventHandlers;
+    var _2 = useSendbirdStateContext(), config = _2.config, eventHandlers = _2.eventHandlers;
     var logger = config.logger;
     var onPressUserProfileHandler = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.reaction) === null || _a === void 0 ? void 0 : _a.onPressUserProfile;
     var contentRef = useRef(null);
@@ -200,17 +202,17 @@ function MessageContent(props) {
     var threadRepliesRef = useRef(null);
     var feedbackButtonsRef = useRef(null);
     var isMobile = useMediaQueryContext().isMobile;
-    var _4 = useState(false), showMenu = _4[0], setShowMenu = _4[1];
-    var _5 = useState(false), mouseHover = _5[0], setMouseHover = _5[1];
-    var _6 = useState(false), supposedHover = _6[0], setSupposedHover = _6[1];
+    var _3 = useState(false), showMenu = _3[0], setShowMenu = _3[1];
+    var _4 = useState(false), mouseHover = _4[0], setMouseHover = _4[1];
+    var _5 = useState(false), supposedHover = _5[0], setSupposedHover = _5[1];
     // Feedback states
-    var _7 = useState(false), showFeedbackOptionsMenu = _7[0], setShowFeedbackOptionsMenu = _7[1];
-    var _8 = useState(false), showFeedbackModal = _8[0], setShowFeedbackModal = _8[1];
-    var _9 = useState(''), feedbackFailedText = _9[0], setFeedbackFailedText = _9[1];
-    var _10 = useState(getMessageContentMiddleClassNameByContainerType({
+    var _6 = useState(false), showFeedbackOptionsMenu = _6[0], setShowFeedbackOptionsMenu = _6[1];
+    var _7 = useState(false), showFeedbackModal = _7[0], setShowFeedbackModal = _7[1];
+    var _8 = useState(''), feedbackFailedText = _8[0], setFeedbackFailedText = _8[1];
+    var _9 = useState(getMessageContentMiddleClassNameByContainerType({
         message: message,
         isMobile: isMobile,
-    })), uiContainerType = _10[0], setUiContainerType = _10[1];
+    })), uiContainerType = _9[0], setUiContainerType = _9[1];
     var onTemplateMessageRenderedCallback = function (renderedTemplateType) {
         if (renderedTemplateType === 'failed') {
             setUiContainerType(UI_CONTAINER_TYPES.DEFAULT);
@@ -223,9 +225,7 @@ function MessageContent(props) {
         }
     };
     var stringSet = useContext(LocalizationContext).stringSet;
-    var isByMe = (userId === ((_b = message === null || message === void 0 ? void 0 : message.sender) === null || _b === void 0 ? void 0 : _b.userId))
-        || ((message === null || message === void 0 ? void 0 : message.sendingStatus) === 'pending')
-        || ((message === null || message === void 0 ? void 0 : message.sendingStatus) === 'failed');
+    var isByMe = getIsByMe(userId, message);
     var isByMeClassName = isByMe ? 'outgoing' : 'incoming';
     var chainTopClassName = chainTop ? 'chain-top' : '';
     var isReactionEnabledInChannel = isReactionEnabled && !(channel === null || channel === void 0 ? void 0 : channel.isEphemeral);
@@ -236,12 +236,12 @@ function MessageContent(props) {
         && !disableQuoteMessage);
     var useReplyingClassName = useReplying ? 'use-quote' : '';
     // Thread replies
-    var displayThreadReplies = ((_c = message === null || message === void 0 ? void 0 : message.threadInfo) === null || _c === void 0 ? void 0 : _c.replyCount) > 0 && replyType === 'THREAD';
+    var displayThreadReplies = ((_b = message === null || message === void 0 ? void 0 : message.threadInfo) === null || _b === void 0 ? void 0 : _b.replyCount) > 0 && replyType === 'THREAD';
     // Feedback buttons
     var isFeedbackMessage = !isByMe
         && (message === null || message === void 0 ? void 0 : message.myFeedbackStatus)
         && message.myFeedbackStatus !== SbFeedbackStatus.NOT_APPLICABLE;
-    var isFeedbackEnabled = ((_d = config === null || config === void 0 ? void 0 : config.groupChannel) === null || _d === void 0 ? void 0 : _d.enableFeedback) && isFeedbackMessage;
+    var isFeedbackEnabled = ((_c = config === null || config === void 0 ? void 0 : config.groupChannel) === null || _c === void 0 ? void 0 : _c.enableFeedback) && isFeedbackMessage;
     /**
      * For TemplateMessage, do not display:
      *   - in web view:
@@ -347,7 +347,7 @@ function MessageContent(props) {
             ]) }, (isMobile ? __assign({}, longPress) : {}), { ref: contentRef }),
             !isByMe && !chainTop && !useReplying && renderMessageHeader(props),
             (useReplying) ? (React__default.createElement("div", { className: getClassName(['sendbird-message-content__middle__quote-message', isByMe ? 'outgoing' : 'incoming', useReplyingClassName]) },
-                React__default.createElement(QuoteMessage, { className: "sendbird-message-content__middle__quote-message__quote", message: message, userId: userId, isByMe: isByMe, isUnavailable: ((_e = channel === null || channel === void 0 ? void 0 : channel.messageOffsetTimestamp) !== null && _e !== void 0 ? _e : 0) > ((_g = (_f = message.parentMessage) === null || _f === void 0 ? void 0 : _f.createdAt) !== null && _g !== void 0 ? _g : 0), onClick: function () {
+                React__default.createElement(QuoteMessage, { className: "sendbird-message-content__middle__quote-message__quote", message: message, userId: userId, isByMe: isByMe, isUnavailable: ((_d = channel === null || channel === void 0 ? void 0 : channel.messageOffsetTimestamp) !== null && _d !== void 0 ? _d : 0) > ((_f = (_e = message.parentMessage) === null || _e === void 0 ? void 0 : _e.createdAt) !== null && _f !== void 0 ? _f : 0), onClick: function () {
                         var _a;
                         if (replyType === 'THREAD' && threadReplySelectType === ThreadReplySelectType.THREAD) {
                             onQuoteMessageClick === null || onQuoteMessageClick === void 0 ? void 0 : onQuoteMessageClick({ message: message });
@@ -382,7 +382,7 @@ function MessageContent(props) {
                     onTemplateMessageRenderedCallback: onTemplateMessageRenderedCallback,
                     onBeforeDownloadFileMessage: onBeforeDownloadFileMessage,
                 }),
-                (isReactionEnabledInChannel && ((_h = message === null || message === void 0 ? void 0 : message.reactions) === null || _h === void 0 ? void 0 : _h.length) > 0) && (React__default.createElement("div", { className: getClassName([
+                (isReactionEnabledInChannel && ((_g = message === null || message === void 0 ? void 0 : message.reactions) === null || _g === void 0 ? void 0 : _g.length) > 0) && (React__default.createElement("div", { className: getClassName([
                         'sendbird-message-content-reactions',
                         isMultipleFilesMessage(message)
                             ? 'image-grid'
@@ -409,12 +409,12 @@ function MessageContent(props) {
                 })))),
             isTimestampBottom && React__default.createElement("div", { style: {
                     width: '100%',
-                    height: ((_k = (_j = timestampRef.current) === null || _j === void 0 ? void 0 : _j.clientHeight) !== null && _k !== void 0 ? _k : 0) + 'px',
+                    height: ((_j = (_h = timestampRef.current) === null || _h === void 0 ? void 0 : _h.clientHeight) !== null && _j !== void 0 ? _j : 0) + 'px',
                     marginTop: '4px',
                 } }),
             showThreadReplies && (React__default.createElement(ThreadReplies, { className: "sendbird-message-content__middle__thread-replies", threadInfo: message === null || message === void 0 ? void 0 : message.threadInfo, onClick: function () { return onReplyInThread === null || onReplyInThread === void 0 ? void 0 : onReplyInThread({ message: message }); }, ref: threadRepliesRef })),
             isFeedbackEnabled && React__default.createElement("div", { className: "sendbird-message-content__middle__body-container__feedback-buttons-container", ref: feedbackButtonsRef },
-                React__default.createElement(FeedbackIconButton, { isSelected: ((_l = message === null || message === void 0 ? void 0 : message.myFeedback) === null || _l === void 0 ? void 0 : _l.rating) === FeedbackRating.GOOD, onClick: function () { return __awaiter(_this, void 0, void 0, function () {
+                React__default.createElement(FeedbackIconButton, { isSelected: ((_k = message === null || message === void 0 ? void 0 : message.myFeedback) === null || _k === void 0 ? void 0 : _k.rating) === FeedbackRating.GOOD, onClick: function () { return __awaiter(_this, void 0, void 0, function () {
                         var error_1;
                         var _a, _b, _c;
                         return __generator(this, function (_d) {
@@ -445,7 +445,7 @@ function MessageContent(props) {
                         });
                     }); }, disabled: (message === null || message === void 0 ? void 0 : message.myFeedback) && message.myFeedback.rating !== FeedbackRating.GOOD },
                     React__default.createElement(Icon, { type: IconTypes.FEEDBACK_LIKE, width: '24px', height: '24px' })),
-                React__default.createElement(FeedbackIconButton, { isSelected: ((_m = message === null || message === void 0 ? void 0 : message.myFeedback) === null || _m === void 0 ? void 0 : _m.rating) === FeedbackRating.BAD, onClick: function () { return __awaiter(_this, void 0, void 0, function () {
+                React__default.createElement(FeedbackIconButton, { isSelected: ((_l = message === null || message === void 0 ? void 0 : message.myFeedback) === null || _l === void 0 ? void 0 : _l.rating) === FeedbackRating.BAD, onClick: function () { return __awaiter(_this, void 0, void 0, function () {
                         var error_2;
                         var _a, _b, _c;
                         return __generator(this, function (_d) {
@@ -565,7 +565,7 @@ function MessageContent(props) {
                 });
             }); },
         }),
-        ((_o = message === null || message === void 0 ? void 0 : message.myFeedback) === null || _o === void 0 ? void 0 : _o.rating) && showFeedbackOptionsMenu && (React__default.createElement(MobileFeedbackMenu, { hideMenu: function () {
+        ((_m = message === null || message === void 0 ? void 0 : message.myFeedback) === null || _m === void 0 ? void 0 : _m.rating) && showFeedbackOptionsMenu && (React__default.createElement(MobileFeedbackMenu, { hideMenu: function () {
                 setShowFeedbackOptionsMenu(false);
             }, onEditFeedback: function () {
                 setShowFeedbackOptionsMenu(false);
@@ -592,7 +592,7 @@ function MessageContent(props) {
                     }
                 });
             }); } })),
-        ((_p = message === null || message === void 0 ? void 0 : message.myFeedback) === null || _p === void 0 ? void 0 : _p.rating) && showFeedbackModal && (React__default.createElement(MessageFeedbackModal, { selectedFeedback: message.myFeedback.rating, message: message, onUpdate: function (selectedFeedback, comment) { return __awaiter(_this, void 0, void 0, function () {
+        ((_o = message === null || message === void 0 ? void 0 : message.myFeedback) === null || _o === void 0 ? void 0 : _o.rating) && showFeedbackModal && (React__default.createElement(MessageFeedbackModal, { selectedFeedback: message.myFeedback.rating, message: message, onUpdate: function (selectedFeedback, comment) { return __awaiter(_this, void 0, void 0, function () {
                 var newFeedback, error_4;
                 var _a, _b;
                 return __generator(this, function (_c) {

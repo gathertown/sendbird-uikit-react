@@ -1,23 +1,23 @@
 'use strict';
 
-var _tslib = require('../chunks/bundle-DHh3VdoS.js');
+var _tslib = require('../chunks/bundle-BO5OZWjS.js');
 var React = require('react');
 var message = require('@sendbird/chat/message');
 var groupChannel = require('@sendbird/chat/groupChannel');
 var uikitTools = require('@sendbird/uikit-tools');
-var UserProfileContext = require('../chunks/bundle-BKwrdy8Y.js');
+var UserProfileContext = require('../chunks/bundle-CJtsI7GU.js');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
-var useToggleReactionCallback = require('../chunks/bundle-h4wKJtrO.js');
-var resolvedReplyType = require('../chunks/bundle-C1rrs9fy.js');
-var utils = require('../chunks/bundle-Cu63GBZj.js');
-var index$1 = require('../chunks/bundle-DQY0kimN.js');
-var index = require('../chunks/bundle-CQ6ec9FA.js');
-var pubSub_topics = require('../chunks/bundle-CYjw4691.js');
-var consts = require('../chunks/bundle-BPGreBtw.js');
-var getIsReactionEnabled = require('../chunks/bundle-BwAK1D9u.js');
+var useToggleReactionCallback = require('../chunks/bundle-QyttZIkx.js');
+var resolvedReplyType = require('../chunks/bundle-D_b5XkOl.js');
+var utils = require('../chunks/bundle-D0q1P-FU.js');
+var index$1 = require('../chunks/bundle--oP96AvO.js');
+var index = require('../chunks/bundle-BoYSz_zM.js');
+var pubSub_topics = require('../chunks/bundle-z9miKj3U.js');
+var consts = require('../chunks/bundle-DI6hrkhw.js');
+var getIsReactionEnabled = require('../chunks/bundle-D0o2OzcU.js');
 require('../withSendbird.js');
-require('../chunks/bundle-etwgXqw-.js');
-require('../chunks/bundle-9xv4YoP5.js');
+require('../chunks/bundle-BECkGjrR.js');
+require('../chunks/bundle-CZJazoZ7.js');
 
 function runCallback(callback, lazy) {
     if (lazy === void 0) { lazy = true; }
@@ -39,7 +39,9 @@ function useMessageListScroll(behavior) {
     var scrollRef = React.useRef(null);
     var scrollDistanceFromBottomRef = React.useRef(0);
     var scrollPubSub = React.useState(function () { return index.pubSubFactory(); })[0];
-    var _a = React.useState(false), isScrollBottomReached = _a[0], setIsScrollBottomReached = _a[1];
+    // lists are rendered scrolled to the bottom by default
+    var _a = React.useState(true), isScrollBottomReached = _a[0], setIsScrollBottomReached = _a[1];
+    var _b = React.useState(null), isScrollable = _b[0], setIsScrollable = _b[1];
     // If there is no area to scroll, it is considered as scroll bottom reached.
     if (isScrollBottomReached === false && scrollRef.current && scrollRef.current.scrollHeight <= scrollRef.current.clientHeight) {
         scrollDistanceFromBottomRef.current = 0;
@@ -50,8 +52,13 @@ function useMessageListScroll(behavior) {
         unsubscribes.push(scrollPubSub.subscribe('scrollToBottom', function (_a) {
             var resolve = _a.resolve, animated = _a.animated;
             runCallback(function () {
-                if (!scrollRef.current)
+                if (!scrollRef.current) {
+                    // if the scrollRef doesn't exist yet, just resolve the promise
+                    // to release any dependent coroutine locks. These locks are meant to synchronize
+                    // scrolls, which is unnecessary if the list isn't rendered yet.
+                    resolve === null || resolve === void 0 ? void 0 : resolve();
                     return;
+                }
                 if (scrollRef.current.scroll) {
                     scrollRef.current.scroll({ top: scrollRef.current.scrollHeight, behavior: getScrollBehavior(behavior, animated) });
                 }
@@ -79,7 +86,10 @@ function useMessageListScroll(behavior) {
                 }
                 // Update data by manual update
                 scrollDistanceFromBottomRef.current = Math.max(0, scrollHeight - scrollTop - clientHeight);
-                setIsScrollBottomReached(scrollDistanceFromBottomRef.current === 0);
+                // This is commented out because we don't want the bottom reached 
+                // computation to trigger on content size change. useOnScrollPositionChangeDetectorWithRef will
+                // trigger the computation on true scrolling.
+                // setIsScrollBottomReached(scrollDistanceFromBottomRef.current === 0);
                 if (resolve)
                     resolve();
             }, lazy);
@@ -109,12 +119,19 @@ function useMessageListScroll(behavior) {
             scrollDistanceFromBottomRef.current = distanceFromBottom;
         },
     });
+    React.useEffect(function () {
+        if (!scrollRef.current)
+            return;
+        var _a = scrollRef.current, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
+        setIsScrollable(scrollHeight > clientHeight);
+    }, [scrollRef.current]);
     return {
         scrollRef: scrollRef,
         scrollPubSub: scrollPubSub,
         isScrollBottomReached: isScrollBottomReached,
         setIsScrollBottomReached: setIsScrollBottomReached,
         scrollDistanceFromBottomRef: scrollDistanceFromBottomRef,
+        isScrollable: isScrollable,
     };
 }
 
@@ -265,7 +282,7 @@ var GroupChannelProvider = function (props) {
     var _k = React.useState(null), currentChannel = _k[0], setCurrentChannel = _k[1];
     var _l = React.useState(null), fetchChannelError = _l[0], setFetchChannelError = _l[1];
     // Ref
-    var _m = useMessageListScroll(scrollBehavior), scrollRef = _m.scrollRef, scrollPubSub = _m.scrollPubSub, scrollDistanceFromBottomRef = _m.scrollDistanceFromBottomRef, isScrollBottomReached = _m.isScrollBottomReached, setIsScrollBottomReached = _m.setIsScrollBottomReached;
+    var _m = useMessageListScroll(scrollBehavior), scrollRef = _m.scrollRef, scrollPubSub = _m.scrollPubSub, scrollDistanceFromBottomRef = _m.scrollDistanceFromBottomRef, isScrollBottomReached = _m.isScrollBottomReached, setIsScrollBottomReached = _m.setIsScrollBottomReached, isScrollable = _m.isScrollable;
     var messageInputRef = React.useRef(null);
     var toggleReaction = useToggleReactionCallback.useToggleReactionCallback(currentChannel, logger);
     var replyType = resolvedReplyType.getCaseResolvedReplyType(moduleReplyType !== null && moduleReplyType !== void 0 ? moduleReplyType : config.groupChannel.replyType).upperCase;
@@ -313,6 +330,17 @@ var GroupChannelProvider = function (props) {
         onChannelUpdated: function (channel) { return setCurrentChannel(channel); },
         logger: logger,
     });
+    /**
+     * When we initially load a channels messages, useGroupChannelMessages markAsRead will fire.
+     * If the view is unscrollable though, isScrollBottomReached is false. This means the unread messages will not be marked as read.
+     */
+    React.useEffect(function () {
+        if (isScrollable === null || messageDataSource.loading)
+            return;
+        if (!isScrollable && messageDataSource.messages.length > 0 && !disableMarkAsRead) {
+            markAsReadScheduler.push(currentChannel);
+        }
+    }, [isScrollable, messageDataSource.loading]);
     index$1.useOnScrollPositionChangeDetectorWithRef(scrollRef, {
         onReachedTop: function () {
             return _tslib.__awaiter(this, void 0, void 0, function () {

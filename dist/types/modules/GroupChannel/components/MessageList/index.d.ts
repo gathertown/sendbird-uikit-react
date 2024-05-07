@@ -31,6 +31,9 @@ export interface GroupChannelMessageListProps {
      * A function that customizes the rendering of a suggested replies component.
      */
     renderSuggestedReplies?: GroupChannelUIBasicProps['renderSuggestedReplies'];
+    renderRemoveMessageModal?: GroupChannelUIBasicProps['renderRemoveMessageModal'];
+    renderEditInput?: GroupChannelUIBasicProps['renderEditInput'];
+    renderScrollToBottomOrUnread?: GroupChannelUIBasicProps['renderScrollToBottomOrUnread'];
 }
-export declare const MessageList: (props: GroupChannelMessageListProps) => React.JSX.Element;
+export declare const MessageList: ({ className, renderMessage, renderEditInput, renderRemoveMessageModal, renderMessageContent, renderSuggestedReplies, renderCustomSeparator, renderScrollToBottomOrUnread, renderPlaceholderLoader, renderPlaceholderEmpty, renderFrozenNotification, }: GroupChannelMessageListProps) => React.JSX.Element;
 export default MessageList;

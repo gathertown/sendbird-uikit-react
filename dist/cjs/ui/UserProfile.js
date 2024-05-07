@@ -1,20 +1,20 @@
 'use strict';
 
 var React = require('react');
-var LocalizationContext = require('../chunks/bundle-BD2bIoH6.js');
-var UserProfileContext = require('../chunks/bundle-BKwrdy8Y.js');
+var LocalizationContext = require('../chunks/bundle-DKL8dMjq.js');
+var UserProfileContext = require('../chunks/bundle-CJtsI7GU.js');
 var sendbirdSelectors = require('../sendbirdSelectors.js');
-var ui_Avatar = require('../chunks/bundle-JS-CtPko.js');
-var ui_Label = require('../chunks/bundle-24sG-BP_.js');
+var ui_Avatar = require('../chunks/bundle-Cd7XOuNj.js');
+var ui_Label = require('../chunks/bundle-CRRWhSHD.js');
 var ui_Button = require('./Button.js');
 var useSendbirdStateContext = require('../useSendbirdStateContext.js');
-require('../chunks/bundle-DoHigaWY.js');
-require('../chunks/bundle-C8yEdUBb.js');
-require('../chunks/bundle-CYjw4691.js');
-require('../chunks/bundle-BvJOj_Nb.js');
-require('../chunks/bundle-DHh3VdoS.js');
+require('../chunks/bundle-CNnH6vJ_.js');
+require('../chunks/bundle-B8rdv1pq.js');
+require('../chunks/bundle-z9miKj3U.js');
+require('../chunks/bundle-DgAALupQ.js');
+require('../chunks/bundle-BO5OZWjS.js');
 require('./ImageRenderer.js');
-require('../chunks/bundle-Xx0kBn7q.js');
+require('../chunks/bundle-CoSi4lOw.js');
 require('./Icon.js');
 require('../withSendbird.js');
 

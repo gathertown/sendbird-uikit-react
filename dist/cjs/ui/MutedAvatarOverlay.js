@@ -2,8 +2,8 @@
 
 var React = require('react');
 var ui_Icon = require('./Icon.js');
-require('../chunks/bundle-DHh3VdoS.js');
-require('../chunks/bundle-BvJOj_Nb.js');
+require('../chunks/bundle-BO5OZWjS.js');
+require('../chunks/bundle-DgAALupQ.js');
 
 function MutedAvatarOverlay(props) {
     var _a = props.height, height = _a === void 0 ? 24 : _a, _b = props.width, width = _b === void 0 ? 24 : _b;

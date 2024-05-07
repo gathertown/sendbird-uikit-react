@@ -1,18 +1,18 @@
 import React__default, { useEffect, useCallback, useReducer, useMemo } from 'react';
-import { c as compareIds, s as scrollIntoLast, g as getParentMessageFrom, u as useSendMultipleFilesMessage, a as getNicknamesMapFromMembers } from '../chunks/bundle-B-v_xYnH.js';
-import { U as UserProfileProvider } from '../chunks/bundle-BxO5H6aF.js';
+import { c as compareIds, s as scrollIntoLast, g as getParentMessageFrom, u as useSendMultipleFilesMessage, a as getNicknamesMapFromMembers } from '../chunks/bundle-DjAc13S7.js';
+import { U as UserProfileProvider } from '../chunks/bundle-DSd-G7ux.js';
 import { useSendbirdStateContext } from '../useSendbirdStateContext.js';
-import { _ as __assign, c as __spreadArray, a as __awaiter, b as __generator } from '../chunks/bundle-D8IuvsaW.js';
+import { _ as __assign, c as __spreadArray, a as __awaiter, b as __generator } from '../chunks/bundle-s7uQ7zAa.js';
 import { ChannelStateTypes, ThreadListStateTypes, ParentMessageStateTypes } from './context/types.js';
 import { ChannelType } from '@sendbird/chat';
-import { p as pubSubTopics, a as shouldPubSubPublishToThread, b as PUBSUB_TOPICS, P as PublishingModuleType } from '../chunks/bundle-Cf2xHdC2.js';
-import { s as ON_FILE_INFO_UPLOADED, t as ON_TYPING_STATUS_UPDATED } from '../chunks/bundle-COwB5DaQ.js';
+import { p as pubSubTopics, a as shouldPubSubPublishToThread, b as PUBSUB_TOPICS, P as PublishingModuleType } from '../chunks/bundle-CIiROwS_.js';
+import { s as ON_FILE_INFO_UPLOADED, t as ON_TYPING_STATUS_UPDATED } from '../chunks/bundle-BMf2Gp0X.js';
 import { GroupChannelHandler } from '@sendbird/chat/groupChannel';
-import { u as uuidv4 } from '../chunks/bundle-DgRY6xy0.js';
-import { c as compareIds$1 } from '../chunks/bundle-BFBEOrCk.js';
+import { u as uuidv4 } from '../chunks/bundle-Caf8F3YR.js';
+import { c as compareIds$1 } from '../chunks/bundle-BHNYgnEs.js';
 import { MessageType, SendingStatus, MessageMetaArray } from '@sendbird/chat/message';
-import { b as SCROLL_BOTTOM_DELAY_FOR_SEND, g as VOICE_MESSAGE_FILE_NAME, h as VOICE_MESSAGE_MIME_TYPE, M as META_ARRAY_VOICE_DURATION_KEY, i as META_ARRAY_MESSAGE_TYPE_KEY, j as META_ARRAY_MESSAGE_TYPE_VALUE__VOICE } from '../chunks/bundle-w0s865vS.js';
-import '../chunks/bundle-se836s50.js';
+import { b as SCROLL_BOTTOM_DELAY_FOR_SEND, g as VOICE_MESSAGE_FILE_NAME, h as VOICE_MESSAGE_MIME_TYPE, M as META_ARRAY_VOICE_DURATION_KEY, i as META_ARRAY_MESSAGE_TYPE_KEY, j as META_ARRAY_MESSAGE_TYPE_VALUE__VOICE } from '../chunks/bundle-BUsOkeT7.js';
+import '../chunks/bundle-B-z3huWI.js';
 import '../utils/message/getOutgoingMessageState.js';
 import '../withSendbird.js';
 
@@ -639,7 +639,7 @@ function useHandleChannelEvents(_a, _b) {
 
 function useSendFileMessageCallback(_a, _b) {
     var currentChannel = _a.currentChannel, onBeforeSendFileMessage = _a.onBeforeSendFileMessage;
-    var logger = _b.logger, pubSub = _b.pubSub, threadDispatcher = _b.threadDispatcher;
+    var logger = _b.logger, eventHandlers = _b.eventHandlers, pubSub = _b.pubSub, threadDispatcher = _b.threadDispatcher;
     var sendMessage = useCallback(function (file, quoteMessage) {
         return new Promise(function (resolve, reject) {
             var _a;
@@ -668,9 +668,11 @@ function useSendFileMessageCallback(_a, _b) {
                 });
                 setTimeout(function () { return scrollIntoLast(); }, SCROLL_BOTTOM_DELAY_FOR_SEND);
             }).onFailed(function (error, message) {
+                var _a, _b;
                 message.localUrl = URL.createObjectURL(file);
                 message.file = file;
                 logger.info('Thread | useSendFileMessageCallback: Sending file message failed.', { message: message, error: error });
+                (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, error);
                 threadDispatcher({
                     type: ThreadContextActionTypes.SEND_MESSAGE_FAILURE,
                     payload: { message: message, error: error },
@@ -839,9 +841,9 @@ function useSendUserMessageCallback(_a, _b) {
 
 function useResendMessageCallback(_a, _b) {
     var currentChannel = _a.currentChannel;
-    var logger = _b.logger, pubSub = _b.pubSub, threadDispatcher = _b.threadDispatcher;
+    var logger = _b.logger, eventHandlers = _b.eventHandlers, pubSub = _b.pubSub, threadDispatcher = _b.threadDispatcher;
     return useCallback(function (failedMessage) {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f, _g;
         if (failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isResendable) {
             logger.info('Thread | useResendMessageCallback: Resending failedMessage start.', failedMessage);
             if (((_a = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isUserMessage) === null || _a === void 0 ? void 0 : _a.call(failedMessage)) || (failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.messageType) === MessageType.USER) {
@@ -864,7 +866,9 @@ function useResendMessageCallback(_a, _b) {
                             publishingModules: [PublishingModuleType.THREAD],
                         });
                     }).onFailed(function (error) {
+                        var _a, _b;
                         logger.warning('Thread | useResendMessageCallback: Resending user message failed.', error);
+                        (_b = (_a = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _a === void 0 ? void 0 : _a.onFailed) === null || _b === void 0 ? void 0 : _b.call(_a, error);
                         failedMessage.sendingStatus = SendingStatus.FAILED;
                         threadDispatcher({
                             type: ThreadContextActionTypes.SEND_MESSAGE_FAILURE,
@@ -874,6 +878,7 @@ function useResendMessageCallback(_a, _b) {
                 }
                 catch (err) {
                     logger.warning('Thread | useResendMessageCallback: Resending user message failed.', err);
+                    (_c = (_b = eventHandlers === null || eventHandlers === void 0 ? void 0 : eventHandlers.request) === null || _b === void 0 ? void 0 : _b.onFailed) === null || _c === void 0 ? void 0 : _c.call(_b, err);
                     failedMessage.sendingStatus = SendingStatus.FAILED;
                     threadDispatcher({
                         type: ThreadContextActionTypes.SEND_MESSAGE_FAILURE,
@@ -881,9 +886,9 @@ function useResendMessageCallback(_a, _b) {
                     });
                 }
             }
-            else if ((_b = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isFileMessage) === null || _b === void 0 ? void 0 : _b.call(failedMessage)) {
+            else if ((_d = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isFileMessage) === null || _d === void 0 ? void 0 : _d.call(failedMessage)) {
                 try {
-                    (_c = currentChannel === null || currentChannel === void 0 ? void 0 : currentChannel.resendMessage) === null || _c === void 0 ? void 0 : _c.call(currentChannel, failedMessage).onPending(function (message) {
+                    (_e = currentChannel === null || currentChannel === void 0 ? void 0 : currentChannel.resendMessage) === null || _e === void 0 ? void 0 : _e.call(currentChannel, failedMessage).onPending(function (message) {
                         logger.info('Thread | useResendMessageCallback: Resending file message started.', message);
                         threadDispatcher({
                             type: ThreadContextActionTypes.RESEND_MESSAGE_START,
@@ -918,9 +923,9 @@ function useResendMessageCallback(_a, _b) {
                     });
                 }
             }
-            else if ((_d = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isMultipleFilesMessage) === null || _d === void 0 ? void 0 : _d.call(failedMessage)) {
+            else if ((_f = failedMessage === null || failedMessage === void 0 ? void 0 : failedMessage.isMultipleFilesMessage) === null || _f === void 0 ? void 0 : _f.call(failedMessage)) {
                 try {
-                    (_e = currentChannel === null || currentChannel === void 0 ? void 0 : currentChannel.resendMessage) === null || _e === void 0 ? void 0 : _e.call(currentChannel, failedMessage).onPending(function (message) {
+                    (_g = currentChannel === null || currentChannel === void 0 ? void 0 : currentChannel.resendMessage) === null || _g === void 0 ? void 0 : _g.call(currentChannel, failedMessage).onPending(function (message) {
                         logger.info('Thread | useResendMessageCallback: Resending multiple files message started.', message);
                         threadDispatcher({
                             type: ThreadContextActionTypes.RESEND_MESSAGE_START,
@@ -1187,6 +1192,7 @@ var ThreadProvider = function (props) {
     var sdk = sdkStore.sdk;
     var user = userStore.user;
     var sdkInit = sdkStore === null || sdkStore === void 0 ? void 0 : sdkStore.initialized;
+    var eventHandlers = globalStore.eventHandlers;
     // // config
     var logger = config.logger, pubSub = config.pubSub, onUserProfileMessage = config.onUserProfileMessage;
     var isMentionEnabled = config.groupChannel.enableMention;
@@ -1254,6 +1260,7 @@ var ThreadProvider = function (props) {
         onBeforeSendFileMessage: onBeforeSendFileMessage,
     }, {
         logger: logger,
+        eventHandlers: eventHandlers,
         pubSub: pubSub,
         threadDispatcher: threadDispatcher,
     });
@@ -1271,11 +1278,12 @@ var ThreadProvider = function (props) {
         publishingModules: [PublishingModuleType.THREAD],
     }, {
         logger: logger,
+        eventHandlers: eventHandlers,
         pubSub: pubSub,
     })[0];
     var resendMessage = useResendMessageCallback({
         currentChannel: currentChannel,
-    }, { logger: logger, pubSub: pubSub, threadDispatcher: threadDispatcher });
+    }, { logger: logger, eventHandlers: eventHandlers, pubSub: pubSub, threadDispatcher: threadDispatcher });
     var updateMessage = useUpdateMessageCallback({
         currentChannel: currentChannel,
         isMentionEnabled: isMentionEnabled,
