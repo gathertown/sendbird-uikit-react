@@ -157,7 +157,7 @@ export interface SdkStore {
   error: boolean;
   initialized: boolean;
   loading: boolean;
-  sdk: SendbirdChatType;
+  sdk: SendbirdChatType | null;
 }
 
 export interface UserStore {
