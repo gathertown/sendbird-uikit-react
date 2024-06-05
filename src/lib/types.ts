@@ -56,6 +56,7 @@ export interface SBUEventHandlers {
   connection?: {
     onConnected?(user: User): void;
     onFailed?(error: SendbirdError): void;
+    onSucceeded?(user: User): void;
   },
   modal?: {
     onMounted?(params: { id: string; close(): void; }): void | (() => void);

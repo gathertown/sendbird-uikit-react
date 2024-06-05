@@ -28,7 +28,7 @@ export const useFetchChannelList = ({
   eventHandlers,
   markAsDeliveredScheduler,
 }: StaticProps) => {
-  return useCallback(async () => {
+  return useCallback(async (resolveValue?: boolean) => {
     if (!channelSource?.hasNext) {
       logger.info('ChannelList: not able to fetch');
       return;
@@ -54,6 +54,9 @@ export const useFetchChannelList = ({
           }
         });
       }
+      if (resolveValue) {
+        return channelList;
+      }
     } catch (error) {
       logger.error('ChannelList: failed fetch', { error });
       eventHandlers?.request?.onFailed?.(error);
@@ -61,6 +64,9 @@ export const useFetchChannelList = ({
         type: channelListActions.FETCH_CHANNELS_FAILURE,
         payload: error,
       });
+      if (resolveValue) {
+        throw error
+      }
     }
   }, [
     channelSource,
