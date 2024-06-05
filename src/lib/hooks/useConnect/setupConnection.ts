@@ -69,6 +69,7 @@ export async function setUpConnection({
     const sdk = initSDK({ appId, customApiHost, customWebSocketHost, isNewApp, sdkInitParams });
     const sessionHandler = typeof configureSession === 'function' ? configureSession(sdk) : undefined;
     setupSDK(sdk, { logger, sessionHandler, customExtensionParams, isMobile });
+    const onConnectionSucceeded = eventHandlers?.connection?.onSucceeded;
 
     sdk
       .connect(userId, accessToken)
@@ -100,6 +101,7 @@ export async function setUpConnection({
       });
 
     const onConnected = async (user: User) => {
+      onConnectionSucceeded?.(user);
       logger.info?.('SendbirdProvider | useConnect/setupConnection/onConnected', user);
       sdkDispatcher({ type: INIT_SDK, payload: sdk });
       userDispatcher({ type: INIT_USER, payload: user });
