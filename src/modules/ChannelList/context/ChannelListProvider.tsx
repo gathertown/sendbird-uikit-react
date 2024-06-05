@@ -107,7 +107,7 @@ export interface ChannelListProviderInterface extends ChannelListProviderProps {
   channelListDispatcher: React.Dispatch<ChannelListActionTypes>;
   channelSource: GroupChannelListQuerySb | null;
   hardReload: () => void;
-  fetchChannelList: () => void;
+  fetchChannelList: (resolveValue?: boolean) => void;
 }
 
 const ChannelListContext = React.createContext<ChannelListProviderInterface | null>({

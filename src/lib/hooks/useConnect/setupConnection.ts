@@ -84,6 +84,7 @@ export async function setUpConnection({
   return new Promise((resolve, reject) => {
     logger?.info?.('SendbirdProvider | useConnect/setupConnection/init', { userId, appId });
     const onConnectionFailed = eventHandlers?.connection?.onFailed;
+    const onConnectionSucceeded = eventHandlers?.connection?.onSucceeded;
     sdkDispatcher({ type: SET_SDK_LOADING, payload: true });
 
     if (userId && appId) {
@@ -125,6 +126,7 @@ export async function setUpConnection({
       newSdk.addExtension('sb_uikit', APP_VERSION_STRING);
 
       const connectCbSuccess = async (user: User) => {
+        onConnectionSucceeded?.(user);
         logger?.info?.('SendbirdProvider | useConnect/setupConnection/connectCbSuccess', user);
         sdkDispatcher({ type: INIT_SDK, payload: newSdk });
         userDispatcher({ type: INIT_USER, payload: user });

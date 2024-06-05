@@ -52,6 +52,7 @@ export interface SBUEventHandlers {
   },
   connection?: {
     onFailed?(error: SendbirdError): void;
+    onSucceeded?(user: User): void;
   },
   request?: {
     onFailed?(error: SendbirdError | Error, context?: {
