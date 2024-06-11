@@ -329,7 +329,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
         ref={contentRef}
       >
         {
-          !isByMe && !chainTop && !useReplying && renderMessageHeader(props)
+          !chainTop && !useReplying && renderMessageHeader(props)
         }
         {/* quote message */}
         {(useReplying) ? (
@@ -539,6 +539,8 @@ export default function MessageContent(props: MessageContentProps): ReactElement
               message,
               isByMe,
               replyType,
+              disabled,
+              showEdit,
               showRemove,
               resendMessage,
               setQuoteMessage,

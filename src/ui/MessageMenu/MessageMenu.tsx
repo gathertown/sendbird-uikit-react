@@ -49,6 +49,7 @@ export interface MessageMenuProps {
   channel: GroupChannel | OpenChannel | null;
   isByMe?: boolean;
   replyType?: ReplyType;
+  disabled?: boolean;
   renderTrigger?: (params: TriggerIconProps) => ReactElement;
   renderMenuItems?: (params: RenderMenuItemsParams) => ReactElement;
   disableDeleteMessage?: boolean;
