@@ -272,40 +272,6 @@ export default function MessageContent(props: MessageContentProps): ReactElement
             bottom: totalBottom > 0 ? totalBottom + 'px' : '',
           })
         }
-        {/* outgoing menu */}
-        {showOutgoingMenu && (
-          <div className={getClassName(['sendbird-message-content-menu', isReactionEnabledClassName, supposedHoverClassName, isByMeClassName])}>
-            {renderMessageMenu({
-              channel,
-              message,
-              isByMe,
-              replyType,
-              disabled,
-              showEdit,
-              showRemove,
-              resendMessage,
-              setQuoteMessage,
-              setSupposedHover,
-              onReplyInThread: ({ message }) => {
-                if (threadReplySelectType === ThreadReplySelectType.THREAD) {
-                  onReplyInThread({ message });
-                } else if (threadReplySelectType === ThreadReplySelectType.PARENT) {
-                  scrollToMessage(message.parentMessage?.createdAt, message.parentMessageId);
-                }
-              },
-              deleteMessage,
-            })}
-            {isReactionEnabledInChannel && (
-              renderEmojiMenu({
-                message,
-                userId,
-                emojiContainer,
-                toggleReaction,
-                setSupposedHover,
-              })
-            )}
-          </div>
-        )}
       </div>}
 
       {/* middle */}
@@ -319,7 +285,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
         ref={contentRef}
         >
         {
-          !isByMe && !chainTop && !useReplying && renderMessageHeader(props)
+          !chainTop && !useReplying && renderMessageHeader(props)
         }
         {/* quote message */}
         {(useReplying) ? (
@@ -507,10 +473,8 @@ export default function MessageContent(props: MessageContentProps): ReactElement
         }
       </div>
 
-      {/* right */}
-      {showRightContent && (
       <div
-        className={getClassName(['sendbird-message-content__right', chainTopClassName, isReactionEnabledClassName, useReplyingClassName])}>
+        className={getClassName(['sendbird-message-content__right', chainTopClassName, isReactionEnabledClassName, useReplyingClassName, supposedHoverClassName])}>
           <div className={getClassName(['sendbird-message-content-menu', chainTopClassName, supposedHoverClassName, isByMeClassName])}>
             {isReactionEnabledInChannel && (
               renderEmojiMenu({
@@ -529,6 +493,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
               isByMe,
               replyType,
               disabled,
+              showEdit,
               showRemove,
               resendMessage,
               setQuoteMessage,
@@ -544,7 +509,6 @@ export default function MessageContent(props: MessageContentProps): ReactElement
             })}
           </div>
       </div>
-      )}
 
       {
         showMenu && isSendableMessage(message) && renderMobileMenuOnLongPress({
