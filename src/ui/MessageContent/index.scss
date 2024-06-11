@@ -4,22 +4,14 @@
   display: inline-flex;
   flex-direction: row;
   position: relative;
-  width: calc(100% - 48px);
   padding: 0 24px;
 
-  &.incoming {
-    justify-content: flex-start;
-  }
-
-  &.outgoing {
-    justify-content: flex-end;
-  }
-
   .sendbird-message-content__middle {
-    max-width: 400px;
     @include mobile() {
-      max-width: calc(100vw - 140px);
+      max-width: calc(100vw - 140px) !important;
     }
+
+    width: calc(100% - 32px); 
   }
 
   .ui_container_type__wide {
@@ -41,10 +33,10 @@
 }
 
 // incoming
-.sendbird-message-content.incoming {
+.sendbird-message-content {
   .sendbird-message-content__left {
     display: inline-flex;
-    min-width: 40px;
+    min-width: 32px;
     position: relative;
 
     .sendbird-message-content__left__avatar {
@@ -69,6 +61,7 @@
     display: inline-flex;
     flex-direction: column;
     position: relative;
+    width: 100%;
 
     .sendbird-message-content__middle__body-container {
       .sendbird-message-content__middle__body-container__created-at {
@@ -119,10 +112,11 @@
   }
 
   .sendbird-message-content__right {
-    display: inline-flex;
-    margin-left: 4px;
-    padding-top: 18px;
-    position: relative;
+    display: none;
+   
+    position: absolute;
+    top: -14px;
+    right: 0px;
     width: 50px;
     &.use-reactions { width: 70px; }
 
@@ -134,8 +128,12 @@
       }
     }
 
+    &.sendbird-mouse-hover {
+      display: inline-flex;
+    }
+
     .sendbird-message-content-menu {
-      display: none;
+      display: inline-flex;
       flex-direction: row;
       height: 32px;
       position: relative;
@@ -158,9 +156,7 @@
     }
 
     .sendbird-message-content__right {
-      .sendbird-message-content-menu {
-        display: inline-flex;
-      }
+      display: inline-flex;
     }
 
     .sendbird-message-content__middle {
@@ -181,9 +177,9 @@
   .sendbird-message-content__left {
     box-sizing: border-box;
     display: inline-flex;
-    justify-content: flex-end;
+    align-items: flex-start !important;
     position: relative;
-    width: 50px;
+    width: 52px !important;
     &.use-reactions { width: 70px; }
 
     &.use-quote {
@@ -206,7 +202,6 @@
   }
 
   .sendbird-message-content__middle {
-    align-items: flex-end;
     display: inline-flex;
     flex-direction: column;
     position: relative;
@@ -256,10 +251,6 @@
     }
   }
 
-  .sendbird-message-content__right {
-    display: none;
-  }
-
   &:hover {
     @include mobile {
       .sendbird-message-content__middle {
@@ -291,7 +282,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: fit-content;
+  width: 100%;
 
   .sendbird-message-content__middle__message-item-body {
     box-sizing: border-box;
@@ -304,24 +295,6 @@
   max-width: 400px;
   position: relative;
   width: 100%;
-  @include themed() { background-color: t(bg-1); }
-
-  &.primary {
-    @include themed() { background-color: t(primary-3); }
-  }
-
-  &.mouse-hover,
-  &:hover {
-    @include themed() { background-color: t(bg-2); }
-
-    &.primary {
-      @include themed() { background-color: t(primary-4); }
-    }
-  }
-
-  &.image-grid {
-    @include themed() { background-color: t(bg-1); }
-  }
 }
 
 // threads
