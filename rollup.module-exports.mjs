@@ -35,6 +35,7 @@ export default {
   // utils
   'utils/message/getOutgoingMessageState': 'src/utils/exports/getOutgoingMessageState.ts',
   'utils/message/isVoiceMessage': 'src/utils/isVoiceMessage.ts',
+  utils: 'src/utils/index.ts',
 
   // ChannelList - legacy
   ChannelList: 'src/modules/ChannelList/index.tsx',
