@@ -138,7 +138,6 @@ export default function MessageContent(props: MessageContentProps): ReactElement
   const onPressUserProfileHandler = eventHandlers?.reaction?.onPressUserProfile;
   const contentRef = useRef(null);
   const timestampRef = useRef(null);
-  const threadRepliesRef = useRef(null);
   const feedbackButtonsRef = useRef(null);
   const { isMobile } = useMediaQueryContext();
   const [showMenu, setShowMenu] = useState(false);
@@ -210,9 +209,6 @@ export default function MessageContent(props: MessageContentProps): ReactElement
     let sum = 2;
     if (timestampRef.current && isTimestampBottom) {
       sum += 4 + timestampRef.current.clientHeight;
-    }
-    if (threadRepliesRef.current) {
-      sum += 4 + threadRepliesRef.current.clientHeight;
     }
     if (feedbackButtonsRef.current) {
       sum += 4 + feedbackButtonsRef.current.clientHeight;
