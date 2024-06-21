@@ -35,6 +35,7 @@ export interface ThreadUIProps {
   renderCustomSeparator?: () => React.ReactElement;
   renderParentMessageInfoPlaceholder?: (type: ParentMessageStateTypes) => React.ReactElement;
   renderThreadListPlaceHolder?: (type: ThreadListStateTypes) => React.ReactElement;
+  renderReplyCount?: (replyCount: number) => React.ReactElement
 }
 
 const ThreadUI: React.FC<ThreadUIProps> = ({
@@ -48,6 +49,7 @@ const ThreadUI: React.FC<ThreadUIProps> = ({
   renderFileUploadIcon,
   renderVoiceMessageIcon,
   renderSendMessageIcon,
+  renderReplyCount
 }: ThreadUIProps): React.ReactElement => {
   const {
     stores,
@@ -161,6 +163,7 @@ const ThreadUI: React.FC<ThreadUIProps> = ({
         </MessageProvider>
         {
           replyCount > 0 && (
+            renderReplyCount ? renderReplyCount(replyCount) :
             <div className="sendbird-thread-ui__reply-counts">
               <Label
                 type={LabelTypography.BODY_1}

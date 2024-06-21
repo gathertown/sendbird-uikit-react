@@ -269,6 +269,10 @@ export const MessageList = ({
                       currentUserId: store.config.userId
                     });
                     const isOutgoingMessage = isSendableMessage(message) && message.sender.userId === store.config.userId;
+
+                    // Don't show threaded message in the channel message list
+                    if (message.parentMessageId || message.parentMessage) return null;
+
                     return (
                       <MessageProvider message={message} key={getComponentKeyFromMessage(message)} isByMe={isOutgoingMessage}>
                         {renderMessage({
