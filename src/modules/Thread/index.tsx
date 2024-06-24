@@ -36,6 +36,7 @@ const Thread = (props: ThreadProps) => {
     renderFileUploadIcon,
     renderVoiceMessageIcon,
     renderSendMessageIcon,
+    renderReplyCount
   } = props;
   return (
     <div className={`sendbird-thread ${className}`}>
@@ -61,6 +62,7 @@ const Thread = (props: ThreadProps) => {
           renderFileUploadIcon={renderFileUploadIcon}
           renderVoiceMessageIcon={renderVoiceMessageIcon}
           renderSendMessageIcon={renderSendMessageIcon}
+          renderReplyCount={renderReplyCount}
         />
       </ThreadProvider>
     </div>

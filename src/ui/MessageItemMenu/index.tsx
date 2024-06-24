@@ -48,7 +48,7 @@ export interface MessageMenuProps {
   customTypeDenylistMap?: {
     edit?: string[];
   }
-  
+
   renderMenuItem?: (props: MessageMenuRenderMenuItemProps) => ReactElement;
 }
 
@@ -91,24 +91,23 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
    * TODO: Manage timing issue
    * User delete pending message -> Sending message success
    */
-  const isReplyTypeEnabled =
-    !isFailedMessage(message) &&
-    !isPendingMessage(message) &&
-    channel?.isGroupChannel?.() &&
-    !channel?.isEphemeral &&
-    (((channel as GroupChannel)?.isBroadcast && channel?.myRole === Role.OPERATOR) || !(channel as GroupChannel)?.isBroadcast);
+  const isReplyTypeEnabled = !isFailedMessage(message)
+    && !isPendingMessage(message)
+    && channel?.isGroupChannel?.()
+    && !channel?.isEphemeral
+    && (((channel as GroupChannel)?.isBroadcast && channel?.myRole === Role.OPERATOR) || !(channel as GroupChannel)?.isBroadcast);
   const showMenuItemReply = isReplyTypeEnabled && replyType === 'QUOTE_REPLY';
   const showMenuItemThread = isReplyTypeEnabled && replyType === 'THREAD' && !message?.parentMessageId && onReplyInThread;
 
   if (
     !(
-      showMenuItemCopy ||
-      showMenuItemReply ||
-      showMenuItemThread ||
-      showMenuItemOpenInChannel ||
-      showMenuItemEdit ||
-      showMenuItemResend ||
-      showMenuItemDelete
+      showMenuItemCopy
+      || showMenuItemReply
+      || showMenuItemThread
+      || showMenuItemOpenInChannel
+      || showMenuItemEdit
+      || showMenuItemResend
+      || showMenuItemDelete
     )
   ) {
     return null;
@@ -154,8 +153,8 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
               closeDropdown={closeDropdown}
               openLeft={isByMe}
             >
-              {showMenuItemCopy &&
-                renderMenuItem({
+              {showMenuItemCopy
+                && renderMenuItem({
                   className: 'sendbird-message-item-menu__list__menu-item menu-item-copy',
                   onClick: () => {
                     copyToClipboard((message as UserMessage)?.message);
@@ -164,8 +163,8 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
                   dataSbId: 'ui_message_item_menu_copy',
                   text: stringSet.MESSAGE_MENU__COPY,
                 })}
-              {showMenuItemReply &&
-                renderMenuItem({
+              {showMenuItemReply
+                && renderMenuItem({
                   className: 'sendbird-message-item-menu__list__menu-item menu-item-reply',
                   onClick: () => {
                     setQuoteMessage?.(message);
@@ -175,8 +174,8 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
                   dataSbId: 'ui_message_item_menu_reply',
                   text: stringSet.MESSAGE_MENU__REPLY,
                 })}
-              {showMenuItemThread &&
-                renderMenuItem({
+              {showMenuItemThread
+                && renderMenuItem({
                   className: 'sendbird-message-item-menu__list__menu-item menu-item-thread',
                   onClick: () => {
                     onReplyInThread?.({ message });
@@ -185,8 +184,8 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
                   dataSbId: 'ui_message_item_menu_thread',
                   text: stringSet.MESSAGE_MENU__THREAD,
                 })}
-              {showMenuItemOpenInChannel &&
-                renderMenuItem({
+              {showMenuItemOpenInChannel
+                && renderMenuItem({
                   className: 'sendbird-message-item-menu__list__menu-item menu-item-open-channel',
                   onClick: () => {
                     onMoveToParentMessage?.();
@@ -195,8 +194,8 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
                   dataSbId: 'ui_message_item_menu_open_in_channel',
                   text: stringSet.MESSAGE_MENU__OPEN_IN_CHANNEL,
                 })}
-              {showMenuItemEdit &&
-                renderMenuItem({
+              {showMenuItemEdit
+                && renderMenuItem({
                   className: 'sendbird-message-item-menu__list__menu-item menu-item-edit',
                   onClick: () => {
                     if (!disabled) {
@@ -207,8 +206,8 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
                   dataSbId: 'ui_message_item_menu_edit',
                   text: stringSet.MESSAGE_MENU__EDIT,
                 })}
-              {showMenuItemResend &&
-                renderMenuItem({
+              {showMenuItemResend
+                && renderMenuItem({
                   className: 'sendbird-message-item-menu__list__menu-item menu-item-resend',
                   onClick: () => {
                     if (!disabled) {
@@ -219,8 +218,8 @@ export function MessageMenu(props: MessageMenuProps): ReactElement | null {
                   dataSbId: 'ui_message_item_menu_resend',
                   text: stringSet.MESSAGE_MENU__RESEND,
                 })}
-              {showMenuItemDelete &&
-                renderMenuItem({
+              {showMenuItemDelete
+                && renderMenuItem({
                   className: 'sendbird-message-item-menu__list__menu-item menu-item-delete',
                   onClick: () => {
                     if (isFailedMessage(message)) {
