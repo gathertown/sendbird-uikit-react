@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useContext, useMemo, useRef, useState } from 'react';
+import React, { ReactElement, ReactNode, useCallback, useContext, useMemo, useRef, useState } from 'react';
 import format from 'date-fns/format';
 import './index.scss';
 
@@ -32,7 +32,7 @@ import { Feedback, FeedbackRating } from '@sendbird/chat/message';
 import useLongPress from '../../hooks/useLongPress';
 import MobileMenu from '../MobileMenu';
 import { useMediaQueryContext } from '../../lib/MediaQueryContext';
-import ThreadReplies from '../ThreadReplies';
+import ThreadReplies, { ThreadRepliesProps } from '../ThreadReplies';
 import { ThreadReplySelectType } from '../../modules/Channel/context/const';
 import { Nullable, ReplyType } from '../../types';
 import { deleteNullish, noop } from '../../utils/utils';
@@ -85,6 +85,8 @@ export interface MessageContentProps {
   renderEmojiMenu?: (props: MessageEmojiMenuProps) => ReactNode;
   renderEmojiReactions?: (props: EmojiReactionsProps) => ReactNode;
   renderMobileMenuOnLongPress?: (props: MobileBottomSheetProps) => React.ReactElement;
+  renderThreadReplies?:(props: ThreadRepliesProps) => React.ReactElement;
+  hideThreadReplies?: boolean;
 }
 
 export default function MessageContent(props: MessageContentProps): ReactElement {
@@ -115,6 +117,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
     onQuoteMessageClick,
     onMessageHeightChange,
     onBeforeDownloadFileMessage,
+    hideThreadReplies
   } = props;
 
   // Public props for customization
@@ -126,6 +129,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
     renderEmojiMenu = (props: MessageEmojiMenuProps) => <MessageEmojiMenu {...props} />,
     renderEmojiReactions = (props: EmojiReactionsProps) => <EmojiReactions {...props} />,
     renderMobileMenuOnLongPress = (props: MobileBottomSheetProps) => <MobileMenu {...props} />,
+    renderThreadReplies = (props: ThreadRepliesProps) => <ThreadReplies {...props}/>
   } = deleteNullish(props);
 
   const { dateLocale } = useLocalization();
@@ -134,7 +138,6 @@ export default function MessageContent(props: MessageContentProps): ReactElement
   const onPressUserProfileHandler = eventHandlers?.reaction?.onPressUserProfile;
   const contentRef = useRef(null);
   const timestampRef = useRef(null);
-  const threadRepliesRef = useRef(null);
   const feedbackButtonsRef = useRef(null);
   const { isMobile } = useMediaQueryContext();
   const [showMenu, setShowMenu] = useState(false);
@@ -177,7 +180,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
   const useReplyingClassName = useReplying ? 'use-quote' : '';
 
   // Thread replies
-  const displayThreadReplies = message?.threadInfo?.replyCount > 0 && replyType === 'THREAD';
+  const displayThreadReplies = message?.threadInfo?.replyCount > 0 && replyType === 'THREAD' && !hideThreadReplies;
 
   // Feedback buttons
   const isFeedbackMessage = !isByMe
@@ -207,9 +210,6 @@ export default function MessageContent(props: MessageContentProps): ReactElement
     if (timestampRef.current && isTimestampBottom) {
       sum += 4 + timestampRef.current.clientHeight;
     }
-    if (threadRepliesRef.current) {
-      sum += 4 + threadRepliesRef.current.clientHeight;
-    }
     if (feedbackButtonsRef.current) {
       sum += 4 + feedbackButtonsRef.current.clientHeight;
     }
@@ -229,6 +229,9 @@ export default function MessageContent(props: MessageContentProps): ReactElement
       setShowFeedbackModal(true);
     }
   };
+
+  const onThreadRepliesClick = useCallback(() => {
+    isSendableMessage(message) && onReplyInThread?.({ message })} , [message])
 
   // onMouseDown: (e: React.MouseEvent<T>) => void;
   // onTouchStart: (e: React.TouchEvent<T>) => void;
@@ -406,12 +409,8 @@ export default function MessageContent(props: MessageContentProps): ReactElement
         />}
         {/* thread replies */}
         {showThreadReplies && (
-          <ThreadReplies
-            className="sendbird-message-content__middle__thread-replies"
-            threadInfo={message?.threadInfo}
-            onClick={() => onReplyInThread?.({ message })}
-            ref={threadRepliesRef}
-          />
+          renderThreadReplies({threadInfo:message?.threadInfo, onClick: onThreadRepliesClick})
+   
         )}
         {/* Feedback buttons */}
         {

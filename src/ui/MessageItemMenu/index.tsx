@@ -231,7 +231,7 @@ export function MessageMenu(props: MessageMenuProps): ReactElement {
                       closeDropdown();
                     }
                   },
-                  disable: typeof disableDeleteMessage === 'boolean' ? disableDeleteMessage : message?.threadInfo?.replyCount > 0,
+                  disable: disableDeleteMessage,
                   dataSbId: 'ui_message_item_menu_delete',
                   text: stringSet.MESSAGE_MENU__DELETE,
                 })}
