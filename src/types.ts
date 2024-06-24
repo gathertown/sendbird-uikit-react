@@ -40,6 +40,13 @@ export interface RenderUserProfileProps {
   avatarRef: MutableRefObject<any>;
 }
 
+export interface MentionLabelProps {
+  mentionTemplate: string;
+  mentionedUserId: string;
+  mentionedUserNickname: string;
+  isByMe: boolean;
+}
+
 export interface SendBirdProviderConfig {
   logLevel?: 'debug' | 'warning' | 'error' | 'info' | 'all' | Array<string>;
   userMention?: {
