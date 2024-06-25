@@ -20,6 +20,7 @@ export default function TextFragment({
   tokens,
 }: TextFragmentProps): React.ReactElement {
   const messageStore = useMessageContext();
+  // fork note: custom render property
   const { renderMessageMentionLabel } = useGroupChannelContext();
 
   const message = messageStore?.message as UserMessage;
