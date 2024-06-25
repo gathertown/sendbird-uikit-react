@@ -10,7 +10,9 @@ export async function fetchMembersFromChannel(
     .sort((a, b) => a.nickname?.localeCompare(b.nickname))
     .filter(
       (member) => member.nickname?.toLowerCase().startsWith(searchString.toLowerCase())
-        && member.userId !== currentUserId
+        // fork note: we want to be able to allow users to tag themselves
+        // TODO check if Taha answered why this doesnt work :(
+        // && member.userId !== currentUserId
         && member.isActive,
     ).slice(0, maxSuggestionCount);
 }
@@ -22,13 +24,17 @@ export async function fetchMembersFromQuery(
   searchString: string,
 ): Promise<Member[]> {
   const query = channel.createMemberListQuery({
-    limit: maxSuggestionCount + 1, // because current user could be included
+    // fork note: current user is valid
+    // limit: maxSuggestionCount + 1, // because current user could be included
+    limit: maxSuggestionCount,
     nicknameStartsWithFilter: searchString,
   });
   return query.next()
     .then((memberList) => {
       return memberList
-        .filter((member) => currentUserId !== member?.userId)
+        // fork note: we want to be able to allow users to tag themselves
+        // .filter((member) => currentUserId !== member?.userId)
+        // TODO check if Taha answered why this doesnt work :(
         .slice(0, maxSuggestionCount);
     });
 }

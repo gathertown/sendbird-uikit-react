@@ -5,6 +5,8 @@ import { useIIFE } from '@sendbird/uikit-tools';
 import { getSuggestedReplies, isSendableMessage } from '../../../../utils';
 import useSendbirdStateContext from '../../../../hooks/useSendbirdStateContext';
 import { GroupChannelUIBasicProps } from '../GroupChannelUI/GroupChannelUIView';
+import { FileMessage, MultipleFilesMessage, UserMessage } from '@sendbird/chat/message';
+import { DraftMessage } from '../../../../types';
 
 export interface MessageInputWrapperProps {
   value?: string;
@@ -13,6 +15,21 @@ export interface MessageInputWrapperProps {
   renderFileUploadIcon?: GroupChannelUIBasicProps['renderFileUploadIcon'];
   renderVoiceMessageIcon?: GroupChannelUIBasicProps['renderVoiceMessageIcon'];
   renderSendMessageIcon?: GroupChannelUIBasicProps['renderSendMessageIcon'];
+
+  // custom fork props
+  messageInputRef?: React.MutableRefObject<HTMLDivElement>;
+  maxLength?: number;
+  draftMessage?: DraftMessage;
+  inputAreaPrefix?: React.ReactNode;
+  inputAreaButtons?: React.ReactNode;
+  onPaste?: (e: React.ClipboardEvent<HTMLDivElement>) => boolean;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => boolean;
+  onDraftChange?: (draftMessage: DraftMessage) => void;
+  onPreSubmit?: () => boolean;
+  onMessageSend?: (message: UserMessage, apiLatency: DOMHighResTimeStamp) => void;
+  onMessageError?: (reason: any, apiLatency: DOMHighResTimeStamp) => void;
+  onFileMessageSend?: (message: void | FileMessage | MultipleFilesMessage, apiLatency: DOMHighResTimeStamp) => void;
+  onFileMessageError?: (reason: any, apiLatency: DOMHighResTimeStamp) => void;
 }
 
 export const MessageInputWrapper = (props: MessageInputWrapperProps) => {
@@ -32,13 +49,14 @@ export const MessageInputWrapper = (props: MessageInputWrapperProps) => {
     return true;
   });
   const disableMessageInput = props.disabled
-    || isLastMessageSuggestedRepliesEnabled && !!lastMessage.extendedMessagePayload?.['disable_chat_input'];
+    || (isLastMessageSuggestedRepliesEnabled && !!lastMessage.extendedMessagePayload?.['disable_chat_input']);
 
   return (
     <MessageInputWrapperView
       {...props}
       {...context}
       disabled={disableMessageInput}
+      ref={props.messageInputRef}
     />
   );
 };

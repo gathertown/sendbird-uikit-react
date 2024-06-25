@@ -1,5 +1,5 @@
 import './index.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { User } from '@sendbird/chat';
 import type { GroupChannel } from '@sendbird/chat/groupChannel';
 import type {
@@ -26,6 +26,7 @@ import MessageInput from '../../../../ui/MessageInput';
 import { useMediaQueryContext } from '../../../../lib/MediaQueryContext';
 import { MessageInputKeys } from '../../../../ui/MessageInput/const';
 import { useHandleUploadFiles } from './useHandleUploadFiles';
+import { DraftMessage } from '../../../../types';
 
 export interface MessageInputWrapperViewProps {
   // Basic
@@ -48,6 +49,20 @@ export interface MessageInputWrapperViewProps {
   renderVoiceMessageIcon?: () => React.ReactElement;
   renderSendMessageIcon?: () => React.ReactElement;
   acceptableMimeTypes?: string[];
+
+  // custom props
+  maxLength?: number;
+  draftMessage?: DraftMessage;
+  inputAreaPrefix?: React.ReactNode;
+  inputAreaButtons?: React.ReactNode;
+  onPaste?: (e: React.ClipboardEvent<HTMLDivElement>) => boolean;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => boolean;
+  onDraftChange?: (draftMessage: DraftMessage) => void;
+  onPreSubmit?: () => boolean;
+  onMessageSend?: (message: UserMessage, apiLatency: DOMHighResTimeStamp) => void;
+  onMessageError?: (reason: any, apiLatency: DOMHighResTimeStamp) => void;
+  onFileMessageSend?: (message: void | FileMessage | MultipleFilesMessage, apiLatency: DOMHighResTimeStamp) => void;
+  onFileMessageError?: (reason: any, apiLatency: DOMHighResTimeStamp) => void;
 }
 
 export const MessageInputWrapperView = React.forwardRef((
@@ -73,6 +88,19 @@ export const MessageInputWrapperView = React.forwardRef((
     renderSendMessageIcon,
     acceptableMimeTypes,
     disabled,
+  
+    maxLength,
+    draftMessage,
+    inputAreaPrefix,
+    inputAreaButtons,
+    onPaste,
+    onKeyDown,
+    onDraftChange,
+    onPreSubmit,
+    onMessageSend,
+    onMessageError,
+    onFileMessageSend,
+    onFileMessageError,
   } = props;
   const { stringSet } = useLocalization();
   const { isMobile } = useMediaQueryContext();
@@ -137,7 +165,13 @@ export const MessageInputWrapperView = React.forwardRef((
         }
       }),
     );
+    if (draftRef.current) {
+      const updatedDraft = { ...draftRef.current, mentionedUsers };
+      draftRef.current = updatedDraft;
+      onDraftChange(updatedDraft);
+    }
   }, [mentionedUserIds]);
+  const draftRef = useRef<DraftMessage | null>(null);
 
   // Callbacks
   const handleUploadFiles = useHandleUploadFiles({
@@ -225,19 +259,45 @@ export const MessageInputWrapperView = React.forwardRef((
             currentChannel?.startTyping();
           }}
           onSendMessage={({ message, mentionTemplate }) => {
-            sendUserMessage({
+            if (onPreSubmit && !onPreSubmit()) {
+              // fork note: custom onPreSubmit returned false, so stop execution, can't send
+              return;
+            }
+
+            // fork note: moved the logic to allow up to this point with an empty input,
+            // but we should not allow an empty message to be sent
+            if (!message || message.length === 0) {
+              return;
+            }
+
+            // fork note: custom callbacks, and timer
+            const startTime = performance.now();
+            const promise = sendUserMessage({
               message,
               mentionedUsers,
               mentionedMessageTemplate: mentionTemplate,
               parentMessageId: quoteMessage?.messageId,
             });
+            if (promise) {
+              promise.then((message) => {
+                onMessageSend(message, performance.now() - startTime);
+              }).catch((reason) => {
+                onMessageError(reason, performance.now() - startTime);
+              });
+            }
             setMentionNickname('');
             setMentionedUsers([]);
             setQuoteMessage(null);
             currentChannel?.endTyping?.();
           }}
           onFileUpload={(fileList) => {
-            handleUploadFiles(fileList);
+            // fork note: custom callbacks, and timer
+            const startTime = performance.now();
+            handleUploadFiles(fileList).then((fileMessage) => {
+              onFileMessageSend(fileMessage, performance.now() - startTime);
+            }).catch((reason) => {
+              onFileMessageError(reason, performance.now() - startTime);
+            });
             setQuoteMessage(null);
           }}
           onUserMentioned={(user) => {
@@ -253,6 +313,7 @@ export const MessageInputWrapperView = React.forwardRef((
             setMentionedUserIds(userIds);
           }}
           onKeyDown={(e) => {
+            let value = false;
             if (
               showSuggestedMentionList
               && mentionSuggestedUsers?.length > 0
@@ -261,9 +322,28 @@ export const MessageInputWrapperView = React.forwardRef((
                 || e.key === MessageInputKeys.ArrowDown)
             ) {
               setMessageInputEvent(e);
-              return true;
+              value = true;
             }
-            return false;
+            if (onKeyDown) {
+              // returned value is used to decide if
+              // additional handling is needed, and preventDefault()
+              value ||= onKeyDown(e);
+            }
+            return value;
+          }}
+
+          // fork note: custom props
+          draftMessage={draftMessage}
+          maxLength={maxLength}
+          inputAreaPrefix={inputAreaPrefix}
+          inputAreaButtons={inputAreaButtons}
+          onPaste={onPaste}
+          onDraftChange={(draftMessage) => {
+            // list of mentioned users is kept at this level, so inject in the draft message object before passing
+            const augmentedDraftMessage = {...draftMessage};
+            augmentedDraftMessage.mentionedUsers = mentionedUsers;
+            draftRef.current = augmentedDraftMessage;
+            onDraftChange(augmentedDraftMessage);
           }}
         />
       )}

@@ -40,6 +40,23 @@ export interface RenderUserProfileProps {
   avatarRef: MutableRefObject<any>;
 }
 
+// fork note: used in the TextFragment component, the props needed to render
+// a custom mention in the message feed using renderMessageMentionLabel
+export interface MentionLabelProps {
+  mentionTemplate: string;
+  mentionedUserId: string;
+  mentionedUserNickname: string;
+  isByMe: boolean;
+}
+
+// fork note: the minimum amount of information needed to save and restore
+// an *unsent* message as a draft
+export interface DraftMessage {
+  message: string;
+  mentionedUsers: User[] | null;
+  mentionedMessageTemplate: string | null;
+}
+
 export interface SendBirdProviderConfig {
   logLevel?: 'debug' | 'warning' | 'error' | 'info' | 'all' | Array<string>;
   userMention?: {
