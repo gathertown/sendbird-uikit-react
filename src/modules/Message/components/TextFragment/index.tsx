@@ -11,17 +11,18 @@ import LinkLabel from '../../../../ui/LinkLabel';
 import { LabelTypography } from '../../../../ui/Label';
 import { getWhiteSpacePreservedText } from '../../utils/tokens/tokenize';
 import { useGroupChannelContext } from '../../../GroupChannel/context/GroupChannelProvider';
+import { MentionLabelProps } from '../../../../types';
 
 export type TextFragmentProps = {
   tokens: Token[];
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 };
 
 export default function TextFragment({
   tokens,
+  renderMessageMentionLabel
 }: TextFragmentProps): React.ReactElement {
   const messageStore = useMessageContext();
-  // fork note: custom render property
-  const { renderMessageMentionLabel } = useGroupChannelContext();
 
   const message = messageStore?.message as UserMessage;
   const isByMe = messageStore?.isByMe;

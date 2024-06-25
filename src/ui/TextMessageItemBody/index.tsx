@@ -8,6 +8,7 @@ import { LocalizationContext } from '../../lib/LocalizationContext';
 import { tokenizeMessage } from '../../modules/Message/utils/tokens/tokenize';
 import TextFragment from '../../modules/Message/components/TextFragment';
 import { TEXT_MESSAGE_BODY_CLASSNAME } from './consts';
+import { MentionLabelProps } from '../../types';
 
 interface Props {
   className?: string | Array<string>;
@@ -16,6 +17,8 @@ interface Props {
   mouseHover?: boolean;
   isMentionEnabled?: boolean;
   isReactionEnabled?: boolean;
+
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 }
 
 export default function TextMessageItemBody({
@@ -25,6 +28,7 @@ export default function TextMessageItemBody({
   mouseHover = false,
   isMentionEnabled = false,
   isReactionEnabled = false,
+  renderMessageMentionLabel
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const isMessageMentioned = isMentionEnabled
@@ -53,7 +57,7 @@ export default function TextMessageItemBody({
         mouseHover ? 'mouse-hover' : '',
         (isReactionEnabled && message?.reactions?.length > 0) ? 'reactions' : '',
       ])}>
-        <TextFragment tokens={tokens} />
+        <TextFragment tokens={tokens} renderMessageMentionLabel={renderMessageMentionLabel} />
         {
           isEditedMessage(message) && (
             <Label

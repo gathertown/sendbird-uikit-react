@@ -34,7 +34,7 @@ import MobileMenu from '../MobileMenu';
 import { useMediaQueryContext } from '../../lib/MediaQueryContext';
 import ThreadReplies, { ThreadRepliesProps } from '../ThreadReplies';
 import { ThreadReplySelectType } from '../../modules/Channel/context/const';
-import { Nullable, ReplyType } from '../../types';
+import { MentionLabelProps, Nullable, ReplyType } from '../../types';
 import { deleteNullish, noop } from '../../utils/utils';
 import MessageProfile, { MessageProfileProps } from './MessageProfile';
 import MessageBody, { MessageBodyProps } from './MessageBody';
@@ -87,6 +87,7 @@ export interface MessageContentProps {
   renderMobileMenuOnLongPress?: (props: MobileBottomSheetProps) => React.ReactElement;
   renderThreadReplies?:(props: ThreadRepliesProps) => React.ReactElement;
   hideThreadReplies?: boolean;
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 }
 
 export default function MessageContent(props: MessageContentProps): ReactElement {
@@ -117,7 +118,8 @@ export default function MessageContent(props: MessageContentProps): ReactElement
     onQuoteMessageClick,
     onMessageHeightChange,
     onBeforeDownloadFileMessage,
-    hideThreadReplies
+    hideThreadReplies,
+    renderMessageMentionLabel,
   } = props;
 
   // Public props for customization
@@ -354,6 +356,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
               isByMe,
               onTemplateMessageRenderedCallback,
               onBeforeDownloadFileMessage,
+              renderMessageMentionLabel
             })
           }
           {/* reactions */}

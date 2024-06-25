@@ -17,7 +17,7 @@ import type { SendableMessageType } from '../../../utils';
 import { UserProfileProvider, UserProfileProviderProps } from '../../../lib/UserProfileContext';
 import useSendbirdStateContext from '../../../hooks/useSendbirdStateContext';
 import { ThreadReplySelectType } from './const';
-import { MentionLabelProps, RenderUserProfileProps, ReplyType } from '../../../types';
+import { RenderUserProfileProps, ReplyType } from '../../../types';
 import useToggleReactionCallback from './hooks/useToggleReactionCallback';
 import { getCaseResolvedReplyType, getCaseResolvedThreadReplySelectType } from '../../../lib/utils/resolvedReplyType';
 import { getMessageTopOffset, isContextMenuClosed } from './utils';
@@ -77,7 +77,6 @@ interface ContextBaseType {
   // Render
   renderUserProfile?: (props: RenderUserProfileProps) => React.ReactElement;
   renderUserMentionItem?: (props: { user: User }) => JSX.Element;
-  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 }
 
 export interface GroupChannelContextType extends ContextBaseType, MessageListDataSourceWithoutActions, MessageActions {
@@ -137,7 +136,6 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
     onSearchClick,
     onQuoteMessageClick,
     renderUserMentionItem,
-    renderMessageMentionLabel,
   } = props;
 
   // Global context
@@ -422,7 +420,6 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
         onQuoteMessageClick,
         // ## Custom render
         renderUserMentionItem,
-        renderMessageMentionLabel,
 
         // Internal Interface
         currentChannel,

@@ -16,6 +16,7 @@ import TextFragment from '../../modules/Message/components/TextFragment';
 import { tokenizeMessage } from '../../modules/Message/utils/tokens/tokenize';
 import { OG_MESSAGE_BODY_CLASSNAME } from './consts';
 import { useMediaQueryContext } from '../../lib/MediaQueryContext';
+import { MentionLabelProps } from '../../types';
 
 interface Props {
   className?: string | Array<string>;
@@ -25,6 +26,7 @@ interface Props {
   isMentionEnabled?: boolean;
   isReactionEnabled?: boolean;
   onMessageHeightChange?: () => void;
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 }
 
 export default function OGMessageItemBody({
@@ -35,6 +37,7 @@ export default function OGMessageItemBody({
   isMentionEnabled = false,
   isReactionEnabled = false,
   onMessageHeightChange = () => { /* noop */ },
+  renderMessageMentionLabel,
 }: Props): ReactElement {
   const imageRef = useRef<HTMLDivElement>(null);
   const { stringSet } = useContext(LocalizationContext);
@@ -74,7 +77,7 @@ export default function OGMessageItemBody({
         color={isByMe ? LabelColors.ONCONTENT_1 : LabelColors.ONBACKGROUND_1}
       >
         <div className={OG_MESSAGE_BODY_CLASSNAME}>
-          <TextFragment tokens={tokens} />
+          <TextFragment tokens={tokens} renderMessageMentionLabel={renderMessageMentionLabel}/>
           {
             isEditedMessage(message) && (
               <Label
