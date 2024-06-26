@@ -11,13 +11,16 @@ import LinkLabel from '../../../../ui/LinkLabel';
 import { LabelColors, LabelTypography } from '../../../../ui/Label';
 import { getWhiteSpacePreservedText, tokenizeMarkdown } from '../../utils/tokens/tokenize';
 import { asSafeURL } from '../../utils/tokens/asSafeURL';
+import { MentionLabelProps } from '../../../../types';
 
 export type TextFragmentProps = {
   tokens: Token[];
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 };
 
 export default function TextFragment({
   tokens,
+  renderMessageMentionLabel,
 }: TextFragmentProps): React.ReactElement {
   const messageStore = useMessageContext();
 
@@ -60,14 +63,21 @@ export default function TextFragment({
           </span>;
           })
           .with(TOKEN_TYPES.mention, () => (
-            <span className="sendbird-word" key={key} data-testid="sendbird-ui-word">
-              <MentionLabel
+            <span className="sendbird-word" key={key}>
+              {renderMessageMentionLabel ? renderMessageMentionLabel({
+                mentionTemplate: USER_MENTION_PREFIX,
+                // @ts-ignore
+                mentionedUserId: token.userId,
+                mentionedUserNickname: token.value,
+                isByMe: isByMe,
+              })
+                : <MentionLabel
                 mentionTemplate={USER_MENTION_PREFIX}
                 // @ts-ignore
                 mentionedUserId={token.userId}
                 mentionedUserNickname={token.value}
                 isByMe={isByMe}
-              />
+              />}
             </span>
           ))
           .with(TOKEN_TYPES.url, () => (

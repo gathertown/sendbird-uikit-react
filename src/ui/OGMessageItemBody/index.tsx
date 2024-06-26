@@ -12,6 +12,7 @@ import { tokenizeMessage } from '../../modules/Message/utils/tokens/tokenize';
 import { OG_MESSAGE_BODY_CLASSNAME } from './consts';
 import { useMediaQueryContext } from '../../lib/MediaQueryContext';
 import { classnames, openURL } from '../../utils/utils';
+import { MentionLabelProps } from '../../types';
 
 interface Props {
   className?: string | Array<string>;
@@ -22,6 +23,7 @@ interface Props {
   isReactionEnabled?: boolean;
   isMarkdownEnabled?: boolean;
   onMessageHeightChange?: () => void;
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 }
 
 export default function OGMessageItemBody({
@@ -35,6 +37,7 @@ export default function OGMessageItemBody({
   onMessageHeightChange = () => {
     /* noop */
   },
+  renderMessageMentionLabel,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
 
@@ -67,16 +70,18 @@ export default function OGMessageItemBody({
     >
       <Label type={LabelTypography.BODY_1} color={isByMe ? LabelColors.ONCONTENT_1 : LabelColors.ONBACKGROUND_1}>
         <div className={OG_MESSAGE_BODY_CLASSNAME}>
-          <TextFragment tokens={tokens} />
-          {isEditedMessage(message) && (
-            <Label
-              className="sendbird-og-message-item-body__text-bubble__message"
-              type={LabelTypography.BODY_1}
-              color={isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2}
-            >
-              {` ${stringSet.MESSAGE_EDITED} `}
-            </Label>
-          )}
+          <TextFragment tokens={tokens} renderMessageMentionLabel={renderMessageMentionLabel}/>
+          {
+            isEditedMessage(message) && (
+              <Label
+                className="sendbird-og-message-item-body__text-bubble__message"
+                type={LabelTypography.BODY_1}
+                color={isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2}
+              >
+                {` ${stringSet.MESSAGE_EDITED} `}
+              </Label>
+            )
+          }
         </div>
       </Label>
       {message.ogMetaData?.defaultImage && (

@@ -34,8 +34,8 @@ import MobileMenu from '../MobileMenu';
 import { useMediaQueryContext } from '../../lib/MediaQueryContext';
 import ThreadReplies, { ThreadRepliesProps } from '../ThreadReplies';
 import { ThreadReplySelectType } from '../../modules/Channel/context/const';
-import { Nullable, ReplyType } from '../../types';
 import { classnames, deleteNullish, noop } from '../../utils/utils';
+import { MentionLabelProps, Nullable, ReplyType } from '../../types';
 import MessageProfile, { MessageProfileProps } from './MessageProfile';
 import MessageBody, { MessageBodyProps } from './MessageBody';
 import MessageHeader, { MessageHeaderProps } from './MessageHeader';
@@ -90,6 +90,7 @@ export interface MessageContentProps {
   renderMobileMenuOnLongPress?: (props: MobileBottomSheetProps) => React.ReactElement;
   renderThreadReplies?:(props: ThreadRepliesProps) => React.ReactElement;
   hideThreadReplies?: boolean;
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 }
 
 export default function MessageContent(props: MessageContentProps): ReactElement {
@@ -123,6 +124,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
     // [Fork Note] - Allows us to control visibility of the right content
     rightContentClassName,
     hideThreadReplies,
+    renderMessageMentionLabel,
   } = props;
 
   // Public props for customization
@@ -143,7 +145,6 @@ export default function MessageContent(props: MessageContentProps): ReactElement
   const onPressUserProfileHandler = eventHandlers?.reaction?.onPressUserProfile;
   const contentRef = useRef<HTMLDivElement>();
   const timestampRef = useRef<HTMLDivElement>();
-  const threadRepliesRef = useRef<HTMLDivElement>();
   const feedbackButtonsRef = useRef<HTMLDivElement>();
   const { isMobile } = useMediaQueryContext();
   const [showMenu, setShowMenu] = useState(false);
@@ -191,9 +192,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
   const useReplyingClassName = useReplying ? 'use-quote' : '';
 
   // Thread replies
-  const displayThreadReplies = message?.threadInfo?.replyCount
-    && message.threadInfo.replyCount > 0
-    && replyType === 'THREAD';
+  const displayThreadReplies = message?.threadInfo?.replyCount > 0 && replyType === 'THREAD' && !hideThreadReplies;
 
   // Feedback buttons
   const isFeedbackMessage = !isByMe
@@ -246,7 +245,10 @@ export default function MessageContent(props: MessageContentProps): ReactElement
   };
 
   const onThreadRepliesClick = useCallback(() => {
-    isSendableMessage(message) && onReplyInThread?.({ message }); }, [message]);
+    if (isSendableMessage(message)) {
+      onReplyInThread?.({ message });
+    }
+  }, [message]);
 
   // onMouseDown: (e: React.MouseEvent<T>) => void;
   // onTouchStart: (e: React.TouchEvent<T>) => void;
@@ -406,6 +408,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
               isByMe,
               onTemplateMessageRenderedCallback,
               onBeforeDownloadFileMessage,
+              renderMessageMentionLabel,
             })
           }
           {/* reactions */}
@@ -458,13 +461,9 @@ export default function MessageContent(props: MessageContentProps): ReactElement
           }}
         />}
         {/* thread replies */}
-        {showThreadReplies && message?.threadInfo && (
-          <ThreadReplies
-            className="sendbird-message-content__middle__thread-replies"
-            threadInfo={message?.threadInfo}
-            onClick={() => onReplyInThread?.({ message })}
-            ref={threadRepliesRef}
-          />
+        {showThreadReplies && (
+          renderThreadReplies({ threadInfo: message?.threadInfo, onClick: onThreadRepliesClick })
+
         )}
         {/* Feedback buttons */}
         {

@@ -39,12 +39,15 @@ import { useFileInfoListWithUploaded } from '../../../Channel/context/hooks/useF
 import { Colors } from '../../../../utils/color';
 import type { OnBeforeDownloadFileMessageType } from '../../../GroupChannel/context/GroupChannelProvider';
 import { openURL } from '../../../../utils/utils';
+import { MentionLabelProps } from '../../../../types';
 
 export interface ParentMessageInfoItemProps {
   className?: string;
   message: SendableMessageType;
   showFileViewer?: (bool: boolean) => void;
   onBeforeDownloadFileMessage?: OnBeforeDownloadFileMessageType;
+
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 }
 
 export default function ParentMessageInfoItem({
@@ -52,6 +55,7 @@ export default function ParentMessageInfoItem({
   message,
   showFileViewer,
   onBeforeDownloadFileMessage = null,
+  renderMessageMentionLabel,
 }: ParentMessageInfoItemProps): ReactElement {
   const { stores, config, eventHandlers } = useSendbirdStateContext();
   const { logger } = config;
@@ -132,7 +136,7 @@ export default function ParentMessageInfoItem({
           type={LabelTypography.BODY_1}
           color={LabelColors.ONBACKGROUND_1}
         >
-          <TextFragment tokens={tokens} />
+          <TextFragment tokens={tokens} renderMessageMentionLabel={renderMessageMentionLabel} />
           {isEditedMessage(message) && (
             <Label
               className="sendbird-parent-message-info-item__text-message edited"
