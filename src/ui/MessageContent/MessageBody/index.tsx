@@ -17,7 +17,7 @@ import UnknownMessageItemBody from '../../UnknownMessageItemBody';
 import { useThreadMessageKindKeySelector } from '../../../modules/Channel/context/hooks/useThreadMessageKindKeySelector';
 import { useFileInfoListWithUploaded } from '../../../modules/Channel/context/hooks/useFileInfoListWithUploaded';
 import { SendBirdStateConfig } from '../../../lib/types';
-import { Nullable, SendbirdTheme } from '../../../types';
+import { MentionLabelProps, Nullable, SendbirdTheme } from '../../../types';
 import { GroupChannel } from '@sendbird/chat/groupChannel';
 import { match } from 'ts-pattern';
 import TemplateMessageItemBody from '../../TemplateMessageItemBody';
@@ -33,6 +33,7 @@ export interface MessageBodyProps {
   onTemplateMessageRenderedCallback?: (renderedTemplateBodyType: RenderedTemplateBodyType) => void;
   onMessageHeightChange?: () => void;
   onBeforeDownloadFileMessage?: OnBeforeDownloadFileMessageType;
+  renderMessageMentionLabel?: (props: MentionLabelProps) => JSX.Element;
 
   mouseHover: boolean;
   isMobile: boolean;
@@ -49,6 +50,7 @@ export default function MessageBody(props: MessageBodyProps): ReactElement {
     onMessageHeightChange,
     onTemplateMessageRenderedCallback,
     onBeforeDownloadFileMessage,
+    renderMessageMentionLabel,
 
     mouseHover,
     isMobile,
@@ -86,6 +88,7 @@ export default function MessageBody(props: MessageBodyProps): ReactElement {
         isMentionEnabled={config?.isMentionEnabled || false}
         isReactionEnabled={isReactionEnabledInChannel}
         onMessageHeightChange={onMessageHeightChange}
+        renderMessageMentionLabel={renderMessageMentionLabel}
       />
     ))
     .when(isTextMessage, () => (
@@ -96,6 +99,7 @@ export default function MessageBody(props: MessageBodyProps): ReactElement {
         mouseHover={mouseHover}
         isMentionEnabled={config?.isMentionEnabled || false}
         isReactionEnabled={isReactionEnabledInChannel}
+        renderMessageMentionLabel={renderMessageMentionLabel}
       />
     ))
     .when((message) => getUIKitMessageType(message) === messageTypes.FILE, () => (
