@@ -150,7 +150,7 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
   const [fetchChannelError, setFetchChannelError] = useState<SendbirdError | null>(null);
 
   // Ref
-  const { scrollRef, scrollPubSub, scrollDistanceFromBottomRef, isScrollBottomReached, setIsScrollBottomReached } =
+  const { scrollRef, scrollPubSub, scrollDistanceFromBottomRef, isScrollBottomReached, setIsScrollBottomReached, scrollPositionRef } =
     useMessageListScroll(scrollBehavior);
   const messageInputRef = useRef(null);
 

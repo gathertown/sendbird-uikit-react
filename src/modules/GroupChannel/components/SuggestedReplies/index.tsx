@@ -1,3 +1,4 @@
+import { BaseMessage } from '@sendbird/chat/message';
 import './index.scss';
 import React, { useState } from 'react';
 
@@ -6,6 +7,7 @@ export interface SuggestedRepliesProps {
   onSendMessage: ({ message }: { message: string }) => void;
   type?: 'vertical' | 'horizontal';
   gap?: number;
+  message: BaseMessage;
 }
 
 export interface ReplyItemProps {
