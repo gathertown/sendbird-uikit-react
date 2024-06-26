@@ -1888,6 +1888,84 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gathertown/sendbird-uikit-react@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@gathertown/sendbird-uikit-react@workspace:."
+  dependencies:
+    "@babel/core": ^7.23.2
+    "@babel/eslint-parser": ^7.22.15
+    "@babel/plugin-proposal-class-properties": ^7.18.6
+    "@babel/plugin-proposal-export-default-from": ^7.22.17
+    "@babel/plugin-proposal-private-property-in-object": ^7.21.11
+    "@babel/preset-env": ^7.23.2
+    "@babel/preset-react": ^7.22.15
+    "@babel/preset-typescript": ^7.23.2
+    "@rollup/plugin-babel": ^6.0.4
+    "@rollup/plugin-commonjs": ^25.0.7
+    "@rollup/plugin-eslint": ^9.0.5
+    "@rollup/plugin-node-resolve": ^15.2.3
+    "@rollup/plugin-replace": ^5.0.4
+    "@rollup/plugin-typescript": ^11.1.5
+    "@sendbird/chat": ^4.12.3
+    "@sendbird/react-uikit-message-template-view": 0.0.1-alpha.76
+    "@sendbird/uikit-tools": 0.0.1-alpha.76
+    "@storybook/addon-essentials": ^8.0.9
+    "@storybook/react-vite": ^8.0.9
+    "@svgr/rollup": ^8.1.0
+    "@testing-library/jest-dom": ^5.16.5
+    "@testing-library/react": ^13.4.0
+    "@testing-library/user-event": ^14.4.3
+    "@typescript-eslint/eslint-plugin": ^6.17.0
+    "@typescript-eslint/parser": ^6.17.0
+    autoprefixer: ^9.7.4
+    babel-jest: ^29.0.1
+    browserslist: ^4.14.5
+    caniuse-lite: ^1.0.30001148
+    css-vars-ponyfill: ^2.3.2
+    date-fns: ^2.16.1
+    dompurify: ^3.0.1
+    eslint: ^8.40.0
+    eslint-config-airbnb: ^19.0.4
+    eslint-config-airbnb-base: ^15.0.0
+    eslint-plugin-babel: ^5.3.1
+    eslint-plugin-import: ^2.27.5
+    eslint-plugin-jsx-a11y: ^6.7.1
+    eslint-plugin-react: ^7.32.2
+    eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-unused-imports: ^3.0.0
+    global-jsdom: ^8.5.0
+    husky: ^8.0.0
+    jest: 29.5.0
+    jest-environment-jsdom: 29.5.0
+    jest-extended: ^3.2.4
+    jsdom: ^20.0.0
+    plop: ^2.5.3
+    postcss: ^8.3.5
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    rollup: ^4.9.2
+    rollup-plugin-analyzer: ^4.0.0
+    rollup-plugin-copy: ^3.5.0
+    rollup-plugin-polyfill-node: ^0.13.0
+    rollup-plugin-postcss: ^4.0.2
+    rollup-plugin-scss: ^4.0.0
+    rollup-plugin-typescript2: ^0.36.0
+    rollup-plugin-visualizer: ^5.9.2
+    sass: ^1.55.0
+    storybook: ^8.0.9
+    stylelint: ^13.0.0
+    stylelint-config-sass-guidelines: ^7.0.0
+    ts-pattern: ^4.2.2
+    typedoc: ^0.25.13
+    typescript: ^5.4.5
+    vite: ^5.1.5
+    vite-plugin-svgr: ^4.2.0
+  peerDependencies:
+    react: ^16.8.6 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0
+  languageName: unknown
+  linkType: soft
+
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -2623,18 +2701,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sendbird/chat@npm:^4.13.0":
-  version: 4.13.0
-  resolution: "@sendbird/chat@npm:4.13.0"
+"@sendbird/chat@npm:^4.12.3":
+  version: 4.12.3
+  resolution: "@sendbird/chat@npm:4.12.3"
   peerDependencies:
     "@react-native-async-storage/async-storage": ^1.17.6
-    react-native-mmkv: ^2.0.0
   peerDependenciesMeta:
     "@react-native-async-storage/async-storage":
       optional: true
-    react-native-mmkv:
-      optional: true
-  checksum: 8fee1df76f56909350d9ca7c3cef69a5097b099516345b64398e2abc89f8ae50441950d460a9bb259a4cce9e31a74533350e5da78627207be781a6937f12d664
+  checksum: bfee76dd86eb5ace8d13983e20594d04933123e990f31651ecf7183a82197b49258aa89f59aaeda5ae239364081791acc092fe01c9ecb0d613c2031ce9366f8e
   languageName: node
   linkType: hard
 
@@ -2659,85 +2734,6 @@ __metadata:
   checksum: 021dabe682457729796ec22e20723bbcc0478bcfa6fca491a121a095af782591ac26de6520b15913e22a9694770a05eca211057b1b684a60a8619195bfd261b4
   languageName: node
   linkType: hard
-
-"@sendbird/uikit-react@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@sendbird/uikit-react@workspace:."
-  dependencies:
-    "@babel/core": ^7.23.2
-    "@babel/eslint-parser": ^7.22.15
-    "@babel/plugin-proposal-class-properties": ^7.18.6
-    "@babel/plugin-proposal-export-default-from": ^7.22.17
-    "@babel/plugin-proposal-private-property-in-object": ^7.21.11
-    "@babel/preset-env": ^7.23.2
-    "@babel/preset-react": ^7.22.15
-    "@babel/preset-typescript": ^7.23.2
-    "@rollup/plugin-babel": ^6.0.4
-    "@rollup/plugin-commonjs": ^25.0.7
-    "@rollup/plugin-eslint": ^9.0.5
-    "@rollup/plugin-node-resolve": ^15.2.3
-    "@rollup/plugin-replace": ^5.0.4
-    "@rollup/plugin-typescript": ^11.1.5
-    "@sendbird/chat": ^4.13.0
-    "@sendbird/react-uikit-message-template-view": 0.0.1-alpha.76
-    "@sendbird/uikit-tools": 0.0.1-alpha.76
-    "@storybook/addon-essentials": ^8.0.9
-    "@storybook/react-vite": ^8.0.9
-    "@svgr/rollup": ^8.1.0
-    "@testing-library/jest-dom": ^5.16.5
-    "@testing-library/react": ^13.4.0
-    "@testing-library/user-event": ^14.4.3
-    "@typescript-eslint/eslint-plugin": ^6.17.0
-    "@typescript-eslint/parser": ^6.17.0
-    autoprefixer: ^9.7.4
-    babel-jest: ^29.0.1
-    browserslist: ^4.14.5
-    caniuse-lite: ^1.0.30001148
-    css-vars-ponyfill: ^2.3.2
-    date-fns: ^2.16.1
-    dompurify: ^3.0.1
-    eslint: ^8.40.0
-    eslint-config-airbnb: ^19.0.4
-    eslint-config-airbnb-base: ^15.0.0
-    eslint-plugin-babel: ^5.3.1
-    eslint-plugin-import: ^2.27.5
-    eslint-plugin-jsx-a11y: ^6.7.1
-    eslint-plugin-react: ^7.32.2
-    eslint-plugin-react-hooks: ^4.6.0
-    eslint-plugin-unused-imports: ^3.0.0
-    global-jsdom: ^8.5.0
-    husky: ^8.0.0
-    jest: 29.5.0
-    jest-environment-jsdom: 29.5.0
-    jest-extended: ^3.2.4
-    jsdom: ^20.0.0
-    plop: ^2.5.3
-    postcss: ^8.3.5
-    postcss-rtlcss: ^5.3.0
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    rollup: ^4.9.2
-    rollup-plugin-analyzer: ^4.0.0
-    rollup-plugin-copy: ^3.5.0
-    rollup-plugin-polyfill-node: ^0.13.0
-    rollup-plugin-postcss: ^4.0.2
-    rollup-plugin-scss: ^4.0.0
-    rollup-plugin-typescript2: ^0.36.0
-    rollup-plugin-visualizer: ^5.9.2
-    sass: ^1.55.0
-    storybook: ^8.0.9
-    stylelint: ^13.0.0
-    stylelint-config-sass-guidelines: ^7.0.0
-    ts-pattern: ^4.2.2
-    typedoc: ^0.25.13
-    typescript: ^5.4.5
-    vite: ^5.1.5
-    vite-plugin-svgr: ^4.2.0
-  peerDependencies:
-    react: ^16.8.6 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0
-  languageName: unknown
-  linkType: soft
 
 "@sendbird/uikit-tools@npm:0.0.1-alpha.76":
   version: 0.0.1-alpha.76
@@ -12970,17 +12966,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-rtlcss@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "postcss-rtlcss@npm:5.3.0"
-  dependencies:
-    rtlcss: 4.1.1
-  peerDependencies:
-    postcss: ^8.4.21
-  checksum: bd9bd09dc3b45b65db83dc8a0189701d1039b712916484bcb6afb7465a8343eafb0c09464c4d9079f016847e699a5724454e75855fb21fe72aa1b2b415f888ac
-  languageName: node
-  linkType: hard
-
 "postcss-safe-parser@npm:^4.0.2":
   version: 4.0.2
   resolution: "postcss-safe-parser@npm:4.0.2"
@@ -13078,7 +13063,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.3.5, postcss@npm:^8.4.21, postcss@npm:^8.4.38":
+"postcss@npm:^8.3.5, postcss@npm:^8.4.38":
   version: 8.4.38
   resolution: "postcss@npm:8.4.38"
   dependencies:
@@ -14055,20 +14040,6 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: fe19998a00401e7c2a41171e7d42af549176c6abfb6b20c4d0f401c973a3c7ad368605a722194bb21fe32775563eac06b53c9d96b24ef3d0ac95f69c5a3b67c8
-  languageName: node
-  linkType: hard
-
-"rtlcss@npm:4.1.1":
-  version: 4.1.1
-  resolution: "rtlcss@npm:4.1.1"
-  dependencies:
-    escalade: ^3.1.1
-    picocolors: ^1.0.0
-    postcss: ^8.4.21
-    strip-json-comments: ^3.1.1
-  bin:
-    rtlcss: bin/rtlcss.js
-  checksum: dcf37d76265b5c84d610488afa68a2506d008f95feac968b35ccae9aa49e7019ae0336a80363303f8f8bbf60df3ecdeb60413548b049114a24748319b68aefde
   languageName: node
   linkType: hard
 

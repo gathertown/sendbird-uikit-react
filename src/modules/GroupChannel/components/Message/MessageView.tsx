@@ -169,12 +169,11 @@ const MessageView = (props: MessageViewProps) => {
   const [mentionSuggestedUsers, setMentionSuggestedUsers] = useState<User[]>([]);
   const editMessageInputRef = useRef(null);
   const messageScrollRef = useRef(null);
-  const displaySuggestedMentionList =
-    isOnline &&
-    groupChannel.enableMention &&
-    mentionNickname.length > 0 &&
-    !isDisabledBecauseFrozen(channel) &&
-    !isDisabledBecauseMuted(channel);
+  const displaySuggestedMentionList = isOnline
+    && groupChannel.enableMention
+    && mentionNickname.length > 0
+    && !isDisabledBecauseFrozen(channel)
+    && !isDisabledBecauseMuted(channel);
 
   const mentionNodes = useDirtyGetMentions({ ref: editMessageInputRef }, { logger });
   const ableMention = mentionNodes?.length < maxUserMentionCount;
@@ -198,7 +197,7 @@ const MessageView = (props: MessageViewProps) => {
           mentionedUserIds.splice(i, 1);
           return true;
         }
-      })
+      }),
     );
   }, [mentionedUserIds]);
 
@@ -234,14 +233,14 @@ const MessageView = (props: MessageViewProps) => {
       timeouts.push(
         setTimeout(() => {
           setIsAnimated(true);
-        }, 500)
+        }, 500),
       );
 
       timeouts.push(
         setTimeout(() => {
           setAnimatedMessageId(null);
           onMessageAnimated?.();
-        }, 1600)
+        }, 1600),
       );
     } else {
       setIsAnimated(false);
@@ -293,8 +292,8 @@ const MessageView = (props: MessageViewProps) => {
           onBeforeDownloadFileMessage,
         })}
         {/* Suggested Replies */}
-        {shouldRenderSuggestedReplies &&
-          renderSuggestedReplies({
+        {shouldRenderSuggestedReplies
+          && renderSuggestedReplies({
             replyOptions: getSuggestedReplies(message),
             onSendMessage: sendUserMessage,
             message,
@@ -370,11 +369,11 @@ const MessageView = (props: MessageViewProps) => {
             }}
             onKeyDown={(e) => {
               if (
-                displaySuggestedMentionList &&
-                mentionSuggestedUsers?.length > 0 &&
-                ((e.key === MessageInputKeys.Enter && ableMention) ||
-                  e.key === MessageInputKeys.ArrowUp ||
-                  e.key === MessageInputKeys.ArrowDown)
+                displaySuggestedMentionList
+                && mentionSuggestedUsers?.length > 0
+                && ((e.key === MessageInputKeys.Enter && ableMention)
+                  || e.key === MessageInputKeys.ArrowUp
+                  || e.key === MessageInputKeys.ArrowDown)
               ) {
                 setMessageInputEvent(e);
                 return true;
@@ -397,8 +396,8 @@ const MessageView = (props: MessageViewProps) => {
       ref={messageScrollRef}
     >
       {/* date-separator */}
-      {hasSeparator &&
-        (renderedCustomSeparator || (
+      {hasSeparator
+        && (renderedCustomSeparator || (
           <DateSeparator>
             <Label type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
               {format(message.createdAt, stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR, {
