@@ -50,6 +50,8 @@ export interface MessageMenuProps {
   // perform those actions
   customTypeDenylistMap?: {
     edit?: string[];
+    copy?: string[];
+    delete?: string[]; 
   }
   
   renderMenuItem?: (props: MessageMenuRenderMenuItemProps) => ReactElement;
@@ -84,11 +86,14 @@ export function MessageMenu(props: MessageMenuProps): ReactElement {
 
   const isCurrentUserOperator = channel.isGroupChannel() ? isGroupChannelOperator(channel) : channel.isOperator(store.config.userId);
   const isInEditDenylist = !!customTypeDenylistMap?.edit.includes(message.customType);
+  const isInCopyDenylist = !!customTypeDenylistMap?.copy.includes(message.customType);
+  const isInDeletelist = !!customTypeDenylistMap?.delete.includes(message.customType);
 
-  const showMenuItemCopy: boolean = isUserMessage(message as UserMessage);
+
+  const showMenuItemCopy: boolean = isUserMessage(message as UserMessage) && !isInCopyDenylist;
   const showMenuItemEdit: boolean = (!channel?.isEphemeral && isUserMessage(message as UserMessage) && isSentMessage(message) && isByMe && !isInEditDenylist);
   const showMenuItemResend: boolean = (isFailedMessage(message) && message?.isResendable && isByMe);
-  const showMenuItemDelete: boolean = !channel?.isEphemeral && !isPendingMessage(message) && (isByMe || isCurrentUserOperator);
+  const showMenuItemDelete: boolean = !channel?.isEphemeral && !isPendingMessage(message) && (isByMe || isCurrentUserOperator) && !isInDeletelist;
   const showMenuItemOpenInChannel: boolean = onMoveToParentMessage !== null;
   /**
    * TODO: Manage timing issue
