@@ -277,6 +277,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       }
       setIsInput(textField?.textContent?.trim().length > 0);
       setHeight();
+      // fork note: force the cursor to the end if loading a draft message or editing
       moveCursorToEnd(textField);
     }
   }, [isEdit, message]);
