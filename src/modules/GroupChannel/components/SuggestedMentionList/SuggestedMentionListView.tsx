@@ -29,7 +29,8 @@ export interface SuggestedMentionListViewProps {
   inputEvent?: React.KeyboardEvent<HTMLDivElement>;
 }
 
-const DEBOUNCING_TIME = 300;
+// fork note: 300 (default) gave a bad UX
+const DEBOUNCING_TIME = 100;
 
 export const SuggestedMentionListView = (props: SuggestedMentionListViewProps) => {
   const {
@@ -129,7 +130,8 @@ export const SuggestedMentionListView = (props: SuggestedMentionListViewProps) =
     lastSearchString,
   ]);
 
-  if (!ableAddMention && currentMemberList.length === 0) {
+  // fork note: bug fix, it was showing an ugly empty list
+  if (!ableAddMention || currentMemberList.length === 0) {
     return null;
   }
 

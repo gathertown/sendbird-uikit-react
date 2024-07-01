@@ -49,6 +49,15 @@ export interface MentionLabelProps {
   isByMe: boolean;
 }
 
+// fork note: the minimum amount of information needed to save and restore
+// an *unsent* message as a draft
+export interface DraftMessage {
+  messageId?: number | null;
+  message?: string | null;
+  mentionedUsers?: User[] | null;
+  mentionedMessageTemplate?: string | null;
+}
+
 export interface SendBirdProviderConfig {
   logLevel?: 'debug' | 'warning' | 'error' | 'info' | 'all' | Array<string>;
   userMention?: {
