@@ -78,6 +78,7 @@ export interface MessageContentProps {
   onQuoteMessageClick?: (props: { message: SendableMessageType }) => void;
   onMessageHeightChange?: () => void;
   onBeforeDownloadFileMessage?: OnBeforeDownloadFileMessageType;
+  rightContentClassName?: string;
 
   // For injecting customizable subcomponents
   renderSenderProfile?: (props: MessageProfileProps) => ReactNode;
@@ -117,6 +118,8 @@ export default function MessageContent(props: MessageContentProps): ReactElement
     onQuoteMessageClick,
     onMessageHeightChange,
     onBeforeDownloadFileMessage,
+    // [Fork Note] - Allows us to control visibility of the right content
+    rightContentClassName,
   } = props;
 
   // Public props for customization
@@ -205,9 +208,11 @@ export default function MessageContent(props: MessageContentProps): ReactElement
    */
   const isNotTemplateMessage = !isTemplateMessage(message);
   const showLongPressMenu = isNotTemplateMessage && isMobile;
-  const showOutgoingMenu = isNotTemplateMessage && isByMe && !isMobile;
+  // [Fork Note 06/30/24] - We don't want to show the menu on the left side
+  const showOutgoingMenu = false;// isNotTemplateMessage && isByMe && !isMobile;
   const showThreadReplies = isNotTemplateMessage && displayThreadReplies;
-  const showRightContent = isNotTemplateMessage && !isByMe && !isMobile;
+  // [Fork Note 06/30/24] - We want to always show the right menu
+  const showRightContent = true; // isNotTemplateMessage && !isByMe && !isMobile;
 
   const isTimestampBottom = !!uiContainerType;
 
@@ -520,7 +525,7 @@ export default function MessageContent(props: MessageContentProps): ReactElement
       {/* right */}
       {showRightContent && (
         <div
-          className={classnames('sendbird-message-content__right', chainTopClassName, isReactionEnabledClassName, useReplyingClassName)}
+          className={classnames('sendbird-message-content__right', chainTopClassName, isReactionEnabledClassName, useReplyingClassName, rightContentClassName)}
           data-testid="sendbird-message-content__right"
         >
           <div className={classnames('sendbird-message-content-menu', chainTopClassName, hoveredMenuClassName, isByMeClassName)}>
