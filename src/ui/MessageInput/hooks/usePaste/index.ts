@@ -20,8 +20,15 @@ export function usePaste({
   setHeight,
   channel,
   setMentionedUsers,
+  customOnPaste,
+  onChange
 }: DynamicProps): (e: React.ClipboardEvent<HTMLDivElement>) => void {
   return useCallback((e) => {
+    if (customOnPaste && customOnPaste(e)) {
+      // custom logic already handled input, exit here
+      return;
+    }
+
     e.preventDefault();
     const html = e.clipboardData.getData('text/html');
     // simple text, continue as normal
@@ -30,6 +37,7 @@ export function usePaste({
       document.execCommand('insertHTML', false, sanitizeString(text));
       setIsInput(true);
       setHeight();
+      onChange?.()
       return;
     }
 
@@ -46,6 +54,7 @@ export function usePaste({
       pasteNode.remove();
       setIsInput(true);
       setHeight();
+      onChange?.()
       return;
     }
 
@@ -60,7 +69,8 @@ export function usePaste({
     pasteNode.remove();
     setIsInput(true);
     setHeight();
-  }, [ref, setIsInput, setHeight, channel, setMentionedUsers]);
+    onChange?.()
+  }, [ref, setIsInput, setHeight, channel, setMentionedUsers, customOnPaste]);
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types#dragging_links

@@ -25,6 +25,9 @@ import { GroupChannel } from '@sendbird/chat/groupChannel';
 import { User } from '@sendbird/chat';
 import { OpenChannel } from '@sendbird/chat/openChannel';
 import { UserMessage } from '@sendbird/chat/message';
+import { DraftMessage } from '../../types';
+
+import { useDebounce } from '../../hooks/useDebounce';
 
 const TEXT_FIELD_ID = 'sendbird-message-input-text-field';
 const LINE_HEIGHT = 76;
@@ -40,6 +43,16 @@ const displayCaret = (element: HTMLInputElement, position: number) => {
   range.collapse(true);
   sel.removeAllRanges();
   sel.addRange(range);
+  element.focus();
+};
+
+const moveCursorToEnd = (element: HTMLInputElement) => {
+  const range = document.createRange();
+  const selection = window.getSelection();
+  range.setStart(element, element.childNodes.length);
+  range.collapse(true);
+  selection.removeAllRanges();
+  selection.addRange(range);
   element.focus();
 };
 
@@ -61,7 +74,7 @@ const initialTargetStringInfo = {
 
 type MessageInputProps = {
   channel: GroupChannel | OpenChannel;
-  message?: UserMessage;
+  message?: UserMessage | DraftMessage;
   value?: null | string;
   className?: string | string[];
   messageFieldId?: string;
@@ -91,6 +104,12 @@ type MessageInputProps = {
   renderSendMessageIcon?: () => React.ReactNode;
   setMentionedUsers?: React.Dispatch<React.SetStateAction<User[]>>;
   acceptableMimeTypes?: string[];
+
+  // custom props
+  inputAreaPrefix?: React.ReactNode;
+  inputAreaButtons?: React.ReactNode;
+  onPaste?: (e: React.ClipboardEvent<HTMLDivElement>) => boolean;
+  onDraftChange?: (draftMessage: DraftMessage) => void;
 };
 const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((props, externalRef) => {
   const {
@@ -124,6 +143,12 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
     renderSendMessageIcon = noop,
     setMentionedUsers = noop,
     acceptableMimeTypes,
+
+    // custom props
+    inputAreaPrefix,
+    inputAreaButtons,
+    onDraftChange,
+    onPaste: customOnPaste,
   } = props;
 
   const internalRef = (externalRef && 'current' in externalRef) ? externalRef : null;
@@ -167,6 +192,22 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
     [],
   );
 
+  // fork notes: process the current input to save as draft
+  const processDraftChangeImmediate = useCallback(() => {
+    const textField = internalRef?.current;
+    if (!textField) return;
+
+    const { messageText, mentionTemplate } = extractTextAndMentions(textField.childNodes);
+    const draftMessage: DraftMessage = {
+      messageId: null, // no message id because it was not sent yet
+      mentionedUsers: null, // note: mentionedUsers is not kept in this component
+      mentionedMessageTemplate: mentionTemplate,
+      message: messageText
+    };
+    onDraftChange?.(draftMessage);
+  }, [onDraftChange]);
+  const processDraftChangeDebounced = useDebounce(processDraftChangeImmediate, 400);
+
   // #Edit mode
   // for easilly initialize input value from outside, but
   // useEffect(_, [channelUrl]) erase it
@@ -194,23 +235,23 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
 
   // #Mention & #Edit | Fill message input values
   useEffect(() => {
-    if (isEdit && message?.messageId) {
+    // fork note: allow loading from custom 'draftMessage'
+    if (message) {
       // const textField = document.getElementById(textFieldId);
       const textField = internalRef?.current;
       if (isMentionEnabled && message?.mentionedUsers?.length > 0 && message?.mentionedMessageTemplate?.length > 0) {
         /* mention enabled */
         const { mentionedUsers = [] } = message;
         const tokens = tokenizeMessage({
-          messageText: message?.mentionedMessageTemplate,
+          messageText: message?.mentionedMessageTemplate || "",
           mentionedUsers,
         });
         textField.innerHTML = tokens
           .map((token) => {
             if (token.type === TOKEN_TYPES.mention) {
               const mentionedUser = mentionedUsers.find((user) => user.userId === token.userId);
-              const nickname = `${USER_MENTION_PREFIX}${
-                mentionedUser?.nickname || token.value || stringSet.MENTION_NAME__NO_NAME
-              }`;
+              // fork note: bug fix
+              const nickname = `${USER_MENTION_PREFIX}${mentionedUser?.nickname || token.value || stringSet.MENTION_NAME__NO_NAME}`;
               return renderMentionLabelToString({
                 userId: token.userId,
                 nickname,
@@ -218,7 +259,13 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
             }
             return sanitizeString(token.value);
           })
-          .join(' ');
+          // fork note: bug fix
+          .join('');
+
+        // fork note: make sure the userids are updated
+        const userIds = mentionedUsers.map((user) => user.userId)
+        onMentionedUserIdsUpdated(userIds);
+        setMentionedUserIds(userIds);
       } else {
         /* mention disabled */
         try {
@@ -230,6 +277,8 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       }
       setIsInput(textField?.textContent?.trim().length > 0);
       setHeight();
+      // fork note: force the cursor to the end if loading a draft message or editing
+      moveCursorToEnd(textField);
     }
   }, [isEdit, message]);
 
@@ -247,6 +296,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       }
     }
     setIsInput(textField.textContent?.trim().length > 0);
+    processDraftChangeDebounced();
   }, [targetStringInfo, isMentionEnabled]);
 
   // #Mention | Replace selected user nickname to the MentionedUserLabel
@@ -297,6 +347,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
         setHeight();
         useMentionedLabelDetection();
       }
+      processDraftChangeDebounced();
     }
   }, [mentionSelectedUser, isMentionEnabled]);
 
@@ -368,7 +419,8 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
 
   const sendMessage = () => {
     const textField = internalRef?.current;
-    if (!isEdit && textField?.textContent) {
+    // fork note: allow "sending" empty message as other things can be added (i.e. attachments)
+    if (!isEdit) {
       const { messageText, mentionTemplate } = extractTextAndMentions(textField.childNodes);
       const params = { message: messageText, mentionTemplate };
       onSendMessage(params);
@@ -396,6 +448,8 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
     channel,
     setIsInput,
     setHeight,
+    customOnPaste,
+    onChange: processDraftChangeImmediate
   });
 
   return (
@@ -406,7 +460,15 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
         disabled ? 'sendbird-message-input-form__disabled' : '',
       ])}
     >
-      <div className={getClassName(['sendbird-message-input', disabled ? 'sendbird-message-input__disabled' : ''])}>
+      {/* fork note: inputAreaPrefix for custom rendering of attachments */}
+      {inputAreaPrefix}
+      <div
+        className={getClassName(['sendbird-message-input', disabled ? 'sendbird-message-input__disabled' : ''])}
+        onClick={() => {
+          // forked note: this is so it focuses on the text input area if you click in the area around it
+          internalRef?.current.focus();
+        }}
+      >
         <div
           id={`${textFieldId}${isEdit ? message?.messageId : ''}`}
           className={`sendbird-message-input--textarea ${textFieldId}`}
@@ -417,6 +479,9 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
           // @ts-ignore
           disabled={disabled}
           maxLength={maxLength}
+          // fork note: autoFocus and tabIndex are to allow custom focusing of this div (eg open as soon as it becomes visible)
+          autoFocus={true}
+          tabIndex={0}
           onKeyDown={(e) => {
             const preventEvent = onKeyDown(e);
             if (preventEvent) {
@@ -426,7 +491,8 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
                 !e.shiftKey
                 && e.key === MessageInputKeys.Enter
                 && !isMobile
-                && internalRef?.current?.textContent?.trim().length > 0
+                // fork note: we may have an unsent attachment that 'enter' should still send
+                // && internalRef?.current?.textContent?.trim().length > 0
                 && e?.nativeEvent?.isComposing !== true
                 /**
                  * NOTE: What isComposing does?
@@ -445,7 +511,18 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
                 if (!isMobileIOS(navigator.userAgent)) {
                   e.preventDefault();
                 }
-                sendMessage();
+                // fork note: allow enter to edit too
+                if (isEdit) {
+                  editMessage();
+                } else {
+                  sendMessage();
+                }
+              }
+              // for note: escape to cancel edit, if editing
+              if (e.key === "Escape") {
+                if (isEdit) {
+                  onCancelEdit?.();
+                }
               }
               if (
                 e.key === MessageInputKeys.Backspace
@@ -473,11 +550,12 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
             onStartTyping();
             setIsInput(internalRef?.current?.textContent?.trim().length > 0);
             useMentionedLabelDetection();
+            processDraftChangeDebounced();
           }}
           onPaste={onPaste}
         />
         {/* placeholder */}
-        {(internalRef?.current?.textContent?.length ?? 0) === 0 && (
+        {(internalRef?.current?.textContent?.length ?? 0) === 0 && !inputAreaPrefix && (
           <Label
             className="sendbird-message-input--placeholder"
             type={LabelTypography.BODY_1}
@@ -486,8 +564,11 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
             {placeholder || stringSet.MESSAGE_INPUT__PLACE_HOLDER}
           </Label>
         )}
+        {/* fork note: inputAreaButtons for custom rendering of buttons next to the input */}
+        {inputAreaButtons}
         {/* send icon */}
-        {!isEdit && isInput && (
+        {/* fork note: inputAreaPrefix is used for attachments, so user should be able to send, even if message is empty */}
+        {!isEdit && (isInput || inputAreaPrefix) && (
           <IconButton className="sendbird-message-input--send" height="32px" width="32px" onClick={() => sendMessage()}>
             {renderSendMessageIcon?.() || (
               <Icon

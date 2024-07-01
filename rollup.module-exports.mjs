@@ -102,6 +102,7 @@ export default {
   'GroupChannel/components/SuggestedMentionList': 'src/modules/GroupChannel/components/SuggestedMentionList/index.tsx',
   'GroupChannel/components/SuggestedReplies': 'src/modules/GroupChannel/components/SuggestedReplies/index.tsx',
   'GroupChannel/hooks/useHandleUploadFiles': 'src/modules/GroupChannel/components/MessageInputWrapper/useHandleUploadFiles.tsx',
+  'GroupChannel/components/SuggestedMentionListView': 'src/modules/GroupChannel/components/SuggestedMentionList/SuggestedMentionListView.tsx',
 
   // 'GroupChannel/components/MessageFeedbackModal': 'src/modules/GroupChannel/components/MessageFeedbackModal/index.tsx', // TODO: move to UI
 
