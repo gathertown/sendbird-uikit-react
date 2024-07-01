@@ -52,10 +52,10 @@ export interface MentionLabelProps {
 // fork note: the minimum amount of information needed to save and restore
 // an *unsent* message as a draft
 export interface DraftMessage {
-  messageId: number | null;
-  message: string;
-  mentionedUsers: User[] | null;
-  mentionedMessageTemplate: string | null;
+  messageId?: number | null;
+  message?: string | null;
+  mentionedUsers?: User[] | null;
+  mentionedMessageTemplate?: string | null;
 }
 
 export interface SendBirdProviderConfig {
