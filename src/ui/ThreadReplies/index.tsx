@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import { ThreadInfo } from '@sendbird/chat/message';
 
 import './index.scss';
@@ -94,4 +94,4 @@ export function ThreadReplies(
   );
 }
 
-export default React.forwardRef(ThreadReplies);
+export default ThreadReplies;
