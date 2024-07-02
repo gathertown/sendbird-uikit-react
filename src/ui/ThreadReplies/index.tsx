@@ -94,4 +94,4 @@ export function ThreadReplies(
   );
 }
 
-export default React.forwardRef(ThreadReplies);
+export default ThreadReplies;
