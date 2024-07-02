@@ -360,7 +360,8 @@ export default function MessageContent(props: MessageContentProps): ReactElement
             })
           }
           {/* reactions */}
-          {(isReactionEnabledInChannel && message?.reactions?.length > 0) && (
+          {/* [Fork Note] - Always render emoji reactions if a custom render function is provided */}
+          {(isReactionEnabledInChannel && (props.renderEmojiReactions !== null || message?.reactions?.length > 0)) && (
             <div className={getClassName([
               'sendbird-message-content-reactions',
               isMultipleFilesMessage(message)
