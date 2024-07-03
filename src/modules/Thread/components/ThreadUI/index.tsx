@@ -21,7 +21,7 @@ import { SendableMessageType } from '../../../../utils';
 
 export interface ThreadUIProps {
   renderHeader?: () => React.ReactElement;
-  renderParentMessageInfo?: () => React.ReactElement;
+  renderParentMessageInfo?: (message: SendableMessageType) => React.ReactElement;
   renderMessage?: (props: {
     message: SendableMessageType,
     chainTop: boolean,
