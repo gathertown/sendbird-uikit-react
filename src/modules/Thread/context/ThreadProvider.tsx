@@ -33,6 +33,7 @@ import { PublishingModuleType, useSendMultipleFilesMessage } from './hooks/useSe
 import { SendableMessageType } from '../../../utils';
 import { useThreadFetchers } from './hooks/useThreadFetchers';
 import type { OnBeforeDownloadFileMessageType } from '../../GroupChannel/context/GroupChannelProvider';
+import useSendFileMessageCallbackV2 from './hooks/useSendFileMessageV2';
 
 export type ThreadProviderProps = {
   children?: React.ReactElement;
@@ -57,6 +58,7 @@ export interface ThreadProviderInterface extends ThreadProviderProps, ThreadCont
   toggleReaction: (message, key, isReacted) => void;
   sendMessage: (props: SendMessageParams) => void;
   sendFileMessage: (file: File, quoteMessage?: SendableMessageType) => Promise<FileMessage>;
+  sendFileMessageV2: (params: FileMessageCreateParams, quoteMessage?: SendableMessageType) => Promise<FileMessage>;
   sendVoiceMessage: (file: File, duration: number, quoteMessage?: SendableMessageType) => void;
   sendMultipleFilesMessage: (files: Array<File>, quoteMessage?: SendableMessageType) => Promise<MultipleFilesMessage>,
   resendMessage: (failedMessage: SendableMessageType) => void;
@@ -193,6 +195,15 @@ export const ThreadProvider = (props: ThreadProviderProps) => {
     pubSub,
     threadDispatcher,
   });
+  const sendFileMessageV2 = useSendFileMessageCallbackV2({
+    currentChannel,
+    onBeforeSendFileMessage,
+  }, {
+    logger,
+    eventHandlers,
+    pubSub,
+    threadDispatcher,
+  });
   const sendVoiceMessage = useSendVoiceMessageCallback({
     currentChannel,
     onBeforeSendVoiceMessage,
@@ -257,6 +268,7 @@ export const ThreadProvider = (props: ThreadProviderProps) => {
         toggleReaction,
         sendMessage,
         sendFileMessage,
+        sendFileMessageV2,
         sendVoiceMessage,
         sendMultipleFilesMessage,
         resendMessage,
