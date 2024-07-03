@@ -7,7 +7,7 @@ import { SendableMessageType } from '../../../../utils';
 export interface UseMemorizedParentMessageInfoProps {
   parentMessage: SendableMessageType;
   parentMessageState: ParentMessageStateTypes;
-  renderParentMessageInfo?: () => React.ReactElement;
+  renderParentMessageInfo?: (message: SendableMessageType) => React.ReactElement;
   renderParentMessageInfoPlaceholder?: (type: ParentMessageStateTypes) => React.ReactElement;
 }
 
@@ -58,7 +58,7 @@ const useMemorizedParentMessageInfo = ({
     }
   } else if (parentMessageState === ParentMessageStateTypes.INITIALIZED) {
     if (typeof renderParentMessageInfo === 'function') {
-      return renderParentMessageInfo();
+      return renderParentMessageInfo(parentMessage);
     }
   }
   return null;
