@@ -58,6 +58,7 @@ export interface ThreadProviderInterface extends ThreadProviderProps, ThreadCont
   toggleReaction: (message, key, isReacted) => void;
   sendMessage: (props: SendMessageParams) => void;
   sendFileMessage: (file: File, quoteMessage?: SendableMessageType) => Promise<FileMessage>;
+  // Fork note: need to be able to pass in params to sendFileMessage, not just `file` so made a copy
   sendFileMessageV2: (params: FileMessageCreateParams, quoteMessage?: SendableMessageType) => Promise<FileMessage>;
   sendVoiceMessage: (file: File, duration: number, quoteMessage?: SendableMessageType) => void;
   sendMultipleFilesMessage: (files: Array<File>, quoteMessage?: SendableMessageType) => Promise<MultipleFilesMessage>,
