@@ -106,7 +106,13 @@ export const SuggestedMentionListView = (props: SuggestedMentionListViewProps) =
           logger.info('SuggestedMentionList: Fetched member list is empty');
         } else {
           logger.info('SuggestedMentionList: Fetching member list succeeded', { memberList: suggestingMembers });
-          setCurrentFocusedMember(suggestingMembers[0]);
+          setCurrentFocusedMember((current) => {
+            // fork note: do not reset current focused if the one currently focused is valid
+            if (current && suggestingMembers.findIndex((member) => member.userId === current.userId) > -1) {
+              return current;
+            }
+            return suggestingMembers[0];
+          });
         }
         setLastSearchString(searchString);
         onFetchUsers(suggestingMembers);
