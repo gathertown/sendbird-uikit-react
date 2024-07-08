@@ -491,6 +491,36 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
     onChange: processDraftChangeImmediate
   });
 
+  // fork note: use a shared onInputChanged callback to be used whenever the input changed
+  const onInputChanged = useCallback(
+    () => {
+      setHeight();
+      onStartTyping();
+      const textContentLength = internalRef?.current?.textContent?.trim().length;
+      setIsInput(textContentLength > 0);
+      useMentionedLabelDetection();
+
+      if (textContentLength < 15) {
+        // short text, no need to debounce
+        // at least, it's important that we process immediately if the contents changes between empty and non-empty states
+        processDraftChangeImmediate();
+      } else {
+        processDraftChangeDebounced();
+      }
+    }, [setHeight, onStartTyping, setIsInput, useMentionedLabelDetection, processDraftChangeImmediate]
+  );
+  // fork note: use MutationObserver to also track emojis being inserted into the text
+  useEffect(() => {
+    if (internalRef?.current) {
+      const observer = new MutationObserver(onInputChanged);
+      observer.observe(internalRef.current, {
+        childList: true,
+        subtree: true
+      });
+      return () => observer.disconnect();
+    }
+  }, [internalRef, onInputChanged]);
+
   return (
     <form
       className={getClassName([
@@ -585,11 +615,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
             useMentionInputDetection();
           }}
           onInput={() => {
-            setHeight();
-            onStartTyping();
-            setIsInput(internalRef?.current?.textContent ? internalRef.current.textContent.trim().length > 0 : false);
-            useMentionedLabelDetection();
-            processDraftChangeDebounced();
+            onInputChanged();
           }}
           onPaste={onPaste}
         />
