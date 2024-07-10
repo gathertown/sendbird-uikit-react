@@ -13,7 +13,7 @@ import { useLocalization } from '../../lib/LocalizationContext';
 import useSendbirdStateContext from '../../hooks/useSendbirdStateContext';
 
 import { extractTextAndMentions, isChannelTypeSupportsMultipleFilesMessage, nodeListToArray, sanitizeString } from './utils';
-import { arrayEqual, getMimeTypesUIKitAccepts } from '../../utils';
+import { arrayEqual, getClassName, getMimeTypesUIKitAccepts } from '../../utils';
 import usePaste from './hooks/usePaste';
 import { tokenizeMessage } from '../../modules/Message/utils/tokens/tokenize';
 import { USER_MENTION_PREFIX } from '../../modules/Message/consts';
@@ -47,8 +47,6 @@ const displayCaret = (element: HTMLInputElement, position: number) => {
   element.focus();
 };
 
-const resetInput = (ref: MutableRefObject<HTMLInputElement | null> | null) => {
-  if (ref && ref.current) {
 const moveCursorToEnd = (element: HTMLInputElement) => {
   const range = document.createRange();
   const selection = window.getSelection();
@@ -62,6 +60,8 @@ const moveCursorToEnd = (element: HTMLInputElement) => {
 const resetInput = (ref: MutableRefObject<HTMLElement>) => {
   try {
     ref.current.innerHTML = '';
+  } catch {
+    //
   }
 };
 
@@ -209,7 +209,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       messageId: null, // no message id because it was not sent yet
       mentionedUsers: null, // note: mentionedUsers is not kept in this component
       mentionedMessageTemplate: mentionTemplate,
-      message: messageText
+      message: messageText,
     };
     onDraftChange?.(draftMessage);
   }, [onDraftChange]);
@@ -256,7 +256,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
         /* mention enabled */
         const { mentionedUsers = [] } = message;
         const tokens = tokenizeMessage({
-          messageText: message?.mentionedMessageTemplate || "",
+          messageText: message?.mentionedMessageTemplate || '',
           mentionedUsers,
           includeMarkdown: channel.isGroupChannel() && config.groupChannel.enableMarkdownForUserMessage,
         });
@@ -279,7 +279,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
         }
 
         // fork note: make sure the userids are updated
-        const userIds = mentionedUsers.map((user) => user.userId)
+        const userIds = mentionedUsers.map((user) => user.userId);
         onMentionedUserIdsUpdated(userIds);
         setMentionedUserIds(userIds);
       } else {
@@ -492,7 +492,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
     setIsInput,
     setHeight,
     customOnPaste,
-    onChange: processDraftChangeImmediate
+    onChange: processDraftChangeImmediate,
   });
 
   // fork note: use a shared onInputChanged callback to be used whenever the input changed
@@ -511,7 +511,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       } else {
         processDraftChangeDebounced();
       }
-    }, [setHeight, onStartTyping, setIsInput, useMentionedLabelDetection, processDraftChangeImmediate]
+    }, [setHeight, onStartTyping, setIsInput, useMentionedLabelDetection, processDraftChangeImmediate],
   );
   // fork note: use MutationObserver to also track emojis being inserted into the text
   useEffect(() => {
@@ -519,7 +519,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       const observer = new MutationObserver(onInputChanged);
       observer.observe(internalRef.current, {
         childList: true,
-        subtree: true
+        subtree: true,
       });
       return () => observer.disconnect();
     }
@@ -592,7 +592,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
                 }
               }
               // for note: escape to cancel edit, if editing
-              if (e.key === "Escape") {
+              if (e.key === 'Escape') {
                 if (isEdit) {
                   onCancelEdit?.();
                 }
