@@ -429,6 +429,8 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       textField.focus();
       setIsInput(false);
       setHeight();
+      // fork note: make sure draft is cleared
+      processDraftChangeImmediate();
     }
   };
   const isEditDisabled = !internalRef?.current?.textContent?.trim();
@@ -440,6 +442,8 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       const params = { messageId, message: messageText, mentionTemplate };
       onUpdateMessage(params);
       resetInput(internalRef);
+      // fork note: make sure draft is cleared
+      processDraftChangeImmediate();
     }
   };
   const onPaste = usePaste({
