@@ -1906,7 +1906,7 @@ __metadata:
     "@rollup/plugin-node-resolve": ^15.2.3
     "@rollup/plugin-replace": ^5.0.4
     "@rollup/plugin-typescript": ^11.1.5
-    "@sendbird/chat": ^4.12.3
+    "@sendbird/chat": ^4.13.0
     "@sendbird/react-uikit-message-template-view": 0.0.1-alpha.76
     "@sendbird/uikit-tools": 0.0.1-alpha.76
     "@storybook/addon-essentials": ^8.0.9
@@ -1941,6 +1941,7 @@ __metadata:
     jsdom: ^20.0.0
     plop: ^2.5.3
     postcss: ^8.3.5
+    postcss-rtlcss: ^5.3.0
     react: ^18.2.0
     react-dom: ^18.2.0
     rollup: ^4.9.2
@@ -2701,15 +2702,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sendbird/chat@npm:^4.12.3":
-  version: 4.12.3
-  resolution: "@sendbird/chat@npm:4.12.3"
+"@sendbird/chat@npm:^4.13.0":
+  version: 4.13.1
+  resolution: "@sendbird/chat@npm:4.13.1"
   peerDependencies:
     "@react-native-async-storage/async-storage": ^1.17.6
+    react-native-mmkv: ^2.0.0
   peerDependenciesMeta:
     "@react-native-async-storage/async-storage":
       optional: true
-  checksum: bfee76dd86eb5ace8d13983e20594d04933123e990f31651ecf7183a82197b49258aa89f59aaeda5ae239364081791acc092fe01c9ecb0d613c2031ce9366f8e
+    react-native-mmkv:
+      optional: true
+  checksum: 41497dd313c56dabdd3fb0ec466ec07ab760c62d9fb851815150710ffbea108658885093c562bf501b1562a28e2f6062b396b60cbca42761c5804f2819bdcfa3
   languageName: node
   linkType: hard
 
@@ -12473,6 +12477,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picocolors@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "picocolors@npm:1.0.1"
+  checksum: fa68166d1f56009fc02a34cdfd112b0dd3cf1ef57667ac57281f714065558c01828cdf4f18600ad6851cbe0093952ed0660b1e0156bddf2184b6aaf5817553a5
+  languageName: node
+  linkType: hard
+
 "picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.2.2, picomatch@npm:^2.2.3, picomatch@npm:^2.3.0, picomatch@npm:^2.3.1":
   version: 2.3.1
   resolution: "picomatch@npm:2.3.1"
@@ -12966,6 +12977,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-rtlcss@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "postcss-rtlcss@npm:5.3.0"
+  dependencies:
+    rtlcss: 4.1.1
+  peerDependencies:
+    postcss: ^8.4.21
+  checksum: bd9bd09dc3b45b65db83dc8a0189701d1039b712916484bcb6afb7465a8343eafb0c09464c4d9079f016847e699a5724454e75855fb21fe72aa1b2b415f888ac
+  languageName: node
+  linkType: hard
+
 "postcss-safe-parser@npm:^4.0.2":
   version: 4.0.2
   resolution: "postcss-safe-parser@npm:4.0.2"
@@ -13071,6 +13093,17 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.2.0
   checksum: 649f9e60a763ca4b5a7bbec446a069edf07f057f6d780a5a0070576b841538d1ecf7dd888f2fbfd1f76200e26c969e405aeeae66332e6927dbdc8bdcb90b9451
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.21":
+  version: 8.4.39
+  resolution: "postcss@npm:8.4.39"
+  dependencies:
+    nanoid: ^3.3.7
+    picocolors: ^1.0.1
+    source-map-js: ^1.2.0
+  checksum: 14b130c90f165961772bdaf99c67f907f3d16494adf0868e57ef68baa67e0d1f6762db9d41ab0f4d09bab6fb7888588dba3596afd1a235fd5c2d43fba7006ac6
   languageName: node
   linkType: hard
 
@@ -14040,6 +14073,20 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: fe19998a00401e7c2a41171e7d42af549176c6abfb6b20c4d0f401c973a3c7ad368605a722194bb21fe32775563eac06b53c9d96b24ef3d0ac95f69c5a3b67c8
+  languageName: node
+  linkType: hard
+
+"rtlcss@npm:4.1.1":
+  version: 4.1.1
+  resolution: "rtlcss@npm:4.1.1"
+  dependencies:
+    escalade: ^3.1.1
+    picocolors: ^1.0.0
+    postcss: ^8.4.21
+    strip-json-comments: ^3.1.1
+  bin:
+    rtlcss: bin/rtlcss.js
+  checksum: dcf37d76265b5c84d610488afa68a2506d008f95feac968b35ccae9aa49e7019ae0336a80363303f8f8bbf60df3ecdeb60413548b049114a24748319b68aefde
   languageName: node
   linkType: hard
 
