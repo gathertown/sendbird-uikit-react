@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
+import React, { MutableRefObject, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import './index.scss';
 import { MessageInputKeys, NodeTypes } from './const';
@@ -26,7 +26,7 @@ import { GroupChannel } from '@sendbird/chat/groupChannel';
 import { User } from '@sendbird/chat';
 import { OpenChannel } from '@sendbird/chat/openChannel';
 import { UserMessage } from '@sendbird/chat/message';
-import { DraftMessage } from '../../types';
+import { DraftMessage, MessageInputCallbackRef } from '../../types';
 
 import { useDebounce } from '../../hooks/useDebounce';
 
@@ -115,6 +115,7 @@ type MessageInputProps = {
   acceptableMimeTypes?: string[];
 
   // custom props
+  callbackRefs?: React.RefObject<MessageInputCallbackRef>;
   inputAreaPrefix?: React.ReactNode;
   inputAreaButtons?: React.ReactNode;
   onPaste?: (e: React.ClipboardEvent<HTMLDivElement>) => boolean;
@@ -154,6 +155,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
     acceptableMimeTypes,
 
     // custom props
+    callbackRefs,
     inputAreaPrefix,
     inputAreaButtons,
     onDraftChange,
@@ -524,6 +526,14 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
       return () => observer.disconnect();
     }
   }, [internalRef, onInputChanged]);
+
+  // fork note: allows for externally invoking important lifecycle handlers
+  useImperativeHandle(callbackRefs, () => ({
+    sendMessage: () => {sendMessage();},
+    saveMessageEdit: () => {editMessage();},
+    cancelMessageEdit: () => {onCancelEdit?.();},
+    mentionInputDetection: () => {useMentionInputDetection();}
+  }));
 
   return (
     <form

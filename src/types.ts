@@ -58,6 +58,14 @@ export interface DraftMessage {
   mentionedMessageTemplate?: string | null;
 }
 
+// Define the interface for the MessageInput instance
+export interface MessageInputCallbackRef {
+  sendMessage: () => void;
+  saveMessageEdit: () => void;
+  cancelMessageEdit: () => void;
+  mentionInputDetection: () => void;
+}
+
 export interface SendBirdProviderConfig {
   logLevel?: 'debug' | 'warning' | 'error' | 'info' | 'all' | Array<string>;
   userMention?: {
