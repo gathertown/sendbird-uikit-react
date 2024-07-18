@@ -22,10 +22,12 @@ import useToggleReactionCallback from './hooks/useToggleReactionCallback';
 import { getCaseResolvedReplyType, getCaseResolvedThreadReplySelectType } from '../../../lib/utils/resolvedReplyType';
 import { getMessageTopOffset, isContextMenuClosed } from './utils';
 import { ScrollTopics, ScrollTopicUnion, useMessageListScroll } from './hooks/useMessageListScroll';
+import { useOnScrollPositionChangeDetectorWithRef } from '../../../hooks/useOnScrollReachedEndDetector';
 import PUBSUB_TOPICS, { PubSubSendMessagePayload } from '../../../lib/pubSub/topics';
 import { PubSubTypes } from '../../../lib/pubSub';
 import { useMessageActions } from './hooks/useMessageActions';
 import { getIsReactionEnabled } from '../../../utils/getIsReactionEnabled';
+import { usePreventDuplicateRequest } from './hooks/usePreventDuplicateRequest';
 
 type OnBeforeHandler<T> = (params: T) => T | Promise<T>;
 type MessageListQueryParamsType = Omit<MessageCollectionParams, 'filter'> & MessageFilterParams;
@@ -173,6 +175,7 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
     [currentChannel?.members]
   );
 
+  const preventDuplicateRequest = usePreventDuplicateRequest();
   const messageDataSource = useGroupChannelMessages(sdkStore.sdk, currentChannel!, {
     startingPoint,
     replyType: chatReplyType,
@@ -201,6 +204,62 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
     logger: logger as any,
   });
 
+  // fork note: this reverts changes from https://github.com/sendbird/sendbird-uikit-react/pull/1094/
+  // because our custom scroll bug fixes has deviated too much from upstream
+  useOnScrollPositionChangeDetectorWithRef(scrollRef, {
+    async onReachedTop() {
+      preventDuplicateRequest.lock();
+
+      await preventDuplicateRequest.run(async () => {
+        if (!messageDataSource.hasPrevious()) return;
+
+        const prevViewInfo = { scrollTop: scrollRef.current?.scrollTop, scrollHeight: scrollRef.current?.scrollHeight };
+        await messageDataSource.loadPrevious();
+
+        // FIXME: We need a good way to detect right after the rendering of the screen instead of using setTimeout.
+        setTimeout(() => {
+          const nextViewInfo = { scrollHeight: scrollRef.current?.scrollHeight };
+          if (prevViewInfo.scrollHeight && nextViewInfo.scrollHeight) {
+            const viewUpdated = prevViewInfo.scrollHeight < nextViewInfo.scrollHeight;
+            if (viewUpdated) {
+              const bottomOffset = prevViewInfo.scrollHeight - (prevViewInfo.scrollTop ?? 0);
+              scrollPubSub.publish('scroll', { top: nextViewInfo.scrollHeight - bottomOffset, lazy: false, animated: false });
+            }
+          }
+        });
+      });
+
+      preventDuplicateRequest.release();
+    },
+    async onReachedBottom() {
+      preventDuplicateRequest.lock();
+
+      await preventDuplicateRequest.run(async () => {
+        if (!messageDataSource.hasNext()) return;
+
+        const prevViewInfo = { scrollTop: scrollRef.current?.scrollTop, scrollHeight: scrollRef.current?.scrollHeight };
+        await messageDataSource.loadNext();
+
+        setTimeout(() => {
+          const nextViewInfo = { scrollHeight: scrollRef.current?.scrollHeight };
+          if (prevViewInfo.scrollHeight && nextViewInfo.scrollHeight) {
+            const viewUpdated = prevViewInfo.scrollHeight < nextViewInfo.scrollHeight;
+            if (viewUpdated) {
+              scrollPubSub.publish('scroll', { top: prevViewInfo.scrollTop, lazy: false, animated: false });
+            }
+          }
+        });
+      });
+
+      preventDuplicateRequest.release();
+
+      if (currentChannel && !messageDataSource.hasNext()) {
+        messageDataSource.resetNewMessages();
+        if (!disableMarkAsRead) markAsReadScheduler.push(currentChannel);
+      }
+    },
+  });
+
   // SideEffect: Fetch and set to current channel by channelUrl prop.
   useAsyncEffect(async () => {
     if (sdkStore.initialized && channelUrl) {
@@ -226,6 +285,14 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
   useAsyncLayoutEffect(async () => {
     if (messageDataSource.initialized) {
       scrollPubSub.publish('scrollToBottom', {});
+      // it prevents message load from previous/next before scroll to bottom finished.
+      preventDuplicateRequest.lock();
+      await preventDuplicateRequest.run(() => {
+        return new Promise<void>((resolve) => {
+          scrollPubSub.publish('scrollToBottom', { resolve, animated: false });
+        });
+      });
+      preventDuplicateRequest.release();
     }
 
     const onSentMessageFromOtherModule = (data: PubSubSendMessagePayload) => {
