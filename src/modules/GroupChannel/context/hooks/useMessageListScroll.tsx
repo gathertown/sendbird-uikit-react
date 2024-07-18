@@ -1,5 +1,6 @@
 import { DependencyList, useLayoutEffect, useRef, useState } from 'react';
 import pubSubFactory from '../../../../lib/pubSub';
+import { useOnScrollPositionChangeDetectorWithRef } from '../../../../hooks/useOnScrollReachedEndDetector';
 
 /**
  * You can pass the resolve function to scrollPubSub, if you want to catch when the scroll is finished.
@@ -95,6 +96,24 @@ export function useMessageListScroll(behavior: 'smooth' | 'auto', deps: Dependen
       unsubscribes.forEach(({ remove }) => remove());
     };
   }, [behavior]);
+  
+  // fork note: this reverts changes from https://github.com/sendbird/sendbird-uikit-react/pull/1094/
+  // because our custom scroll bug fixes has deviated too much from upstream
+  // Update data by scroll events
+  useOnScrollPositionChangeDetectorWithRef(scrollRef, {
+    onReachedTop({ distanceFromBottom }) {
+      setIsScrollBottomReached(false);
+      scrollDistanceFromBottomRef.current = distanceFromBottom;
+    },
+    onInBetween({ distanceFromBottom }) {
+      setIsScrollBottomReached(false);
+      scrollDistanceFromBottomRef.current = distanceFromBottom;
+    },
+    onReachedBottom({ distanceFromBottom }) {
+      setIsScrollBottomReached(true);
+      scrollDistanceFromBottomRef.current = distanceFromBottom;
+    },
+  });
 
   return {
     scrollRef,
