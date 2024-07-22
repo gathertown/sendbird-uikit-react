@@ -28,6 +28,7 @@ import { PubSubTypes } from '../../../lib/pubSub';
 import { useMessageActions } from './hooks/useMessageActions';
 import { getIsReactionEnabled } from '../../../utils/getIsReactionEnabled';
 import { usePreventDuplicateRequest } from './hooks/usePreventDuplicateRequest';
+import { SCROLL_BUFFER } from '../../../utils/consts';
 
 type OnBeforeHandler<T> = (params: T) => T | Promise<T>;
 type MessageListQueryParamsType = Omit<MessageCollectionParams, 'filter'> & MessageFilterParams;
@@ -182,7 +183,9 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
     collectionCreator: getCollectionCreator(currentChannel!, messageListQueryParams),
     shouldCountNewMessages: () => !isScrollBottomReached,
     markAsRead: (channels) => {
-      if (isScrollBottomReached && !disableMarkAsRead) {
+      // isScrollBottomReached is a state that is updated after the render is completed.
+      // So, we use scrollDistanceFromBottomRef to check quickly if the scroll is at the bottom.
+      if (!disableMarkAsRead && scrollDistanceFromBottomRef.current <= SCROLL_BUFFER) {
         channels.forEach((it) => markAsReadScheduler.push(it));
       }
     },
@@ -284,7 +287,6 @@ export const GroupChannelProvider = (props: GroupChannelProviderProps) => {
   //  - On messages sent from the thread
   useAsyncLayoutEffect(async () => {
     if (messageDataSource.initialized) {
-      scrollPubSub.publish('scrollToBottom', {});
       // it prevents message load from previous/next before scroll to bottom finished.
       preventDuplicateRequest.lock();
       await preventDuplicateRequest.run(() => {
