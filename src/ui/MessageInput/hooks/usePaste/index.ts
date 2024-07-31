@@ -49,9 +49,16 @@ export function usePaste({
       pasteNode.innerHTML = clean;
       // does not have mention, continue as normal
       if (!hasMention(pasteNode)) {
-        // to preserve space between words
-        const text = extractTextFromNodes(Array.from(pasteNode.children) as HTMLSpanElement[]);
-        document.execCommand('insertHTML', false, sanitizeString(text));
+        // fork notes: sometimes the pasted contents are not available as children, but rather in the node itself
+        // for more info, see APP-8144
+        if (pasteNode.children.length > 0) {
+          // to preserve space between words
+          const text = extractTextFromNodes(Array.from(pasteNode.children) as HTMLSpanElement[]);
+          document.execCommand('insertHTML', false, sanitizeString(text));
+        } else {
+          const text = pasteNode.innerText;
+          document.execCommand('insertHTML', false, sanitizeString(text));
+        }
         pasteNode.remove();
         setIsInput(true);
         setHeight();
