@@ -51,7 +51,11 @@ export function usePaste({
       if (!hasMention(pasteNode)) {
         // to preserve space between words
         const text = extractTextFromNodes(Array.from(pasteNode.children) as HTMLSpanElement[]);
-        document.execCommand('insertHTML', false, sanitizeString(text));
+        // fork note - encodeURIComponent is used to preserve & and other special characters
+        const encodedText = encodeURIComponent(sanitizeString(text));
+        document.execCommand('insertHTML', false, encodedText);
+        // fork note - decodeURIComponent is used to preserve & and other special characters
+        ref.current.innerText = decodeURIComponent(ref.current.innerText);
         pasteNode.remove();
         setIsInput(true);
         setHeight();
