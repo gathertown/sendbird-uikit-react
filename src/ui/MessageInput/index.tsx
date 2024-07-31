@@ -558,6 +558,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
           contentEditable={!disabled}
           role="textbox"
           aria-label="Text Input"
+          spellCheck="true"
           ref={externalRef}
           // @ts-ignore
           disabled={disabled}
