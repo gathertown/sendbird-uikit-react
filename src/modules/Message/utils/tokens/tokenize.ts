@@ -10,6 +10,8 @@ import {
   UndeterminedToken,
 } from './types';
 
+import * as linkify from 'linkifyjs';
+
 /**
  * /\[(.*?)\]\((.*?)\) is for url.
  * /\*\*(.*?)\*\* for bold.
@@ -65,18 +67,19 @@ export function identifyMentions({
 }
 
 export function identifyUrlsAndStrings(token: Token[]): Token[] {
-  const URL_REG = /(?:https?:\/\/|www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.(xn--)?[a-z]{2,20}\b([-a-zA-Z0-9@:%_+[\],.~#?&/=]*[-a-zA-Z0-9@:%_+~#?&/=])*/g;
   const results: Token[] = token.map((token) => {
     if (token.type !== TOKEN_TYPES.undetermined) {
       return token;
     }
     const { value = '' } = token;
 
-    const matches = Array.from(value.matchAll(URL_REG));
+    // Fork note - use linkifyjs to find urls in the string
+    const matches = linkify.find(value);
+
     const founds = matches.map((value) => {
-      const text = value[0];
-      const start = value.index ?? 0;
-      const end = start + text.length;
+      const text = value.value;
+      const start = value.start ?? 0;
+      const end = value.end;
       return { text, start, end };
     });
 

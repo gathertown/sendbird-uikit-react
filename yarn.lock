@@ -1939,6 +1939,8 @@ __metadata:
     jest-environment-jsdom: 29.5.0
     jest-extended: ^3.2.4
     jsdom: ^20.0.0
+    linkify-html: ^4.1.3
+    linkifyjs: ^4.1.3
     plop: ^2.5.3
     postcss: ^8.3.5
     postcss-rtlcss: ^5.3.0
@@ -10856,6 +10858,22 @@ __metadata:
   version: 1.2.4
   resolution: "lines-and-columns@npm:1.2.4"
   checksum: 0c37f9f7fa212b38912b7145e1cd16a5f3cd34d782441c3e6ca653485d326f58b3caccda66efce1c5812bde4961bbde3374fae4b0d11bf1226152337f3894aa5
+  languageName: node
+  linkType: hard
+
+"linkify-html@npm:^4.1.3":
+  version: 4.1.3
+  resolution: "linkify-html@npm:4.1.3"
+  peerDependencies:
+    linkifyjs: ^4.0.0
+  checksum: 1d9b6a5e85d75ccb581693382d543e76ff54acb332ce4de1dfb4ade0f8e85c1050d4db337e9e73d6ab65fe4f25fcf83762dda19984132d11c9a1256ace31f392
+  languageName: node
+  linkType: hard
+
+"linkifyjs@npm:^4.1.3":
+  version: 4.1.3
+  resolution: "linkifyjs@npm:4.1.3"
+  checksum: 023d467499a717a49ebbfa256a80cb2811a3b038ff2593e5be0fb8a4715b0a63bf80c571838e19e120833d5b9874464f3a1448965c8eebbde8c19458b3a6c6e4
   languageName: node
   linkType: hard
 
