@@ -14,7 +14,8 @@ export default function channelListReducer(
     match(action)
       .with({ type: channelListActions.INIT_CHANNELS_START }, ({ payload }) => ({
         ...state,
-        loading: true,
+        loading: !state.allChannels.length,
+        silentLoading: !!state.allChannels.length,
         error: null,
         currentUserId: payload.currentUserId,
       }))
@@ -27,6 +28,7 @@ export default function channelListReducer(
           ...state,
           initialized: true,
           loading: false,
+          silentLoading: false,
           error: null,
           allChannels: channelList,
           disableAutoSelect,
@@ -39,15 +41,17 @@ export default function channelListReducer(
         return {
           ...state,
           loading: false,
+          silentLoading: false,
           error: null,
           allChannels: channelList,
           currentChannel,
         };
       })
-      .with({ type: channelListActions.FETCH_CHANNELS_START }, (action) => {
+      .with({ type: channelListActions.FETCH_CHANNELS_START }, () => {
         return {
           ...state,
           loading: true,
+          silentLoading: false,
           error: null,
         };
       })
