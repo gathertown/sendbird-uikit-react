@@ -4,6 +4,7 @@ import type { GroupChannel, GroupChannelListQuery } from '@sendbird/chat/groupCh
 export interface ChannelListInitialStateType {
   initialized: boolean;
   loading: boolean;
+  silentLoading: boolean;
   error: SendbirdError | null;
   allChannels: GroupChannel[];
   currentChannel: null | GroupChannel;
@@ -16,6 +17,7 @@ const initialState: ChannelListInitialStateType = {
   // we might not need this initialized state -> should remove
   initialized: false,
   loading: true,
+  silentLoading: false,
   error: null,
   allChannels: [],
   currentChannel: null,

@@ -94,11 +94,15 @@ export interface ChannelListProviderProps {
   isTypingIndicatorEnabled?: boolean;
   isMessageReceiptStatusEnabled?: boolean;
   reconnectOnIdle?: boolean;
+  // Fork note - allow user to pass initial channels
+  initialChannels?: GroupChannel[];
 }
 
 export interface ChannelListProviderInterface extends ChannelListProviderProps {
   initialized: boolean;
   loading: boolean;
+  // Fork note - silentLoading when channels are loading, but no spinner is shown
+  silentLoading: boolean;
   error: SendbirdError | null;
   allChannels: GroupChannel[];
   currentChannel: GroupChannel | null;
@@ -155,7 +159,8 @@ const ChannelListProvider: React.FC<ChannelListProviderProps> = (props: ChannelL
 
   const sdkIntialized = sdkStore?.initialized;
 
-  const [channelListStore, channelListDispatcher] = useReducer(channelListReducers, channelListInitialState);
+  // Fork note - allow user to pass initial channels
+  const [channelListStore, channelListDispatcher] = useReducer(channelListReducers, { ...channelListInitialState, allChannels: props.initialChannels ?? [] });
   const { currentChannel } = channelListStore;
 
   const [channelSource, setChannelSource] = useState<GroupChannelListQuerySb | null>(null);
