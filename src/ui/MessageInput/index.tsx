@@ -159,7 +159,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
     inputAreaPrefix,
     inputAreaButtons,
     onDraftChange,
-    onPaste: customOnPaste,
+    onPaste: customOnFilePaste,
   } = props;
 
   const internalRef = (externalRef && 'current' in externalRef) ? externalRef : null;
@@ -493,7 +493,7 @@ const MessageInput = React.forwardRef<HTMLInputElement, MessageInputProps>((prop
     channel,
     setIsInput,
     setHeight,
-    customOnPaste,
+    customOnFilePaste,
     onChange: processDraftChangeImmediate,
   });
 
