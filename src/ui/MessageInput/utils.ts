@@ -48,5 +48,6 @@ export function extractTextAndMentions(childNodes: NodeListOf<ChildNode>) {
       mentionTemplate += textContent;
     }
   });
-  return { messageText, mentionTemplate };
+  // Fork-note - trim the messageText and mentionTemplate to remove leading and trailing whitespaces
+  return { messageText: messageText.trim(), mentionTemplate: mentionTemplate.trim() };
 }
