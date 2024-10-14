@@ -32,6 +32,7 @@ export default {
   'pubSub/topics': 'src/lib/pubSub/topics.ts',
   // hooks
   'hooks/useModal': 'src/hooks/useModal/index.tsx',
+  'hooks/useOnScrollReachedEndDetector': 'src/hooks/useOnScrollReachedEndDetector/index.ts',
   // utils
   'utils/message/getOutgoingMessageState': 'src/utils/exports/getOutgoingMessageState.ts',
   'utils/message/isVoiceMessage': 'src/utils/isVoiceMessage.ts',
